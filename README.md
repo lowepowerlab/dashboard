@@ -1,1 +1,3 @@
 # Ralstonia Dashboard
+# Goals
+# Resources
