@@ -1,3 +1,5 @@
+These are the packages needed for making a shiny app with the functions we want
+
 install tidyverse
 ```{r}
 install.packages("tidyverse")
@@ -31,4 +33,3 @@ library(shiny)
 library(bslib)
 library(ggplot2)
 ```
-
