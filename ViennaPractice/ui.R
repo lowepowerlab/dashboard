@@ -17,17 +17,16 @@ fluidPage(
 
     # Navset with options
     navset_pill_list( 
-      nav_panel("Home", "Page A content"), 
-      nav_panel("Global", "Page B content"), 
-      nav_panel("Continent", "Page C content"), 
-      nav_panel("Country", "Page C content"),
+      nav_panel("Home", "The *Ralstonia solanacearum* Species Complex (RSSC)"), 
+      nav_panel("Global", "Global Browser"), 
+      nav_panel("Continent", "Continent Browser"), 
+      nav_panel("Country", "Country Browser"),
+      nav_panel("Phylotype", "Phylotype Browser"),
+      nav_panel("Host", "Host Browser"),
       nav_menu( 
-        "Other links", 
-        nav_panel("D", "Panel D content"), 
-        "----", 
-        "Description:", 
+        "Other Resources",
         nav_item( 
-          a("Shiny", href = "https://shiny.posit.co", target = "_blank") 
+          a("Biorxiv 2023", href = "https://www.biorxiv.org/content/10.1101/2020.07.13.189936v4.full", target = "_blank") 
         ), 
       ), 
     ), 
