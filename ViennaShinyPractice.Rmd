@@ -1,27 +1,27 @@
 These are the packages needed for making a shiny app with the functions we want
 
 install tidyverse
-```{r}
+```
 install.packages("tidyverse")
 ```
 
 install htmlwidgets
-```{r}
+```
 install.packages("htmlwidgets")
 ```
 
 install shiny
-```{r}
+```
 install.packages("shiny")
 ```
 
 install bslib
-```{r}
+```
 install.packages("bslib")
 ```
 
 install
-```{r}
+```
 install.packages("ggplot2")
 ```
 
