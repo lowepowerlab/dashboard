@@ -1,8 +1,8 @@
 default:
   data_source:
     use_google_sheet: false  # use true to use gsheet by default
-    google_sheet_link: "https://docs.google.com/spreadsheets/d/1RJSi7Z6r_gDtmwfPhSBlH6qIFbBd-CTQsZNGT0fSoG8/edit?usp=sharing"
-    local_file_path: "FGSCdb_data.csv"
+    google_sheet_link: "SHEETS_LINK" # replace with link
+    local_file_path: "LOCAL.csv" # replace with local file
   deploy:
     deploy_shinyio: false
 
