@@ -43,41 +43,69 @@ ui <- dashboardPage(skin = "black",
     sidebarMenu(id = "sidebarid",
                  
         # filter drop-down menus
-      selectInput(inputId = "Publication_Year",
+      pickerInput(inputId = "Publication_Year",
                 label = "Publication Year",
                 choices = unique(RSSC$`Year published`),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                ),
+                selected = unique(RSSC$`Year published`),
                 multiple = T
                 ),
-      selectInput(inputId = "Phylotype",
+      pickerInput(inputId = "Phylotype",
                 label = "Phylotype",
                 choices = unique(RSSC$Phylotype),
-                
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                               ),
                 selected = unique(RSSC$Phylotype),
                 multiple = T
                 ),  
-      selectInput(inputId = "Host_Species",
+      pickerInput(inputId = "Host_Species",
                 label = "Host Species",
                 choices = unique(RSSC$`Host Species (Common name)`),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                ),
+                selected = unique(RSSC$`Host Species (Common name)`),
                 multiple = T
                 ), 
-      selectInput(inputId = "Host_Family",
+      pickerInput(inputId = "Host_Family",
                 label = "Host Family",
                 choices = unique(RSSC$`Host Family`),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                ),
+                selected = unique(RSSC$`Host Family`),
                 multiple = T
                 ), 
-      #selectInput(inputId = "VegProp_Host",
+      #pickerInput(inputId = "VegProp_Host",
        #         label = "Select Vegetatively Propagated Hosts)",
         #        list("Potato" = "st", "Musa spp." = "m", "Ginger spp." = "Z", "Tumeric spp." = "t", "Geranium spp." = "g", "Pothos spp." = "p", "Anthurium spp." = "a", "Rose spp." = "r",),
          #       multiple = T
           #      ), 
-      selectInput(inputId = "Country",
+      pickerInput(inputId = "Country",
                 label = "Country or Territory",
                 choices = unique(RSSC$`Location (Country or Territory)`),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                ),
+                selected = unique(RSSC$`Location (Country or Territory)`),
                 multiple = T
                 ),
-      selectInput(inputId = "Continent",
+      pickerInput(inputId = "Continent",
               label = "Continent",
               choices = unique(RSSC$`Location (continent)`),
+              options = list(`actions-box` = T,
+                             size = 10,
+                             `selected-text-format` = "count > 1"
+              ),
+              selected = unique(RSSC$`Location (continent)`),
               multiple = T
                 ),
       div(style="display:inline-block;width:25%;text-align: center;",
