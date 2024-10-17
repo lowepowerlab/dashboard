@@ -20,9 +20,14 @@ install bslib
 install.packages("bslib")
 ```
 
-install
+install ggplot2
 ```
 install.packages("ggplot2")
+```
+
+install shinyWidgets
+```
+install.packages(shinyWidgets)
 ```
 
 load packages
@@ -32,4 +37,5 @@ library(htmlwidgets)
 library(shiny)
 library(bslib)
 library(ggplot2)
+library(shinyWidgets)
 ```

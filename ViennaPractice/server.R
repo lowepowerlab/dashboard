@@ -9,6 +9,9 @@
 
 library(shiny)
 
+# load data from local CSV file
+RSSC <- read_csv("RSSC_Practice.csv")
+
 # Define server logic required to draw a histogram
 function(input, output, session) {
 
@@ -26,3 +29,5 @@ function(input, output, session) {
     })
 
 }
+
+
