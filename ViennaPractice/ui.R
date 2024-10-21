@@ -31,6 +31,40 @@ mytheme <- create_theme(
 # load data from local CSV file
 RSSC <- read_csv("RSSC_Practice.csv")
 
+Phylotype_selected = c("I","II", "III","IV")
+PandemicLineage_selected = c("1", "2")
+
+RSSC1 = RSSC %>% 
+  mutate(Phylotype2 = Phylotype) %>%
+  mutate(Phylotype2 = case_when(!is.na(Phylotype2) ~ Phylotype2,
+                                   is.na(Phylotype2) ~ "Unknown")) %>% 
+  
+  mutate(Phylotype = case_when( Phylotype %in% Phylotype_selected  ~Phylotype,
+                                   is.na(Phylotype) ~ "Unknown",
+                                   !is.na(Phylotype) & !Phylotype %in% Phylotype_selected ~ "Others")) %>%
+  
+  #mutate(Sequevar2 = Sequevar) %>%
+  #mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
+  #                             is.na(Sequevar2) ~ "Unknown")) %>%
+  
+  unite("latlong", Latitude, Longitude, sep ="/", remove = F ) %>% 
+  group_by(latlong) %>% 
+  mutate(n = n(),
+         Latitude = case_when(n > 1 ~ rnorm(n, Latitude,0.01),
+                              n == 1 ~ Latitude),
+         Longitude = case_when(n > 1 ~ rnorm(n, Longitude,0.01),
+                               n == 1 ~ Longitude)
+  ) %>%
+  
+  mutate(`Host Species (Common name)` = case_when(!is.na(`Host Species (Common name)`) ~ `Host Species (Common name)`,
+                          is.na(`Host Species (Common name)`) ~ "Unknown")) %>%
+  group_by(Phylotype) %>% 
+  mutate(n_iso_per_Phylotype = n(),
+         Phylotype3 = paste(Phylotype," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
+  ungroup() %>% 
+  dplyr::select(-n, -latlong) 
+
+
 ui <- dashboardPage(skin = "black",
   
   dashboardHeader(title = "RSSC Db", titleWidth = 250),
@@ -43,71 +77,90 @@ ui <- dashboardPage(skin = "black",
     sidebarMenu(id = "sidebarid",
                  
         # filter drop-down menus
-      pickerInput(inputId = "Publication_Year",
+      pickerInput(inputId = "publication_year",
                 label = "Publication Year",
-                choices = unique(RSSC$`Year published`),
+                choices = unique(RSSC1$`Year published`),
                 options = list(`actions-box` = T,
                                size = 10,
                                `selected-text-format` = "count > 1"
                 ),
-                selected = unique(RSSC$`Year published`),
+                selected = unique(RSSC1$`Year published`),
                 multiple = T
                 ),
-      pickerInput(inputId = "Phylotype",
+      pickerInput(inputId = "isolation_year",
+                  label = "Isolation Year",
+                  choices = unique(RSSC1$`Year isolated`),
+                  options = list(`actions-box` = T,
+                                 size = 10,
+                                 `selected-text-format` = "count > 1"
+                  ),
+                  selected = unique(RSSC1$`Year isolated`),
+                  multiple = T
+                ),
+      pickerInput(inputId = "phylo",
                 label = "Phylotype",
-                choices = unique(RSSC$Phylotype),
+                choices = unique(RSSC1$Phylotype3),
                 options = list(`actions-box` = T,
                                size = 10,
                                `selected-text-format` = "count > 1"
                                ),
-                selected = unique(RSSC$Phylotype),
+                selected = unique(RSSC1$Phylotype3),
                 multiple = T
                 ),  
-      pickerInput(inputId = "Host_Species",
+      pickerInput(inputId = "host_family",
+                  label = "Host Family",
+                  choices = unique(RSSC1$`Host Family`),
+                  options = list(`actions-box` = T,
+                                 size = 10,
+                                 `selected-text-format` = "count > 1"
+                  ),
+                  selected = unique(RSSC1$`Host Family`),
+                  multiple = T
+      ),
+      pickerInput(inputId = "host_species",
                 label = "Host Species",
-                choices = unique(RSSC$`Host Species (Common name)`),
+                choices = unique(RSSC1$`Host Species (Common name)`),
                 options = list(`actions-box` = T,
                                size = 10,
                                `selected-text-format` = "count > 1"
                 ),
-                selected = unique(RSSC$`Host Species (Common name)`),
+                selected = unique(RSSC1$`Host Species (Common name)`),
                 multiple = T
                 ), 
-      pickerInput(inputId = "Host_Family",
-                label = "Host Family",
-                choices = unique(RSSC$`Host Family`),
-                options = list(`actions-box` = T,
-                               size = 10,
-                               `selected-text-format` = "count > 1"
-                ),
-                selected = unique(RSSC$`Host Family`),
-                multiple = T
-                ), 
-      #pickerInput(inputId = "VegProp_Host",
-       #         label = "Select Vegetatively Propagated Hosts)",
-        #        list("Potato" = "st", "Musa spp." = "m", "Ginger spp." = "Z", "Tumeric spp." = "t", "Geranium spp." = "g", "Pothos spp." = "p", "Anthurium spp." = "a", "Rose spp." = "r",),
-         #       multiple = T
+      
+     #selectizeInput(inputId = "VegProp_Host",
+       #         label = "Vegetatively Propagated Hosts)",
+        #        list("Vegetatively Propagated Hosts" = list("Potato" = "RSSC$`Host Species`~RSSC$`Solanum tuberosum`", 
+        #                                                      "Banana/Plantain = "Musa", 
+         #                                                     "Ginger/Turmeric" = "Zingiber", 
+          #                                                    "Geranium" = "G",
+          #                                                     "Pothos" = "p",
+           #                                                    "Anthurium" = "a",
+            #                                                   "Rose" = "r")),
+             #                                          multiple = T
           #      ), 
-      pickerInput(inputId = "Country",
+     
+      pickerInput(inputId = "continent",
+                  label = "Continent",
+                  choices = unique(RSSC1$`Location (continent)`),
+                  options = list(`actions-box` = T,
+                                 size = 10,
+                                 `selected-text-format` = "count > 1"
+                  ),
+                  selected = unique(RSSC1$`Location (continent)`),
+                  multiple = T
+      ),
+      pickerInput(inputId = "country",
                 label = "Country or Territory",
-                choices = unique(RSSC$`Location (Country or Territory)`),
+                choices = unique(RSSC1$`Location (Country or Territory)`),
                 options = list(`actions-box` = T,
                                size = 10,
                                `selected-text-format` = "count > 1"
                 ),
-                selected = unique(RSSC$`Location (Country or Territory)`),
+                selected = unique(RSSC1$`Location (Country or Territory)`),
                 multiple = T
                 ),
-      pickerInput(inputId = "Continent",
-              label = "Continent",
-              choices = unique(RSSC$`Location (continent)`),
-              options = list(`actions-box` = T,
-                             size = 10,
-                             `selected-text-format` = "count > 1"
-              ),
-              selected = unique(RSSC$`Location (continent)`),
-              multiple = T
-                ),
+      
       div(style="display:inline-block;width:25%;text-align: center;",
           actionButton(inputId = "search",
                        label = "Filter",
@@ -125,19 +178,23 @@ ui <- dashboardPage(skin = "black",
 
   dashboardBody(use_theme(mytheme),
     #row 
-     #fluidRow(
-            #valueBoxOutput("Isolates", width = 3),
-            #infoBoxOutput("Citations", width = 3),
-            #infoBoxOutput("Distribution", width = 3)
-            #infoBoxOutput("Hosts", width = 3)
-            #),
+    shinyjs::useShinyjs(),
+    div(id = "my app",
+    fluidRow(
+            valueBoxOutput("n_Isolates", width = 3),
+            infoBoxOutput("n_Citations", width = 3),
+            infoBoxOutput("n_Distribution", width = 3),
+            infoBoxOutput("n_Hosts", width = 3)
+            ),
     #row
     fluidRow(
         box(title = "Isolate Map",
           solidHeader = T,
           width = 12,
           collapsible = T,
-          #plotOutput("Isolate_map")
+          leafletOutput("Isolate_map",
+                        width = "100%",
+                        height = 500)
 )
             ),
     # row
@@ -169,4 +226,5 @@ ui <- dashboardPage(skin = "black",
                 )
                   )
             
+)
 )
