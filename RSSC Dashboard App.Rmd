@@ -1,0 +1,351 @@
+---
+title: "RSSC Dashboard App"
+author: "Ben R"
+date: "2024-09-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("janitor")
+library("tidyverse")
+library("shiny")
+library("shinydashboard")
+library("readxl")
+library("writexl")
+library("maps")
+library("ggmap")
+library(ggthemes)
+library(plotly)
+library("DT")
+library(ggplot2)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(sf)
+
+
+```
+
+```{r}
+global_ralstonia <- read_csv("Ralstonia_Global_Diversity_Current_9_11_24.csv") %>% clean_names()
+
+world <- ne_countries(scale = "medium", returnclass = "sf")
+custom_colors <- c("I" = "red", "II" = "blue", "III" = "darkgreen","IV"="orange")
+```
+
+```{r}
+ui <- dashboardPage(
+      dashboardHeader(title = "RSSC Dashboard"),
+      dashboardSidebar(
+       sidebarMenu(
+      checkboxGroupInput("x", "Select Phylotype", choices = c("I", "II", "III", "IV"), selected = "I")
+    )),
+      dashboardBody(
+    fluidPage(
+      
+  box(title = "Practice Graph",width = 40, plotlyOutput("graph")),
+  box(title = "Table of Countries within a Phylotype", width = "600px",
+    dataTableOutput("table"))
+   
+  
+  )))
+
+server <- function(input, output, session){
+  filtered_data <- reactive({
+    global_ralstonia %>% 
+      filter(phylotype %in% input$x)
+  })
+  output$graph <- renderPlotly({
+   p <- ggplot(data = world) +
+  geom_sf(fill = "lemonchiffon", color = "lemonchiffon") +
+  geom_point(data = filtered_data(), aes(x = longitude, y = latitude, color = phylotype),size=1, alpha =0.5) +
+  coord_sf(xlim = c(-180, 180), ylim = c(-70, 90), expand = FALSE) +scale_y_continuous(breaks = y_breaks) +scale_color_manual(values = custom_colors) +
+  theme_minimal() +
+  theme(panel.grid.major = element_line(color = "lightblue", size = 0.5),panel.background = element_rect(fill = "lightblue")) +
+  labs(x= "Longitude", y = "Latitude", title = "Geographic Distribution of Ralstonia solanacearum species complex")+scale_color_manual(values = custom_colors, name = "Phylotype by Color", labels =c("I","II","III", "IV"))
+    
+    # Convert ggplot to plotly
+    ggplotly(p)
+  })
+   output$table <- renderDataTable({
+   
+    datatable(filtered_data(), options = list(scrollX = TRUE))
+  
+    
+  })
+}
+
+shinyApp(ui, server)
+```
+
+```{r}
+pp <- ggplot(data = world) +
+  geom_sf(fill = "lemonchiffon", color = "lemonchiffon") +
+  geom_point(data = global_ralstonia, aes(x = longitude, y = latitude, color = phylotype),size=1, alpha =1) +
+  coord_sf(xlim = c(-180, 180), ylim = c(-70, 90), expand = FALSE) +scale_y_continuous(breaks = y_breaks) +scale_color_manual(values = custom_colors) +
+  theme_minimal() +
+  theme(panel.grid.major = element_line(color = "lightblue", size = 0.5),panel.background = element_rect(fill = "lightblue")) +
+  labs(x= "Longitude", y = "Latitude", title = "Geographic Distribution of Ralstonia solanacearum species complex")+scale_color_manual(values = custom_colors, name = "Phylotype by Color", labels =c("I","II","III", "IV"))
+  
+ggplotly(pp)
+```
+```{r}
+global_ralstonia
+```
+
+
+```{r}
+ggplot(data = global_ralstonia, aes(x=phylotype, fill =phylotype)) + geom_bar( width=1)+labs(x= "Phylotype", y = "Number of Isolations", title = "Phylotype Distribution",fill = "Phylotype")+theme_minimal()+theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 0, hjust = 1)) + scale_fill_brewer(palette = "RdPu",na.value = "darkgrey")+geom_text(stat = "count", aes(label = ..count..), vjust = 1.5)
+```
+
+```{r}
+minifilter <- global_ralstonia %>% 
+  filter(!is.na(host_order))
+
+ggplot(data = minifilter, aes(x=host_order, fill =host_order)) + geom_bar( width=1)+labs(x= "Host Order", y = "Number of Isolations", title = "Host Distribution",fill = "host_order")+theme_minimal()+theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) + scale_fill_brewer(palette = "RdPu",na.value = "darkgrey")+geom_text(stat = "count", aes(label = ..count..), vjust = 1.5)
+```
+
+
+
+```{r}
+
+# Summarize and filter data to get host orders with at least 50 entries
+minifilter2 <- global_ralstonia %>%
+  group_by(host_order) %>%
+  filter(n() >= 50) %>% 
+  summarize(total_isolations = n()) %>%   # Summarize to get total isolations
+  ungroup() %>% 
+  arrange(desc(total_isolations))  # Order by ascending total_isolations
+
+# Create the bar plot
+ggplot(data = minifilter2, aes(x = reorder(host_order, -total_isolations), y = total_isolations, fill = host_order)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  labs(x = "Host Order", y = "Number of Isolations", title = "Host Distribution", fill = "Host Order") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_fill_brewer(palette = "Set1") +  # Use a color palette for categorical data
+  geom_text(aes(label = total_isolations), vjust = -0.5, color = "white")  # Label the bars
+
+
+```
+
+
+
+```{r}
+ui <- dashboardPage(
+      dashboardHeader(title = "RSSC Dashboard"),
+      dashboardSidebar(
+       sidebarMenu(
+      checkboxGroupInput("x", "Select Phylotype", choices = c("I", "II", "III", "IV"), selected = "I")
+    )),
+      dashboardBody(
+    fluidPage(
+      
+  box(title = "Practice Graph",width = 40, plotlyOutput("graph")),
+  box(title = "Table of Countries within a Phylotype", width = "600px",
+    dataTableOutput("filtered_table"))
+   
+  
+  )))
+
+server <- function(input, output, session){
+  filtered_data <- reactive({
+    global_ralstonia %>% 
+      filter(phylotype %in% input$x)
+  })
+  output$graph <- renderPlotly({
+   p <- ggplot(data = world) +
+  geom_sf(fill = "lemonchiffon", color = "lemonchiffon") +
+  geom_jitter(data = filtered_data(), aes(x = longitude, y = latitude, color = phylotype), size = 1, alpha = 0.5) +
+  coord_sf(xlim = c(-180, 180), ylim = c(-70, 90), expand = FALSE) +
+  scale_y_continuous(breaks = y_breaks) +
+  theme_minimal() +
+  theme(panel.grid.major = element_line(color = "lightblue", size = 0.5),
+        panel.background = element_rect(fill = "lightblue")) +
+  labs(x = "Longitude", y = "Latitude", title = "Geographic Distribution of Ralstonia solanacearum species complex") +
+  scale_color_brewer(palette = "Set1", name = "Phylotype by Color", labels = c("I", "II", "III", "IV"))
+
+    # Convert ggplot to plotly
+    ggplotly(p, source = "map_click")
+  })
+  
+  selected_point <- reactive({
+    event_data("plotly_click", source = "map_click")
+  })
+  
+   output$filtered_table <- renderDataTable({
+    # Check if a point is selected
+    if (is.null(selected_point())) {
+    return(datatable(filtered_data(), options = list(scrollX = TRUE))) 
+  } else {
+    # Get the selected point data
+    clicked_data <- selected_point()
+    
+    # Filter data based on the clicked point's longitude and latitude
+    filtered_point_data <- filtered_data() %>%
+      filter(longitude == clicked_data$x & latitude == clicked_data$y)
+    
+    # Return the filtered point data in the table
+    datatable(filtered_point_data, options = list(scrollX = TRUE))
+  }
+  })
+}
+
+shinyApp(ui, server)
+```
+
+```{r}
+
+```
+
+```{r}
+ui <- dashboardPage(skin = "black",
+  
+  dashboardHeader(title = "RSSC Db", titleWidth = 250),
+  
+  dashboardSidebar(collapsed = F, width = 250,
+     br(),
+     div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
+     "A georeferenced database of isolates of the", em("Ralstonia solanacearum"), "Species Complex.
+     Use the filters below to refine your search, visualize data, and download metadata."),
+    sidebarMenu(id = "sidebarid",
+                 
+        # filter drop-down menus
+      pickerInput(inputId = "Publication_Year",
+                label = "Publication Year",
+                choices = unique(RSSC$`Year published`),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                ),
+                selected = unique(RSSC$`Year published`),
+                multiple = T
+                ),
+      pickerInput(inputId = "Phylotype",
+                label = "Phylotype",
+                choices = unique(RSSC$Phylotype),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                               ),
+                selected = unique(RSSC$Phylotype),
+                multiple = T
+                ),  
+      pickerInput(inputId = "Host_Species",
+                label = "Host Species",
+                choices = unique(RSSC$`Host Species (Common name)`),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                ),
+                selected = unique(RSSC$`Host Species (Common name)`),
+                multiple = T
+                ), 
+      pickerInput(inputId = "Host_Family",
+                label = "Host Family",
+                choices = unique(RSSC$`Host Family`),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                ),
+                selected = unique(RSSC$`Host Family`),
+                multiple = T
+                ), 
+      #pickerInput(inputId = "VegProp_Host",
+       #         label = "Select Vegetatively Propagated Hosts)",
+        #        list("Potato" = "st", "Musa spp." = "m", "Ginger spp." = "Z", "Tumeric spp." = "t", "Geranium spp." = "g", "Pothos spp." = "p", "Anthurium spp." = "a", "Rose spp." = "r",),
+         #       multiple = T
+          #      ), 
+      pickerInput(inputId = "Country",
+                label = "Country or Territory",
+                choices = unique(RSSC$`Location (Country or Territory)`),
+                options = list(`actions-box` = T,
+                               size = 10,
+                               `selected-text-format` = "count > 1"
+                ),
+                selected = unique(RSSC$`Location (Country or Territory)`),
+                multiple = T
+                ),
+      pickerInput(inputId = "Continent",
+              label = "Continent",
+              choices = unique(RSSC$`Location (continent)`),
+              options = list(`actions-box` = T,
+                             size = 10,
+                             `selected-text-format` = "count > 1"
+              ),
+              selected = unique(RSSC$`Location (continent)`),
+              multiple = T
+                ),
+      div(style="display:inline-block;width:25%;text-align: center;",
+          actionButton(inputId = "search",
+                       label = "Filter",
+                       icon =icon("filter"))),
+      div(style="display:inline-block;width:25%;text-align: center;",
+          actionButton(inputId = "reset",
+                       label = "Select All",
+                       icon =icon("retweet"))),
+      # br(),
+      div(style="display:inline-block;width:60%;text-align: center;",
+          downloadButton("download",
+                         "Get Data"))
+         )
+      ),
+
+  dashboardBody(use_theme(mytheme),
+    #row 
+     #fluidRow(
+            #valueBoxOutput("Isolates", width = 3),
+            #infoBoxOutput("Citations", width = 3),
+            #infoBoxOutput("Distribution", width = 3)
+            #infoBoxOutput("Hosts", width = 3)
+            #),
+    #row
+    fluidRow(
+        box(title = "Isolate Map",
+          solidHeader = T,
+          width = 12,
+          collapsible = T,
+          #plotOutput("Isolate_map")
+)
+            ),
+    # row
+    fluidRow(
+        box(title = "Host Distribution",
+          solidHeader = T,
+          width = 6, 
+          collapsible = T,
+          collapsed = F,
+          #plotOutput("Host_chart")
+          ),
+        box(title = "Phylotype Distribution",
+          solidHeader = T,
+          width = 6,
+          collapsible = T,
+          collapsed = F,
+          #plotOutput("Phylotype_chart")
+          )
+            ),
+    # row
+    fluidRow(
+        box(title = "Metadata Table",
+          solidHeader = T,
+          width = 12, 
+          collapsible = T,
+          collapsed = F,
+          #div(DT::dataTableOutput("Metadata_table"), style = "font-size: 70%;"))
+            )
+                )
+                  )
+            
+)
+
+shinyApp(ui, server)
+
+
+```
+
+
