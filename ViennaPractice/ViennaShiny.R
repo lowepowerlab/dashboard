@@ -198,7 +198,7 @@ ui = dashboardPage(skin = "black",
                             solidHeader = T,
                             width = 12,
                             collapsible = T,
-                            leafletOutput("Isolate_map",
+                            leafletOutput("map_phylo",
                             width = "100%",
                             height = 500)
                             )
