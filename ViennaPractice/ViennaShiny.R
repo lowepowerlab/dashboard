@@ -149,11 +149,16 @@ ui = dashboardPage(skin = "black",
                         selected = unique(RSSC1$Phylotype3),
                         multiple = T
             ),  
-            #radioButtons(inputId = "pandemic_lineage",
-            #              label = "Pandemic Lineages",
-            #              choices = list("Yes" = RSSC1$`Sequevar2`[c("1","2")],
-            #                             "No" = RSSC1$`Sequevar2`[c("Others","Unknown")])
-            #                ),
+            pickerInput(inputId = "pandemic_lineage",
+                        label = "Pandemic Lineages",
+                        choices = c("Sequevar 1", "Sequevar 2"),
+                        options = list(`actions-box` = T,
+                                  size = 10,
+                                  `selected-text-format` = "count > 1"
+                        ),
+                        selected = c("Sequevar 1", "Sequevar 2"),
+                        multiple = T
+            ),
             pickerInput(inputId = "host_family",
                         label = "Host Family",
                         choices = sort(unique(RSSC1$`Host Family`)),
@@ -178,19 +183,19 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Host Species (Common name)`)),
                         multiple = T
             ), 
-            pickerInput(inputId = "vegprophost",
-                        label = "Vegetatively Propagated Hosts",
-                        choices = sort(unique(RSSC1$VPH)),
-                        options = list(
-                        `live-search` = T,
-                        `actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = sort(unique(RSSC1$VPH)),
+            #pickerInput(inputId = "vegprophost",
+             #           label = "Vegetatively Propagated Hosts",
+              #          choices = sort(unique(RSSC1$VPH)),
+               #         options = list(
+                #        `live-search` = T,
+                 #       `actions-box` = T,
+                  #      size = 10,
+                   #     `selected-text-format` = "count > 1"
+                    #    ),
+                     #   selected = sort(unique(RSSC1$VPH)),
                         #choicesOpt = list(disabled = c("Others")),
-                        multiple = T
-            ), 
+                      #  multiple = T
+          #  ), 
             pickerInput(inputId = "continent",
                         label = "Continent",
                         choices = sort(unique(RSSC1$`Location (continent)`)),
@@ -215,7 +220,19 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Location (Country or Territory)`)),
                         multiple = T
             ),
-                                                 
+            pickerInput(inputId = "genome",
+                        label = "Genome Available on NCBI?",
+                        choices = c("Yes", "No"),
+                        options = list(
+                        `live-search` = F,  
+                        `actions-box` = T,
+                         size = 10,
+                        `selected-text-format` = "count > 1"
+                      ),
+                         selected = c("Yes", "No"),
+                         multiple = T
+          ),
+          
            div(style="display:inline-block;width:25%;text-align: center;",
                actionButton(inputId = "search",
                label = "Filter",
