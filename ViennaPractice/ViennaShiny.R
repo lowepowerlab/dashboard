@@ -41,21 +41,28 @@ mytheme <- create_theme(
 # load data and transformations
 RSSC <- read_csv("RSSC_Practice.csv")
 
-Phylotype_selected = c("I","II", "III","IV")
+Phylotype_selected = c("I", "II", "III", "IV")
 PandemicLineage_selected = c("1", "2")
+VegetativelyPropagatedHosts_selected = c("Anthurium sp. (Laceleaf)", "Curcuma longa (Turmeric)", "Curcuma aromatica (Wild Turmeric)",
+                                  "Curcuma zedoaria (White Turmeric)", "Curcuma aeruginoa (Blue and Pink Ginger)", "Curcuma mangga (Mango Ginger)",
+                                  "Epipremnum aureum (Pothos)", "Kaempferia galanga (Aromatic Ginger)", "Musa acuminata (Banana)",
+                                  "Musa paradisiaca (Plantain)", "Musa sp. (Banana Plant)", "Musa acuminata x balbisiana AAB",
+                                  "Pelargonium capitatum (Rose Geranium)", "Pelargonium sp. (Geranium)", "Pelargonium x asperum",
+                                  "Pelargonium x hortorum", "Pelargonium zonale (Geranium)", "Rosa sp. (Rose)",
+                                  "Solanum tuberosum (Potato)", "Zingiber cassumunar (Cassumunar Ginger)", "Zingiber mioga (Myoga Ginger)",
+                                  "Zingiber officinale (Ginger)")
 
 RSSC1 = RSSC %>% 
   mutate(Phylotype2 = Phylotype) %>%
   mutate(Phylotype2 = case_when(!is.na(Phylotype2) ~ Phylotype2,
                                 is.na(Phylotype2) ~ "Unknown")) %>% 
   
-  mutate(Phylotype = case_when( Phylotype %in% Phylotype_selected  ~Phylotype,
-                                is.na(Phylotype) ~ "Unknown",
-                                !is.na(Phylotype) & !Phylotype %in% Phylotype_selected ~ "Others")) %>%
-  
-            #mutate(Sequevar2 = Sequevar) %>%
-            #mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
-            #                             is.na(Sequevar2) ~ "Unknown")) %>%
+  #mutate(Sequevar2 = Sequevar) %>%
+  #mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
+  #                             is.na(Sequevar2) ~ "Unknown")) %>%
+  #mutate(Sequevar2 = case_when( Sequevar2 %in% PandemicLineage_selected  ~Sequevar2,
+  #                    is.na(Sequevar2) ~ "Unknown",
+  #                    !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ "Others")) %>%
   
   unite("latlong", Latitude, Longitude, sep ="/", remove = F ) %>% 
   group_by(latlong) %>% 
@@ -64,10 +71,33 @@ RSSC1 = RSSC %>%
                               n == 1 ~ Latitude),
          Longitude = case_when(n > 1 ~ rnorm(n, Longitude,0.01),
                                n == 1 ~ Longitude)
-  ) %>%
+        ) %>%
   
   mutate(`Host Species (Common name)` = case_when(!is.na(`Host Species (Common name)`) ~ `Host Species (Common name)`,
                                                   is.na(`Host Species (Common name)`) ~ "Unknown")) %>%
+  
+  mutate(VPH = `Host Species (Common name)`) %>%
+  mutate(VPH = case_when(!is.na(VPH) ~ VPH,
+                               is.na(VPH) ~ "Unknown")) %>%
+  mutate(VPH = case_when(VPH %in% VegetativelyPropagatedHosts_selected  ~VPH,
+                      is.na(VPH) ~ "Unknown",
+                      !is.na(VPH) & !`VPH` %in% VegetativelyPropagatedHosts_selected ~ "Others")) %>%
+  
+  mutate(`Host Family` = case_when(!is.na(`Host Family`) ~ `Host Family`,
+                                                  is.na(`Host Family`) ~ "Unknown")) %>%
+  
+  mutate(`Year published` = case_when(!is.na(`Year published`) ~ as.character(`Year published`),
+                                                  is.na(`Year published`) ~ "Unknown")) %>%
+  
+  mutate(`Year isolated` = case_when(!is.na(`Year isolated`) ~ `Year isolated`,
+                                                  is.na(`Year isolated`) ~ "Unknown")) %>%
+  
+  mutate(`Location (continent)` = case_when(!is.na(`Location (continent)`) ~ `Location (continent)`,
+                                     is.na(`Location (continent)`) ~ "Unknown")) %>%
+  
+  mutate(`Location (Country or Territory)` = case_when(!is.na(`Location (Country or Territory)`) ~ `Location (Country or Territory)`,
+                                     is.na(`Location (Country or Territory)`) ~ "Unknown")) %>%
+  
   group_by(Phylotype) %>% 
   mutate(n_iso_per_Phylotype = n(),
          Phylotype3 = paste(Phylotype," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
@@ -87,22 +117,26 @@ ui = dashboardPage(skin = "black",
            # filter drop-down menus
             pickerInput(inputId = "publication_year",
                         label = "Publication Year",
-                        choices = unique(RSSC1$`Year published`),
-                        options = list(`actions-box` = T,
+                        choices = sort(unique(RSSC1$`Year published`)),
+                        options = list(
+                        `live-search` = T,  
+                        `actions-box` = T,
                         size = 10,
                         `selected-text-format` = "count > 1"
                         ),
-                        selected = unique(RSSC1$`Year published`),
+                        selected = sort(unique(RSSC1$`Year published`)),
                         multiple = T
             ),
             pickerInput(inputId = "isolation_year",
                         label = "Isolation Year",
-                        choices = unique(RSSC1$`Year isolated`),
-                        options = list(`actions-box` = T,
+                        choices = sort(unique(RSSC1$`Year isolated`)),
+                        options = list(
+                        `live-search` = T,
+                        `actions-box` = T,
                         size = 10,
                         `selected-text-format` = "count > 1"
                         ),
-                        selected = unique(RSSC1$`Year isolated`),
+                        selected = sort(unique(RSSC1$`Year isolated`)),
                         multiple = T
             ),
             pickerInput(inputId = "phylo",
@@ -115,58 +149,70 @@ ui = dashboardPage(skin = "black",
                         selected = unique(RSSC1$Phylotype3),
                         multiple = T
             ),  
+            #radioButtons(inputId = "pandemic_lineage",
+            #              label = "Pandemic Lineages",
+            #              choices = list("Yes" = RSSC1$`Sequevar2`[c("1","2")],
+            #                             "No" = RSSC1$`Sequevar2`[c("Others","Unknown")])
+            #                ),
             pickerInput(inputId = "host_family",
                         label = "Host Family",
-                        choices = unique(RSSC1$`Host Family`),
-                        options = list(`actions-box` = T,
+                        choices = sort(unique(RSSC1$`Host Family`)),
+                        options = list(
+                        `live-search` = T,
+                        `actions-box` = T,
                         size = 10,
                         `selected-text-format` = "count > 1"
                         ),
-                        selected = unique(RSSC1$`Host Family`),
+                        selected = sort(unique(RSSC1$`Host Family`)),
                         multiple = T
             ),
             pickerInput(inputId = "host_species",
                         label = "Host Species",
-                        choices = unique(RSSC1$`Host Species (Common name)`),
-                        options = list(`actions-box` = T,
+                        choices = sort(unique(RSSC1$`Host Species (Common name)`)),
+                        options = list(
+                        `live-search` = T,
+                        `actions-box` = T,
                         size = 10,
                         `selected-text-format` = "count > 1"
                         ),
-                        selected = unique(RSSC1$`Host Species (Common name)`),
+                        selected = sort(unique(RSSC1$`Host Species (Common name)`)),
                         multiple = T
             ), 
-                                                 
-              #selectizeInput(inputId = "VegProp_Host",
-              #         label = "Vegetatively Propagated Hosts)",
-              #         list("Vegetatively Propagated Hosts" = 
-              #               list("Potato" = "RSSC$`Host Species`~RSSC$`Solanum tuberosum`", 
-              #                    "Banana/Plantain = "Musa", 
-              #                    "Ginger/Turmeric" = "Zingiber", 
-              #                    "Geranium" = "G",
-              #                    "Pothos" = "p",
-              #                    "Anthurium" = "a",
-              #                    "Rose" = "r")),
-              #               multiple = T
-              #      ), 
-                                                 
-            pickerInput(inputId = "continent",
-                        label = "Continent",
-                        choices = unique(RSSC1$`Location (continent)`),
-                        options = list(`actions-box` = T,
+            pickerInput(inputId = "vegprophost",
+                        label = "Vegetatively Propagated Hosts",
+                        choices = sort(unique(RSSC1$VPH)),
+                        options = list(
+                        `live-search` = T,
+                        `actions-box` = T,
                         size = 10,
                         `selected-text-format` = "count > 1"
                         ),
-                        selected = unique(RSSC1$`Location (continent)`),
+                        selected = sort(unique(RSSC1$VPH)),
+                        #choicesOpt = list(disabled = c("Others")),
+                        multiple = T
+            ), 
+            pickerInput(inputId = "continent",
+                        label = "Continent",
+                        choices = sort(unique(RSSC1$`Location (continent)`)),
+                        options = list(
+                        `live-search` = T,  
+                        `actions-box` = T,
+                        size = 10,
+                        `selected-text-format` = "count > 1"
+                        ),
+                        selected = sort(unique(RSSC1$`Location (continent)`)),
                         multiple = T
             ),
             pickerInput(inputId = "country",
                         label = "Country or Territory",
-                        choices = unique(RSSC1$`Location (Country or Territory)`),
-                        options = list(`actions-box` = T,
+                        choices = sort(unique(RSSC1$`Location (Country or Territory)`)),
+                        options = list(
+                        `live-search` = T,  
+                        `actions-box` = T,
                         size = 10,
                        `selected-text-format` = "count > 1"
                         ),
-                        selected = unique(RSSC1$`Location (Country or Territory)`),
+                        selected = sort(unique(RSSC1$`Location (Country or Territory)`)),
                         multiple = T
             ),
                                                  
@@ -244,13 +290,15 @@ server = function(input, output, session) {
     shinyjs::reset("phylo")
     shinyjs::reset("host_family")
     shinyjs::reset("host_species")
+    shinyjs::reset("vegprophost")
     shinyjs::reset("continent")
     shinyjs::reset("country")
   })
   
   
   filtered_PublicationYear_type <- eventReactive(input$search,{
-    RSSC1 
+    RSSC1 %>%
+      filter(`Year published` %in% input$publication_year)
     
   })
   
@@ -274,8 +322,13 @@ server = function(input, output, session) {
       filter(`Host Species (Common name)` %in% input$host_species)
   })
   
-  filtered_Continent_type <- eventReactive(input$search,{
+  filtered_VegProp_type <- eventReactive(input$search,{
     filtered_HostSpecies_type() %>%
+      filter(VPH %in% input$vegprophost)
+  })
+  
+  filtered_Continent_type <- eventReactive(input$search,{
+    filtered_VegProp_type() %>%
       filter(`Location (continent)` %in% input$continent)
   })
   
