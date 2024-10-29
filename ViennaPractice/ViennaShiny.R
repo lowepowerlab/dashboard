@@ -1,7 +1,15 @@
 # load packages
 library(tidyverse)
+library(janitor)
+library(readxl)
+library(writexl)
+library(maps)
+library(ggmap)
+library(DT)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(sf)
 library(htmlwidgets)
-library(shiny)
 library(bslib)
 library(ggplot2)
 library(shinyWidgets)
@@ -37,6 +45,8 @@ mytheme <- create_theme(
   )
 )
 
+# load map skin
+world <- ne_countries(scale = "medium", returnclass = "sf")
 
 # load data and transformations
 RSSC <- read_csv("RSSC_Practice.csv")
@@ -107,7 +117,7 @@ RSSC1 = RSSC %>%
 
 # ui
 ui = dashboardPage(skin = "black",
-        dashboardHeader(title = "RSSC Db", titleWidth = 250),
+        dashboardHeader(title = "Ralstonia Wilt Db", titleWidth = 250),
         dashboardSidebar(collapsed = F, width = 250,
         br(),
         div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
@@ -248,6 +258,7 @@ ui = dashboardPage(skin = "black",
         dashboardBody(use_theme(mytheme),
                       shinyjs::useShinyjs(),
                       div(id = "my app",
+                    
                     #row  
                       fluidRow(
                         valueBoxOutput("n_Isolates", width = 3),
@@ -266,6 +277,25 @@ ui = dashboardPage(skin = "black",
                             height = 500)
                             )
                       ),
+                  #  box(title = "Practice Graph",width = 40, plotlyOutput("graph")),
+                   # box(title = "Table of Countries within a Phylotype", width = "600px",
+                    #    dataTableOutput("filtered_table"))
+                    #row
+                    fluidRow(
+                      box(title = "How to Interpret this Map",
+                          "This map shows the reported isolation locations of Ralstonia and 
+                            each datapoint should be regarded with healthy skepticism. Isolation of 
+                            Ralstonia at a location does not mean it is currently established at that
+                            location; eradication has been successful in certain cases (e.g. in Sweden) 
+                            and some isolations might be from imported plants that were quarantined/destroyed. 
+                            Additionally, our meta-analysis database likely contains a low incidence of 
+                            errors from the primary literature, from our data entry, or from the geocoding 
+                            algorithm that assigned latitude/longitude coordinates to written locations.",
+                          solidHeader = T,
+                          width = 12,
+                          collapsible = T,
+                      )
+                    ),
                     # row
                       fluidRow(
                         box(title = "Host Distribution",
@@ -290,12 +320,11 @@ ui = dashboardPage(skin = "black",
                             width = 12, 
                             collapsible = T,
                             collapsed = F,
-                            #div(DT::dataTableOutput("Metadata_table"), style = "font-size: 70%;"))
-                            )
+                            DT::dataTableOutput("Metadata_table")))
+                            
                       )
                     )
                   )
-)
 
 # server
 
@@ -354,8 +383,8 @@ server = function(input, output, session) {
       filter(`Location (Country or Territory)` %in% input$country)
   })
   
-  output$map_phylo =  renderLeaflet({
-    
+# Output leaflet map
+    output$map_phylo =  renderLeaflet({
     
     if(input$search == 0){
       data_leaflet = RSSC1
@@ -412,12 +441,22 @@ server = function(input, output, session) {
         addProviderTiles("OpenTopoMap", group = "Terrain") %>%
         addScaleBar("bottomleft") %>%
         addProviderTiles(providers$CartoDB.Positron, group = "Default")
-      # addProviderTiles(providers$CartoDB.Voyager, group = "Default")
+    # addProviderTiles(providers$CartoDB.Voyager, group = "Default")
       
       
     }
   })
+
+# Output metadata table
+    output$Metadata_table = DT::renderDataTable({
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Country_type()
+      }
+    },options = list(autoWidth = F,autoHeight = F, scrollX = TRUE))  
   
+# Output download data button    
   output$download <- downloadHandler(
     filename = function(){"RSSCdb_data.csv"}, 
     content = function(fname){
@@ -431,7 +470,8 @@ server = function(input, output, session) {
       
       write.csv(data_leaflet, fname)
     })
-  
+
+# Output info boxes at top of page    
   output$n_Isolates = renderInfoBox({
     
     if(input$search == 0){
