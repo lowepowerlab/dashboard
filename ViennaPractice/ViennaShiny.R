@@ -45,11 +45,9 @@ mytheme <- create_theme(
   )
 )
 
-# load map skin
-world <- ne_countries(scale = "medium", returnclass = "sf")
 
 # load data and transformations
-RSSC <- read_csv("RSSC_Practice.csv")
+RSSC <- read_csv("RSSC_Whole.csv")
 
 Phylotype_selected = c("I", "II", "III", "IV")
 PandemicLineage_selected = c("1", "2")
@@ -67,12 +65,12 @@ RSSC1 = RSSC %>%
   mutate(Phylotype2 = case_when(!is.na(Phylotype2) ~ Phylotype2,
                                 is.na(Phylotype2) ~ "Unknown")) %>% 
   
-  #mutate(Sequevar2 = Sequevar) %>%
-  #mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
-  #                             is.na(Sequevar2) ~ "Unknown")) %>%
-  #mutate(Sequevar2 = case_when( Sequevar2 %in% PandemicLineage_selected  ~Sequevar2,
-  #                    is.na(Sequevar2) ~ "Unknown",
-  #                    !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ "Others")) %>%
+  mutate(Sequevar2 = Sequevar) %>%
+  mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
+                               is.na(Sequevar2) ~ NA)) %>%
+  mutate(Sequevar2 = case_when( Sequevar2 %in% PandemicLineage_selected  ~Sequevar2,
+                      is.na(Sequevar2) ~ NA,
+                      !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ NA)) %>%
   
   unite("latlong", Latitude, Longitude, sep ="/", remove = F ) %>% 
   group_by(latlong) %>% 
@@ -88,10 +86,10 @@ RSSC1 = RSSC %>%
   
   mutate(VPH = `Host Species (Common name)`) %>%
   mutate(VPH = case_when(!is.na(VPH) ~ VPH,
-                               is.na(VPH) ~ "Unknown")) %>%
+                               is.na(VPH) ~ NA)) %>%
   mutate(VPH = case_when(VPH %in% VegetativelyPropagatedHosts_selected  ~VPH,
-                      is.na(VPH) ~ "Unknown",
-                      !is.na(VPH) & !`VPH` %in% VegetativelyPropagatedHosts_selected ~ "Others")) %>%
+                      is.na(VPH) ~ NA,
+                      !is.na(VPH) & !`VPH` %in% VegetativelyPropagatedHosts_selected ~ NA)) %>%
   
   mutate(`Host Family` = case_when(!is.na(`Host Family`) ~ `Host Family`,
                                                   is.na(`Host Family`) ~ "Unknown")) %>%
@@ -421,7 +419,7 @@ server = function(input, output, session) {
                         "<br>",
                         "Year of collection:", data_leaflet$`Year isolated`,
                         "<br>",
-                        "Reference:", data_leaflet$Citation)
+                        "Reference:", data_leaflet$`Publication`)
         ) %>%
         addLegend("bottomright",
                   pal = factpal,
