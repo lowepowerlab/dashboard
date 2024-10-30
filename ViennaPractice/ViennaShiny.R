@@ -67,10 +67,14 @@ RSSC1 = RSSC %>%
   
   mutate(Sequevar2 = Sequevar) %>%
   mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
-                               is.na(Sequevar2) ~ NA)) %>%
-  mutate(Sequevar2 = case_when( Sequevar2 %in% PandemicLineage_selected  ~Sequevar2,
-                      is.na(Sequevar2) ~ NA,
-                      !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ NA)) %>%
+                               is.na(Sequevar2) ~ "Unknown")) %>%
+  mutate(Sequevar2 = case_when( Sequevar2 %in% PandemicLineage_selected ~ Sequevar2,
+                      is.na(Sequevar2) ~ "Unknown",
+                      !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
+  
+  mutate(Genome2 = `Genome Accession`) %>%
+  mutate(Genome2 = case_when(!is.na(Genome2) ~ "Yes",
+                                is.na(Genome2) ~ "No")) %>% 
   
   unite("latlong", Latitude, Longitude, sep ="/", remove = F ) %>% 
   group_by(latlong) %>% 
@@ -87,9 +91,9 @@ RSSC1 = RSSC %>%
   mutate(VPH = `Host Species (Common name)`) %>%
   mutate(VPH = case_when(!is.na(VPH) ~ VPH,
                                is.na(VPH) ~ NA)) %>%
-  mutate(VPH = case_when(VPH %in% VegetativelyPropagatedHosts_selected  ~VPH,
+  mutate(VPH = case_when(VPH %in% VegetativelyPropagatedHosts_selected ~ VPH,
                       is.na(VPH) ~ NA,
-                      !is.na(VPH) & !`VPH` %in% VegetativelyPropagatedHosts_selected ~ NA)) %>%
+                      !is.na(VPH) & !VPH %in% VegetativelyPropagatedHosts_selected ~ NA)) %>%
   
   mutate(`Host Family` = case_when(!is.na(`Host Family`) ~ `Host Family`,
                                                   is.na(`Host Family`) ~ "Unknown")) %>%
@@ -106,9 +110,9 @@ RSSC1 = RSSC %>%
   mutate(`Location (Country or Territory)` = case_when(!is.na(`Location (Country or Territory)`) ~ `Location (Country or Territory)`,
                                      is.na(`Location (Country or Territory)`) ~ "Unknown")) %>%
   
-  group_by(Phylotype) %>% 
+  group_by(Phylotype2) %>% 
   mutate(n_iso_per_Phylotype = n(),
-         Phylotype3 = paste(Phylotype," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
+         Phylotype3 = paste(Phylotype2," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
   ungroup() %>% 
   dplyr::select(-n, -latlong)
 
@@ -149,7 +153,7 @@ ui = dashboardPage(skin = "black",
             ),
             pickerInput(inputId = "phylo",
                         label = "Phylotype",
-                        choices = unique(RSSC1$Phylotype3),
+                        choices = sort(unique(RSSC1$Phylotype3)),
                         options = list(`actions-box` = T,
                         size = 10,
                         `selected-text-format` = "count > 1"
@@ -159,12 +163,13 @@ ui = dashboardPage(skin = "black",
             ),  
             pickerInput(inputId = "pandemic_lineage",
                         label = "Pandemic Lineages",
-                        choices = c("Sequevar 1", "Sequevar 2"),
-                        options = list(`actions-box` = T,
-                                  size = 10,
-                                  `selected-text-format` = "count > 1"
+                        choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
+                        options = list(
+                        `actions-box` = T,
+                        size = 10,
+                        `selected-text-format` = "count > 1"
                         ),
-                        selected = c("Sequevar 1", "Sequevar 2"),
+                        selected = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
                         multiple = T
             ),
             pickerInput(inputId = "host_family",
@@ -191,19 +196,17 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Host Species (Common name)`)),
                         multiple = T
             ), 
-            #pickerInput(inputId = "vegprophost",
-             #           label = "Vegetatively Propagated Hosts",
-              #          choices = sort(unique(RSSC1$VPH)),
-               #         options = list(
-                #        `live-search` = T,
-                 #       `actions-box` = T,
-                  #      size = 10,
-                   #     `selected-text-format` = "count > 1"
-                    #    ),
-                     #   selected = sort(unique(RSSC1$VPH)),
-                        #choicesOpt = list(disabled = c("Others")),
-                      #  multiple = T
-          #  ), 
+            pickerInput(inputId = "vegprophost",
+                        label = "Vegetatively Propagated Hosts",
+                        choices = sort(unique(RSSC1$VPH)),
+                        options = list(
+                        `live-search` = T,
+                        `actions-box` = T,
+                        size = 10,
+                        `selected-text-format` = "count > 1"
+                        ),
+                        multiple = T
+            ), 
             pickerInput(inputId = "continent",
                         label = "Continent",
                         choices = sort(unique(RSSC1$`Location (continent)`)),
@@ -275,40 +278,37 @@ ui = dashboardPage(skin = "black",
                             height = 500)
                             )
                       ),
-                  #  box(title = "Practice Graph",width = 40, plotlyOutput("graph")),
-                   # box(title = "Table of Countries within a Phylotype", width = "600px",
-                    #    dataTableOutput("filtered_table"))
                     #row
-                    fluidRow(
-                      box(title = "How to Interpret this Map",
-                          "This map shows the reported isolation locations of Ralstonia and 
-                            each datapoint should be regarded with healthy skepticism. Isolation of 
-                            Ralstonia at a location does not mean it is currently established at that
-                            location; eradication has been successful in certain cases (e.g. in Sweden) 
-                            and some isolations might be from imported plants that were quarantined/destroyed. 
-                            Additionally, our meta-analysis database likely contains a low incidence of 
-                            errors from the primary literature, from our data entry, or from the geocoding 
-                            algorithm that assigned latitude/longitude coordinates to written locations.",
-                          solidHeader = T,
-                          width = 12,
-                          collapsible = T,
-                      )
-                    ),
+                      fluidRow(
+                        box(title = "How to Interpret this Map",
+                                    "This map shows the reported isolation locations of Ralstonia and 
+                                    each datapoint should be regarded with healthy skepticism. Isolation of 
+                                    Ralstonia at a location does not mean it is currently established at that
+                                    location; eradication has been successful in certain cases (e.g. in Sweden) 
+                                    and some isolations might be from imported plants that were quarantined/destroyed. 
+                                    Additionally, our meta-analysis database likely contains a low incidence of 
+                                    errors from the primary literature, from our data entry, or from the geocoding 
+                                    algorithm that assigned latitude/longitude coordinates to written locations.",
+                            solidHeader = T,
+                            width = 12,
+                            collapsible = T,
+                            )
+                       ),
                     # row
                       fluidRow(
-                        box(title = "Host Distribution",
+                        box(title = "Phylotype Abundance by Host",
                             solidHeader = T,
                             width = 6, 
                             collapsible = T,
                             collapsed = F,
-                            #plotOutput("Host_chart")
+                            plotlyOutput("Host_chart")
                             ),
-                        box(title = "Phylotype Distribution",
+                        box(title = "Phylotype Abundance by Continent",
                             solidHeader = T,
                             width = 6,
                             collapsible = T,
                             collapsed = F,
-                            #plotOutput("Phylotype_chart")
+                            plotlyOutput("Continent_chart")
                             )
                       ),
                     # row
@@ -332,11 +332,13 @@ server = function(input, output, session) {
     shinyjs::reset("publication_year")
     shinyjs::reset("isolation_year")
     shinyjs::reset("phylo")
+    shinyjs::reset("pandemic_lineage")
     shinyjs::reset("host_family")
     shinyjs::reset("host_species")
     shinyjs::reset("vegprophost")
     shinyjs::reset("continent")
     shinyjs::reset("country")
+    shinyjs::reset("genome")
   })
   
   
@@ -356,8 +358,13 @@ server = function(input, output, session) {
       filter(Phylotype3 %in% input$phylo)
   })
   
-  filtered_HostFamily_type <- eventReactive(input$search,{
+  filtered_PandemicLineage_type <- eventReactive(input$search,{
     filtered_Phylotype_type() %>%
+      filter(Sequevar2 %in% input$pandemic_lineage)
+  })
+  
+  filtered_HostFamily_type <- eventReactive(input$search,{
+    filtered_PandemicLineage_type() %>%
       filter(`Host Family` %in% input$host_family)
   })
   
@@ -381,20 +388,25 @@ server = function(input, output, session) {
       filter(`Location (Country or Territory)` %in% input$country)
   })
   
+  filtered_Genome_type <- eventReactive(input$search,{
+    filtered_Country_type() %>%
+      filter(Genome2 %in% input$genome)
+  })
+  
 # Output leaflet map
     output$map_phylo =  renderLeaflet({
     
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
-      data_leaflet = filtered_Country_type()
+      data_leaflet = filtered_Genome_type()
     }
     if(nrow(data_leaflet) == 0){
       leaflet(a)%>%
         addTiles()
     }else{
       
-      factpal <- colorFactor(palette = "Set2", domain = unique(RSSC1$Phylotype2))
+      factpal <- colorFactor(palette = "Set1", domain = unique(RSSC1$Phylotype2))
       
       leaflet(data_leaflet,
               width = "100%",
@@ -409,15 +421,15 @@ server = function(input, output, session) {
           lat =~Latitude,
           color = ~factpal(Phylotype2),
           fillOpacity = 1,
-          label = paste(data_leaflet$Phylotype,"- click for details"),
+          label = paste(data_leaflet$Phylotype2,"- click for details"),
           labelOptions = labelOptions(style = list("font-style" = "italic")),
-          popup = paste("Phylotype:</b>", data_leaflet$Phylotype,
+          popup = paste("Phylotype:</b>", data_leaflet$Phylotype2,
                         "<br>",
                         "Host:", data_leaflet$`Host Species (Common name)`,
                         "<br>",
                         "Location:", data_leaflet$`Location Isolated`,
                         "<br>",
-                        "Year of collection:", data_leaflet$`Year isolated`,
+                        "Year of Collection:", data_leaflet$`Year isolated`,
                         "<br>",
                         "Reference:", data_leaflet$`Publication`)
         ) %>%
@@ -429,7 +441,7 @@ server = function(input, output, session) {
         ) %>%
         addLayersControl(
           baseGroups = c("Default", "Aerial", "Terrain"),
-          overlayGroups = "Phylotype",
+          overlayGroups = "Phylotype2",
           options = layersControlOptions(collapsed = TRUE)
         ) %>%
         addEasyButton(easyButton(
@@ -439,19 +451,79 @@ server = function(input, output, session) {
         addProviderTiles("OpenTopoMap", group = "Terrain") %>%
         addScaleBar("bottomleft") %>%
         addProviderTiles(providers$CartoDB.Positron, group = "Default")
-    # addProviderTiles(providers$CartoDB.Voyager, group = "Default")
-      
       
     }
   })
 
+# Output Host Chart    
+    output$Host_chart = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      host_phylo = data_leaflet %>% 
+        group_by(`Host Order`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Host Order`,count),count, fill = Phylotype2))+
+        geom_col()+
+        # scale_y_log10()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_viridis_d(na.value = "grey50")+
+        labs(x = "Host Family",
+             y = "Incidence",
+             fill = "Phylotype") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(host_phylo) 
+      
+      
+    })
+
+# Output Continent Chart    
+    output$Continent_chart = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      cont_phylo = data_leaflet %>% 
+        group_by(`Location (continent)`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Location (continent)`,count),count, fill = Phylotype2))+
+        geom_col()+
+        # scale_y_log10()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_viridis_d(na.value = "grey50")+
+        labs(x = "Continent",
+             y = "Incidence",
+             fill = "Phylotype") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(cont_phylo) 
+      
+      
+    })
+       
 # Output metadata table
     output$Metadata_table = DT::renderDataTable({
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
-        data_leaflet = filtered_Country_type()
+        data_leaflet = filtered_Genome_type()
       }
+      data_leaflet %>% 
+        dplyr::select(Index, Phylotype, Sequevar, Strainname,`Host Species (Common name)`,
+                      `Host Family`, `Host Order`, `Year isolated`, `Location Isolated`, 
+                      `Location (Country or Territory)`, `Location (continent)`, `Genome Accession`, Publication)
     },options = list(autoWidth = F,autoHeight = F, scrollX = TRUE))  
   
 # Output download data button    
@@ -462,7 +534,7 @@ server = function(input, output, session) {
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
-        data_leaflet = filtered_Country_type()
+        data_leaflet = filtered_Genome_type()
       }
       
       
@@ -475,7 +547,7 @@ server = function(input, output, session) {
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
-      data_leaflet = filtered_Country_type()
+      data_leaflet = filtered_Genome_type()
     }
     
     n =nrow(data_leaflet)
@@ -494,10 +566,10 @@ server = function(input, output, session) {
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
-      data_leaflet = filtered_Country_type()
+      data_leaflet = filtered_Genome_type()
     }
     
-    n = length(unique(data_leaflet$Citation))
+    n = length(unique(data_leaflet$Publication))
     
     if(n>1){sub = "Articles"}else{sub = "Article"}
     infoBox(title = "Literature",
@@ -513,7 +585,7 @@ server = function(input, output, session) {
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
-      data_leaflet = filtered_Country_type()
+      data_leaflet = filtered_Genome_type()
     }
     n = length(unique(data_leaflet$`Location (Country or Territory)`))
     if(n>1){sub = "Countries"}else{sub = "Country"}
@@ -530,7 +602,7 @@ server = function(input, output, session) {
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
-      data_leaflet = filtered_Country_type()
+      data_leaflet = filtered_Genome_type()
     }
     n = length(unique(data_leaflet$`Host Species (Common name)`))
     if(n>1){sub = "Hosts"}else{sub = "Host"}
