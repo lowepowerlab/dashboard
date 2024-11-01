@@ -85,15 +85,24 @@ RSSC1 = RSSC %>%
                                n == 1 ~ Longitude)
         ) %>%
   
-  mutate(`Host Species (Common name)` = case_when(!is.na(`Host Species (Common name)`) ~ `Host Species (Common name)`,
-                                                  is.na(`Host Species (Common name)`) ~ "Unknown")) %>%
-  
   mutate(VPH = `Host Species (Common name)`) %>%
   mutate(VPH = case_when(!is.na(VPH) ~ VPH,
-                               is.na(VPH) ~ NA)) %>%
+                               is.na(VPH) ~ "Unknown Host")) %>%
   mutate(VPH = case_when(VPH %in% VegetativelyPropagatedHosts_selected ~ VPH,
-                      is.na(VPH) ~ NA,
-                      !is.na(VPH) & !VPH %in% VegetativelyPropagatedHosts_selected ~ NA)) %>%
+                      is.na(VPH) ~ "Unknown Host",
+                      !is.na(VPH) & !VPH %in% VegetativelyPropagatedHosts_selected ~ "Non VP Host")) %>%
+  mutate(VPH = recode(VPH, "Musa acuminata (Banana)" = "Banana/Plantain spp.", 
+                           "Musa paradisiaca (Plantain)" = "Banana/Plantain spp.",
+                           "Musa sp. (Banana Plant)" = "Banana/Plantain spp.", 
+                           "Musa acuminata x balbisiana AAB" = "Banana/Plantain spp.",
+                           "Pelargonium capitatum (Rose Geranium)" = "Geranium spp.", 
+                           "Pelargonium sp. (Geranium)" = "Geranium spp.", 
+                           "Pelargonium x asperum" = "Geranium spp.",
+                           "Pelargonium x hortorum" = "Geranium spp.", 
+                           "Pelargonium zonale (Geranium)" = "Geranium spp.")) %>%
+  
+  mutate(`Host Species (Common name)` = case_when(!is.na(`Host Species (Common name)`) ~ `Host Species (Common name)`,
+                                                  is.na(`Host Species (Common name)`) ~ "Unknown")) %>%
   
   mutate(`Host Family` = case_when(!is.na(`Host Family`) ~ `Host Family`,
                                                   is.na(`Host Family`) ~ "Unknown")) %>%
@@ -197,14 +206,31 @@ ui = dashboardPage(skin = "black",
                         multiple = T
             ), 
             pickerInput(inputId = "vegprophost",
-                        label = "Vegetatively Propagated Hosts",
-                        choices = sort(unique(RSSC1$VPH)),
+                        label = "Vegetatively Propagated (VP) Hosts",
+                        choices = list(
+                          Araceae = c("Anthurium sp. (Laceleaf)", "Epipremnum aureum (Pothos)"),
+                          Geraniacea = list("Geranium spp."),
+                          Musaceae = list("Banana/Plantain spp."),
+                          Rosaceae = list("Rosa sp. (Rose)"),
+                          Solanaceae = list("Solanum tuberosum (Potato)"),
+                          Zingiberaceae = c("Curcuma aromatica (Wild Turmeric)", "Curcuma longa (Turmeric)",
+                                            "Curcuma zedoaria (White Turmeric)", "Curcuma aeruginoa (Blue and Pink Ginger)",
+                                            "Kaempferia galanga (Aromatic Ginger)", "Zingiber cassumunar (Cassumunar Ginger)",
+                                            "Curcuma mangga (Mango Ginger)", "Zingiber mioga (Myoga Ginger)", "Zingiber officinale (Ginger)"),
+                          Other = c("Non VP Host", "Unknown Host")
+                          ),
                         options = list(
                         `live-search` = T,
                         `actions-box` = T,
                         size = 10,
                         `selected-text-format` = "count > 1"
                         ),
+                        selected = c("Anthurium sp. (Laceleaf)","Epipremnum aureum (Pothos)","Geranium spp.","Banana/Plantain spp.",
+                                     "Rosa sp. (Rose)","Solanum tuberosum (Potato)","Curcuma aromatica (Wild Turmeric)",
+                                     "Curcuma longa (Turmeric)","Curcuma zedoaria (White Turmeric)","Curcuma aeruginoa (Blue and Pink Ginger)",
+                                     "Kaempferia galanga (Aromatic Ginger)","Zingiber cassumunar (Cassumunar Ginger)",
+                                     "Curcuma mangga (Mango Ginger)","Zingiber mioga (Myoga Ginger)","Zingiber officinale (Ginger)",
+                                     "Non VP Host", "Unknown Host"),
                         multiple = T
             ), 
             pickerInput(inputId = "continent",
@@ -298,10 +324,12 @@ ui = dashboardPage(skin = "black",
                       fluidRow(
                         box(title = "Phylotype Abundance by Host",
                             solidHeader = T,
-                            width = 6, 
+                            width = 6,
                             collapsible = T,
                             collapsed = F,
-                            plotlyOutput("Host_chart")
+                            uiOutput("Host_chart"),
+                            actionButton("host_linear","Plot by Incidence"),
+                            actionButton("host_log","Plot by Proportion")
                             ),
                         box(title = "Phylotype Abundance by Continent",
                             solidHeader = T,
@@ -455,8 +483,16 @@ server = function(input, output, session) {
     }
   })
 
-# Output Host Chart    
-    output$Host_chart = renderPlotly({
+# Output Host Chart  
+    observeEvent(input$host_linear, { 
+      output$Host_chart <- renderUI({ plotlyOutput("plot_linear") })
+    })
+    
+    observeEvent(input$host_log, { 
+      output$Host_chart <- renderUI({ plotlyOutput("plot_log") })
+    })
+    
+    output$plot_linear = renderPlotly({
       
       if(input$search == 0){
         data_leaflet = RSSC1
@@ -464,12 +500,17 @@ server = function(input, output, session) {
         data_leaflet = filtered_Genome_type()
       }
       
-      host_phylo = data_leaflet %>% 
-        group_by(`Host Order`,Phylotype2) %>%  
+      topten <- data_leaflet %>%
+       count(`Host Family`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=10) %>%
+        as.data.frame()
+      
+      host_phylo = data_leaflet %>%
+        filter(`Host Family` %in% topten$`Host Family`) %>%
+        group_by(`Host Family`,Phylotype2) %>%  
         summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Host Order`,count),count, fill = Phylotype2))+
+        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
         geom_col()+
-        # scale_y_log10()+
         theme_minimal_vgrid(font_size = 10)+
         scale_fill_viridis_d(na.value = "grey50")+
         labs(x = "Host Family",
@@ -481,9 +522,39 @@ server = function(input, output, session) {
       
       ggplotly(host_phylo) 
       
-      
     })
 
+    output$plot_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten2 <- data_leaflet %>%
+        count(`Host Family`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=10) %>%
+        as.data.frame()
+      
+      host_phylo = data_leaflet %>% 
+        filter(`Host Family` %in% topten2$`Host Family`) %>%
+        group_by(`Host Family`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Host Family`,count),count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        labs(x = "Host Family",
+             y = "Incidence",
+             fill = "Phylotype") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(host_phylo) 
+      
+    })
+    
 # Output Continent Chart    
     output$Continent_chart = renderPlotly({
       
@@ -512,7 +583,7 @@ server = function(input, output, session) {
       
       
     })
-       
+    
 # Output metadata table
     output$Metadata_table = DT::renderDataTable({
       if(input$search == 0){
