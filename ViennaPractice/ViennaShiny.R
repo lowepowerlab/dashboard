@@ -9,7 +9,9 @@ library(DT)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(sf)
+library(htmltools)
 library(htmlwidgets)
+library(markdown)
 library(bslib)
 library(ggplot2)
 library(shinyWidgets)
@@ -24,6 +26,11 @@ library(fresh)
 library(plotly)
 library(gsheet)
 library(googlesheets4)
+library(MetBrewer)
+library(devtools)
+#install.packages("MetBrewer")
+#install.packages("devtools")
+#devtools::install_github("BlakeRMills/MetBrewer")
 
 
 # create theme
@@ -294,6 +301,11 @@ ui = dashboardPage(skin = "black",
                         infoBoxOutput("n_Hosts", width = 3)
                         ),
                     #row
+                    tabBox(title = "",
+                           width = 12,
+                           height = "100%",
+                           tabPanel(icon = icon("disease"),
+                                     "RSSC Visualizations",
                       fluidRow(
                         box(title = "Isolate Map",
                             solidHeader = T,
@@ -307,7 +319,7 @@ ui = dashboardPage(skin = "black",
                     #row
                       fluidRow(
                         box(title = "How to Interpret this Map",
-                                    "This map shows the reported isolation locations of Ralstonia and 
+                                    "This map shows the reported isolation locations of", em("Ralstonia"), "and 
                                     each datapoint should be regarded with healthy skepticism. Isolation of 
                                     Ralstonia at a location does not mean it is currently established at that
                                     location; eradication has been successful in certain cases (e.g. in Sweden) 
@@ -328,7 +340,7 @@ ui = dashboardPage(skin = "black",
                             collapsible = T,
                             collapsed = F,
                             uiOutput("Host_chart"),
-                            actionButton("host_linear","Plot by Incidence"),
+                            actionButton("host_linear","Plot by Count"),
                             actionButton("host_log","Plot by Proportion")
                             ),
                         box(title = "Phylotype Abundance by Continent",
@@ -336,7 +348,9 @@ ui = dashboardPage(skin = "black",
                             width = 6,
                             collapsible = T,
                             collapsed = F,
-                            plotlyOutput("Continent_chart")
+                            uiOutput("Continent_chart"),
+                            actionButton("continent_linear","Plot by Count"),
+                            actionButton("continent_log","Plot by Proportion")
                             )
                       ),
                     # row
@@ -348,9 +362,18 @@ ui = dashboardPage(skin = "black",
                             collapsed = F,
                             DT::dataTableOutput("Metadata_table")))
                             
-                      )
+                      ),
+                    tabPanel(icon = icon("circle-info"),
+                             "About Page",
+                     #row
+                    fluidRow(  
+                     box(htmltools::includeMarkdown("AboutPage.Rmd"),
+                         width = 12))
                     )
                   )
+              )
+        )
+)
 
 # server
 
@@ -512,9 +535,9 @@ server = function(input, output, session) {
         ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
         geom_col()+
         theme_minimal_vgrid(font_size = 10)+
-        scale_fill_viridis_d(na.value = "grey50")+
+        scale_fill_manual(values=met.brewer("Java"),na.value = "grey50")+
         labs(x = "Host Family",
-             y = "Incidence",
+             y = "Isolations Reported (#)",
              fill = "Phylotype") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
@@ -544,8 +567,9 @@ server = function(input, output, session) {
         ggplot(aes(reorder(`Host Family`,count),count, fill = Phylotype2))+
         geom_bar(position="fill", stat="identity")+
         theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values=met.brewer("Java"),na.value = "grey50")+
         labs(x = "Host Family",
-             y = "Incidence",
+             y = "Relative Reporting Frequency (%)",
              fill = "Phylotype") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
@@ -556,7 +580,15 @@ server = function(input, output, session) {
     })
     
 # Output Continent Chart    
-    output$Continent_chart = renderPlotly({
+    observeEvent(input$continent_linear, { 
+      output$Continent_chart <- renderUI({ plotlyOutput("cont_linear") })
+    })
+    
+    observeEvent(input$continent_log, { 
+      output$Continent_chart <- renderUI({ plotlyOutput("cont_log") })
+    })
+    
+    output$cont_linear = renderPlotly({
       
       if(input$search == 0){
         data_leaflet = RSSC1
@@ -569,11 +601,37 @@ server = function(input, output, session) {
         summarise(count = n()) %>% 
         ggplot(aes(reorder(`Location (continent)`,count),count, fill = Phylotype2))+
         geom_col()+
-        # scale_y_log10()+
         theme_minimal_vgrid(font_size = 10)+
-        scale_fill_viridis_d(na.value = "grey50")+
+        scale_fill_manual(values=met.brewer("Java"),na.value = "grey50")+
         labs(x = "Continent",
-             y = "Incidence",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(cont_phylo) 
+      
+      
+    })
+    
+    output$cont_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      cont_phylo = data_leaflet %>% 
+        group_by(`Location (continent)`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Location (continent)`,count),count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values=met.brewer("Java"),na.value = "grey50")+
+        labs(x = "Continent",
+             y = "Relative Reporting Frequency (%)",
              fill = "Phylotype") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
@@ -627,7 +685,7 @@ server = function(input, output, session) {
             value = n,
             subtitle = sub,
             color= "fuchsia",
-            icon = icon("list")
+            icon = icon("viruses")
     )  
     
   })
@@ -664,7 +722,7 @@ server = function(input, output, session) {
             value = n,
             subtitle = sub,
             color= "fuchsia",
-            icon = icon("globe")
+            icon = icon("earth-americas")
     )
   })
   
@@ -681,7 +739,7 @@ server = function(input, output, session) {
             value = n,
             subtitle = sub,
             color= "fuchsia",
-            icon = icon("leaf")
+            icon = icon("plant-wilt")
     )
   })
   
