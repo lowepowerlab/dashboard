@@ -9,6 +9,7 @@ library(DT)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(sf)
+library(sp)
 library(htmltools)
 library(htmlwidgets)
 library(markdown)
@@ -52,6 +53,8 @@ mytheme <- create_theme(
   )
 )
 
+# load map
+world <- ne_countries(scale = "medium", returnclass = "sf") 
 
 # load data and transformations
 RSSC <- read_csv("RSSC_Whole.csv")
@@ -83,14 +86,21 @@ RSSC1 = RSSC %>%
   mutate(Genome2 = case_when(!is.na(Genome2) ~ "Yes",
                                 is.na(Genome2) ~ "No")) %>% 
   
-  unite("latlong", Latitude, Longitude, sep ="/", remove = F ) %>% 
-  group_by(latlong) %>% 
-  mutate(n = n(),
-         Latitude = case_when(n > 1 ~ rnorm(n, Latitude,0.01),
-                              n == 1 ~ Latitude),
-         Longitude = case_when(n > 1 ~ rnorm(n, Longitude,0.01),
-                               n == 1 ~ Longitude)
-        ) %>%
+  mutate(Latitude2 = Latitude) %>%
+  mutate(Latitude2 = case_when(!is.na(Latitude2) ~ Latitude2,
+                               is.na(Latitude2) ~ Latitude2)) %>%
+  mutate(Longitude2 = Longitude) %>%
+  mutate(Longitude2 = case_when(!is.na(Longitude2) ~ Longitude2,
+                               is.na(Longitude2) ~ Longitude2)) %>%
+  
+   unite("latlong", Latitude2, Longitude2, sep ="/", remove = F ) %>% 
+   group_by(latlong) %>% 
+   mutate(n = n(),
+          Latitude2 = case_when(n > 1 ~ rnorm(n, Latitude2,0.01),
+                               n == 1 ~ Latitude2),
+          Longitude2 = case_when(n > 1 ~ rnorm(n, Longitude2,0.01),
+                                n == 1 ~ Longitude2)
+         ) %>%
   
   mutate(VPH = `Host Species (Common name)`) %>%
   mutate(VPH = case_when(!is.na(VPH) ~ VPH,
@@ -140,7 +150,7 @@ ui = dashboardPage(skin = "black",
         br(),
         div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
         "A georeferenced database of isolates of the", em("Ralstonia solanacearum"), "Species Complex.
-        Use the filters below to refine your search, visualize data, and download metadata."),
+        Use the filters below to refine your search, visualize data, and download metadata. Filtration happens top down."),
           sidebarMenu(id = "sidebarid",
            # filter drop-down menus
             pickerInput(inputId = "publication_year",
@@ -292,7 +302,6 @@ ui = dashboardPage(skin = "black",
         dashboardBody(use_theme(mytheme),
                       shinyjs::useShinyjs(),
                       div(id = "my app",
-                    
                     #row  
                       fluidRow(
                         valueBoxOutput("n_Isolates", width = 3),
@@ -300,22 +309,34 @@ ui = dashboardPage(skin = "black",
                         infoBoxOutput("n_Distribution", width = 3),
                         infoBoxOutput("n_Hosts", width = 3)
                         ),
-                    #row
+                    #tab box with first tab content
                     tabBox(title = "",
                            width = 12,
                            height = "100%",
                            tabPanel(icon = icon("disease"),
                                      "RSSC Visualizations",
+                    #row  
                       fluidRow(
-                        box(title = "Isolate Map",
+                        box(title = "Geographic Distribution of Reported RSSC Isolates - ggplot2",
                             solidHeader = T,
                             width = 12,
                             collapsible = T,
-                            leafletOutput("map_phylo",
-                            width = "100%",
-                            height = 500)
+                            plotlyOutput("map_phylo")
+                            #,
+                            #width = "100%",
+                            #height = 500)
                             )
                       ),
+                    #row  
+                      fluidRow(
+                        box(title = "Geographic Distribution of Reported RSSC Isolates - Leaflet",
+                            solidHeader = T,
+                            width = 12,
+                            collapsible = T,
+                            leafletOutput("NOmap_phylo"))
+                            #width = "100%",
+                            #height = 500)
+                        ),
                     #row
                       fluidRow(
                         box(title = "How to Interpret this Map",
@@ -444,8 +465,54 @@ server = function(input, output, session) {
       filter(Genome2 %in% input$genome)
   })
   
+# Output ggplot map
+    output$map_phylo <- renderPlotly({
+      
+       if(input$search == 0){
+         data_leaflet = RSSC1
+       }else{
+         data_leaflet = filtered_Genome_type()
+       }
+      
+      p <- ggplot(data = world)+
+          geom_sf(fill = "cornsilk") +
+          #geom_point(data = RSSC1, aes(x = Longitude, y = Latitude), size = 1)+
+          geom_jitter(data = data_leaflet, aes(x = Longitude, y = Latitude, color = Phylotype2), size = 1, alpha = 0.5) +
+          theme(panel.background = element_rect(fill = "azure"),
+              panel.border = element_rect(fill = NA))+
+        labs(x = "Longitude", y = "Latitude", color = "Phylotype")+  
+        #xlab("Longitude") + ylab("Latitude")+ 
+          #ggtitle("Geographic Distribution of Ralstonia solanacearum species complex")+
+          scale_color_manual(values = met.brewer("Java"), labels = c("I", "II", "III", "IV", "Unknown"), na.value = "grey50")
+        ggplotly(p)
+    })
+    #   # Convert ggplot to plotly
+    #   ggplotly(p, source = "map_click")
+    # })
+    # 
+    # selected_point <- reactive({
+    #   event_data("plotly_click", source = "map_click")
+    # })
+    # 
+    # output$filtered_table <- renderDataTable({
+    #   # Check if a point is selected
+    #   if (is.null(selected_point())) {
+    #     return(datatable(filtered_Genome_type(), options = list(scrollX = TRUE))) 
+    #   } else {
+    #     # Get the selected point data
+    #     clicked_data <- selected_point()
+    #     
+    #     # Filter data based on the clicked point's longitude and latitude
+    #     filtered_point_data <- filtered_Genome_type() %>%
+    #       filter(longitude == clicked_data$x & latitude == clicked_data$y)
+    #     
+    #     # Return the filtered point data in the table
+    #     datatable(filtered_point_data, options = list(scrollX = TRUE))
+    #   }
+    # })
+  
 # Output leaflet map
-    output$map_phylo =  renderLeaflet({
+    output$NOmap_phylo =  renderLeaflet({
     
     if(input$search == 0){
       data_leaflet = RSSC1
