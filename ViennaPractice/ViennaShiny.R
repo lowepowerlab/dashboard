@@ -317,42 +317,47 @@ ui = dashboardPage(skin = "black",
                                      "RSSC Visualizations",
                     #row  
                       fluidRow(
-                        box(title = "Geographic Distribution of Reported RSSC Isolates - ggplot2",
+                        box(title = "Geographic Distribution of Reported RSSC Isolates",
                             solidHeader = T,
                             width = 12,
                             collapsible = T,
-                            plotlyOutput("map_phylo")
-                            #,
-                            #width = "100%",
-                            #height = 500)
-                            )
-                      ),
-                    #row  
-                      fluidRow(
-                        box(title = "Geographic Distribution of Reported RSSC Isolates - Leaflet",
-                            solidHeader = T,
-                            width = 12,
-                            collapsible = T,
-                            leafletOutput("NOmap_phylo"))
-                            #width = "100%",
-                            #height = 500)
-                        ),
-                    #row
-                      fluidRow(
-                        box(title = "How to Interpret this Map",
-                                    "This map shows the reported isolation locations of", em("Ralstonia"), "and 
-                                    each datapoint should be regarded with healthy skepticism. Isolation of 
-                                    Ralstonia at a location does not mean it is currently established at that
+                            plotlyOutput("map_phylo"),
+                            br(),
+                            strong("How to Interpret this Map"),
+                            p("This map shows the reported isolation locations of", em("Ralstonia"), "and 
+                                    each datapoint should be regarded with healthy skepticism. Isolation of ", 
+                                    em("Ralstonia"), "at a location does not mean it is currently established at that
                                     location; eradication has been successful in certain cases (e.g. in Sweden) 
                                     and some isolations might be from imported plants that were quarantined/destroyed. 
                                     Additionally, our meta-analysis database likely contains a low incidence of 
                                     errors from the primary literature, from our data entry, or from the geocoding 
-                                    algorithm that assigned latitude/longitude coordinates to written locations.",
-                            solidHeader = T,
-                            width = 12,
-                            collapsible = T,
+                                    algorithm that assigned latitude/longitude coordinates to written locations.")
                             )
-                       ),
+                      ),
+                    #row  
+                      # fluidRow(
+                      #   box(title = "Geographic Distribution of Reported RSSC Isolates - Leaflet",
+                      #       solidHeader = T,
+                      #       width = 12,
+                      #       collapsible = T,
+                      #       leafletOutput("NOmap_phylo"))
+                      #   ),
+                    #row
+                      # fluidRow(
+                      #   box(title = "How to Interpret this Map",
+                      #               "This map shows the reported isolation locations of", em("Ralstonia"), "and 
+                      #               each datapoint should be regarded with healthy skepticism. Isolation of 
+                      #               Ralstonia at a location does not mean it is currently established at that
+                      #               location; eradication has been successful in certain cases (e.g. in Sweden) 
+                      #               and some isolations might be from imported plants that were quarantined/destroyed. 
+                      #               Additionally, our meta-analysis database likely contains a low incidence of 
+                      #               errors from the primary literature, from our data entry, or from the geocoding 
+                      #               algorithm that assigned latitude/longitude coordinates to written locations.",
+                      #       solidHeader = T,
+                      #       width = 12,
+                      #       collapsible = T,
+                      #       )
+                      #  ),
                     # row
                       fluidRow(
                         box(title = "Phylotype Abundance by Host",
@@ -361,8 +366,16 @@ ui = dashboardPage(skin = "black",
                             collapsible = T,
                             collapsed = F,
                             uiOutput("Host_chart"),
-                            actionButton("host_linear","Plot by Count"),
-                            actionButton("host_log","Plot by Proportion")
+                            p("Plot by Count:"),
+                            actionButton("host_linear","Top Host Families"),
+                            actionButton("No_Unknown_host_linear","Remove Unknown Hosts"),
+                            actionButton("No_Unknown_phylo_linear","Remove Unknown Phylotypes"),
+                            br(),
+                            br(),
+                            p("Plot by Proportion:"),
+                            actionButton("host_log","Top Host Families"),
+                            actionButton("No_Unknown_host_log","Remove Unknown Hosts"),
+                            actionButton("No_Unknown_phylo_log","Remove Unknown Phylotypes")
                             ),
                         box(title = "Phylotype Abundance by Continent",
                             solidHeader = T,
@@ -370,8 +383,16 @@ ui = dashboardPage(skin = "black",
                             collapsible = T,
                             collapsed = F,
                             uiOutput("Continent_chart"),
-                            actionButton("continent_linear","Plot by Count"),
-                            actionButton("continent_log","Plot by Proportion")
+                            p("Plot by Count:"),
+                            actionButton("continent_linear","Continents"),
+                            actionButton("No_Unknown_continent_linear","Remove Unknown Locations"),
+                            actionButton("No_Unknown_phylo_continent_linear","Remove Unknown Phylotypes"),
+                            br(),
+                            br(),
+                            p("Plot by Proportion:"),
+                            actionButton("continent_log","Continents"),
+                            actionButton("No_Unknown_continent_log","Remove Unknown Locations"),
+                            actionButton("No_Unknown_phylo_continent_log","Remove Unknown Phylotypes")
                             )
                       ),
                     # row
@@ -475,105 +496,84 @@ server = function(input, output, session) {
        }
       
       p <- ggplot(data = world)+
-          geom_sf(fill = "cornsilk") +
-          #geom_point(data = RSSC1, aes(x = Longitude, y = Latitude), size = 1)+
-          geom_jitter(data = data_leaflet, aes(x = Longitude, y = Latitude, color = Phylotype2), size = 1, alpha = 0.5) +
-          theme(panel.background = element_rect(fill = "azure"),
-              panel.border = element_rect(fill = NA))+
-        labs(x = "Longitude", y = "Latitude", color = "Phylotype")+  
-        #xlab("Longitude") + ylab("Latitude")+ 
-          #ggtitle("Geographic Distribution of Ralstonia solanacearum species complex")+
-          scale_color_manual(values = met.brewer("Java"), labels = c("I", "II", "III", "IV", "Unknown"), na.value = "grey50")
+          geom_sf(fill = "white", color = "darkgrey", linewidth = 0.25) +
+          geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude, y = Latitude, color = Phylotype2), size = 0.25, alpha = 0.5) +
+          geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude, y = Latitude, color = Phylotype2), size = 0.25, alpha = 0.5) +
+          coord_sf(ylim = c(-70,90), expand = FALSE)+
+          scale_y_continuous(breaks = c(-60, -30, 0, 30, 60))+
+          scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
+          labs(x = "Longitude", y = "Latitude", color = "Phylotype")+
+          theme(panel.grid.major = element_line(color = "grey", size = 0.5),
+                panel.background = element_rect(fill = "lightgrey"),
+                panel.border = element_rect(fill = NA))+
+          scale_color_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))
         ggplotly(p)
     })
-    #   # Convert ggplot to plotly
-    #   ggplotly(p, source = "map_click")
-    # })
-    # 
-    # selected_point <- reactive({
-    #   event_data("plotly_click", source = "map_click")
-    # })
-    # 
-    # output$filtered_table <- renderDataTable({
-    #   # Check if a point is selected
-    #   if (is.null(selected_point())) {
-    #     return(datatable(filtered_Genome_type(), options = list(scrollX = TRUE))) 
-    #   } else {
-    #     # Get the selected point data
-    #     clicked_data <- selected_point()
-    #     
-    #     # Filter data based on the clicked point's longitude and latitude
-    #     filtered_point_data <- filtered_Genome_type() %>%
-    #       filter(longitude == clicked_data$x & latitude == clicked_data$y)
-    #     
-    #     # Return the filtered point data in the table
-    #     datatable(filtered_point_data, options = list(scrollX = TRUE))
-    #   }
-    # })
   
 # Output leaflet map
-    output$NOmap_phylo =  renderLeaflet({
-    
-    if(input$search == 0){
-      data_leaflet = RSSC1
-    }else{
-      data_leaflet = filtered_Genome_type()
-    }
-    if(nrow(data_leaflet) == 0){
-      leaflet(a)%>%
-        addTiles()
-    }else{
-      
-      factpal <- colorFactor(palette = "Set1", domain = unique(RSSC1$Phylotype2))
-      
-      leaflet(data_leaflet,
-              width = "100%",
-              height = 15) %>%
-        setView(-0, 15, zoom = 2) %>%
-        addTiles() %>%
-        
-        addCircleMarkers(
-          radius = 3,
-          stroke = FALSE,
-          lng = ~Longitude,
-          lat =~Latitude,
-          color = ~factpal(Phylotype2),
-          fillOpacity = 1,
-          label = paste(data_leaflet$Phylotype2,"- click for details"),
-          labelOptions = labelOptions(style = list("font-style" = "italic")),
-          popup = paste("Phylotype:</b>", data_leaflet$Phylotype2,
-                        "<br>",
-                        "Host:", data_leaflet$`Host Species (Common name)`,
-                        "<br>",
-                        "Location:", data_leaflet$`Location Isolated`,
-                        "<br>",
-                        "Year of Collection:", data_leaflet$`Year isolated`,
-                        "<br>",
-                        "Reference:", data_leaflet$`Publication`)
-        ) %>%
-        addLegend("bottomright",
-                  pal = factpal,
-                  values = ~Phylotype2,
-                  title = "Phylotype",
-                  opacity = 1
-        ) %>%
-        addLayersControl(
-          baseGroups = c("Default", "Aerial", "Terrain"),
-          overlayGroups = "Phylotype2",
-          options = layersControlOptions(collapsed = TRUE)
-        ) %>%
-        addEasyButton(easyButton(
-          icon="fa-globe", title="Back to initial view",
-          onClick=JS("function(btn, map){ map.setZoom(2); }"))) %>%
-        addProviderTiles("Esri.WorldImagery", group = "Aerial") %>%
-        addProviderTiles("OpenTopoMap", group = "Terrain") %>%
-        addScaleBar("bottomleft") %>%
-        addProviderTiles(providers$CartoDB.Positron, group = "Default")
-      
-    }
-  })
+  #   output$NOmap_phylo =  renderLeaflet({
+  #   
+  #   if(input$search == 0){
+  #     data_leaflet = RSSC1
+  #   }else{
+  #     data_leaflet = filtered_Genome_type()
+  #   }
+  #   if(nrow(data_leaflet) == 0){
+  #     leaflet(a)%>%
+  #       addTiles()
+  #   }else{
+  #     
+  #     factpal <- colorFactor(palette = "Set1", domain = unique(RSSC1$Phylotype2))
+  #     
+  #     leaflet(data_leaflet,
+  #             width = "100%",
+  #             height = 15) %>%
+  #       setView(-0, 15, zoom = 2) %>%
+  #       addTiles() %>%
+  #       
+  #       addCircleMarkers(
+  #         radius = 3,
+  #         stroke = FALSE,
+  #         lng = ~Longitude,
+  #         lat =~Latitude,
+  #         color = ~factpal(Phylotype2),
+  #         fillOpacity = 1,
+  #         label = paste(data_leaflet$Phylotype2,"- click for details"),
+  #         labelOptions = labelOptions(style = list("font-style" = "italic")),
+  #         popup = paste("Phylotype:</b>", data_leaflet$Phylotype2,
+  #                       "<br>",
+  #                       "Host:", data_leaflet$`Host Species (Common name)`,
+  #                       "<br>",
+  #                       "Location:", data_leaflet$`Location Isolated`,
+  #                       "<br>",
+  #                       "Year of Collection:", data_leaflet$`Year isolated`,
+  #                       "<br>",
+  #                       "Reference:", data_leaflet$`Publication`)
+  #       ) %>%
+  #       addLegend("bottomright",
+  #                 pal = factpal,
+  #                 values = ~Phylotype2,
+  #                 title = "Phylotype",
+  #                 opacity = 1
+  #       ) %>%
+  #       addLayersControl(
+  #         baseGroups = c("Default", "Aerial", "Terrain"),
+  #         overlayGroups = "Phylotype2",
+  #         options = layersControlOptions(collapsed = TRUE)
+  #       ) %>%
+  #       addEasyButton(easyButton(
+  #         icon="fa-globe", title="Back to initial view",
+  #         onClick=JS("function(btn, map){ map.setZoom(2); }"))) %>%
+  #       addProviderTiles("Esri.WorldImagery", group = "Aerial") %>%
+  #       addProviderTiles("OpenTopoMap", group = "Terrain") %>%
+  #       addScaleBar("bottomleft") %>%
+  #       addProviderTiles(providers$CartoDB.Positron, group = "Default")
+  #     
+  #   }
+  # })
 
-# Output Host Chart  
+# Output Host Charts  
+   # Button Observations
     observeEvent(input$host_linear, { 
       output$Host_chart <- renderUI({ plotlyOutput("plot_linear") })
     })
@@ -582,14 +582,32 @@ server = function(input, output, session) {
       output$Host_chart <- renderUI({ plotlyOutput("plot_log") })
     })
     
-    output$plot_linear = renderPlotly({
+    observeEvent(input$No_Unknown_host_linear, { 
+      output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_plot_linear") })
+    })
+    
+    observeEvent(input$No_Unknown_host_log, { 
+      output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_plot_log") })
+    })
+    
+    observeEvent(input$No_Unknown_phylo_linear, { 
+      output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_linear") })
+    })
+    
+    observeEvent(input$No_Unknown_phylo_log, { 
+      output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_log") })
+    })
+    
+# Output plots  
+    # Output plot by count
+      output$plot_linear = renderPlotly({
       
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
         data_leaflet = filtered_Genome_type()
       }
-      
+   
       topten <- data_leaflet %>%
        count(`Host Family`, sort = T, name = "myCount") %>%
         slice_max(myCount, n=10) %>%
@@ -602,10 +620,11 @@ server = function(input, output, session) {
         ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
         geom_col()+
         theme_minimal_vgrid(font_size = 10)+
-        scale_fill_manual(values=met.brewer("Java"),na.value = "grey50")+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
         labs(x = "Host Family",
              y = "Isolations Reported (#)",
-             fill = "Phylotype") +
+             fill = "Phylotype",
+             title = "Plotted by Count") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
         coord_flip()  
@@ -613,7 +632,8 @@ server = function(input, output, session) {
       ggplotly(host_phylo) 
       
     })
-
+   
+     # Output plot by proportion
     output$plot_log = renderPlotly({
       
       if(input$search == 0){
@@ -631,13 +651,156 @@ server = function(input, output, session) {
         filter(`Host Family` %in% topten2$`Host Family`) %>%
         group_by(`Host Family`,Phylotype2) %>%  
         summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Host Family`,count),count, fill = Phylotype2))+
+        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
         geom_bar(position="fill", stat="identity")+
         theme_minimal_vgrid(font_size = 10)+
-        scale_fill_manual(values=met.brewer("Java"),na.value = "grey50")+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
         labs(x = "Host Family",
              y = "Relative Reporting Frequency (%)",
-             fill = "Phylotype") +
+             fill = "Phylotype",
+             title = "Plotted by Proportion") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(host_phylo) 
+      
+    })
+   
+     # Output plot by count no unknown host  
+    output$No_Unknown_plot_linear = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      topten3 <- data_leaflet %>%
+        filter(`Host Family` != "Unknown") %>%
+        count(`Host Family`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=10) %>%
+        as.data.frame()
+    
+     host_phylo = data_leaflet %>%
+        filter(`Host Family` != "Unknown") %>%
+        filter(`Host Family` %in% topten3$`Host Family`) %>%
+        group_by(`Host Family`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Family",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Count: Unknown Hosts Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+    
+      ggplotly(host_phylo) 
+    
+    })
+
+  # Output plot by proportion no unknown host
+    output$No_Unknown_plot_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten4 <- data_leaflet %>%
+        filter(`Host Family` != "Unknown") %>%
+        count(`Host Family`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=10) %>%
+        as.data.frame()
+      
+      host_phylo = data_leaflet %>%
+        filter(`Host Family` != "Unknown") %>%
+        filter(`Host Family` %in% topten4$`Host Family`) %>%
+        group_by(`Host Family`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Family",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Proportion: Unknown Hosts Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(host_phylo) 
+      
+    })
+    
+    # Output plot by count no unknown phylotype  
+    output$No_Unknown_phylo_linear = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      topten5 <- data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        count(`Host Family`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=10) %>%
+        as.data.frame()
+      
+      host_phylo = data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        filter(`Host Family` %in% topten5$`Host Family`) %>%
+        group_by(`Host Family`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Family",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Count: Unknown Phylotypes Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(host_phylo) 
+      
+    })
+    
+    # Output plot by proportion no unknown phylotypes
+    output$No_Unknown_phylo_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten6 <- data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        count(`Host Family`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=10) %>%
+        as.data.frame()
+      
+      host_phylo = data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        filter(`Host Family` %in% topten6$`Host Family`) %>%
+        group_by(`Host Family`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Family",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Proportion: Unknown Phylotypes Removed") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
         coord_flip()
@@ -655,6 +818,23 @@ server = function(input, output, session) {
       output$Continent_chart <- renderUI({ plotlyOutput("cont_log") })
     })
     
+    observeEvent(input$No_Unknown_continent_linear, { 
+      output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_cont_linear") })
+    })
+    
+    observeEvent(input$No_Unknown_continent_log, { 
+      output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_cont_log") })
+    })
+  
+    observeEvent(input$No_Unknown_phylo_continent_linear, { 
+      output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_cont_linear") })
+    })
+    
+    observeEvent(input$No_Unknown_phylo_continent_log, { 
+      output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_cont_log") })
+    })
+    
+    # Output plot by count    
     output$cont_linear = renderPlotly({
       
       if(input$search == 0){
@@ -663,16 +843,93 @@ server = function(input, output, session) {
         data_leaflet = filtered_Genome_type()
       }
       
+      topcont <- data_leaflet %>%
+        count(`Location (continent)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=7) %>%
+        as.data.frame()
+      
       cont_phylo = data_leaflet %>% 
+        filter(`Location (continent)` %in% topcont$`Location (continent)`) %>%
         group_by(`Location (continent)`,Phylotype2) %>%  
         summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Location (continent)`,count),count, fill = Phylotype2))+
+        ggplot(aes(reorder(`Location (continent)`,count), count, fill = Phylotype2))+
         geom_col()+
         theme_minimal_vgrid(font_size = 10)+
-        scale_fill_manual(values=met.brewer("Java"),na.value = "grey50")+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
         labs(x = "Continent",
              y = "Isolations Reported (#)",
-             fill = "Phylotype") +
+             fill = "Phylotype",
+             title = "Plotted by Count") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(cont_phylo) 
+      
+      
+    })
+    # Output plot by proportion  
+    output$cont_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topcont2 <- data_leaflet %>%
+        count(`Location (continent)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=7) %>%
+        as.data.frame()
+      
+      cont_phylo = data_leaflet %>%
+        filter(`Location (continent)` %in% topcont2$`Location (continent)`) %>%
+        group_by(`Location (continent)`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Location (continent)`,count), count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Continent",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Plotted by Proportion") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(cont_phylo) 
+      
+      
+    })
+    # Output plot by count no unknown location
+    output$No_Unknown_cont_linear = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topcont3 <- data_leaflet %>%
+        filter(`Location (continent)` != "Unknown") %>%
+        count(`Location (continent)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=7) %>%
+        as.data.frame()
+      
+      cont_phylo = data_leaflet %>% 
+        filter(`Location (continent)` != "Unknown") %>%
+        filter(`Location (continent)` %in% topcont3$`Location (continent)`) %>%
+        group_by(`Location (continent)`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Location (continent)`,count), count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Continent",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Count: Unknown Locations Removed") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
         coord_flip()  
@@ -682,7 +939,8 @@ server = function(input, output, session) {
       
     })
     
-    output$cont_log = renderPlotly({
+    # Output plot by proportion no unknown location 
+    output$No_Unknown_cont_log = renderPlotly({
       
       if(input$search == 0){
         data_leaflet = RSSC1
@@ -690,16 +948,99 @@ server = function(input, output, session) {
         data_leaflet = filtered_Genome_type()
       }
       
+      topcont4 <- data_leaflet %>%
+        filter(`Location (continent)` != "Unknown") %>%
+        count(`Location (continent)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=7) %>%
+        as.data.frame()
+      
       cont_phylo = data_leaflet %>% 
+        filter(`Location (continent)` != "Unknown") %>%
+        filter(`Location (continent)` %in% topcont4$`Location (continent)`) %>%
         group_by(`Location (continent)`,Phylotype2) %>%  
         summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Location (continent)`,count),count, fill = Phylotype2))+
+        ggplot(aes(reorder(`Location (continent)`,count), count, fill = Phylotype2))+
         geom_bar(position="fill", stat="identity")+
         theme_minimal_vgrid(font_size = 10)+
-        scale_fill_manual(values=met.brewer("Java"),na.value = "grey50")+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
         labs(x = "Continent",
              y = "Relative Reporting Frequency (%)",
-             fill = "Phylotype") +
+             fill = "Phylotype",
+             title = "Proportion: Unknown Locations Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(cont_phylo) 
+      
+      
+    })
+    
+    # Output plot by count no unknown phylotype
+    output$No_Unknown_phylo_cont_linear = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topcont5 <- data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        count(`Location (continent)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=7) %>%
+        as.data.frame()
+      
+      cont_phylo = data_leaflet %>% 
+        filter(Phylotype2 != "Unknown") %>%
+        filter(`Location (continent)` %in% topcont5$`Location (continent)`) %>%
+        group_by(`Location (continent)`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Location (continent)`,count), count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Continent",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Count: Unknown Phylotypes Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(cont_phylo) 
+      
+      
+    })
+    
+    # Output plot by proportion no unknown phylotype 
+    output$No_Unknown_phylo_cont_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topcont6 <- data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        count(`Location (continent)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=7) %>%
+        as.data.frame()
+      
+      cont_phylo = data_leaflet %>% 
+        filter(Phylotype2 != "Unknown") %>%
+        filter(`Location (continent)` %in% topcont6$`Location (continent)`) %>%
+        group_by(`Location (continent)`,Phylotype2) %>%  
+        summarise(count = n()) %>% 
+        ggplot(aes(reorder(`Location (continent)`,count), count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Continent",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Proportion: Unknown Phylotypes Removed") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
         coord_flip()  
@@ -719,7 +1060,7 @@ server = function(input, output, session) {
       data_leaflet %>% 
         dplyr::select(Index, Phylotype, Sequevar, Strainname,`Host Species (Common name)`,
                       `Host Family`, `Host Order`, `Year isolated`, `Location Isolated`, 
-                      `Location (Country or Territory)`, `Location (continent)`, `Genome Accession`, Publication)
+                      `Location (Country or Territory)`, `Location (continent)`,Phylotype2, `Genome Accession`, Publication)
     },options = list(autoWidth = F,autoHeight = F, scrollX = TRUE))  
   
 # Output download data button    
