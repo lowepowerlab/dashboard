@@ -500,10 +500,10 @@ server = function(input, output, session) {
           geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude, y = Latitude, color = Phylotype2), size = 0.25, alpha = 0.5) +
           geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude, y = Latitude, color = Phylotype2), size = 0.25, alpha = 0.5) +
           coord_sf(ylim = c(-70,90), expand = FALSE)+
-          scale_y_continuous(breaks = c(-60, -30, 0, 30, 60))+
+          scale_y_continuous(breaks = c(-60, -40, -20, 0, 20, 40, 60, 80))+
           scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
           labs(x = "Longitude", y = "Latitude", color = "Phylotype")+
-          theme(panel.grid.major = element_line(color = "grey", size = 0.5),
+          theme(panel.grid.major = element_line(color = "grey", linewidth = 0.5),
                 panel.background = element_rect(fill = "lightgrey"),
                 panel.border = element_rect(fill = NA))+
           scale_color_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))
