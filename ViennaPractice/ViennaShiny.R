@@ -82,6 +82,10 @@ RSSC1 = RSSC %>%
                       is.na(Sequevar2) ~ "Unknown",
                       !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
   
+  mutate(Sequevar3 = Sequevar) %>%
+  mutate(Sequevar3 = case_when(!is.na(Sequevar3) ~ Sequevar3,
+                               is.na(Sequevar3) ~ "Unknown")) %>%
+  
   mutate(Genome2 = `Genome Accession`) %>%
   mutate(Genome2 = case_when(!is.na(Genome2) ~ "Yes",
                                 is.na(Genome2) ~ "No")) %>% 
@@ -187,6 +191,16 @@ ui = dashboardPage(skin = "black",
                         selected = unique(RSSC1$Phylotype3),
                         multiple = T
             ),  
+            pickerInput(inputId = "sequevar",
+                       label = "Sequevar",
+                       choices = sort(unique(RSSC1$Sequevar3)),
+                       options = list(`actions-box` = T,
+                                      size = 10,
+                                      `selected-text-format` = "count > 1"
+                       ),
+                       selected = unique(RSSC1$Sequevar3),
+                       multiple = T
+            ), 
             pickerInput(inputId = "pandemic_lineage",
                         label = "Pandemic Lineages",
                         choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
@@ -295,8 +309,12 @@ ui = dashboardPage(skin = "black",
                actionButton(inputId = "reset",
                label = "Select All",
                icon =icon("retweet"))),
-           div(style="display:inline-block;width:60%;text-align: center;",
-               downloadButton("download", "Get Data")))
+          br(),
+           div(style="display:inline-block;width:40%;text-align: center;",
+              downloadButton("downloadfiltered", "Get Filtered Data",
+                             icon =icon("filter"))),
+           div(style="display:inline-block;width:65%;text-align: center;",
+               downloadButton("downloadentire", "Get Entire Dataset")))
             ),
                     
         dashboardBody(use_theme(mytheme),
@@ -425,6 +443,7 @@ server = function(input, output, session) {
     shinyjs::reset("publication_year")
     shinyjs::reset("isolation_year")
     shinyjs::reset("phylo")
+    shinyjs::reset("sequevar")
     shinyjs::reset("pandemic_lineage")
     shinyjs::reset("host_family")
     shinyjs::reset("host_species")
@@ -451,8 +470,13 @@ server = function(input, output, session) {
       filter(Phylotype3 %in% input$phylo)
   })
   
-  filtered_PandemicLineage_type <- eventReactive(input$search,{
+  filtered_Sequevar_type <- eventReactive(input$search,{
     filtered_Phylotype_type() %>%
+      filter(Sequevar3 %in% input$sequevar)
+  })
+  
+  filtered_PandemicLineage_type <- eventReactive(input$search,{
+    filtered_Sequevar_type() %>%
       filter(Sequevar2 %in% input$pandemic_lineage)
   })
   
@@ -573,6 +597,12 @@ server = function(input, output, session) {
   # })
 
 # Output Host Charts  
+    
+    # Set a default view on page load
+    output$Host_chart <- renderUI({
+      plotlyOutput("plot_linear")  # Default plot when the page loads
+    })
+    
    # Button Observations
     observeEvent(input$host_linear, { 
       output$Host_chart <- renderUI({ plotlyOutput("plot_linear") })
@@ -616,8 +646,10 @@ server = function(input, output, session) {
       host_phylo = data_leaflet %>%
         filter(`Host Family` %in% topten$`Host Family`) %>%
         group_by(`Host Family`,Phylotype2) %>%  
-        summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Family based on total count
+        mutate(`Host Family` = fct_reorder(`Host Family`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Family`, count, fill = Phylotype2))+
         geom_col()+
         theme_minimal_vgrid(font_size = 10)+
         scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
@@ -627,9 +659,13 @@ server = function(input, output, session) {
              title = "Plotted by Count") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
-        coord_flip()  
+        coord_flip()
       
-      ggplotly(host_phylo) 
+      ggplotly(host_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Family", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
       
     })
    
@@ -650,8 +686,10 @@ server = function(input, output, session) {
       host_phylo = data_leaflet %>% 
         filter(`Host Family` %in% topten2$`Host Family`) %>%
         group_by(`Host Family`,Phylotype2) %>%  
-        summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Family based on total count
+        mutate(`Host Family` = fct_reorder(`Host Family`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Family`, count, fill = Phylotype2))+
         geom_bar(position="fill", stat="identity")+
         theme_minimal_vgrid(font_size = 10)+
         scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
@@ -663,7 +701,11 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()
       
-      ggplotly(host_phylo) 
+      ggplotly(host_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Family", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
       
     })
    
@@ -685,8 +727,10 @@ server = function(input, output, session) {
         filter(`Host Family` != "Unknown") %>%
         filter(`Host Family` %in% topten3$`Host Family`) %>%
         group_by(`Host Family`,Phylotype2) %>%  
-        summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        summarise(count = n(), .groups = "drop") %>%
+       # Explicitly reorder Host Family based on total count
+       mutate(`Host Family` = fct_reorder(`Host Family`, count, .fun = sum)) %>%
+       ggplot(aes(`Host Family`, count, fill = Phylotype2))+
         geom_col()+
         theme_minimal_vgrid(font_size = 10)+
         scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
@@ -698,7 +742,11 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()  
     
-      ggplotly(host_phylo) 
+      ggplotly(host_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Family", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
     
     })
 
@@ -721,8 +769,10 @@ server = function(input, output, session) {
         filter(`Host Family` != "Unknown") %>%
         filter(`Host Family` %in% topten4$`Host Family`) %>%
         group_by(`Host Family`,Phylotype2) %>%  
-        summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Family based on total count
+        mutate(`Host Family` = fct_reorder(`Host Family`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Family`, count, fill = Phylotype2))+
         geom_bar(position="fill", stat="identity")+
         theme_minimal_vgrid(font_size = 10)+
         scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
@@ -734,7 +784,11 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()
       
-      ggplotly(host_phylo) 
+      ggplotly(host_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Family", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
       
     })
     
@@ -756,8 +810,10 @@ server = function(input, output, session) {
         filter(Phylotype2 != "Unknown") %>%
         filter(`Host Family` %in% topten5$`Host Family`) %>%
         group_by(`Host Family`,Phylotype2) %>%  
-        summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Family based on total count
+        mutate(`Host Family` = fct_reorder(`Host Family`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Family`, count, fill = Phylotype2))+
         geom_col()+
         theme_minimal_vgrid(font_size = 10)+
         scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
@@ -769,7 +825,11 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()  
       
-      ggplotly(host_phylo) 
+      ggplotly(host_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Family", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
       
     })
     
@@ -792,8 +852,10 @@ server = function(input, output, session) {
         filter(Phylotype2 != "Unknown") %>%
         filter(`Host Family` %in% topten6$`Host Family`) %>%
         group_by(`Host Family`,Phylotype2) %>%  
-        summarise(count = n()) %>% 
-        ggplot(aes(reorder(`Host Family`,count), count, fill = Phylotype2))+
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Family based on total count
+        mutate(`Host Family` = fct_reorder(`Host Family`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Family`, count, fill = Phylotype2))+
         geom_bar(position="fill", stat="identity")+
         theme_minimal_vgrid(font_size = 10)+
         scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
@@ -805,11 +867,22 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()
       
-      ggplotly(host_phylo) 
+      ggplotly(host_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Family", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
       
     })
     
 # Output Continent Chart    
+    
+    # Set a default view on page load
+    output$Continent_chart <- renderUI({
+      plotlyOutput("cont_linear")  # Default plot when the page loads
+    })
+    
+    # Button Observations
     observeEvent(input$continent_linear, { 
       output$Continent_chart <- renderUI({ plotlyOutput("cont_linear") })
     })
@@ -1063,8 +1136,8 @@ server = function(input, output, session) {
                       `Location (Country or Territory)`, `Location (continent)`,Phylotype2, `Genome Accession`, Publication)
     },options = list(autoWidth = F,autoHeight = F, scrollX = TRUE))  
   
-# Output download data button    
-  output$download <- downloadHandler(
+# Output download filtered data button    
+  output$downloadfiltered <- downloadHandler(
     filename = function(){"RSSCdb_data.csv"}, 
     content = function(fname){
       
@@ -1072,6 +1145,21 @@ server = function(input, output, session) {
         data_leaflet = RSSC1
       }else{
         data_leaflet = filtered_Genome_type()
+      }
+      
+      
+      write.csv(data_leaflet, fname)
+    })
+  
+# Output download entire data button    
+  output$downloadentire <- downloadHandler(
+    filename = function(){"RSSCdb_data.csv"}, 
+    content = function(fname){
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = RSSC1
       }
       
       
@@ -1093,7 +1181,12 @@ server = function(input, output, session) {
             value = n,
             subtitle = sub,
             color= "fuchsia",
-            icon = icon("viruses")
+            icon = icon(
+              name = NULL,
+              style = "
+                background: url('RsCartoon.svg')
+              "
+            )
     )  
     
   })
