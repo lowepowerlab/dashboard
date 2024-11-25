@@ -124,7 +124,10 @@ RSSC1 = RSSC %>%
   
   mutate(`Host Species (Common name)` = case_when(!is.na(`Host Species (Common name)`) ~ `Host Species (Common name)`,
                                                   is.na(`Host Species (Common name)`) ~ "Unknown")) %>%
-  
+
+  mutate(`Host Species` = case_when(!is.na(`Host Species`) ~ `Host Species`,
+                                                  is.na(`Host Species`) ~ "Unknown")) %>%   
+   
   mutate(`Host Family` = case_when(!is.na(`Host Family`) ~ `Host Family`,
                                                   is.na(`Host Family`) ~ "Unknown")) %>%
   
@@ -339,7 +342,7 @@ ui = dashboardPage(skin = "black",
                             solidHeader = T,
                             width = 12,
                             collapsible = T,
-                            plotlyOutput("map_phylo"),
+                            plotlyOutput("map_phylo", width="100%", height="400px"),
                             br(),
                             strong("How to Interpret this Map"),
                             p("This map shows the reported isolation locations of", em("Ralstonia"), "and 
@@ -378,7 +381,7 @@ ui = dashboardPage(skin = "black",
                       #  ),
                     # row
                       fluidRow(
-                        box(title = "Phylotype Abundance by Host",
+                        box(title = "Phylotype Abundance by Host Family",
                             solidHeader = T,
                             width = 6,
                             collapsible = T,
@@ -394,7 +397,7 @@ ui = dashboardPage(skin = "black",
                             actionButton("host_log","Top Host Families"),
                             actionButton("No_Unknown_host_log","Remove Unknown Hosts"),
                             actionButton("No_Unknown_phylo_log","Remove Unknown Phylotypes")
-                            ),
+                        ),
                         box(title = "Phylotype Abundance by Continent",
                             solidHeader = T,
                             width = 6,
@@ -411,7 +414,43 @@ ui = dashboardPage(skin = "black",
                             actionButton("continent_log","Continents"),
                             actionButton("No_Unknown_continent_log","Remove Unknown Locations"),
                             actionButton("No_Unknown_phylo_continent_log","Remove Unknown Phylotypes")
-                            )
+                        )
+                      ),
+                    fluidRow(
+                      box(title = "Phylotype Abundance by Host Species",
+                          solidHeader = T,
+                          width = 6,
+                          collapsible = T,
+                          collapsed = F,
+                          uiOutput("Host_chart_species"),
+                          p("Plot by Count:"),
+                          actionButton("host_linear_species","Top Host Species"),
+                          actionButton("No_Unknown_host_linear_species","Remove Unknown Hosts"),
+                          actionButton("No_Unknown_phylo_linear_species","Remove Unknown Phylotypes"),
+                          br(),
+                          br(),
+                          p("Plot by Proportion:"),
+                          actionButton("host_log_species","Top Host Species"),
+                          actionButton("No_Unknown_host_log_species","Remove Unknown Hosts"),
+                          actionButton("No_Unknown_phylo_log_species","Remove Unknown Phylotypes")
+                      ),
+                      box(title = "Phylotype Abundance by Country",
+                          solidHeader = T,
+                          width = 6,
+                          collapsible = T,
+                          collapsed = F,
+                          uiOutput("Country_chart"),
+                          p("Plot by Count:"),
+                          actionButton("country_linear","Top Countries"),
+                          actionButton("No_Unknown_country_linear","Remove Unknown Locations"),
+                          actionButton("No_Unknown_phylo_country_linear","Remove Unknown Phylotypes"),
+                          br(),
+                          br(),
+                          p("Plot by Proportion:"),
+                          actionButton("country_log","Top Countries"),
+                          actionButton("No_Unknown_country_log","Remove Unknown Locations"),
+                          actionButton("No_Unknown_phylo_country_log","Remove Unknown Phylotypes")
+                      )
                       ),
                     # row
                       fluidRow(
@@ -874,6 +913,283 @@ server = function(input, output, session) {
         )
       
     })
+# Output Species Chart
+    # Set a default view on page load
+    output$Host_chart_species <- renderUI({
+      plotlyOutput("plot_linear_species")  # Default plot when the page loads
+    })
+    
+    # Button Observations
+    observeEvent(input$host_linear_species, { 
+      output$Host_chart_species <- renderUI({ plotlyOutput("plot_linear_species") })
+    })
+    
+    observeEvent(input$host_log_species, { 
+      output$Host_chart_species <- renderUI({ plotlyOutput("plot_log_species") })
+    })
+    
+    observeEvent(input$No_Unknown_host_linear_species, { 
+      output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_plot_linear_species") })
+    })
+    
+    observeEvent(input$No_Unknown_host_log_species, { 
+      output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_plot_log_species") })
+    })
+    
+    observeEvent(input$No_Unknown_phylo_linear_species, { 
+      output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_phylo_linear_species") })
+    })
+    
+    observeEvent(input$No_Unknown_phylo_log_species, { 
+      output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_phylo_log_species") })
+    })
+    
+    # Output plots  
+    # Output plot by count
+    output$plot_linear_species = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten7 <- data_leaflet %>%
+        count(`Host Species`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      host_phylo_species = data_leaflet %>%
+        filter(`Host Species` %in% topten7$`Host Species`) %>%
+        group_by(`Host Species`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Family based on total count
+        mutate(`Host Species` = fct_reorder(`Host Species`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Species`, count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Species",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Plotted by Count") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(host_phylo_species) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Species", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
+      
+    })
+    
+    # Output plot by proportion
+    output$plot_log_species = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten8 <- data_leaflet %>%
+        count(`Host Species`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      host_phylo_species = data_leaflet %>% 
+        filter(`Host Species` %in% topten8$`Host Species`) %>%
+        group_by(`Host Species`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Species based on total count
+        mutate(`Host Species` = fct_reorder(`Host Species`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Species`, count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Species",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Plotted by Proportion") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(host_phylo_species) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Species", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
+      
+    })
+    
+    # Output plot by count no unknown host  
+    output$No_Unknown_plot_linear_species = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      topten9 <- data_leaflet %>%
+        filter(`Host Species` != "Unknown") %>%
+        count(`Host Species`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      host_phylo_species = data_leaflet %>%
+        filter(`Host Species` != "Unknown") %>%
+        filter(`Host Species` %in% topten9$`Host Species`) %>%
+        group_by(`Host Species`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Species based on total count
+        mutate(`Host Species` = fct_reorder(`Host Species`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Species`, count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Species",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Count: Unknown Hosts Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(host_phylo_species) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Species", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
+      
+    })
+    
+    # Output plot by proportion no unknown host
+    output$No_Unknown_plot_log_species = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten10 <- data_leaflet %>%
+        filter(`Host Species` != "Unknown") %>%
+        count(`Host Species`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      host_phylo_species = data_leaflet %>%
+        filter(`Host Species` != "Unknown") %>%
+        filter(`Host Species` %in% topten10$`Host Species`) %>%
+        group_by(`Host Species`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Species based on total count
+        mutate(`Host Species` = fct_reorder(`Host Species`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Species`, count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Species",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Proportion: Unknown Hosts Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(host_phylo_species) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Species", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
+      
+    })
+    
+    # Output plot by count no unknown phylotype  
+    output$No_Unknown_phylo_linear_species = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      topten11 <- data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        count(`Host Species`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      host_phylo_species = data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        filter(`Host Species` %in% topten11$`Host Species`) %>%
+        group_by(`Host Species`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Species based on total count
+        mutate(`Host Species` = fct_reorder(`Host Species`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Species`, count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Species",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Count: Unknown Phylotypes Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(host_phylo_species) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Species", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
+      
+    })
+    
+    # Output plot by proportion no unknown phylotypes
+    output$No_Unknown_phylo_log_species = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten12 <- data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        count(`Host Species`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      host_phylo_species = data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        filter(`Host Species` %in% topten12$`Host Species`) %>%
+        group_by(`Host Species`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Species based on total count
+        mutate(`Host Species` = fct_reorder(`Host Species`, count, .fun = sum)) %>%
+        ggplot(aes(`Host Species`, count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Species",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Proportion: Unknown Phylotypes Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(host_phylo_species) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Species", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
+      
+    })
     
 # Output Continent Chart    
     
@@ -1120,6 +1436,283 @@ server = function(input, output, session) {
       
       ggplotly(cont_phylo) 
       
+      
+    })
+
+# Output Country Chart
+    output$Country_chart <- renderUI({
+      plotlyOutput("country_linear")  # Default plot when the page loads
+    })
+    
+    # Button Observations
+    observeEvent(input$country_linear, { 
+      output$Country_chart <- renderUI({ plotlyOutput("country_linear") })
+    })
+    
+    observeEvent(input$country_log, { 
+      output$Country_chart <- renderUI({ plotlyOutput("country_log") })
+    })
+    
+    observeEvent(input$No_Unknown_country_linear, { 
+      output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_country_linear") })
+    })
+    
+    observeEvent(input$No_Unknown_country_log, { 
+      output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_country_log") })
+    })
+    
+    observeEvent(input$No_Unknown_phylo_country_linear, { 
+      output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_country_linear") })
+    })
+    
+    observeEvent(input$No_Unknown_phylo_country_log, { 
+      output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_country_log") })
+    })
+    
+    # Output plots  
+    # Output plot by count
+    output$country_linear = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten13 <- data_leaflet %>%
+        count(`Location (Country or Territory)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      country_phylo = data_leaflet %>%
+        filter(`Location (Country or Territory)` %in% topten13$`Location (Country or Territory)`) %>%
+        group_by(`Location (Country or Territory)`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Country based on total count
+        mutate(`Location (Country or Territory)` = fct_reorder(`Location (Country or Territory)`, count, .fun = sum)) %>%
+        ggplot(aes(`Location (Country or Territory)`, count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Country",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Plotted by Count") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(country_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Country", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
+      
+    })
+    
+    # Output plot by proportion
+    output$country_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten14 <- data_leaflet %>%
+        count(`Location (Country or Territory)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      country_phylo = data_leaflet %>% 
+        filter(`Location (Country or Territory)` %in% topten14$`Location (Country or Territory)`) %>%
+        group_by(`Location (Country or Territory)`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Country based on total count
+        mutate(`Location (Country or Territory)` = fct_reorder(`Location (Country or Territory)`, count, .fun = sum)) %>%
+        ggplot(aes(`Location (Country or Territory)`, count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Country",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Plotted by Proportion") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(country_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Country", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
+      
+    })
+    
+    # Output plot by count no unknown host  
+    output$No_Unknown_country_linear = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      topten15 <- data_leaflet %>%
+        filter(`Location (Country or Territory)` != "Unknown") %>%
+        count(`Location (Country or Territory)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      country_phylo = data_leaflet %>%
+        filter(`Location (Country or Territory)` != "Unknown") %>%
+        filter(`Location (Country or Territory)` %in% topten15$`Location (Country or Territory)`) %>%
+        group_by(`Location (Country or Territory)`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Country based on total count
+        mutate(`Location (Country or Territory)` = fct_reorder(`Location (Country or Territory)`, count, .fun = sum)) %>%
+        ggplot(aes(`Location (Country or Territory)`, count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Country",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Count: Unknown Hosts Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(country_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Country", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
+      
+    })
+    
+    # Output plot by proportion no unknown host
+    output$No_Unknown_country_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten16 <- data_leaflet %>%
+        filter(`Location (Country or Territory)` != "Unknown") %>%
+        count(`Location (Country or Territory)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      country_phylo = data_leaflet %>%
+        filter(`Location (Country or Territory)` != "Unknown") %>%
+        filter(`Location (Country or Territory)` %in% topten16$`Location (Country or Territory)`) %>%
+        group_by(`Location (Country or Territory)`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Country based on total count
+        mutate(`Location (Country or Territory)` = fct_reorder(`Location (Country or Territory)`, count, .fun = sum)) %>%
+        ggplot(aes(`Location (Country or Territory)`, count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Country",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Proportion: Unknown Hosts Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(country_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Country", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
+      
+    })
+    
+    # Output plot by count no unknown phylotype  
+    output$No_Unknown_phylo_country_linear = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      topten17 <- data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        count(`Location (Country or Territory)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      country_phylo = data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        filter(`Location (Country or Territory)` %in% topten17$`Location (Country or Territory)`) %>%
+        group_by(`Location (Country or Territory)`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Family based on total count
+        mutate(`Location (Country or Territory)` = fct_reorder(`Location (Country or Territory)`, count, .fun = sum)) %>%
+        ggplot(aes(`Location (Country or Territory)`, count, fill = Phylotype2))+
+        geom_col()+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Country",
+             y = "Isolations Reported (#)",
+             fill = "Phylotype",
+             title = "Count: Unknown Phylotypes Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()  
+      
+      ggplotly(country_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Country", standoff = 10)),
+          xaxis = list(title = list(text = "Isolations Reported (#)"))
+        )
+      
+    })
+    
+    # Output plot by proportion no unknown phylotypes
+    output$No_Unknown_phylo_country_log = renderPlotly({
+      
+      if(input$search == 0){
+        data_leaflet = RSSC1
+      }else{
+        data_leaflet = filtered_Genome_type()
+      }
+      
+      topten18 <- data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        count(`Location (Country or Territory)`, sort = T, name = "myCount") %>%
+        slice_max(myCount, n=20) %>%
+        as.data.frame()
+      
+      country_phylo = data_leaflet %>%
+        filter(Phylotype2 != "Unknown") %>%
+        filter(`Location (Country or Territory)` %in% topten18$`Location (Country or Territory)`) %>%
+        group_by(`Location (Country or Territory)`,Phylotype2) %>%  
+        summarise(count = n(), .groups = "drop") %>%
+        # Explicitly reorder Host Country based on total count
+        mutate(`Location (Country or Territory)` = fct_reorder(`Location (Country or Territory)`, count, .fun = sum)) %>%
+        ggplot(aes(`Location (Country or Territory)`, count, fill = Phylotype2))+
+        geom_bar(position="fill", stat="identity")+
+        theme_minimal_vgrid(font_size = 10)+
+        scale_fill_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))+
+        labs(x = "Host Country",
+             y = "Relative Reporting Frequency (%)",
+             fill = "Phylotype",
+             title = "Proportion: Unknown Phylotypes Removed") +
+        theme(panel.background = element_rect(color = "gray"),
+              legend.position = "bottom")+
+        coord_flip()
+      
+      ggplotly(country_phylo) %>%
+        layout(
+          yaxis = list(title = list(text = "Host Country", standoff = 10)),
+          xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
+        )
       
     })
     
