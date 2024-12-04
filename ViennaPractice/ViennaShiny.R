@@ -57,7 +57,7 @@ mytheme <- create_theme(
 world <- ne_countries(scale = "medium", returnclass = "sf") 
 
 # load data and transformations
-RSSC <- read_csv("RSSC_Whole.csv")
+RSSC <- read_csv("RSSC_Final.csv")
 
 Phylotype_selected = c("I", "II", "III", "IV")
 PandemicLineage_selected = c("1", "2")
@@ -90,10 +90,10 @@ RSSC1 = RSSC %>%
   mutate(Genome2 = case_when(!is.na(Genome2) ~ "Yes",
                                 is.na(Genome2) ~ "No")) %>% 
   
-  mutate(Latitude2 = Latitude) %>%
+  mutate(Latitude2 = `Lat (AI)`) %>%
   mutate(Latitude2 = case_when(!is.na(Latitude2) ~ Latitude2,
                                is.na(Latitude2) ~ Latitude2)) %>%
-  mutate(Longitude2 = Longitude) %>%
+  mutate(Longitude2 = `Long (AI)`) %>%
   mutate(Longitude2 = case_when(!is.na(Longitude2) ~ Longitude2,
                                is.na(Longitude2) ~ Longitude2)) %>%
   
@@ -158,9 +158,10 @@ ui = dashboardPage(skin = "black",
         div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
         "A georeferenced database of isolates of the", em("Ralstonia solanacearum"), "Species Complex.
         Use the filters below to refine your search, visualize data, and download metadata. Filtration happens top down."),
-          sidebarMenu(id = "sidebarid",
+          sidebarMenu(id = "sidebarid", 
            # filter drop-down menus
-            pickerInput(inputId = "publication_year",
+           
+             pickerInput(inputId = "publication_year",
                         label = "Publication Year",
                         choices = sort(unique(RSSC1$`Year published`)),
                         options = list(
@@ -172,7 +173,8 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Year published`)),
                         multiple = T
             ),
-            pickerInput(inputId = "isolation_year",
+            
+           pickerInput(inputId = "isolation_year",
                         label = "Isolation Year",
                         choices = sort(unique(RSSC1$`Year isolated`)),
                         options = list(
@@ -184,6 +186,7 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Year isolated`)),
                         multiple = T
             ),
+           
             pickerInput(inputId = "phylo",
                         label = "Phylotype",
                         choices = sort(unique(RSSC1$Phylotype3)),
@@ -194,7 +197,8 @@ ui = dashboardPage(skin = "black",
                         selected = unique(RSSC1$Phylotype3),
                         multiple = T
             ),  
-            pickerInput(inputId = "sequevar",
+            
+           pickerInput(inputId = "sequevar",
                        label = "Sequevar",
                        choices = sort(unique(RSSC1$Sequevar3)),
                        options = list(`actions-box` = T,
@@ -204,7 +208,8 @@ ui = dashboardPage(skin = "black",
                        selected = unique(RSSC1$Sequevar3),
                        multiple = T
             ), 
-            pickerInput(inputId = "pandemic_lineage",
+           
+           pickerInput(inputId = "pandemic_lineage",
                         label = "Pandemic Lineages",
                         choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
                         options = list(
@@ -215,7 +220,8 @@ ui = dashboardPage(skin = "black",
                         selected = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
                         multiple = T
             ),
-            pickerInput(inputId = "host_family",
+            
+           pickerInput(inputId = "host_family",
                         label = "Host Family",
                         choices = sort(unique(RSSC1$`Host Family`)),
                         options = list(
@@ -227,7 +233,8 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Host Family`)),
                         multiple = T
             ),
-            pickerInput(inputId = "host_species",
+           
+           pickerInput(inputId = "host_species",
                         label = "Host Species",
                         choices = sort(unique(RSSC1$`Host Species (Common name)`)),
                         options = list(
@@ -239,7 +246,8 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Host Species (Common name)`)),
                         multiple = T
             ), 
-            pickerInput(inputId = "vegprophost",
+            
+           pickerInput(inputId = "vegprophost",
                         label = "Vegetatively Propagated (VP) Hosts",
                         choices = list(
                           Araceae = c("Anthurium sp. (Laceleaf)", "Epipremnum aureum (Pothos)"),
@@ -266,7 +274,8 @@ ui = dashboardPage(skin = "black",
                                      "Curcuma mangga (Mango Ginger)","Zingiber mioga (Myoga Ginger)","Zingiber officinale (Ginger)",
                                      "Non VP Host", "Unknown Host"),
                         multiple = T
-            ), 
+            ),
+           
             pickerInput(inputId = "continent",
                         label = "Continent",
                         choices = sort(unique(RSSC1$`Location (continent)`)),
@@ -279,6 +288,7 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Location (continent)`)),
                         multiple = T
             ),
+           
             pickerInput(inputId = "country",
                         label = "Country or Territory",
                         choices = sort(unique(RSSC1$`Location (Country or Territory)`)),
@@ -291,7 +301,8 @@ ui = dashboardPage(skin = "black",
                         selected = sort(unique(RSSC1$`Location (Country or Territory)`)),
                         multiple = T
             ),
-            pickerInput(inputId = "genome",
+           
+           pickerInput(inputId = "genome",
                         label = "Genome Available on NCBI?",
                         choices = c("Yes", "No"),
                         options = list(
@@ -304,24 +315,26 @@ ui = dashboardPage(skin = "black",
                          multiple = T
           ),
           
-           div(style="display:inline-block;width:25%;text-align: center;",
+           div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
                actionButton(inputId = "search",
                label = "Filter",
                icon =icon("filter"))),
-           div(style="display:inline-block;width:25%;text-align: center;",
+           div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
                actionButton(inputId = "reset",
                label = "Select All",
                icon =icon("retweet"))),
           br(),
-           div(style="display:inline-block;width:40%;text-align: center;",
-              downloadButton("downloadfiltered", "Get Filtered Data",
-                             icon =icon("filter"))),
-           div(style="display:inline-block;width:65%;text-align: center;",
-               downloadButton("downloadentire", "Get Entire Dataset")))
+           div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
+              downloadButton("downloadfiltered", "Download Your Filtered Dataset")),
+          br(),
+          br(),
+           div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
+               downloadButton("downloadentire", "Download Entire RSSC Dataset")))
             ),
                     
         dashboardBody(use_theme(mytheme),
                       shinyjs::useShinyjs(),
+                      includeCSS("www/style.css"),
                       div(id = "my app",
                     #row  
                       fluidRow(
@@ -335,7 +348,8 @@ ui = dashboardPage(skin = "black",
                            width = 12,
                            height = "100%",
                            tabPanel(icon = icon("disease"),
-                                     "RSSC Visualizations",
+                                    "RSSC Visualizations"
+                      ,
                     #row  
                       fluidRow(
                         box(title = "Geographic Distribution of Reported RSSC Isolates",
@@ -381,6 +395,23 @@ ui = dashboardPage(skin = "black",
                       #  ),
                     # row
                       fluidRow(
+                        box(title = "Phylotype Abundance by Host Species",
+                            solidHeader = T,
+                            width = 6,
+                            collapsible = T,
+                            collapsed = F,
+                            uiOutput("Host_chart_species"),
+                            p("Plot by Count:"),
+                            actionButton("host_linear_species","Top Host Species"),
+                            actionButton("No_Unknown_host_linear_species","Remove Unknown Hosts"),
+                            actionButton("No_Unknown_phylo_linear_species","Remove Unknown Phylotypes"),
+                            br(),
+                            br(),
+                            p("Plot by Proportion:"),
+                            actionButton("host_log_species","Top Host Species"),
+                            actionButton("No_Unknown_host_log_species","Remove Unknown Hosts"),
+                            actionButton("No_Unknown_phylo_log_species","Remove Unknown Phylotypes")
+                        ),
                         box(title = "Phylotype Abundance by Host Family",
                             solidHeader = T,
                             width = 6,
@@ -397,43 +428,9 @@ ui = dashboardPage(skin = "black",
                             actionButton("host_log","Top Host Families"),
                             actionButton("No_Unknown_host_log","Remove Unknown Hosts"),
                             actionButton("No_Unknown_phylo_log","Remove Unknown Phylotypes")
-                        ),
-                        box(title = "Phylotype Abundance by Continent",
-                            solidHeader = T,
-                            width = 6,
-                            collapsible = T,
-                            collapsed = F,
-                            uiOutput("Continent_chart"),
-                            p("Plot by Count:"),
-                            actionButton("continent_linear","Continents"),
-                            actionButton("No_Unknown_continent_linear","Remove Unknown Locations"),
-                            actionButton("No_Unknown_phylo_continent_linear","Remove Unknown Phylotypes"),
-                            br(),
-                            br(),
-                            p("Plot by Proportion:"),
-                            actionButton("continent_log","Continents"),
-                            actionButton("No_Unknown_continent_log","Remove Unknown Locations"),
-                            actionButton("No_Unknown_phylo_continent_log","Remove Unknown Phylotypes")
                         )
                       ),
                     fluidRow(
-                      box(title = "Phylotype Abundance by Host Species",
-                          solidHeader = T,
-                          width = 6,
-                          collapsible = T,
-                          collapsed = F,
-                          uiOutput("Host_chart_species"),
-                          p("Plot by Count:"),
-                          actionButton("host_linear_species","Top Host Species"),
-                          actionButton("No_Unknown_host_linear_species","Remove Unknown Hosts"),
-                          actionButton("No_Unknown_phylo_linear_species","Remove Unknown Phylotypes"),
-                          br(),
-                          br(),
-                          p("Plot by Proportion:"),
-                          actionButton("host_log_species","Top Host Species"),
-                          actionButton("No_Unknown_host_log_species","Remove Unknown Hosts"),
-                          actionButton("No_Unknown_phylo_log_species","Remove Unknown Phylotypes")
-                      ),
                       box(title = "Phylotype Abundance by Country",
                           solidHeader = T,
                           width = 6,
@@ -450,6 +447,23 @@ ui = dashboardPage(skin = "black",
                           actionButton("country_log","Top Countries"),
                           actionButton("No_Unknown_country_log","Remove Unknown Locations"),
                           actionButton("No_Unknown_phylo_country_log","Remove Unknown Phylotypes")
+                      ),
+                      box(title = "Phylotype Abundance by Continent",
+                          solidHeader = T,
+                          width = 6,
+                          collapsible = T,
+                          collapsed = F,
+                          uiOutput("Continent_chart"),
+                          p("Plot by Count:"),
+                          actionButton("continent_linear","Continents"),
+                          actionButton("No_Unknown_continent_linear","Remove Unknown Locations"),
+                          actionButton("No_Unknown_phylo_continent_linear","Remove Unknown Phylotypes"),
+                          br(),
+                          br(),
+                          p("Plot by Proportion:"),
+                          actionButton("continent_log","Continents"),
+                          actionButton("No_Unknown_continent_log","Remove Unknown Locations"),
+                          actionButton("No_Unknown_phylo_continent_log","Remove Unknown Phylotypes")
                       )
                       ),
                     # row
@@ -560,8 +574,8 @@ server = function(input, output, session) {
       
       p <- ggplot(data = world)+
           geom_sf(fill = "white", color = "darkgrey", linewidth = 0.25) +
-          geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude, y = Latitude, color = Phylotype2), size = 0.25, alpha = 0.5) +
-          geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude, y = Latitude, color = Phylotype2), size = 0.25, alpha = 0.5) +
+          geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2), size = 0.25, alpha = 0.5) +
+          geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2), size = 0.25, alpha = 0.5) +
           coord_sf(ylim = c(-70,90), expand = FALSE)+
           scale_y_continuous(breaks = c(-60, -40, -20, 0, 20, 40, 60, 80))+
           scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
@@ -1731,7 +1745,7 @@ server = function(input, output, session) {
   
 # Output download filtered data button    
   output$downloadfiltered <- downloadHandler(
-    filename = function(){"RSSCdb_data.csv"}, 
+    filename = function(){"RSSCdb_filtered_data.csv"}, 
     content = function(fname){
       
       if(input$search == 0){
@@ -1777,7 +1791,13 @@ server = function(input, output, session) {
             icon = icon(
               name = NULL,
               style = "
-                background: url('RsCartoon.svg')
+                background: url('RsCartoon.svg');
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 32px;
+                width: 32px;
+                display: block;
               "
             )
     )  
