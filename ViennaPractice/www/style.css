@@ -1,3 +1,23 @@
-#sidebarid .picker-input {
-    margin-top: -10px;
+/* pickerInput labels */
+.control-label {
+    color: white !important;
+}
+
+/* pickerInput spacing */
+.form-group.shiny-input-container {
+    margin-bottom: 0px !important;
+}
+
+/* sidebar button spacing */
+#search {
+    margin: 12px 5px 0px 15px !important;
+}
+#reset {
+    margin: 12px 5px 0px 15px !important;
+}
+#downloadfiltered {
+    margin: 12px 5px 0px 15px !important;
+}
+#downloadentire {
+    margin: 12px 5px 0px 15px !important;
 }

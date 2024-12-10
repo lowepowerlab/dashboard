@@ -160,7 +160,6 @@ ui = dashboardPage(skin = "black",
         Use the filters below to refine your search, visualize data, and download metadata. Filtration happens top down."),
           sidebarMenu(id = "sidebarid", 
            # filter drop-down menus
-           
              pickerInput(inputId = "publication_year",
                         label = "Publication Year",
                         choices = sort(unique(RSSC1$`Year published`)),
@@ -326,15 +325,16 @@ ui = dashboardPage(skin = "black",
           br(),
            div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
               downloadButton("downloadfiltered", "Download Your Filtered Dataset")),
-          br(),
-          br(),
-           div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
+          br(), 
+          div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
                downloadButton("downloadentire", "Download Entire RSSC Dataset")))
             ),
                     
         dashboardBody(use_theme(mytheme),
+          tags$head(tags$link(rel = "stylesheet", type = "text/css", href="style.css")),
                       shinyjs::useShinyjs(),
-                      includeCSS("www/style.css"),
+                      #includeCSS("www/style.css"),
+                      
                       div(id = "my app",
                     #row  
                       fluidRow(
