@@ -37,19 +37,19 @@ library(devtools)
 # create theme
 mytheme <- create_theme(
   adminlte_color(
-    light_blue = "hotpink"
+    light_blue = "#022851"
   ),
   adminlte_sidebar(
     width = "300px",
-    dark_color = "black",
-    dark_bg = "hotpink",
-    dark_hover_bg = "black",
-    dark_submenu_color = "black"
+    dark_color = "#444",
+    dark_bg = "#022851",
+    dark_hover_bg = "#444",
+    dark_submenu_color = "#444"
   ),
   adminlte_global(
-    content_bg = "#FFF",
-    box_bg = "#D8DEE9", 
-    info_box_bg = "#D8DEE9"
+    content_bg = "#B3C1D1",
+    box_bg = "#FFBF00", 
+    info_box_bg = "#FFBF00"
   )
 )
 
@@ -151,7 +151,7 @@ RSSC1 = RSSC %>%
 
 
 # ui
-ui = dashboardPage(skin = "black",
+ui = dashboardPage(#skin = "black",
         dashboardHeader(title = "Ralstonia Wilt Db", titleWidth = 250),
         dashboardSidebar(collapsed = F, width = 250,
         br(),
@@ -314,19 +314,19 @@ ui = dashboardPage(skin = "black",
                          multiple = T
           ),
           
-           div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
+           div(style="display:inline-block;width:25%;text-align:center;",
                actionButton(inputId = "search",
                label = "Filter",
                icon =icon("filter"))),
-           div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
+           div(style="display:inline-block;width:25%;text-align:center;",
                actionButton(inputId = "reset",
                label = "Select All",
                icon =icon("retweet"))),
           br(),
-           div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
+           div(style="display:inline-block;width:25%;text-align:center;",
               downloadButton("downloadfiltered", "Download Your Filtered Dataset")),
           br(), 
-          div(style="font-family:ArialMT;display:inline-block;width:25%;text-align:center;",
+          div(style="display:inline-block;width:25%;text-align:center;",
                downloadButton("downloadentire", "Download Entire RSSC Dataset")))
             ),
                     
@@ -1787,7 +1787,7 @@ server = function(input, output, session) {
     infoBox(title = "Collection",
             value = n,
             subtitle = sub,
-            color= "fuchsia",
+            color= "light-blue",
             icon = icon(
               name = NULL,
               style = "
@@ -1818,7 +1818,7 @@ server = function(input, output, session) {
     infoBox(title = "Literature",
             value = n,
             subtitle = sub,
-            color= "fuchsia",
+            color= "light-blue",
             icon = icon("newspaper")
     )
   })
@@ -1835,7 +1835,7 @@ server = function(input, output, session) {
     infoBox(title = "Distribution",
             value = n,
             subtitle = sub,
-            color= "fuchsia",
+            color= "light-blue",
             icon = icon("earth-americas")
     )
   })
@@ -1852,7 +1852,7 @@ server = function(input, output, session) {
     infoBox(title = "Host Range",
             value = n,
             subtitle = sub,
-            color= "fuchsia",
+            color= "light-blue",
             icon = icon("plant-wilt")
     )
   })
