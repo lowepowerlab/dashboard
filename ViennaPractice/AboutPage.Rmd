@@ -19,7 +19,7 @@ Navigate through the dashboard using the menu options. Each section provides spe
 
 ## About the Team 
 
-This dashboard is a collaboration between the [Lowe-Power Lab at UC Davis](https://lowepowerlab.ucdavis.edu) and the Data Intensive Biology lab at UC Davis. Version 1 of the *Ralstonia* Wilt Dashboard was developed by **Vienna Elmgreen** and **Benjamin Ramirez** under guidance by **Dr. Tessa Pierce-Ward** and **Dr. Tiffany Lowe-Power**. 
+This dashboard is a collaboration between the [Lowe-Power Lab at UC Davis](https://lowepowerlab.ucdavis.edu) and the Data Intensive Biology lab at UC Davis. Version 1 of the *Ralstonia* Wilt Dashboard was developed by **Vienna Elmgreen**, with map help and geocoding by **Benjamin Ramirez**, under guidance by **Dr. Tessa Pierce-Ward** and **Dr. Tiffany Lowe-Power**. 
 
 ## Acknowledgments
 

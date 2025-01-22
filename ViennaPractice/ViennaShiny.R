@@ -32,7 +32,7 @@ library(devtools)
 #install.packages("MetBrewer")
 #install.packages("devtools")
 #devtools::install_github("BlakeRMills/MetBrewer")
-
+#Gold color is FFBF00
 
 # create theme
 mytheme <- create_theme(
@@ -48,8 +48,8 @@ mytheme <- create_theme(
   ),
   adminlte_global(
     content_bg = "#B3C1D1",
-    box_bg = "#FFBF00", 
-    info_box_bg = "#FFBF00"
+    box_bg = "#FFFFFF", 
+    info_box_bg = "#FFFFFF"
   )
 )
 
@@ -157,7 +157,9 @@ ui = dashboardPage(#skin = "black",
         br(),
         div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
         "A georeferenced database of isolates of the", em("Ralstonia solanacearum"), "Species Complex.
-        Use the filters below to refine your search, visualize data, and download metadata. Filtration happens top down."),
+        Use the filters below to refine your search. Filtration works sequentially. Each filter refines 
+        the data and passes it to the next filter. If a filter is completely deselected, all data from 
+        that filter will be removed."),
           sidebarMenu(id = "sidebarid", 
            # filter drop-down menus
              pickerInput(inputId = "publication_year",
@@ -336,6 +338,8 @@ ui = dashboardPage(#skin = "black",
                       #includeCSS("www/style.css"),
                       
                       div(id = "my app",
+                    #row 
+                      box(htmltools::includeMarkdown("GoogleForm.Rmd"), width = 12),
                     #row  
                       fluidRow(
                         valueBoxOutput("n_Isolates", width = 3),
@@ -575,7 +579,10 @@ server = function(input, output, session) {
       p <- ggplot(data = world)+
           geom_sf(fill = "white", color = "darkgrey", linewidth = 0.25) +
           geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2), size = 0.25, alpha = 0.5) +
-          geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2), size = 0.25, alpha = 0.5) +
+          geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
+                                                                                   text = paste0("</br> Strainname: ", Strainname,
+                                                                                                 "</br> Phylotype: ", Phylotype,
+                                                                                                 "</br> Location: ", `Location Isolated`)), size = 0.25, alpha = 0.5) +
           coord_sf(ylim = c(-70,90), expand = FALSE)+
           scale_y_continuous(breaks = c(-60, -40, -20, 0, 20, 40, 60, 80))+
           scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
@@ -584,7 +591,10 @@ server = function(input, output, session) {
                 panel.background = element_rect(fill = "lightgrey"),
                 panel.border = element_rect(fill = NA))+
           scale_color_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))
-        ggplotly(p)
+      ggplotly(p, tooltip = "text") %>%
+        config(p, displaylogo = FALSE, 
+                  toImageButtonOptions = list(format= 'svg', scale= 1),
+                  modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 'hoverCompareCartesian'))
     })
   
 # Output leaflet map
@@ -718,8 +728,14 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Family", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
-      
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
+     
     })
    
      # Output plot by proportion
@@ -758,7 +774,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Family", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
    
@@ -799,7 +821,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Family", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
     
     })
 
@@ -841,7 +869,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Family", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -882,7 +916,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Family", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -924,7 +964,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Family", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
 # Output Species Chart
@@ -995,7 +1041,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Species", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1035,7 +1087,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Species", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1076,7 +1134,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Species", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1118,7 +1182,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Species", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1159,7 +1229,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Species", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1192,7 +1268,7 @@ server = function(input, output, session) {
         labs(x = "Host Species",
              y = "Relative Reporting Frequency (%)",
              fill = "Phylotype",
-             title = "Proportion: Unknown Phylotypes Removed") +
+             title = "Prop.: Unknown Phylotypes Removed") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
         coord_flip()
@@ -1201,7 +1277,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Species", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1267,7 +1349,13 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()  
       
-      ggplotly(cont_phylo) 
+      ggplotly(cont_phylo) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
       
     })
@@ -1301,7 +1389,13 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()  
       
-      ggplotly(cont_phylo) 
+      ggplotly(cont_phylo) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
       
     })
@@ -1337,7 +1431,13 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()  
       
-      ggplotly(cont_phylo) 
+      ggplotly(cont_phylo) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
       
     })
@@ -1374,7 +1474,13 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()  
       
-      ggplotly(cont_phylo) 
+      ggplotly(cont_phylo) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
       
     })
@@ -1411,7 +1517,13 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()  
       
-      ggplotly(cont_phylo) 
+      ggplotly(cont_phylo) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
       
     })
@@ -1448,7 +1560,13 @@ server = function(input, output, session) {
               legend.position = "bottom")+
         coord_flip()  
       
-      ggplotly(cont_phylo) 
+      ggplotly(cont_phylo) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
       
     })
@@ -1520,7 +1638,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Country", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1560,11 +1684,17 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Country", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
-    # Output plot by count no unknown host  
+    # Output plot by count no unknown location  
     output$No_Unknown_country_linear = renderPlotly({
       
       if(input$search == 0){
@@ -1592,7 +1722,7 @@ server = function(input, output, session) {
         labs(x = "Host Country",
              y = "Isolations Reported (#)",
              fill = "Phylotype",
-             title = "Count: Unknown Hosts Removed") +
+             title = "Count: Unknown Locations Removed") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
         coord_flip()  
@@ -1601,11 +1731,17 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Country", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
-    # Output plot by proportion no unknown host
+    # Output plot by proportion no unknown location
     output$No_Unknown_country_log = renderPlotly({
       
       if(input$search == 0){
@@ -1634,7 +1770,7 @@ server = function(input, output, session) {
         labs(x = "Host Country",
              y = "Relative Reporting Frequency (%)",
              fill = "Phylotype",
-             title = "Proportion: Unknown Hosts Removed") +
+             title = "Prop.: Unknown Locations Removed") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
         coord_flip()
@@ -1643,7 +1779,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Country", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1684,7 +1826,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Country", standoff = 10)),
           xaxis = list(title = list(text = "Isolations Reported (#)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1717,7 +1865,7 @@ server = function(input, output, session) {
         labs(x = "Host Country",
              y = "Relative Reporting Frequency (%)",
              fill = "Phylotype",
-             title = "Proportion: Unknown Phylotypes Removed") +
+             title = "Prop.: Unknown Phylotypes Removed") +
         theme(panel.background = element_rect(color = "gray"),
               legend.position = "bottom")+
         coord_flip()
@@ -1726,7 +1874,13 @@ server = function(input, output, session) {
         layout(
           yaxis = list(title = list(text = "Host Country", standoff = 10)),
           xaxis = list(title = list(text = "Relative Reporting Frequency (%)"))
-        )
+        ) %>%
+        style(hoverinfo = 'none') %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
+                                          'hoverCompareCartesian', 'hoverClosestCartesian',
+                                          'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
       
     })
     
@@ -1739,8 +1893,7 @@ server = function(input, output, session) {
       }
       data_leaflet %>% 
         dplyr::select(Index, Phylotype, Sequevar, Strainname,`Host Species (Common name)`,
-                      `Host Family`, `Host Order`, `Year isolated`, `Location Isolated`, 
-                      `Location (Country or Territory)`, `Location (continent)`,Phylotype2, `Genome Accession`, Publication)
+                      `Host Family`, `Year isolated`, `Location Isolated`, `Genome Accession`, Publication)
     },options = list(autoWidth = F,autoHeight = F, scrollX = TRUE))  
   
 # Output download filtered data button    
@@ -1788,17 +1941,17 @@ server = function(input, output, session) {
             value = n,
             subtitle = sub,
             color= "light-blue",
-            icon = icon(
-              name = NULL,
-              style = "
-                background: url('RsCartoon.svg');
-                background-size: contain;
-                background-position: center;
-                background-repeat: no-repeat;
-                height: 32px;
-                width: 32px;
-                display: block;
-              "
+            icon = icon("bacteria"
+              #name = NULL,
+              #style = "
+               # background: url('RsCartoon.svg');
+                #background-size: contain;
+                #background-position: center;
+                #background-repeat: no-repeat;
+                #height: 32px;
+                #width: 32px;
+                #display: block;
+              #"
             )
     )  
     
