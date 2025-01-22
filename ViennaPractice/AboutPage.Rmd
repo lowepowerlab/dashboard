@@ -11,7 +11,7 @@ The *Ralstonia* Wilt Dashboard integrates data from hundreds of sources. Please 
 
 ## Reporting Errors or Bugs
 
-Any issues, questions, or comments about the search can be directed to the *Ralstonia*-dashboard issue tracker on github.
+Any issues, questions, or comments about the dashboard can be directed to the *Ralstonia*-dashboard issue tracker on github or to the google form linked at the top of this page.
 
 ## How to Use
 
@@ -19,7 +19,7 @@ Navigate through the dashboard using the menu options. Each section provides spe
 
 ## About the Team 
 
-This dashboard is a collaboration between the [Lowe-Power Lab at UC Davis](https://lowepowerlab.ucdavis.edu) and the Data Intensive Biology lab at UC Davis. Version 1 of the *Ralstonia* Wilt Dashboard was developed by **Vienna Elmgreen**, with map help and geocoding by **Benjamin Ramirez**, under guidance by **Dr. Tessa Pierce-Ward** and **Dr. Tiffany Lowe-Power**. 
+This dashboard is a collaboration between the [Lowe-Power Lab at UC Davis](https://lowepowerlab.ucdavis.edu) and the Data Intensive Biology lab at UC Davis. Version 1 of the *Ralstonia* Wilt Dashboard was developed by **Vienna Elmgreen**, with map geocoding assistance by **Benjamin Ramirez**, under guidance by **Dr. Tessa Pierce-Ward** and **Dr. Tiffany Lowe-Power**. 
 
 ## Acknowledgments
 
