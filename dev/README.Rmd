@@ -1,0 +1,44 @@
+# Guide: Working on the *Ralstonia* Wilt Dashboard Locally
+
+This guide explains how to set up, open, and run the *Ralstonia* Wilt Dashboard Shiny application locally using RStudio.
+
+---
+
+## Prerequisites
+
+Before you can run the app, make you have the following installed on your machine:
+1. **Git**: To clone the repository.
+2. **R**: For running R scripts.
+3. **RStudio**: A user-friendly IDE for R.
+4. **Required R Packages**: Several packages need to be installed for the app to run properly. You can find the full list of dependencies at the top of the RWdbApp.R file.
+
+---
+
+## Steps
+
+### 1. Clone the Repository
+1. Open a terminal or Git Bash.
+2. Navigate to the directory where you want to store the project.
+3. Run the following command to clone the repository:
+   bash
+   git clone https://github.com/your-username/your-repository.git
+4. Navigate into the project directory:
+   bash
+   cd your-repository
+
+### 2. Open the Project in RStudio
+1. Open RStudio.
+2. Click on File > Open Project.
+3. Browse to the project folder and select the .Rproj file.
+4. Click Open to load the project.
+
+### 3. Run the Shiny App
+1. Locate the main file for the Shiny app, RWdbApp.R.
+2. Open the main file in RStudio.
+3. Click the Run App button in the top-right corner of the editor.
+4. The app should open in your default web browser.
+
+### 4. Install Missing Packages
+If you encounter errors about missing packages, you can manually install them using:
+   R
+   install.packages("package-name")
