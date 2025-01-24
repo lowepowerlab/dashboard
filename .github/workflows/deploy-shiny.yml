@@ -1,0 +1,24 @@
+name: Deploy Ralstonia Dashboard to shinyapps.io
+
+on:
+  push:
+     branches:
+       - main
+
+jobs:
+  deploy-shiny:
+    name: Deploy to shinyapps.io
+    runs-on: ubuntu-latest
+        
+    steps:
+      - uses: actions/checkout@v2
+      - name: deploy
+        uses: BDSI-Utwente/shinyapps-deploy-github-action@v1
+        with:
+          # account and application name (https://<accountName>.shinyapps.io/<appName>)
+          appName: RalstoniaDashboard
+          accountName: ralstoniadashboard
+
+          # token and secret obtained from https://www.shinyapps.io/admin/#/tokens
+          accountToken: ${{ secrets.SHINYAPPS_TOKEN }}
+          accountSecret: ${{ secrets.SHINYAPPS_SECRET }}

@@ -21,4 +21,3 @@ RSSC are broad-host range, generalist pathogens where individual strains have co
 ## Resources
 - Our RSSC database data is publicly available: https://www.biorxiv.org/content/10.1101/2020.07.13.189936v4.full. 
 - Our RSSC Dashboard will be modeled on the Fusarium graminearum species complex database (FGSCdb), which is built from R packages and hosted on a website as a ShinyApp: https://edelponte.shinyapps.io/FGSCdb/.
-
