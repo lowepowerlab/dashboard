@@ -25,7 +25,7 @@ library(cowplot)
 library(ggthemes)
 library(fresh)
 library(plotly)
-library(gsheet)
+#library(gsheet)
 library(googlesheets4)
 library(MetBrewer)
 library(devtools)
@@ -57,7 +57,13 @@ mytheme <- create_theme(
 world <- ne_countries(scale = "medium", returnclass = "sf") 
 
 # load data and transformations
-RSSC <- read_csv("RSSC_Final.csv")
+#RSSC <- read_csv("RSSC_Final.csv")
+
+# load data from google sheets direct link
+RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=1405797353#gid=1405797353")
+
+# load data from google sheets
+#RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?usp=sharing", sheet=2)
 
 Phylotype_selected = c("I", "II", "III", "IV")
 PandemicLineage_selected = c("1", "2")
@@ -152,7 +158,7 @@ RSSC1 = RSSC %>%
 
 # ui
 ui = dashboardPage(#skin = "black",
-        dashboardHeader(title = "Ralstonia Wilt Db", titleWidth = 250),
+        dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = 250),
         dashboardSidebar(collapsed = F, width = 250,
         br(),
         div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
