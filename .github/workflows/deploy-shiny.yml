@@ -17,6 +17,7 @@ jobs:
         with:
           # account and application name (https://<accountName>.shinyapps.io/<appName>)
           appName: RalstoniaDashboard
+          appDir: RalstoniaWiltDashboard
           accountName: ralstoniadashboard
 
           # token and secret obtained from https://www.shinyapps.io/admin/#/tokens
