@@ -1,0 +1,118 @@
+/* Import Roboto Fonts */
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
+/* body font - should apply to all */
+body {
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 400;
+  font-style: normal !important;
+}
+
+/* body info boxes padding */
+.info-box-text {
+  margin-top: 5px !important;
+}
+
+/* body button padding */
+.btn {
+  padding: 6px 6px !important;
+}
+
+/* pickerInput labels */
+.control-label {
+    color: white !important;
+}
+
+/* pickerInput spacing */
+.form-group.shiny-input-container {
+    margin-bottom: 0px !important;
+}
+
+/* sidebar button spacing */
+#search {
+    margin: 12px 5px 0px 15px !important;
+    padding: 6px 12px !important;
+}
+#reset {
+    margin: 12px 5px 0px 15px !important;
+    padding: 6px 12px !important;
+}
+#downloadfiltered {
+    margin: 12px 5px 0px 15px !important;
+    padding: 6px 12px !important;
+}
+#downloadentire {
+    margin: 12px 5px 0px 15px !important;
+    padding: 6px 12px !important;
+}
