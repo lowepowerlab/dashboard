@@ -1,0 +1,10 @@
+name: RalstoniaDashboard
+title: RalstoniaDashboard
+username: ralstoniadashboard
+account: ralstoniadashboard
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13849273
+bundleId: 9730160
+url: https://ralstoniadashboard.shinyapps.io/RalstoniaDashboard/
+version: 1

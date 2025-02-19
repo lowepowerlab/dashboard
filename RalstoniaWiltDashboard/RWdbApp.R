@@ -25,14 +25,11 @@ library(cowplot)
 library(ggthemes)
 library(fresh)
 library(plotly)
-#library(gsheet)
+library(gsheet)
 library(googlesheets4)
 library(MetBrewer)
 library(devtools)
-#install.packages("MetBrewer")
-#install.packages("devtools")
-#devtools::install_github("BlakeRMills/MetBrewer")
-#Gold color is FFBF00
+library(usethis)
 
 # create theme
 mytheme <- create_theme(
@@ -157,7 +154,7 @@ RSSC1 = RSSC %>%
 
 
 # ui
-ui = dashboardPage(#skin = "black",
+ui <- dashboardPage(#skin = "black",
         dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = 250),
         dashboardSidebar(collapsed = F, width = 250,
         br(),
@@ -341,7 +338,6 @@ ui = dashboardPage(#skin = "black",
         dashboardBody(use_theme(mytheme),
           tags$head(tags$link(rel = "stylesheet", type = "text/css", href="style.css")),
                       shinyjs::useShinyjs(),
-                      #includeCSS("www/style.css"),
                       
                       div(id = "my app",
                     #row 
@@ -379,30 +375,6 @@ ui = dashboardPage(#skin = "black",
                                     algorithm that assigned latitude/longitude coordinates to written locations.")
                             )
                       ),
-                    #row  
-                      # fluidRow(
-                      #   box(title = "Geographic Distribution of Reported RSSC Isolates - Leaflet",
-                      #       solidHeader = T,
-                      #       width = 12,
-                      #       collapsible = T,
-                      #       leafletOutput("NOmap_phylo"))
-                      #   ),
-                    #row
-                      # fluidRow(
-                      #   box(title = "How to Interpret this Map",
-                      #               "This map shows the reported isolation locations of", em("Ralstonia"), "and 
-                      #               each datapoint should be regarded with healthy skepticism. Isolation of 
-                      #               Ralstonia at a location does not mean it is currently established at that
-                      #               location; eradication has been successful in certain cases (e.g. in Sweden) 
-                      #               and some isolations might be from imported plants that were quarantined/destroyed. 
-                      #               Additionally, our meta-analysis database likely contains a low incidence of 
-                      #               errors from the primary literature, from our data entry, or from the geocoding 
-                      #               algorithm that assigned latitude/longitude coordinates to written locations.",
-                      #       solidHeader = T,
-                      #       width = 12,
-                      #       collapsible = T,
-                      #       )
-                      #  ),
                     # row
                       fluidRow(
                         box(title = "Phylotype Abundance by Host Species",
@@ -500,7 +472,7 @@ ui = dashboardPage(#skin = "black",
 
 # server
 
-server = function(input, output, session) {
+server <- function(input, output, session) {
   
   observeEvent(input$reset, {
     shinyjs::reset("publication_year")
@@ -518,57 +490,68 @@ server = function(input, output, session) {
   
   
   filtered_PublicationYear_type <- eventReactive(input$search,{
+    req(input$publication_year)
     RSSC1 %>%
       filter(`Year published` %in% input$publication_year)
     
   })
   
   filtered_IsolationYear_type <- eventReactive(input$search,{
+    req(input$isolation_year)
     filtered_PublicationYear_type() %>%
       filter(`Year isolated` %in% input$isolation_year)
   })
   
   filtered_Phylotype_type <- eventReactive(input$search,{
+    req(input$phylo)
     filtered_IsolationYear_type() %>%
       filter(Phylotype3 %in% input$phylo)
   })
   
   filtered_Sequevar_type <- eventReactive(input$search,{
+    req(input$sequevar)
     filtered_Phylotype_type() %>%
       filter(Sequevar3 %in% input$sequevar)
   })
   
   filtered_PandemicLineage_type <- eventReactive(input$search,{
+    req(input$pandemic_lineage)
     filtered_Sequevar_type() %>%
       filter(Sequevar2 %in% input$pandemic_lineage)
   })
   
   filtered_HostFamily_type <- eventReactive(input$search,{
+    req(input$host_family)
     filtered_PandemicLineage_type() %>%
       filter(`Host Family` %in% input$host_family)
   })
   
   filtered_HostSpecies_type <- eventReactive(input$search,{
+    req(input$host_species)
     filtered_HostFamily_type() %>%
       filter(`Host Species (Common name)` %in% input$host_species)
   })
   
   filtered_VegProp_type <- eventReactive(input$search,{
+    req(input$vegprophost)
     filtered_HostSpecies_type() %>%
       filter(VPH %in% input$vegprophost)
   })
   
   filtered_Continent_type <- eventReactive(input$search,{
+    req(input$continent)
     filtered_VegProp_type() %>%
       filter(`Location (continent)` %in% input$continent)
   })
   
   filtered_Country_type <- eventReactive(input$search,{
+    req(input$country)
     filtered_Continent_type() %>%
       filter(`Location (Country or Territory)` %in% input$country)
   })
   
   filtered_Genome_type <- eventReactive(input$search,{
+    req(input$genome)
     filtered_Country_type() %>%
       filter(Genome2 %in% input$genome)
   })
@@ -576,11 +559,11 @@ server = function(input, output, session) {
 # Output ggplot map
     output$map_phylo <- renderPlotly({
       
-       if(input$search == 0){
-         data_leaflet = RSSC1
-       }else{
-         data_leaflet = filtered_Genome_type()
-       }
+      data_leaflet <- if (isolate(input$search) == 0) {
+        data_leaflet <- RSSC1
+      } else {
+        data_leaflet <- filtered_Genome_type()
+      }
       
       p <- ggplot(data = world)+
           geom_sf(fill = "white", color = "darkgrey", linewidth = 0.25) +
@@ -602,68 +585,6 @@ server = function(input, output, session) {
                   toImageButtonOptions = list(format= 'svg', scale= 1),
                   modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 'hoverCompareCartesian'))
     })
-  
-# Output leaflet map
-  #   output$NOmap_phylo =  renderLeaflet({
-  #   
-  #   if(input$search == 0){
-  #     data_leaflet = RSSC1
-  #   }else{
-  #     data_leaflet = filtered_Genome_type()
-  #   }
-  #   if(nrow(data_leaflet) == 0){
-  #     leaflet(a)%>%
-  #       addTiles()
-  #   }else{
-  #     
-  #     factpal <- colorFactor(palette = "Set1", domain = unique(RSSC1$Phylotype2))
-  #     
-  #     leaflet(data_leaflet,
-  #             width = "100%",
-  #             height = 15) %>%
-  #       setView(-0, 15, zoom = 2) %>%
-  #       addTiles() %>%
-  #       
-  #       addCircleMarkers(
-  #         radius = 3,
-  #         stroke = FALSE,
-  #         lng = ~Longitude,
-  #         lat =~Latitude,
-  #         color = ~factpal(Phylotype2),
-  #         fillOpacity = 1,
-  #         label = paste(data_leaflet$Phylotype2,"- click for details"),
-  #         labelOptions = labelOptions(style = list("font-style" = "italic")),
-  #         popup = paste("Phylotype:</b>", data_leaflet$Phylotype2,
-  #                       "<br>",
-  #                       "Host:", data_leaflet$`Host Species (Common name)`,
-  #                       "<br>",
-  #                       "Location:", data_leaflet$`Location Isolated`,
-  #                       "<br>",
-  #                       "Year of Collection:", data_leaflet$`Year isolated`,
-  #                       "<br>",
-  #                       "Reference:", data_leaflet$`Publication`)
-  #       ) %>%
-  #       addLegend("bottomright",
-  #                 pal = factpal,
-  #                 values = ~Phylotype2,
-  #                 title = "Phylotype",
-  #                 opacity = 1
-  #       ) %>%
-  #       addLayersControl(
-  #         baseGroups = c("Default", "Aerial", "Terrain"),
-  #         overlayGroups = "Phylotype2",
-  #         options = layersControlOptions(collapsed = TRUE)
-  #       ) %>%
-  #       addEasyButton(easyButton(
-  #         icon="fa-globe", title="Back to initial view",
-  #         onClick=JS("function(btn, map){ map.setZoom(2); }"))) %>%
-  #       addProviderTiles("Esri.WorldImagery", group = "Aerial") %>%
-  #       addProviderTiles("OpenTopoMap", group = "Terrain") %>%
-  #       addScaleBar("bottomleft") %>%
-  #       addProviderTiles(providers$CartoDB.Positron, group = "Default")
-  #     
-  #   }
-  # })
 
 # Output Host Charts  
     
@@ -674,44 +595,50 @@ server = function(input, output, session) {
     
    # Button Observations
     observeEvent(input$host_linear, { 
+      req(input$host_linear)
       output$Host_chart <- renderUI({ plotlyOutput("plot_linear") })
     })
     
     observeEvent(input$host_log, { 
+      req(input$host_log)
       output$Host_chart <- renderUI({ plotlyOutput("plot_log") })
     })
     
-    observeEvent(input$No_Unknown_host_linear, { 
+    observeEvent(input$No_Unknown_host_linear, {
+      req(input$No_Unknown_host_linear)
       output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_plot_linear") })
     })
     
     observeEvent(input$No_Unknown_host_log, { 
+      req(input$No_Unknown_host_log)
       output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_plot_log") })
     })
     
     observeEvent(input$No_Unknown_phylo_linear, { 
+      req(input$No_Unknown_phylo_linear)
       output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_linear") })
     })
     
     observeEvent(input$No_Unknown_phylo_log, { 
+      req(input$No_Unknown_phylo_log)
       output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_log") })
     })
     
 # Output plots  
     # Output plot by count
       output$plot_linear = renderPlotly({
-      
-      if(input$search == 0){
-        data_leaflet = RSSC1
-      }else{
-        data_leaflet = filtered_Genome_type()
-      }
-   
+        
+      data_leaflet <- if (isolate(input$search) == 0) {
+        data_leaflet <- RSSC1
+        } else {
+          data_leaflet <- filtered_Genome_type()
+        }
+        
       topten <- data_leaflet %>%
        count(`Host Family`, sort = T, name = "myCount") %>%
-        slice_max(myCount, n=10) %>%
+        slice_max(myCount, n=10, with_ties = FALSE) %>%
         as.data.frame()
-      
+        
       host_phylo = data_leaflet %>%
         filter(`Host Family` %in% topten$`Host Family`) %>%
         group_by(`Host Family`,Phylotype2) %>%  
@@ -747,15 +674,15 @@ server = function(input, output, session) {
      # Output plot by proportion
     output$plot_log = renderPlotly({
       
-      if(input$search == 0){
-        data_leaflet = RSSC1
-      }else{
-        data_leaflet = filtered_Genome_type()
+      data_leaflet <- if (isolate(input$search) == 0) {
+        data_leaflet <- RSSC1
+      } else {
+        data_leaflet <- filtered_Genome_type()
       }
       
       topten2 <- data_leaflet %>%
         count(`Host Family`, sort = T, name = "myCount") %>%
-        slice_max(myCount, n=10) %>%
+        slice_max(myCount, n=10, with_ties = FALSE) %>%
         as.data.frame()
       
       host_phylo = data_leaflet %>% 
@@ -793,15 +720,16 @@ server = function(input, output, session) {
      # Output plot by count no unknown host  
     output$No_Unknown_plot_linear = renderPlotly({
       
-      if(input$search == 0){
-        data_leaflet = RSSC1
-      }else{
-        data_leaflet = filtered_Genome_type()
+      data_leaflet <- if (isolate(input$search) == 0) {
+        data_leaflet <- RSSC1
+      } else {
+        data_leaflet <- filtered_Genome_type()
       }
+      
       topten3 <- data_leaflet %>%
         filter(`Host Family` != "Unknown") %>%
         count(`Host Family`, sort = T, name = "myCount") %>%
-        slice_max(myCount, n=10) %>%
+        slice_max(myCount, n=10, with_ties = FALSE) %>%
         as.data.frame()
     
      host_phylo = data_leaflet %>%
@@ -840,16 +768,16 @@ server = function(input, output, session) {
   # Output plot by proportion no unknown host
     output$No_Unknown_plot_log = renderPlotly({
       
-      if(input$search == 0){
-        data_leaflet = RSSC1
-      }else{
-        data_leaflet = filtered_Genome_type()
+      data_leaflet <- if (isolate(input$search) == 0) {
+        data_leaflet <- RSSC1
+      } else {
+        data_leaflet <- filtered_Genome_type()
       }
       
       topten4 <- data_leaflet %>%
         filter(`Host Family` != "Unknown") %>%
         count(`Host Family`, sort = T, name = "myCount") %>%
-        slice_max(myCount, n=10) %>%
+        slice_max(myCount, n=10, with_ties = FALSE) %>%
         as.data.frame()
       
       host_phylo = data_leaflet %>%
@@ -888,15 +816,16 @@ server = function(input, output, session) {
     # Output plot by count no unknown phylotype  
     output$No_Unknown_phylo_linear = renderPlotly({
       
-      if(input$search == 0){
-        data_leaflet = RSSC1
-      }else{
-        data_leaflet = filtered_Genome_type()
+      data_leaflet <- if (isolate(input$search) == 0) {
+        data_leaflet <- RSSC1
+      } else {
+        data_leaflet <- filtered_Genome_type()
       }
+      
       topten5 <- data_leaflet %>%
         filter(Phylotype2 != "Unknown") %>%
         count(`Host Family`, sort = T, name = "myCount") %>%
-        slice_max(myCount, n=10) %>%
+        slice_max(myCount, n=10, with_ties = FALSE) %>%
         as.data.frame()
       
       host_phylo = data_leaflet %>%
@@ -987,26 +916,32 @@ server = function(input, output, session) {
     
     # Button Observations
     observeEvent(input$host_linear_species, { 
+      req(input$host_linear_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("plot_linear_species") })
     })
     
     observeEvent(input$host_log_species, { 
+      req(input$host_log_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("plot_log_species") })
     })
     
     observeEvent(input$No_Unknown_host_linear_species, { 
+      req(input$No_Unknown_host_linear_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_plot_linear_species") })
     })
     
     observeEvent(input$No_Unknown_host_log_species, { 
+      req(input$No_Unknown_host_log_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_plot_log_species") })
     })
     
     observeEvent(input$No_Unknown_phylo_linear_species, { 
+      req(input$No_Unknown_phylo_linear_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_phylo_linear_species") })
     })
     
     observeEvent(input$No_Unknown_phylo_log_species, { 
+      req(input$No_Unknown_phylo_log_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_phylo_log_species") })
     })
     
@@ -1302,26 +1237,32 @@ server = function(input, output, session) {
     
     # Button Observations
     observeEvent(input$continent_linear, { 
+      req(input$continent_linear)
       output$Continent_chart <- renderUI({ plotlyOutput("cont_linear") })
     })
     
     observeEvent(input$continent_log, { 
+      req(input$continent_log)
       output$Continent_chart <- renderUI({ plotlyOutput("cont_log") })
     })
     
     observeEvent(input$No_Unknown_continent_linear, { 
+      req(input$No_Unknown_continent_linear)
       output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_cont_linear") })
     })
     
     observeEvent(input$No_Unknown_continent_log, { 
+      req(input$No_Unknown_continent_log)
       output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_cont_log") })
     })
   
     observeEvent(input$No_Unknown_phylo_continent_linear, { 
+      req(input$No_Unknown_phylo_continent_linear)
       output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_cont_linear") })
     })
     
     observeEvent(input$No_Unknown_phylo_continent_log, { 
+      req(input$No_Unknown_phylo_continent_log)
       output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_cont_log") })
     })
     
@@ -1584,26 +1525,32 @@ server = function(input, output, session) {
     
     # Button Observations
     observeEvent(input$country_linear, { 
+      req(input$country_linear)
       output$Country_chart <- renderUI({ plotlyOutput("country_linear") })
     })
     
     observeEvent(input$country_log, { 
+      req(input$country_log)
       output$Country_chart <- renderUI({ plotlyOutput("country_log") })
     })
     
     observeEvent(input$No_Unknown_country_linear, { 
+      req(input$No_Unknown_country_linear)
       output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_country_linear") })
     })
     
     observeEvent(input$No_Unknown_country_log, { 
+      req(input$No_Unknown_country_log)
       output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_country_log") })
     })
     
     observeEvent(input$No_Unknown_phylo_country_linear, { 
+      req(input$No_Unknown_phylo_country_linear)
       output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_country_linear") })
     })
     
     observeEvent(input$No_Unknown_phylo_country_log, { 
+      req(input$No_Unknown_phylo_country_log)
       output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_country_log") })
     })
     
@@ -1948,16 +1895,6 @@ server = function(input, output, session) {
             subtitle = sub,
             color= "light-blue",
             icon = icon("bacteria"
-              #name = NULL,
-              #style = "
-               # background: url('RsCartoon.svg');
-                #background-size: contain;
-                #background-position: center;
-                #background-repeat: no-repeat;
-                #height: 32px;
-                #width: 32px;
-                #display: block;
-              #"
             )
     )  
     
