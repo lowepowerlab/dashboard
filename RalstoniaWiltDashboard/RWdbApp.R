@@ -559,7 +559,7 @@ server <- function(input, output, session) {
 # Output ggplot map
     output$map_phylo <- renderPlotly({
       
-      data_leaflet <- if (isolate(input$search) == 0) {
+      data_leaflet <- if (input$search == 0) {
         data_leaflet <- RSSC1
       } else {
         data_leaflet <- filtered_Genome_type()
@@ -628,7 +628,7 @@ server <- function(input, output, session) {
     # Output plot by count
       output$plot_linear = renderPlotly({
         
-      data_leaflet <- if (isolate(input$search) == 0) {
+      data_leaflet <- if (input$search == 0) {
         data_leaflet <- RSSC1
         } else {
           data_leaflet <- filtered_Genome_type()
