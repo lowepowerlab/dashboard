@@ -1,4 +1,4 @@
-# load packages
+# load packages needed for Shiny App
 library(tidyverse) 
 library(janitor)
 library(readxl)
@@ -31,37 +31,24 @@ library(MetBrewer)
 library(devtools)
 library(usethis)
 
-# create theme
-mytheme <- create_theme(
-  adminlte_color(
-    light_blue = "#022851"
-  ),
-  adminlte_sidebar(
-    width = "300px",
-    dark_color = "#444",
-    dark_bg = "#022851",
-    dark_hover_bg = "#444",
-    dark_submenu_color = "#444"
-  ),
-  adminlte_global(
-    content_bg = "#B3C1D1",
-    box_bg = "#FFFFFF", 
-    info_box_bg = "#FFFFFF"
-  )
-)
+# create color theme for dashboard
+mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
+                        adminlte_sidebar(width = "300px",dark_color = "#444",
+                                         dark_bg = "#022851",dark_hover_bg = "#444",
+                                         dark_submenu_color = "#444"),
+                        adminlte_global(content_bg = "#B3C1D1",box_bg = "#FFFFFF",
+                                        info_box_bg = "#FFFFFF"))
 
-# load map
+# load map layer for main plot
 world <- ne_countries(scale = "medium", returnclass = "sf") 
 
-# load data and transformations
+# load data from csv
 #RSSC <- read_csv("RSSC_Final.csv")
 
-# load data from google sheets direct link
+# load data from Google sheets direct link
 RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=1405797353#gid=1405797353")
 
-# load data from google sheets
-#RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?usp=sharing", sheet=2)
-
+# define data groups
 Phylotype_selected = c("I", "II", "III", "IV")
 PandemicLineage_selected = c("1", "2")
 VegetativelyPropagatedHosts_selected = c("Anthurium sp. (Laceleaf)", "Curcuma longa (Turmeric)", "Curcuma aromatica (Wild Turmeric)",
@@ -72,49 +59,40 @@ VegetativelyPropagatedHosts_selected = c("Anthurium sp. (Laceleaf)", "Curcuma lo
                                   "Pelargonium x hortorum", "Pelargonium zonale (Geranium)", "Rosa sp. (Rose)",
                                   "Solanum tuberosum (Potato)", "Zingiber cassumunar (Cassumunar Ginger)", "Zingiber mioga (Myoga Ginger)",
                                   "Zingiber officinale (Ginger)")
-
+# data transformations
 RSSC1 = RSSC %>% 
   mutate(Phylotype2 = Phylotype) %>%
   mutate(Phylotype2 = case_when(!is.na(Phylotype2) ~ Phylotype2,
                                 is.na(Phylotype2) ~ "Unknown")) %>% 
-  
   mutate(Sequevar2 = Sequevar) %>%
   mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
                                is.na(Sequevar2) ~ "Unknown")) %>%
-  mutate(Sequevar2 = case_when( Sequevar2 %in% PandemicLineage_selected ~ Sequevar2,
-                      is.na(Sequevar2) ~ "Unknown",
-                      !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
-  
+  mutate(Sequevar2 = case_when(Sequevar2 %in% PandemicLineage_selected ~ Sequevar2,
+                               is.na(Sequevar2) ~ "Unknown",
+                               !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
   mutate(Sequevar3 = Sequevar) %>%
   mutate(Sequevar3 = case_when(!is.na(Sequevar3) ~ Sequevar3,
                                is.na(Sequevar3) ~ "Unknown")) %>%
-  
   mutate(Genome2 = `Genome Accession`) %>%
   mutate(Genome2 = case_when(!is.na(Genome2) ~ "Yes",
-                                is.na(Genome2) ~ "No")) %>% 
-  
+                             is.na(Genome2) ~ "No")) %>% 
   mutate(Latitude2 = `Lat (AI)`) %>%
   mutate(Latitude2 = case_when(!is.na(Latitude2) ~ Latitude2,
                                is.na(Latitude2) ~ Latitude2)) %>%
   mutate(Longitude2 = `Long (AI)`) %>%
   mutate(Longitude2 = case_when(!is.na(Longitude2) ~ Longitude2,
-                               is.na(Longitude2) ~ Longitude2)) %>%
-  
-   unite("latlong", Latitude2, Longitude2, sep ="/", remove = F ) %>% 
-   group_by(latlong) %>% 
-   mutate(n = n(),
-          Latitude2 = case_when(n > 1 ~ rnorm(n, Latitude2,0.01),
-                               n == 1 ~ Latitude2),
-          Longitude2 = case_when(n > 1 ~ rnorm(n, Longitude2,0.01),
-                                n == 1 ~ Longitude2)
-         ) %>%
-  
+                                is.na(Longitude2) ~ Longitude2)) %>%
+  unite("latlong", Latitude2, Longitude2, sep ="/", remove = F ) %>% 
+  group_by(latlong) %>% 
+  mutate(n = n(),
+         Latitude2 = case_when(n > 1 ~ rnorm(n, Latitude2,0.01),n == 1 ~ Latitude2),
+         Longitude2 = case_when(n > 1 ~ rnorm(n, Longitude2,0.01),n == 1 ~ Longitude2)) %>%
   mutate(VPH = `Host Species (Common name)`) %>%
   mutate(VPH = case_when(!is.na(VPH) ~ VPH,
-                               is.na(VPH) ~ "Unknown Host")) %>%
+                         is.na(VPH) ~ "Unknown Host")) %>%
   mutate(VPH = case_when(VPH %in% VegetativelyPropagatedHosts_selected ~ VPH,
-                      is.na(VPH) ~ "Unknown Host",
-                      !is.na(VPH) & !VPH %in% VegetativelyPropagatedHosts_selected ~ "Non VP Host")) %>%
+                         is.na(VPH) ~ "Unknown Host",
+                         !is.na(VPH) & !VPH %in% VegetativelyPropagatedHosts_selected ~ "Non VP Host")) %>%
   mutate(VPH = recode(VPH, "Musa acuminata (Banana)" = "Banana/Plantain spp.", 
                            "Musa paradisiaca (Plantain)" = "Banana/Plantain spp.",
                            "Musa sp. (Banana Plant)" = "Banana/Plantain spp.", 
@@ -124,37 +102,27 @@ RSSC1 = RSSC %>%
                            "Pelargonium x asperum" = "Geranium spp.",
                            "Pelargonium x hortorum" = "Geranium spp.", 
                            "Pelargonium zonale (Geranium)" = "Geranium spp.")) %>%
-  
   mutate(`Host Species (Common name)` = case_when(!is.na(`Host Species (Common name)`) ~ `Host Species (Common name)`,
                                                   is.na(`Host Species (Common name)`) ~ "Unknown")) %>%
-
   mutate(`Host Species` = case_when(!is.na(`Host Species`) ~ `Host Species`,
-                                                  is.na(`Host Species`) ~ "Unknown")) %>%   
-   
+                                    is.na(`Host Species`) ~ "Unknown")) %>%   
   mutate(`Host Family` = case_when(!is.na(`Host Family`) ~ `Host Family`,
-                                                  is.na(`Host Family`) ~ "Unknown")) %>%
-  
+                                   is.na(`Host Family`) ~ "Unknown")) %>%
   mutate(`Year published` = case_when(!is.na(`Year published`) ~ as.character(`Year published`),
-                                                  is.na(`Year published`) ~ "Unknown")) %>%
-  
+                                      is.na(`Year published`) ~ "Unknown")) %>%
   mutate(`Year isolated` = case_when(!is.na(`Year isolated`) ~ `Year isolated`,
-                                                  is.na(`Year isolated`) ~ "Unknown")) %>%
-  
+                                     is.na(`Year isolated`) ~ "Unknown")) %>%
   mutate(`Location (continent)` = case_when(!is.na(`Location (continent)`) ~ `Location (continent)`,
-                                     is.na(`Location (continent)`) ~ "Unknown")) %>%
-  
+                                            is.na(`Location (continent)`) ~ "Unknown")) %>%
   mutate(`Location (Country or Territory)` = case_when(!is.na(`Location (Country or Territory)`) ~ `Location (Country or Territory)`,
-                                     is.na(`Location (Country or Territory)`) ~ "Unknown")) %>%
-  
+                                                       is.na(`Location (Country or Territory)`) ~ "Unknown")) %>%
   group_by(Phylotype2) %>% 
-  mutate(n_iso_per_Phylotype = n(),
-         Phylotype3 = paste(Phylotype2," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
+  mutate(n_iso_per_Phylotype = n(),Phylotype3 = paste(Phylotype2," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
   ungroup() %>% 
   dplyr::select(-n, -latlong)
 
-
 # ui
-ui <- dashboardPage(#skin = "black",
+ui <- dashboardPage(
         dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = 250),
         dashboardSidebar(collapsed = F, width = 250,
         br(),
@@ -164,181 +132,101 @@ ui <- dashboardPage(#skin = "black",
         the data and passes it to the next filter. If a filter is completely deselected, all data from 
         that filter will be removed."),
           sidebarMenu(id = "sidebarid", 
-           # filter drop-down menus
+            # picker inputs for filter function drop-down menus
              pickerInput(inputId = "publication_year",
-                        label = "Publication Year",
-                        choices = sort(unique(RSSC1$`Year published`)),
-                        options = list(
-                        `live-search` = T,  
-                        `actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = sort(unique(RSSC1$`Year published`)),
-                        multiple = T
-            ),
-            
-           pickerInput(inputId = "isolation_year",
-                        label = "Isolation Year",
-                        choices = sort(unique(RSSC1$`Year isolated`)),
-                        options = list(
-                        `live-search` = T,
-                        `actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = sort(unique(RSSC1$`Year isolated`)),
-                        multiple = T
-            ),
-           
-            pickerInput(inputId = "phylo",
-                        label = "Phylotype",
-                        choices = sort(unique(RSSC1$Phylotype3)),
-                        options = list(`actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = unique(RSSC1$Phylotype3),
-                        multiple = T
-            ),  
-            
-           pickerInput(inputId = "sequevar",
-                       label = "Sequevar",
-                       choices = sort(unique(RSSC1$Sequevar3)),
-                       options = list(`actions-box` = T,
-                                      size = 10,
-                                      `selected-text-format` = "count > 1"
-                       ),
-                       selected = unique(RSSC1$Sequevar3),
-                       multiple = T
-            ), 
-           
-           pickerInput(inputId = "pandemic_lineage",
-                        label = "Pandemic Lineages",
-                        choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
-                        options = list(
-                        `actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
-                        multiple = T
-            ),
-            
-           pickerInput(inputId = "host_family",
-                        label = "Host Family",
-                        choices = sort(unique(RSSC1$`Host Family`)),
-                        options = list(
-                        `live-search` = T,
-                        `actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = sort(unique(RSSC1$`Host Family`)),
-                        multiple = T
-            ),
-           
-           pickerInput(inputId = "host_species",
-                        label = "Host Species",
-                        choices = sort(unique(RSSC1$`Host Species (Common name)`)),
-                        options = list(
-                        `live-search` = T,
-                        `actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = sort(unique(RSSC1$`Host Species (Common name)`)),
-                        multiple = T
-            ), 
-            
-           pickerInput(inputId = "vegprophost",
-                        label = "Vegetatively Propagated (VP) Hosts",
-                        choices = list(
-                          Araceae = c("Anthurium sp. (Laceleaf)", "Epipremnum aureum (Pothos)"),
-                          Geraniacea = list("Geranium spp."),
-                          Musaceae = list("Banana/Plantain spp."),
-                          Rosaceae = list("Rosa sp. (Rose)"),
-                          Solanaceae = list("Solanum tuberosum (Potato)"),
-                          Zingiberaceae = c("Curcuma aromatica (Wild Turmeric)", "Curcuma longa (Turmeric)",
-                                            "Curcuma zedoaria (White Turmeric)", "Curcuma aeruginoa (Blue and Pink Ginger)",
-                                            "Kaempferia galanga (Aromatic Ginger)", "Zingiber cassumunar (Cassumunar Ginger)",
-                                            "Curcuma mangga (Mango Ginger)", "Zingiber mioga (Myoga Ginger)", "Zingiber officinale (Ginger)"),
-                          Other = c("Non VP Host", "Unknown Host")
-                          ),
-                        options = list(
-                        `live-search` = T,
-                        `actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = c("Anthurium sp. (Laceleaf)","Epipremnum aureum (Pothos)","Geranium spp.","Banana/Plantain spp.",
+                         label = "Publication Year",
+                         choices = sort(unique(RSSC1$`Year published`)),
+                         options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = sort(unique(RSSC1$`Year published`)),
+                         multiple = T),
+             pickerInput(inputId = "isolation_year",
+                         label = "Isolation Year",
+                         choices = sort(unique(RSSC1$`Year isolated`)),
+                         options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = sort(unique(RSSC1$`Year isolated`)),
+                         multiple = T),
+             pickerInput(inputId = "phylo",
+                         label = "Phylotype",
+                         choices = sort(unique(RSSC1$Phylotype3)),
+                         options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = unique(RSSC1$Phylotype3),
+                         multiple = T),
+             pickerInput(inputId = "sequevar",
+                         label = "Sequevar",
+                         choices = sort(unique(RSSC1$Sequevar3)),
+                         options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = unique(RSSC1$Sequevar3),multiple = T),
+             pickerInput(inputId = "pandemic_lineage",
+                         label = "Pandemic Lineages",
+                         choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
+                         options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
+                         multiple = T),
+             pickerInput(inputId = "host_family",
+                         label = "Host Family",
+                         choices = sort(unique(RSSC1$`Host Family`)),
+                         options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = sort(unique(RSSC1$`Host Family`)),
+                         multiple = T),
+             pickerInput(inputId = "host_species",
+                         label = "Host Species",
+                         choices = sort(unique(RSSC1$`Host Species (Common name)`)),
+                         options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = sort(unique(RSSC1$`Host Species (Common name)`)),
+                         multiple = T), 
+             pickerInput(inputId = "vegprophost",
+                         label = "Vegetatively Propagated (VP) Hosts",
+                         choices = list(Araceae = c("Anthurium sp. (Laceleaf)", "Epipremnum aureum (Pothos)"),
+                                        Geraniacea = list("Geranium spp."),
+                                        Musaceae = list("Banana/Plantain spp."),
+                                        Rosaceae = list("Rosa sp. (Rose)"),
+                                        Solanaceae = list("Solanum tuberosum (Potato)"),
+                                        Zingiberaceae = c("Curcuma aromatica (Wild Turmeric)", "Curcuma longa (Turmeric)",
+                                         "Curcuma zedoaria (White Turmeric)", "Curcuma aeruginoa (Blue and Pink Ginger)",
+                                         "Kaempferia galanga (Aromatic Ginger)", "Zingiber cassumunar (Cassumunar Ginger)",
+                                         "Curcuma mangga (Mango Ginger)", "Zingiber mioga (Myoga Ginger)", "Zingiber officinale (Ginger)"),
+                                        Other = c("Non VP Host", "Unknown Host")),
+                         options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = c("Anthurium sp. (Laceleaf)","Epipremnum aureum (Pothos)","Geranium spp.","Banana/Plantain spp.",
                                      "Rosa sp. (Rose)","Solanum tuberosum (Potato)","Curcuma aromatica (Wild Turmeric)",
                                      "Curcuma longa (Turmeric)","Curcuma zedoaria (White Turmeric)","Curcuma aeruginoa (Blue and Pink Ginger)",
                                      "Kaempferia galanga (Aromatic Ginger)","Zingiber cassumunar (Cassumunar Ginger)",
                                      "Curcuma mangga (Mango Ginger)","Zingiber mioga (Myoga Ginger)","Zingiber officinale (Ginger)",
                                      "Non VP Host", "Unknown Host"),
-                        multiple = T
-            ),
-           
-            pickerInput(inputId = "continent",
-                        label = "Continent",
-                        choices = sort(unique(RSSC1$`Location (continent)`)),
-                        options = list(
-                        `live-search` = T,  
-                        `actions-box` = T,
-                        size = 10,
-                        `selected-text-format` = "count > 1"
-                        ),
-                        selected = sort(unique(RSSC1$`Location (continent)`)),
-                        multiple = T
-            ),
-           
-            pickerInput(inputId = "country",
-                        label = "Country or Territory",
-                        choices = sort(unique(RSSC1$`Location (Country or Territory)`)),
-                        options = list(
-                        `live-search` = T,  
-                        `actions-box` = T,
-                        size = 10,
-                       `selected-text-format` = "count > 1"
-                        ),
-                        selected = sort(unique(RSSC1$`Location (Country or Territory)`)),
-                        multiple = T
-            ),
-           
-           pickerInput(inputId = "genome",
-                        label = "Genome Available on NCBI?",
-                        choices = c("Yes", "No"),
-                        options = list(
-                        `live-search` = F,  
-                        `actions-box` = T,
-                         size = 10,
-                        `selected-text-format` = "count > 1"
-                      ),
+                         multiple = T),
+             pickerInput(inputId = "continent",
+                         label = "Continent",
+                         choices = sort(unique(RSSC1$`Location (continent)`)),
+                         options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = sort(unique(RSSC1$`Location (continent)`)),
+                         multiple = T),
+             pickerInput(inputId = "country",
+                         label = "Country or Territory",
+                         choices = sort(unique(RSSC1$`Location (Country or Territory)`)),
+                         options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                         selected = sort(unique(RSSC1$`Location (Country or Territory)`)),
+                         multiple = T),
+             pickerInput(inputId = "genome",
+                         label = "Genome Available on NCBI?",
+                         choices = c("Yes", "No"),
+                         options = list(`live-search` = F,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
                          selected = c("Yes", "No"),
-                         multiple = T
-          ),
-          
-           div(style="display:inline-block;width:25%;text-align:center;",
-               actionButton(inputId = "search",
-               label = "Filter",
-               icon =icon("filter"))),
-           div(style="display:inline-block;width:25%;text-align:center;",
-               actionButton(inputId = "reset",
-               label = "Select All",
-               icon =icon("retweet"))),
+                         multiple = T),
+        # buttons below filter options in sidebar
+          div(style="display:inline-block;width:25%;text-align:center;",
+              actionButton(inputId = "search",label = "Filter",icon =icon("filter"))),
+          div(style="display:inline-block;width:25%;text-align:center;",
+              actionButton(inputId = "reset",label = "Select All",icon =icon("retweet"))),
           br(),
-           div(style="display:inline-block;width:25%;text-align:center;",
+          div(style="display:inline-block;width:25%;text-align:center;",
               downloadButton("downloadfiltered", "Download Your Filtered Dataset")),
           br(), 
           div(style="display:inline-block;width:25%;text-align:center;",
-               downloadButton("downloadentire", "Download Entire RSSC Dataset")))
-            ),
-                    
+              downloadButton("downloadentire", "Download Entire RSSC Dataset")))
+        ), #close of sidebar
         dashboardBody(use_theme(mytheme),
-          tags$head(tags$link(rel = "stylesheet", type = "text/css", href="style.css")),
+                      tags$head(tags$link(rel = "stylesheet", type = "text/css", href="style.css")),
                       shinyjs::useShinyjs(),
-                      
                       div(id = "my app",
                     #row 
                       box(htmltools::includeMarkdown("GoogleForm.Rmd"), width = 12),
@@ -347,15 +235,13 @@ ui <- dashboardPage(#skin = "black",
                         valueBoxOutput("n_Isolates", width = 3),
                         infoBoxOutput("n_Citations", width = 3),
                         infoBoxOutput("n_Distribution", width = 3),
-                        infoBoxOutput("n_Hosts", width = 3)
-                        ),
+                        infoBoxOutput("n_Hosts", width = 3)),
                     #tab box with first tab content
                     tabBox(title = "",
                            width = 12,
                            height = "100%",
                            tabPanel(icon = icon("disease"),
-                                    "RSSC Visualizations"
-                      ,
+                                    "RSSC Visualizations",
                     #row  
                       fluidRow(
                         box(title = "Geographic Distribution of Reported RSSC Isolates",
@@ -372,11 +258,10 @@ ui <- dashboardPage(#skin = "black",
                                     and some isolations might be from imported plants that were quarantined/destroyed. 
                                     Additionally, our meta-analysis database likely contains a low incidence of 
                                     errors from the primary literature, from our data entry, or from the geocoding 
-                                    algorithm that assigned latitude/longitude coordinates to written locations.")
-                            )
-                      ),
+                                    algorithm that assigned latitude/longitude coordinates to written locations."))),
                     # row
                       fluidRow(
+                       # box for host species chart
                         box(title = "Phylotype Abundance by Host Species",
                             solidHeader = T,
                             width = 6,
@@ -392,8 +277,8 @@ ui <- dashboardPage(#skin = "black",
                             p("Plot by Proportion:"),
                             actionButton("host_log_species","Top Host Species"),
                             actionButton("No_Unknown_host_log_species","Remove Unknown Hosts"),
-                            actionButton("No_Unknown_phylo_log_species","Remove Unknown Phylotypes")
-                        ),
+                            actionButton("No_Unknown_phylo_log_species","Remove Unknown Phylotypes")),
+                       # box for host family chart  
                         box(title = "Phylotype Abundance by Host Family",
                             solidHeader = T,
                             width = 6,
@@ -409,10 +294,10 @@ ui <- dashboardPage(#skin = "black",
                             p("Plot by Proportion:"),
                             actionButton("host_log","Top Host Families"),
                             actionButton("No_Unknown_host_log","Remove Unknown Hosts"),
-                            actionButton("No_Unknown_phylo_log","Remove Unknown Phylotypes")
-                        )
-                      ),
+                            actionButton("No_Unknown_phylo_log","Remove Unknown Phylotypes"))),
+                  # row
                     fluidRow(
+                     # box for country chart  
                       box(title = "Phylotype Abundance by Country",
                           solidHeader = T,
                           width = 6,
@@ -428,8 +313,8 @@ ui <- dashboardPage(#skin = "black",
                           p("Plot by Proportion:"),
                           actionButton("country_log","Top Countries"),
                           actionButton("No_Unknown_country_log","Remove Unknown Locations"),
-                          actionButton("No_Unknown_phylo_country_log","Remove Unknown Phylotypes")
-                      ),
+                          actionButton("No_Unknown_phylo_country_log","Remove Unknown Phylotypes")),
+                     # box for continent chart
                       box(title = "Phylotype Abundance by Continent",
                           solidHeader = T,
                           width = 6,
@@ -445,33 +330,30 @@ ui <- dashboardPage(#skin = "black",
                           p("Plot by Proportion:"),
                           actionButton("continent_log","Continents"),
                           actionButton("No_Unknown_continent_log","Remove Unknown Locations"),
-                          actionButton("No_Unknown_phylo_continent_log","Remove Unknown Phylotypes")
-                      )
-                      ),
+                          actionButton("No_Unknown_phylo_continent_log","Remove Unknown Phylotypes"))),
                     # row
                       fluidRow(
+                       # box for metadata table
                         box(title = "Metadata Table",
                             solidHeader = T,
                             width = 12, 
                             collapsible = T,
                             collapsed = F,
                             DT::dataTableOutput("Metadata_table")))
-                            
-                      ),
+                  ), #close of first tab panel
                     tabPanel(icon = icon("circle-info"),
                              "About Page",
                      #row
-                    fluidRow(  
-                     box(htmltools::includeMarkdown("AboutPage.Rmd"),
-                         width = 12))
-                    )
-                  )
-              )
-        )
-)
+                      fluidRow(
+                      #box for about page
+                      box(htmltools::includeMarkdown("AboutPage.Rmd"),width = 12))
+        ) #close of second tab panel
+      ) #close of tab box
+    ) #close of div
+  ) #close of dashboard body
+) #close of dashboard page
 
 # server
-
 server <- function(input, output, session) {
   
   observeEvent(input$reset, {
@@ -488,36 +370,34 @@ server <- function(input, output, session) {
     shinyjs::reset("genome")
   })
   
-  
   filtered_PublicationYear_type <- eventReactive(input$search,{
     req(input$publication_year)
     RSSC1 %>%
-      filter(`Year published` %in% input$publication_year)
-    
+    filter(`Year published` %in% input$publication_year)
   })
   
   filtered_IsolationYear_type <- eventReactive(input$search,{
     req(input$isolation_year)
     filtered_PublicationYear_type() %>%
-      filter(`Year isolated` %in% input$isolation_year)
+    filter(`Year isolated` %in% input$isolation_year)
   })
   
   filtered_Phylotype_type <- eventReactive(input$search,{
     req(input$phylo)
     filtered_IsolationYear_type() %>%
-      filter(Phylotype3 %in% input$phylo)
+    filter(Phylotype3 %in% input$phylo)
   })
   
   filtered_Sequevar_type <- eventReactive(input$search,{
     req(input$sequevar)
     filtered_Phylotype_type() %>%
-      filter(Sequevar3 %in% input$sequevar)
+    filter(Sequevar3 %in% input$sequevar)
   })
   
   filtered_PandemicLineage_type <- eventReactive(input$search,{
     req(input$pandemic_lineage)
     filtered_Sequevar_type() %>%
-      filter(Sequevar2 %in% input$pandemic_lineage)
+    filter(Sequevar2 %in% input$pandemic_lineage)
   })
   
   filtered_HostFamily_type <- eventReactive(input$search,{
@@ -529,36 +409,35 @@ server <- function(input, output, session) {
   filtered_HostSpecies_type <- eventReactive(input$search,{
     req(input$host_species)
     filtered_HostFamily_type() %>%
-      filter(`Host Species (Common name)` %in% input$host_species)
+    filter(`Host Species (Common name)` %in% input$host_species)
   })
   
   filtered_VegProp_type <- eventReactive(input$search,{
     req(input$vegprophost)
     filtered_HostSpecies_type() %>%
-      filter(VPH %in% input$vegprophost)
+    filter(VPH %in% input$vegprophost)
   })
   
   filtered_Continent_type <- eventReactive(input$search,{
     req(input$continent)
     filtered_VegProp_type() %>%
-      filter(`Location (continent)` %in% input$continent)
+    filter(`Location (continent)` %in% input$continent)
   })
   
   filtered_Country_type <- eventReactive(input$search,{
     req(input$country)
     filtered_Continent_type() %>%
-      filter(`Location (Country or Territory)` %in% input$country)
+    filter(`Location (Country or Territory)` %in% input$country)
   })
   
   filtered_Genome_type <- eventReactive(input$search,{
     req(input$genome)
     filtered_Country_type() %>%
-      filter(Genome2 %in% input$genome)
+    filter(Genome2 %in% input$genome)
   })
   
 # Output ggplot map
     output$map_phylo <- renderPlotly({
-      
       data_leaflet <- if (input$search == 0) {
         data_leaflet <- RSSC1
       } else {
@@ -598,36 +477,30 @@ server <- function(input, output, session) {
       req(input$host_linear)
       output$Host_chart <- renderUI({ plotlyOutput("plot_linear") })
     })
-    
     observeEvent(input$host_log, { 
       req(input$host_log)
       output$Host_chart <- renderUI({ plotlyOutput("plot_log") })
     })
-    
     observeEvent(input$No_Unknown_host_linear, {
       req(input$No_Unknown_host_linear)
       output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_plot_linear") })
     })
-    
     observeEvent(input$No_Unknown_host_log, { 
       req(input$No_Unknown_host_log)
       output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_plot_log") })
     })
-    
     observeEvent(input$No_Unknown_phylo_linear, { 
       req(input$No_Unknown_phylo_linear)
       output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_linear") })
     })
-    
     observeEvent(input$No_Unknown_phylo_log, { 
       req(input$No_Unknown_phylo_log)
       output$Host_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_log") })
     })
     
-# Output plots  
-    # Output plot by count
+# Output host family plots  
+ # Output plot by count
       output$plot_linear = renderPlotly({
-        
       data_leaflet <- if (input$search == 0) {
         data_leaflet <- RSSC1
         } else {
@@ -668,12 +541,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-     
     })
    
-     # Output plot by proportion
+ # Output plot by proportion
     output$plot_log = renderPlotly({
-      
       data_leaflet <- if (isolate(input$search) == 0) {
         data_leaflet <- RSSC1
       } else {
@@ -714,12 +585,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
    
-     # Output plot by count no unknown host  
+ # Output plot by count no unknown host  
     output$No_Unknown_plot_linear = renderPlotly({
-      
       data_leaflet <- if (isolate(input$search) == 0) {
         data_leaflet <- RSSC1
       } else {
@@ -762,12 +631,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-    
     })
 
-  # Output plot by proportion no unknown host
+ # Output plot by proportion no unknown host
     output$No_Unknown_plot_log = renderPlotly({
-      
       data_leaflet <- if (isolate(input$search) == 0) {
         data_leaflet <- RSSC1
       } else {
@@ -810,12 +677,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by count no unknown phylotype  
+ # Output plot by count no unknown phylotype  
     output$No_Unknown_phylo_linear = renderPlotly({
-      
       data_leaflet <- if (isolate(input$search) == 0) {
         data_leaflet <- RSSC1
       } else {
@@ -858,12 +723,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by proportion no unknown phylotypes
+ # Output plot by proportion no unknown phylotypes
     output$No_Unknown_phylo_log = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -906,49 +769,43 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
-    })
-# Output Species Chart
-    # Set a default view on page load
-    output$Host_chart_species <- renderUI({
-      plotlyOutput("plot_linear_species")  # Default plot when the page loads
     })
     
-    # Button Observations
+# Output host Species Chart
+ # Set a default view on page load
+    output$Host_chart_species <- renderUI({
+    plotlyOutput("plot_linear_species")  # Default plot when the page loads
+    })
+    
+ # Button Observations
     observeEvent(input$host_linear_species, { 
       req(input$host_linear_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("plot_linear_species") })
     })
-    
     observeEvent(input$host_log_species, { 
       req(input$host_log_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("plot_log_species") })
     })
-    
     observeEvent(input$No_Unknown_host_linear_species, { 
       req(input$No_Unknown_host_linear_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_plot_linear_species") })
     })
-    
     observeEvent(input$No_Unknown_host_log_species, { 
       req(input$No_Unknown_host_log_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_plot_log_species") })
     })
-    
     observeEvent(input$No_Unknown_phylo_linear_species, { 
       req(input$No_Unknown_phylo_linear_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_phylo_linear_species") })
     })
-    
     observeEvent(input$No_Unknown_phylo_log_species, { 
       req(input$No_Unknown_phylo_log_species)
       output$Host_chart_species <- renderUI({ plotlyOutput("No_Unknown_phylo_log_species") })
     })
     
-    # Output plots  
-    # Output plot by count
+# Output host species plots  
+ # Output plot by count
     output$plot_linear_species = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -989,12 +846,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by proportion
+ # Output plot by proportion
     output$plot_log_species = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1035,12 +890,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by count no unknown host  
+ # Output plot by count no unknown host  
     output$No_Unknown_plot_linear_species = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1082,12 +935,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by proportion no unknown host
+ # Output plot by proportion no unknown host
     output$No_Unknown_plot_log_species = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1130,12 +981,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by count no unknown phylotype  
+ # Output plot by count no unknown phylotype  
     output$No_Unknown_phylo_linear_species = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1177,12 +1026,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by proportion no unknown phylotypes
+ # Output plot by proportion no unknown phylotypes
     output$No_Unknown_phylo_log_species = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1225,50 +1072,41 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
 # Output Continent Chart    
-    
     # Set a default view on page load
     output$Continent_chart <- renderUI({
       plotlyOutput("cont_linear")  # Default plot when the page loads
     })
-    
     # Button Observations
     observeEvent(input$continent_linear, { 
       req(input$continent_linear)
       output$Continent_chart <- renderUI({ plotlyOutput("cont_linear") })
     })
-    
     observeEvent(input$continent_log, { 
       req(input$continent_log)
       output$Continent_chart <- renderUI({ plotlyOutput("cont_log") })
     })
-    
     observeEvent(input$No_Unknown_continent_linear, { 
       req(input$No_Unknown_continent_linear)
       output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_cont_linear") })
     })
-    
     observeEvent(input$No_Unknown_continent_log, { 
       req(input$No_Unknown_continent_log)
       output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_cont_log") })
     })
-  
     observeEvent(input$No_Unknown_phylo_continent_linear, { 
       req(input$No_Unknown_phylo_continent_linear)
       output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_cont_linear") })
     })
-    
     observeEvent(input$No_Unknown_phylo_continent_log, { 
       req(input$No_Unknown_phylo_continent_log)
       output$Continent_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_cont_log") })
     })
     
-    # Output plot by count    
+ # Output plot by count    
     output$cont_linear = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1303,12 +1141,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
-      
     })
-    # Output plot by proportion  
+    
+ # Output plot by proportion  
     output$cont_log = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1343,12 +1179,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
-      
     })
-    # Output plot by count no unknown location
+    
+ # Output plot by count no unknown location
     output$No_Unknown_cont_linear = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1385,13 +1219,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
-      
     })
     
-    # Output plot by proportion no unknown location 
+ # Output plot by proportion no unknown location 
     output$No_Unknown_cont_log = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1428,13 +1259,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
-      
     })
     
-    # Output plot by count no unknown phylotype
+ # Output plot by count no unknown phylotype
     output$No_Unknown_phylo_cont_linear = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1471,13 +1299,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
-      
     })
     
-    # Output plot by proportion no unknown phylotype 
+ # Output plot by proportion no unknown phylotype 
     output$No_Unknown_phylo_cont_log = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1514,50 +1339,40 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
-      
     })
 
 # Output Country Chart
     output$Country_chart <- renderUI({
       plotlyOutput("country_linear")  # Default plot when the page loads
     })
-    
-    # Button Observations
+  # Button Observations
     observeEvent(input$country_linear, { 
       req(input$country_linear)
       output$Country_chart <- renderUI({ plotlyOutput("country_linear") })
     })
-    
     observeEvent(input$country_log, { 
       req(input$country_log)
       output$Country_chart <- renderUI({ plotlyOutput("country_log") })
     })
-    
     observeEvent(input$No_Unknown_country_linear, { 
       req(input$No_Unknown_country_linear)
       output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_country_linear") })
     })
-    
     observeEvent(input$No_Unknown_country_log, { 
       req(input$No_Unknown_country_log)
       output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_country_log") })
     })
-    
     observeEvent(input$No_Unknown_phylo_country_linear, { 
       req(input$No_Unknown_phylo_country_linear)
       output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_country_linear") })
     })
-    
     observeEvent(input$No_Unknown_phylo_country_log, { 
       req(input$No_Unknown_phylo_country_log)
       output$Country_chart <- renderUI({ plotlyOutput("No_Unknown_phylo_country_log") })
     })
-    
-    # Output plots  
-    # Output plot by count
+  
+# Output plot by count
     output$country_linear = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1598,12 +1413,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by proportion
+ # Output plot by proportion
     output$country_log = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1644,12 +1457,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by count no unknown location  
+ # Output plot by count no unknown location  
     output$No_Unknown_country_linear = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1691,12 +1502,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by proportion no unknown location
+ # Output plot by proportion no unknown location
     output$No_Unknown_country_log = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1739,12 +1548,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by count no unknown phylotype  
+# Output plot by count no unknown phylotype  
     output$No_Unknown_phylo_country_linear = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1786,12 +1593,10 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
-    # Output plot by proportion no unknown phylotypes
+ # Output plot by proportion no unknown phylotypes
     output$No_Unknown_phylo_country_log = renderPlotly({
-      
       if(input$search == 0){
         data_leaflet = RSSC1
       }else{
@@ -1834,7 +1639,6 @@ server <- function(input, output, session) {
                modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
-      
     })
     
 # Output metadata table
@@ -1850,77 +1654,59 @@ server <- function(input, output, session) {
     },options = list(autoWidth = F,autoHeight = F, scrollX = TRUE))  
   
 # Output download filtered data button    
-  output$downloadfiltered <- downloadHandler(
-    filename = function(){"RSSCdb_filtered_data.csv"}, 
-    content = function(fname){
-      
-      if(input$search == 0){
-        data_leaflet = RSSC1
-      }else{
-        data_leaflet = filtered_Genome_type()
-      }
-      
-      
-      write.csv(data_leaflet, fname)
-    })
+  output$downloadfiltered <- downloadHandler(filename = function(){"RSSCdb_filtered_data.csv"}, 
+                                             content = function(fname){
+                                               if(input$search == 0){
+                                                 data_leaflet = RSSC1
+                                                 }else{
+                                                   data_leaflet = filtered_Genome_type()
+                                                   }
+                                               write.csv(data_leaflet, fname)
+                                               })
   
 # Output download entire data button    
-  output$downloadentire <- downloadHandler(
-    filename = function(){"RSSCdb_data.csv"}, 
-    content = function(fname){
-      
-      if(input$search == 0){
-        data_leaflet = RSSC1
-      }else{
-        data_leaflet = RSSC1
-      }
-      
-      
-      write.csv(data_leaflet, fname)
-    })
+  output$downloadentire <- downloadHandler(filename = function(){"RSSCdb_data.csv"},
+                                           content = function(fname){
+                                             if(input$search == 0){
+                                               data_leaflet = RSSC1
+                                               }else{
+                                                 data_leaflet = RSSC1
+                                                 }
+                                             write.csv(data_leaflet, fname)
+                                             })
 
 # Output info boxes at top of page    
   output$n_Isolates = renderInfoBox({
-    
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
       data_leaflet = filtered_Genome_type()
     }
-    
     n =nrow(data_leaflet)
     if(n>1){sub = "Isolates"}else{sub = "Isolate"}
     infoBox(title = "Collection",
             value = n,
             subtitle = sub,
             color= "light-blue",
-            icon = icon("bacteria"
-            )
-    )  
-    
+            icon = icon("bacteria"))
   })
   
   output$n_Citations = renderInfoBox({
-    
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
       data_leaflet = filtered_Genome_type()
     }
-    
     n = length(unique(data_leaflet$Publication))
-    
     if(n>1){sub = "Articles"}else{sub = "Article"}
     infoBox(title = "Literature",
             value = n,
             subtitle = sub,
             color= "light-blue",
-            icon = icon("newspaper")
-    )
+            icon = icon("newspaper"))
   })
   
   output$n_Distribution = renderInfoBox({
-    
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
@@ -1932,12 +1718,10 @@ server <- function(input, output, session) {
             value = n,
             subtitle = sub,
             color= "light-blue",
-            icon = icon("earth-americas")
-    )
+            icon = icon("earth-americas"))
   })
   
   output$n_Hosts = renderInfoBox({
-    
     if(input$search == 0){
       data_leaflet = RSSC1
     }else{
@@ -1949,8 +1733,7 @@ server <- function(input, output, session) {
             value = n,
             subtitle = sub,
             color= "light-blue",
-            icon = icon("plant-wilt")
-    )
+            icon = icon("plant-wilt"))
   })
   
 }
