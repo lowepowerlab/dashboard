@@ -1,0 +1,13 @@
+name: RalstoniaWiltDashboard
+title: RalstoniaWiltDashboard
+username: viennaelmgreen
+account: viennaelmgreen
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 13985098
+bundleId: 9821206
+url: https://viennaelmgreen.shinyapps.io/RalstoniaWiltDashboard/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rprofile|RSSC_Final.csv
