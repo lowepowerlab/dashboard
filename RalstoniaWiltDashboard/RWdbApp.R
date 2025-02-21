@@ -847,7 +847,7 @@ server <- function(input, output, session) {
                                           'hoverCompareCartesian', 'hoverClosestCartesian',
                                           'zoom', 'pan', 'zoomIn', 'zoomOut', 'resetScale'))
     })
-    
+
  # Output plot by proportion
     output$plot_log_species = renderPlotly({
       if(input$search == 0){
