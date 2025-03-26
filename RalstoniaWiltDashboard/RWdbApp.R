@@ -123,8 +123,8 @@ RSSC1 = RSSC %>%
 
 # ui
 ui <- dashboardPage(
-        dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = 250),
-        dashboardSidebar(collapsed = F, width = 250,
+        dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = "20vw"),
+        dashboardSidebar(collapsed = F, width = "20vw",
         br(),
         div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
         "A georeferenced database of isolates of the", em("Ralstonia solanacearum"), "Species Complex.
@@ -246,19 +246,26 @@ ui <- dashboardPage(
                       fluidRow(
                         box(title = "Geographic Distribution of Reported RSSC Isolates",
                             solidHeader = T,
-                            width = 12,
+                            width = "12",
                             collapsible = T,
-                            plotlyOutput("map_phylo", width="100%", height="400px"),
+                            plotlyOutput("map_phylo", width="100%", height="100%"),
                             br(),
                             strong("How to Interpret this Map"),
-                            p("This map shows the reported isolation locations of", em("Ralstonia"), "and 
-                                    each datapoint should be regarded with healthy skepticism. Isolation of ", 
-                                    em("Ralstonia"), "at a location does not mean it is currently established at that
-                                    location; eradication has been successful in certain cases (e.g. in Sweden) 
-                                    and some isolations might be from imported plants that were quarantined/destroyed. 
-                                    Additionally, our meta-analysis database likely contains a low incidence of 
-                                    errors from the primary literature, from our data entry, or from the geocoding 
-                                    algorithm that assigned latitude/longitude coordinates to written locations."))),
+                            p("This map shows the reported isolation locations of", em("Ralstonia"),"."),
+                            p("The datapoints are layered onto the map in the following order: unknown, phylotype I, 
+                              phylotype II, phylotype III, phylotype IV. Despite semi-transparency 
+                              and off-setting, the map can give a misleading view in some cases. For example, 
+                              many phylotype II datapoints cover phylotype I datapoints within South America. 
+                              Users can remove phylotypes by using the filter functions in the sidebar to ensure 
+                              they get an accurate view of distributions."),
+                            p("Each datapoint should be regarded with healthy skepticism. Isolation of ", 
+                              em("Ralstonia"), "at a location does not mean it is currently established at that 
+                              location; eradication has been successful in certain cases (e.g. in Sweden) and some 
+                              isolations might be from imported plants that were quarantined/destroyed. 
+                              Additionally, our meta-analysis database likely contains a low incidence of errors 
+                              from the primary literature, from our data entry, or from the geocoding algorithm 
+                              that assigned latitude/longitude coordinates to written locations.")
+                            )),
                     # row
                       fluidRow(
                        # box for host species chart
@@ -446,7 +453,10 @@ server <- function(input, output, session) {
       
       p <- ggplot(data = world)+
           geom_sf(fill = "white", color = "darkgrey", linewidth = 0.25) +
-          geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2), size = 0.25, alpha = 0.5) +
+          geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2,
+                                                                                   text = paste0("</br> Strainname: ", Strainname,
+                                                                                                 "</br> Phylotype: ", "Unknown",
+                                                                                                 "</br> Location: ", `Location Isolated`)), size = 0.25, alpha = 0.5) +
           geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
                                                                                    text = paste0("</br> Strainname: ", Strainname,
                                                                                                  "</br> Phylotype: ", Phylotype,
@@ -1652,27 +1662,27 @@ server <- function(input, output, session) {
         dplyr::select(Index, Phylotype, Sequevar, Strainname,`Host Species (Common name)`,
                       `Host Family`, `Year isolated`, `Location Isolated`, `Genome Accession`, Publication)
     },options = list(autoWidth = F,autoHeight = F, scrollX = TRUE))  
-  
+      
 # Output download filtered data button    
-  output$downloadfiltered <- downloadHandler(filename = function(){"RSSCdb_filtered_data.csv"}, 
+  output$downloadfiltered <- downloadHandler(filename = function(){"RalstoniaWiltDb_Filtered_Metadata.csv"}, 
                                              content = function(fname){
                                                if(input$search == 0){
                                                  data_leaflet = RSSC1
                                                  }else{
                                                    data_leaflet = filtered_Genome_type()
                                                    }
-                                               write.csv(data_leaflet, fname)
+                                               write.csv(data_leaflet[-c(32:44)], fname)
                                                })
   
 # Output download entire data button    
-  output$downloadentire <- downloadHandler(filename = function(){"RSSCdb_data.csv"},
+  output$downloadentire <- downloadHandler(filename = function(){"RalstoniaWiltDb_Full_Metadata.csv"},
                                            content = function(fname){
                                              if(input$search == 0){
                                                data_leaflet = RSSC1
                                                }else{
                                                  data_leaflet = RSSC1
                                                  }
-                                             write.csv(data_leaflet, fname)
+                                             write.csv(data_leaflet[-c(32:44)], fname)
                                              })
 
 # Output info boxes at top of page    
