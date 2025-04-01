@@ -33,7 +33,7 @@ library(usethis)
 
 # create color theme for dashboard
 mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
-                        adminlte_sidebar(width = "300px",dark_color = "#444",
+                        adminlte_sidebar(width = "20vw",dark_color = "#444",
                                          dark_bg = "#022851",dark_hover_bg = "#444",
                                          dark_submenu_color = "#444"),
                         adminlte_global(content_bg = "#B3C1D1",box_bg = "#FFFFFF",
@@ -123,10 +123,10 @@ RSSC1 = RSSC %>%
 
 # ui
 ui <- dashboardPage(
-        dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = "20vw"),
-        dashboardSidebar(collapsed = F, width = "20vw",
+        dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = "15vw"),
+        dashboardSidebar(collapsed = F, width = "15vw",
         br(),
-        div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
+        div(style = "display:inline-block;width:90%;margin-left:18px;text-align: left;",
         "A georeferenced database of isolates of the", em("Ralstonia solanacearum"), "Species Complex.
         Use the filters below to refine your search. Filtration works sequentially. Each filter refines 
         the data and passes it to the next filter. If a filter is completely deselected, all data from 
@@ -224,12 +224,12 @@ ui <- dashboardPage(
           div(style="display:inline-block;width:25%;text-align:center;",
               downloadButton("downloadentire", "Download Entire RSSC Dataset")))
         ), #close of sidebar
-        dashboardBody(use_theme(mytheme),
+        dashboardBody(width="85vw",use_theme(mytheme),
                       tags$head(tags$link(rel = "stylesheet", type = "text/css", href="style.css")),
                       shinyjs::useShinyjs(),
                       div(id = "my app",
                     #row 
-                      box(htmltools::includeMarkdown("GoogleForm.Rmd"), width = 12),
+                      box(htmltools::includeMarkdown("GoogleForm.Rmd"), width = "80vw"),
                     #row  
                       fluidRow(
                         valueBoxOutput("n_Isolates", width = 3),
@@ -238,7 +238,7 @@ ui <- dashboardPage(
                         infoBoxOutput("n_Hosts", width = 3)),
                     #tab box with first tab content
                     tabBox(title = "",
-                           width = 12,
+                           width = "80vw",
                            height = "100%",
                            tabPanel(icon = icon("disease"),
                                     "RSSC Visualizations",
@@ -246,9 +246,9 @@ ui <- dashboardPage(
                       fluidRow(
                         box(title = "Geographic Distribution of Reported RSSC Isolates",
                             solidHeader = T,
-                            width = "12",
+                            width = 12,
                             collapsible = T,
-                            plotlyOutput("map_phylo", width="100%", height="100%"),
+                            plotlyOutput("map_phylo", width="75vw", height = "100%"),
                             br(),
                             strong("How to Interpret this Map"),
                             p("This map shows the reported isolation locations of", em("Ralstonia"),"."),
