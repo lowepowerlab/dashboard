@@ -33,7 +33,7 @@ library(usethis)
 
 # create color theme for dashboard
 mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
-                        adminlte_sidebar(width = "20vw",dark_color = "#444",
+                        adminlte_sidebar(width = "18vw",dark_color = "#444",
                                          dark_bg = "#022851",dark_hover_bg = "#444",
                                          dark_submenu_color = "#444"),
                         adminlte_global(content_bg = "#B3C1D1",box_bg = "#FFFFFF",
@@ -116,6 +116,9 @@ RSSC1 = RSSC %>%
                                             is.na(`Location (continent)`) ~ "Unknown")) %>%
   mutate(`Location (Country or Territory)` = case_when(!is.na(`Location (Country or Territory)`) ~ `Location (Country or Territory)`,
                                                        is.na(`Location (Country or Territory)`) ~ "Unknown")) %>%
+  group_by(Sequevar3) %>% 
+  mutate(n_iso_per_Sequevar = n(),Sequevar4 = paste(Sequevar3," (",n_iso_per_Sequevar,")", sep = ""),) %>% 
+  ungroup() %>%
   group_by(Phylotype2) %>% 
   mutate(n_iso_per_Phylotype = n(),Phylotype3 = paste(Phylotype2," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
   ungroup() %>% 
@@ -153,9 +156,9 @@ ui <- dashboardPage(
                          multiple = T),
              pickerInput(inputId = "sequevar",
                          label = "Sequevar",
-                         choices = sort(unique(RSSC1$Sequevar3)),
+                         choices = sort(unique(RSSC1$Sequevar4)),
                          options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = unique(RSSC1$Sequevar3),multiple = T),
+                         selected = unique(RSSC1$Sequevar4),multiple = T),
              pickerInput(inputId = "pandemic_lineage",
                          label = "Pandemic Lineages",
                          choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
@@ -215,7 +218,7 @@ ui <- dashboardPage(
         # buttons below filter options in sidebar
           div(style="display:inline-block;width:25%;text-align:center;",
               actionButton(inputId = "search",label = "Filter",icon =icon("filter"))),
-          div(style="display:inline-block;width:25%;text-align:center;",
+          div(style="display:inline-block;margin-left:10px;width:25%;text-align:center;",
               actionButton(inputId = "reset",label = "Select All",icon =icon("retweet"))),
           br(),
           div(style="display:inline-block;width:25%;text-align:center;",
@@ -248,11 +251,11 @@ ui <- dashboardPage(
                             solidHeader = T,
                             width = 12,
                             collapsible = T,
-                            plotlyOutput("map_phylo", width="75vw", height = "100%"),
+                            plotlyOutput("map_phylo", width="77vw", height = "100%"),
                             br(),
                             strong("How to Interpret this Map"),
-                            p("This map shows the reported isolation locations of", em("Ralstonia"),"."),
-                            p(strong("These are from literature reports and should not be considered official, validated 
+                            p("This map shows the reported isolation locations of", em("Ralstonia."), 
+                              strong("These are from literature reports and should not be considered official, validated 
                               confirmed detections by regulatory agencies"), "(e.g. the United States Department of 
                               Agriculture, Animal and Plant Health Inspection Service). Isolation of ", 
                               em("Ralstonia"), "at a location does not mean it is currently established at that 
@@ -458,11 +461,18 @@ server <- function(input, output, session) {
           geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2,
                                                                                    text = paste0("</br> Strainname: ", Strainname,
                                                                                                  "</br> Phylotype: ", "Unknown",
-                                                                                                 "</br> Location: ", `Location Isolated`)), size = 0.25, alpha = 0.5) +
+                                                                                                 "</br> Sequevar: ", Sequevar,
+                                                                                                 "</br> Host: ", `Host Species (Common name)`,
+                                                                                                 "</br> Location: ", `Location Isolated`,
+                                                                                                 "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 0.5) +
           geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
                                                                                    text = paste0("</br> Strainname: ", Strainname,
                                                                                                  "</br> Phylotype: ", Phylotype,
-                                                                                                 "</br> Location: ", `Location Isolated`)), size = 0.25, alpha = 0.5) +
+                                                                                                 "</br> Sub-Phylotype: ", `Sub-Phylotype`,
+                                                                                                 "</br> Sequevar: ", Sequevar,
+                                                                                                 "</br> Host: ", `Host Species (Common name)`,
+                                                                                                 "</br> Location: ", `Location Isolated`,
+                                                                                                 "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 0.5) +
           coord_sf(ylim = c(-70,90), expand = FALSE)+
           scale_y_continuous(breaks = c(-60, -40, -20, 0, 20, 40, 60, 80))+
           scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
