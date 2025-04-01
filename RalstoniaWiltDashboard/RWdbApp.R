@@ -252,19 +252,21 @@ ui <- dashboardPage(
                             br(),
                             strong("How to Interpret this Map"),
                             p("This map shows the reported isolation locations of", em("Ralstonia"),"."),
-                            p("The datapoints are layered onto the map in the following order: unknown, phylotype I, 
-                              phylotype II, phylotype III, phylotype IV. Despite semi-transparency 
-                              and off-setting, the map can give a misleading view in some cases. For example, 
-                              many phylotype II datapoints cover phylotype I datapoints within South America. 
-                              Users can remove phylotypes by using the filter functions in the sidebar to ensure 
-                              they get an accurate view of distributions."),
-                            p("Each datapoint should be regarded with healthy skepticism. Isolation of ", 
+                            p(strong("These are from literature reports and should not be considered official, validated 
+                              confirmed detections by regulatory agencies"), "(e.g. the United States Department of 
+                              Agriculture, Animal and Plant Health Inspection Service). Isolation of ", 
                               em("Ralstonia"), "at a location does not mean it is currently established at that 
                               location; eradication has been successful in certain cases (e.g. in Sweden) and some 
                               isolations might be from imported plants that were quarantined/destroyed. 
                               Additionally, our meta-analysis database likely contains a low incidence of errors 
                               from the primary literature, from our data entry, or from the geocoding algorithm 
-                              that assigned latitude/longitude coordinates to written locations.")
+                              that assigned latitude/longitude coordinates to written locations."),
+                            p("The datapoints are layered onto the map in the following order: unknown, phylotype I, 
+                              phylotype II, phylotype III, phylotype IV. Despite semi-transparency 
+                              and off-setting, the map can give a misleading view in some cases. For example, 
+                              many phylotype II datapoints cover phylotype I datapoints within South America. 
+                              Users can remove phylotypes by using the filter functions in the sidebar to ensure 
+                              they get an accurate view of distributions.")
                             )),
                     # row
                       fluidRow(
