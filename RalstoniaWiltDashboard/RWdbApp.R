@@ -46,8 +46,8 @@ world <- ne_countries(scale = "medium", returnclass = "sf")
 #RSSC <- read_csv("RSSC_Final.csv")
 
 # load data from Google sheets direct link
-RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=1405797353#gid=1405797353")
-
+#RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=1405797353#gid=1405797353")
+RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=991305141#gid=991305141")
 # define data groups
 Phylotype_selected = c("I", "II", "III", "IV")
 PandemicLineage_selected = c("1", "2")
@@ -116,8 +116,35 @@ RSSC1 = RSSC %>%
                                             is.na(`Location (continent)`) ~ "Unknown")) %>%
   mutate(`Location (Country or Territory)` = case_when(!is.na(`Location (Country or Territory)`) ~ `Location (Country or Territory)`,
                                                        is.na(`Location (Country or Territory)`) ~ "Unknown")) %>%
+  group_by(`Year published`) %>% 
+  mutate(n_iso_per_YearPub = n(),YearPub = paste(`Year published`," (",n_iso_per_YearPub,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Year isolated`) %>% 
+  mutate(n_iso_per_YearIso = n(),YearIso = paste(`Year isolated`," (",n_iso_per_YearIso,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Host Family`) %>% 
+  mutate(n_iso_per_HostFam = n(),HostFam = paste(`Host Family`," (",n_iso_per_HostFam,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Host Species (Common name)`) %>% 
+  mutate(n_iso_per_HostSp = n(),HostSp = paste(`Host Species (Common name)`," (",n_iso_per_HostSp,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Location (continent)`) %>% 
+  mutate(n_iso_per_LocContinent = n(),LocContinent = paste(`Location (continent)`," (",n_iso_per_LocContinent,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Location (Country or Territory)`) %>% 
+  mutate(n_iso_per_LocCountry = n(),LocCountry = paste(`Location (Country or Territory)`," (",n_iso_per_LocCountry,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(VPH) %>% 
+  mutate(n_iso_per_VPH = n(),VPH2 = paste(VPH," (",n_iso_per_VPH,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(Genome2) %>% 
+  mutate(n_iso_per_genome = n(),Genome3 = paste(Genome2," (",n_iso_per_genome,")", sep = ""),) %>% 
+  ungroup() %>%
   group_by(Sequevar3) %>% 
   mutate(n_iso_per_Sequevar = n(),Sequevar4 = paste(Sequevar3," (",n_iso_per_Sequevar,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(Sequevar2) %>% 
+  mutate(n_iso_per_PanLin = n(),PanLin = paste(Sequevar2," (",n_iso_per_PanLin,")", sep = ""),) %>% 
   ungroup() %>%
   group_by(Phylotype2) %>% 
   mutate(n_iso_per_Phylotype = n(),Phylotype3 = paste(Phylotype2," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
@@ -138,15 +165,15 @@ ui <- dashboardPage(
             # picker inputs for filter function drop-down menus
              pickerInput(inputId = "publication_year",
                          label = "Publication Year",
-                         choices = sort(unique(RSSC1$`Year published`)),
+                         choices = sort(unique(RSSC1$YearPub)),
                          options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = sort(unique(RSSC1$`Year published`)),
+                         selected = sort(unique(RSSC1$YearPub)),
                          multiple = T),
              pickerInput(inputId = "isolation_year",
                          label = "Isolation Year",
-                         choices = sort(unique(RSSC1$`Year isolated`)),
+                         choices = sort(unique(RSSC1$YearIso)),
                          options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = sort(unique(RSSC1$`Year isolated`)),
+                         selected = sort(unique(RSSC1$YearIso)),
                          multiple = T),
              pickerInput(inputId = "phylo",
                          label = "Phylotype",
@@ -159,61 +186,62 @@ ui <- dashboardPage(
                          choices = sort(unique(RSSC1$Sequevar4)),
                          options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
                          selected = unique(RSSC1$Sequevar4),multiple = T),
-             pickerInput(inputId = "pandemic_lineage",
-                         label = "Pandemic Lineages",
-                         choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
-                         options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
-                         multiple = T),
+            # pickerInput(inputId = "pandemic_lineage",
+             #            label = "Pandemic Lineages",
+              #           choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
+               #          options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                #         selected = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
+                 #        multiple = T),
+            pickerInput(inputId = "pandemic_lineage",
+                        label = "Pandemic Lineages",
+                        choices = sort(unique(RSSC1$Sequevar2)),
+                        options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
+                        selected = unique(RSSC1$Sequevar2),
+                        multiple = T),
              pickerInput(inputId = "host_family",
                          label = "Host Family",
-                         choices = sort(unique(RSSC1$`Host Family`)),
+                         choices = sort(unique(RSSC1$HostFam)),
                          options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = sort(unique(RSSC1$`Host Family`)),
+                         selected = sort(unique(RSSC1$HostFam)),
                          multiple = T),
              pickerInput(inputId = "host_species",
                          label = "Host Species",
-                         choices = sort(unique(RSSC1$`Host Species (Common name)`)),
+                         choices = sort(unique(RSSC1$HostSp)),
                          options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = sort(unique(RSSC1$`Host Species (Common name)`)),
+                         selected = sort(unique(RSSC1$HostSp)),
                          multiple = T), 
              pickerInput(inputId = "vegprophost",
                          label = "Vegetatively Propagated (VP) Hosts",
-                         choices = list(Araceae = c("Anthurium sp. (Laceleaf)", "Epipremnum aureum (Pothos)"),
-                                        Geraniacea = list("Geranium spp."),
-                                        Musaceae = list("Banana/Plantain spp."),
-                                        Rosaceae = list("Rosa sp. (Rose)"),
-                                        Solanaceae = list("Solanum tuberosum (Potato)"),
-                                        Zingiberaceae = c("Curcuma aromatica (Wild Turmeric)", "Curcuma longa (Turmeric)",
-                                         "Curcuma zedoaria (White Turmeric)", "Curcuma aeruginoa (Blue and Pink Ginger)",
-                                         "Kaempferia galanga (Aromatic Ginger)", "Zingiber cassumunar (Cassumunar Ginger)",
-                                         "Curcuma mangga (Mango Ginger)", "Zingiber mioga (Myoga Ginger)", "Zingiber officinale (Ginger)"),
-                                        Other = c("Non VP Host", "Unknown Host")),
+                         choices = list(Araceae = c("Anthurium sp. (Laceleaf) (124)", "Epipremnum aureum (Pothos) (57)"),
+                                        Geraniacea = list("Geranium spp. (118)"),
+                                        Musaceae = list("Banana/Plantain spp. (709)"),
+                                        Rosaceae = list("Rosa sp. (Rose) (13)"),
+                                        Solanaceae = list("Solanum tuberosum (Potato) (2977)"),
+                                        Zingiberaceae = c("Curcuma aromatica (Wild Turmeric) (4)", "Curcuma longa (Turmeric) (17)",
+                                         "Curcuma zedoaria (White Turmeric) (2)",
+                                         "Kaempferia galanga (Aromatic Ginger) (13)", "Zingiber cassumunar (Cassumunar Ginger) (5)",
+                                         "Curcuma mangga (Mango Ginger) (1)", "Zingiber mioga (Myoga Ginger) (10)", "Zingiber officinale (Ginger) (220)"),
+                                        Other = list("Non VP Host (5661)")),
                          options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = c("Anthurium sp. (Laceleaf)","Epipremnum aureum (Pothos)","Geranium spp.","Banana/Plantain spp.",
-                                     "Rosa sp. (Rose)","Solanum tuberosum (Potato)","Curcuma aromatica (Wild Turmeric)",
-                                     "Curcuma longa (Turmeric)","Curcuma zedoaria (White Turmeric)","Curcuma aeruginoa (Blue and Pink Ginger)",
-                                     "Kaempferia galanga (Aromatic Ginger)","Zingiber cassumunar (Cassumunar Ginger)",
-                                     "Curcuma mangga (Mango Ginger)","Zingiber mioga (Myoga Ginger)","Zingiber officinale (Ginger)",
-                                     "Non VP Host", "Unknown Host"),
-                         multiple = T),
+                        selected = unique(RSSC1$VPH2),
+                        multiple = T),
              pickerInput(inputId = "continent",
                          label = "Continent",
-                         choices = sort(unique(RSSC1$`Location (continent)`)),
+                         choices = sort(unique(RSSC1$LocContinent)),
                          options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = sort(unique(RSSC1$`Location (continent)`)),
+                         selected = sort(unique(RSSC1$LocContinent)),
                          multiple = T),
              pickerInput(inputId = "country",
                          label = "Country or Territory",
-                         choices = sort(unique(RSSC1$`Location (Country or Territory)`)),
+                         choices = sort(unique(RSSC1$LocCountry)),
                          options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = sort(unique(RSSC1$`Location (Country or Territory)`)),
+                         selected = sort(unique(RSSC1$LocCountry)),
                          multiple = T),
              pickerInput(inputId = "genome",
                          label = "Genome Available on NCBI?",
-                         choices = c("Yes", "No"),
+                         choices = sort(unique(RSSC1$Genome3)),
                          options = list(`live-search` = F,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                         selected = c("Yes", "No"),
+                         selected = unique(RSSC1$Genome3),
                          multiple = T),
         # buttons below filter options in sidebar
           div(style="display:inline-block;width:25%;text-align:center;",
@@ -254,6 +282,7 @@ ui <- dashboardPage(
                             plotlyOutput("map_phylo", width="77vw", height = "100%"),
                             br(),
                             strong("How to Interpret this Map"),
+                            br(),
                             p("This map shows the reported isolation locations of", em("Ralstonia."), 
                               strong("These are from literature reports and should not be considered official, validated 
                               confirmed detections by regulatory agencies"), "(e.g. the United States Department of 
