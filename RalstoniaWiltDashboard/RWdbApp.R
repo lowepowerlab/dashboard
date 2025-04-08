@@ -41,16 +41,12 @@ mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
 
 # load map layer for main plot
 world <- ne_countries(scale = "medium", returnclass = "sf") 
-
-# load data from csv
-#RSSC <- read_csv("RSSC_Final.csv")
-
 # load data from Google sheets direct link
-#RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=1405797353#gid=1405797353")
 RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=991305141#gid=991305141")
 # define data groups
 Phylotype_selected = c("I", "II", "III", "IV")
-PandemicLineage_selected = c("1", "2")
+PandemicLineage_selected = c("1", "2", "Unknown", "IIB-1", "IIB-2")
+PanLinPhylo = c("1", "2")
 VegetativelyPropagatedHosts_selected = c("Anthurium sp. (Laceleaf)", "Curcuma longa (Turmeric)", "Curcuma aromatica (Wild Turmeric)",
                                   "Curcuma zedoaria (White Turmeric)", "Curcuma aeruginoa (Blue and Pink Ginger)", "Curcuma mangga (Mango Ginger)",
                                   "Epipremnum aureum (Pothos)", "Kaempferia galanga (Aromatic Ginger)", "Musa acuminata (Banana)",
@@ -65,11 +61,10 @@ RSSC1 = RSSC %>%
   mutate(Phylotype2 = case_when(!is.na(Phylotype2) ~ Phylotype2,
                                 is.na(Phylotype2) ~ "Unknown")) %>% 
   mutate(Sequevar2 = Sequevar) %>%
-  mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
-                               is.na(Sequevar2) ~ "Unknown")) %>%
-  mutate(Sequevar2 = case_when(Sequevar2 %in% PandemicLineage_selected ~ Sequevar2,
+  mutate(Sequevar2 = case_when(Sequevar2 == "1" ~ "IIB-1",
+                               Sequevar2 == "2" ~ "IIB-2",
                                is.na(Sequevar2) ~ "Unknown",
-                               !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
+                               !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
   mutate(Sequevar3 = Sequevar) %>%
   mutate(Sequevar3 = case_when(!is.na(Sequevar3) ~ Sequevar3,
                                is.na(Sequevar3) ~ "Unknown")) %>%
@@ -153,7 +148,7 @@ RSSC1 = RSSC %>%
 
 # ui
 ui <- dashboardPage(
-        dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = "15vw"),
+        dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = "15vw"), #vw is used to scale to viewer's screen
         dashboardSidebar(collapsed = F, width = "15vw",
         br(),
         div(style = "display:inline-block;width:90%;margin-left:18px;text-align: left;",
@@ -186,17 +181,11 @@ ui <- dashboardPage(
                          choices = sort(unique(RSSC1$Sequevar4)),
                          options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
                          selected = unique(RSSC1$Sequevar4),multiple = T),
-            # pickerInput(inputId = "pandemic_lineage",
-             #            label = "Pandemic Lineages",
-              #           choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
-               #          options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                #         selected = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
-                 #        multiple = T),
             pickerInput(inputId = "pandemic_lineage",
-                        label = "Pandemic Lineages",
-                        choices = sort(unique(RSSC1$Sequevar2)),
+                        label = "Pandemic Lineages (IIB-1 & IIB-2)",
+                        choices = sort(unique(RSSC1$PanLin)),
                         options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                        selected = unique(RSSC1$Sequevar2),
+                        selected = unique(RSSC1$PanLin),
                         multiple = T),
              pickerInput(inputId = "host_family",
                          label = "Host Family",
@@ -414,13 +403,13 @@ server <- function(input, output, session) {
   filtered_PublicationYear_type <- eventReactive(input$search,{
     req(input$publication_year)
     RSSC1 %>%
-    filter(`Year published` %in% input$publication_year)
+    filter(YearPub %in% input$publication_year)
   })
   
   filtered_IsolationYear_type <- eventReactive(input$search,{
     req(input$isolation_year)
     filtered_PublicationYear_type() %>%
-    filter(`Year isolated` %in% input$isolation_year)
+    filter(YearIso %in% input$isolation_year)
   })
   
   filtered_Phylotype_type <- eventReactive(input$search,{
@@ -432,49 +421,49 @@ server <- function(input, output, session) {
   filtered_Sequevar_type <- eventReactive(input$search,{
     req(input$sequevar)
     filtered_Phylotype_type() %>%
-    filter(Sequevar3 %in% input$sequevar)
+    filter(Sequevar4 %in% input$sequevar)
   })
   
   filtered_PandemicLineage_type <- eventReactive(input$search,{
     req(input$pandemic_lineage)
     filtered_Sequevar_type() %>%
-    filter(Sequevar2 %in% input$pandemic_lineage)
+    filter(PanLin %in% input$pandemic_lineage)
   })
   
   filtered_HostFamily_type <- eventReactive(input$search,{
     req(input$host_family)
     filtered_PandemicLineage_type() %>%
-      filter(`Host Family` %in% input$host_family)
+      filter(HostFam %in% input$host_family)
   })
   
   filtered_HostSpecies_type <- eventReactive(input$search,{
     req(input$host_species)
     filtered_HostFamily_type() %>%
-    filter(`Host Species (Common name)` %in% input$host_species)
+    filter(HostSp %in% input$host_species)
   })
   
   filtered_VegProp_type <- eventReactive(input$search,{
     req(input$vegprophost)
     filtered_HostSpecies_type() %>%
-    filter(VPH %in% input$vegprophost)
+    filter(VPH2 %in% input$vegprophost)
   })
   
   filtered_Continent_type <- eventReactive(input$search,{
     req(input$continent)
     filtered_VegProp_type() %>%
-    filter(`Location (continent)` %in% input$continent)
+    filter(LocContinent %in% input$continent)
   })
   
   filtered_Country_type <- eventReactive(input$search,{
     req(input$country)
     filtered_Continent_type() %>%
-    filter(`Location (Country or Territory)` %in% input$country)
+    filter(LocCountry %in% input$country)
   })
   
   filtered_Genome_type <- eventReactive(input$search,{
     req(input$genome)
     filtered_Country_type() %>%
-    filter(Genome2 %in% input$genome)
+    filter(Genome3 %in% input$genome)
   })
   
 # Output ggplot map
