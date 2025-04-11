@@ -5,7 +5,7 @@ account: ralstoniadashboard
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14058438
-bundleId: 9832613
+bundleId: 10095930
 url: https://ralstoniadashboard.shinyapps.io/RalstoniaWiltDashboard/
 version: 1
 asMultiple: FALSE
