@@ -33,7 +33,7 @@ library(usethis)
 
 # create color theme for dashboard
 mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
-                        adminlte_sidebar(width = "300px",dark_color = "#444",
+                        adminlte_sidebar(width = "18vw",dark_color = "#444",
                                          dark_bg = "#022851",dark_hover_bg = "#444",
                                          dark_submenu_color = "#444"),
                         adminlte_global(content_bg = "#B3C1D1",box_bg = "#FFFFFF",
@@ -41,16 +41,12 @@ mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
 
 # load map layer for main plot
 world <- ne_countries(scale = "medium", returnclass = "sf") 
-
-# load data from csv
-#RSSC <- read_csv("RSSC_Final.csv")
-
 # load data from Google sheets direct link
-RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=1405797353#gid=1405797353")
-
+RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=991305141#gid=991305141")
 # define data groups
 Phylotype_selected = c("I", "II", "III", "IV")
-PandemicLineage_selected = c("1", "2")
+PandemicLineage_selected = c("1", "2", "Unknown", "IIB-1", "IIB-2")
+PanLinPhylo = c("1", "2")
 VegetativelyPropagatedHosts_selected = c("Anthurium sp. (Laceleaf)", "Curcuma longa (Turmeric)", "Curcuma aromatica (Wild Turmeric)",
                                          "Curcuma zedoaria (White Turmeric)", "Curcuma aeruginoa (Blue and Pink Ginger)", "Curcuma mangga (Mango Ginger)",
                                          "Epipremnum aureum (Pothos)", "Kaempferia galanga (Aromatic Ginger)", "Musa acuminata (Banana)",
@@ -65,11 +61,10 @@ RSSC1 = RSSC %>%
   mutate(Phylotype2 = case_when(!is.na(Phylotype2) ~ Phylotype2,
                                 is.na(Phylotype2) ~ "Unknown")) %>% 
   mutate(Sequevar2 = Sequevar) %>%
-  mutate(Sequevar2 = case_when(!is.na(Sequevar2) ~ Sequevar2,
-                               is.na(Sequevar2) ~ "Unknown")) %>%
-  mutate(Sequevar2 = case_when(Sequevar2 %in% PandemicLineage_selected ~ Sequevar2,
+  mutate(Sequevar2 = case_when(Sequevar2 == "1" ~ "IIB-1",
+                               Sequevar2 == "2" ~ "IIB-2",
                                is.na(Sequevar2) ~ "Unknown",
-                               !is.na(Sequevar2) & !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
+                               !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
   mutate(Sequevar3 = Sequevar) %>%
   mutate(Sequevar3 = case_when(!is.na(Sequevar3) ~ Sequevar3,
                                is.na(Sequevar3) ~ "Unknown")) %>%
@@ -116,6 +111,36 @@ RSSC1 = RSSC %>%
                                             is.na(`Location (continent)`) ~ "Unknown")) %>%
   mutate(`Location (Country or Territory)` = case_when(!is.na(`Location (Country or Territory)`) ~ `Location (Country or Territory)`,
                                                        is.na(`Location (Country or Territory)`) ~ "Unknown")) %>%
+  group_by(`Year published`) %>% 
+  mutate(n_iso_per_YearPub = n(),YearPub = paste(`Year published`," (",n_iso_per_YearPub,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Year isolated`) %>% 
+  mutate(n_iso_per_YearIso = n(),YearIso = paste(`Year isolated`," (",n_iso_per_YearIso,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Host Family`) %>% 
+  mutate(n_iso_per_HostFam = n(),HostFam = paste(`Host Family`," (",n_iso_per_HostFam,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Host Species (Common name)`) %>% 
+  mutate(n_iso_per_HostSp = n(),HostSp = paste(`Host Species (Common name)`," (",n_iso_per_HostSp,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Location (continent)`) %>% 
+  mutate(n_iso_per_LocContinent = n(),LocContinent = paste(`Location (continent)`," (",n_iso_per_LocContinent,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(`Location (Country or Territory)`) %>% 
+  mutate(n_iso_per_LocCountry = n(),LocCountry = paste(`Location (Country or Territory)`," (",n_iso_per_LocCountry,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(VPH) %>% 
+  mutate(n_iso_per_VPH = n(),VPH2 = paste(VPH," (",n_iso_per_VPH,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(Genome2) %>% 
+  mutate(n_iso_per_genome = n(),Genome3 = paste(Genome2," (",n_iso_per_genome,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(Sequevar3) %>% 
+  mutate(n_iso_per_Sequevar = n(),Sequevar4 = paste(Sequevar3," (",n_iso_per_Sequevar,")", sep = ""),) %>% 
+  ungroup() %>%
+  group_by(Sequevar2) %>% 
+  mutate(n_iso_per_PanLin = n(),PanLin = paste(Sequevar2," (",n_iso_per_PanLin,")", sep = ""),) %>% 
+  ungroup() %>%
   group_by(Phylotype2) %>% 
   mutate(n_iso_per_Phylotype = n(),Phylotype3 = paste(Phylotype2," (",n_iso_per_Phylotype,")", sep = ""),) %>% 
   ungroup() %>% 
@@ -123,10 +148,10 @@ RSSC1 = RSSC %>%
 
 # ui
 ui <- dashboardPage(
-  dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = 250),
-  dashboardSidebar(collapsed = F, width = 250,
+  dashboardHeader(title = "Ralstonia Wilt Dashboard", titleWidth = "15vw"), #vw is used to scale to viewer's screen
+  dashboardSidebar(collapsed = F, width = "15vw",
                    br(),
-                   div(style = "display:inline-block;width:80%;margin-left:18px;text-align: left;",
+                   div(style = "display:inline-block;width:90%;margin-left:18px;text-align: left;",
                        "A georeferenced database of isolates of the", em("Ralstonia solanacearum"), "Species Complex.
         Use the filters below to refine your search. Filtration works sequentially. Each filter refines 
         the data and passes it to the next filter. If a filter is completely deselected, all data from 
@@ -135,15 +160,15 @@ ui <- dashboardPage(
                                # picker inputs for filter function drop-down menus
                                pickerInput(inputId = "publication_year",
                                            label = "Publication Year",
-                                           choices = sort(unique(RSSC1$`Year published`)),
+                                           choices = sort(unique(RSSC1$YearPub)),
                                            options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = sort(unique(RSSC1$`Year published`)),
+                                           selected = sort(unique(RSSC1$YearPub)),
                                            multiple = T),
                                pickerInput(inputId = "isolation_year",
                                            label = "Isolation Year",
-                                           choices = sort(unique(RSSC1$`Year isolated`)),
+                                           choices = sort(unique(RSSC1$YearIso)),
                                            options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = sort(unique(RSSC1$`Year isolated`)),
+                                           selected = sort(unique(RSSC1$YearIso)),
                                            multiple = T),
                                pickerInput(inputId = "phylo",
                                            label = "Phylotype",
@@ -153,69 +178,64 @@ ui <- dashboardPage(
                                            multiple = T),
                                pickerInput(inputId = "sequevar",
                                            label = "Sequevar",
-                                           choices = sort(unique(RSSC1$Sequevar3)),
+                                           choices = sort(unique(RSSC1$Sequevar4)),
                                            options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = unique(RSSC1$Sequevar3),multiple = T),
+                                           selected = unique(RSSC1$Sequevar4),multiple = T),
                                pickerInput(inputId = "pandemic_lineage",
-                                           label = "Pandemic Lineages",
-                                           choices = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
+                                           label = "Pandemic Lineages (IIB-1 & IIB-2)",
+                                           choices = sort(unique(RSSC1$PanLin)),
                                            options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = c("Sequevar 1"="1", "Sequevar 2"="2", "Non pandemic lineage", "Unknown"),
+                                           selected = unique(RSSC1$PanLin),
                                            multiple = T),
                                pickerInput(inputId = "host_family",
                                            label = "Host Family",
-                                           choices = sort(unique(RSSC1$`Host Family`)),
+                                           choices = sort(unique(RSSC1$HostFam)),
                                            options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = sort(unique(RSSC1$`Host Family`)),
+                                           selected = sort(unique(RSSC1$HostFam)),
                                            multiple = T),
                                pickerInput(inputId = "host_species",
                                            label = "Host Species",
-                                           choices = sort(unique(RSSC1$`Host Species (Common name)`)),
+                                           choices = sort(unique(RSSC1$HostSp)),
                                            options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = sort(unique(RSSC1$`Host Species (Common name)`)),
+                                           selected = sort(unique(RSSC1$HostSp)),
                                            multiple = T), 
                                pickerInput(inputId = "vegprophost",
                                            label = "Vegetatively Propagated (VP) Hosts",
-                                           choices = list(Araceae = c("Anthurium sp. (Laceleaf)", "Epipremnum aureum (Pothos)"),
-                                                          Geraniacea = list("Geranium spp."),
-                                                          Musaceae = list("Banana/Plantain spp."),
-                                                          Rosaceae = list("Rosa sp. (Rose)"),
-                                                          Solanaceae = list("Solanum tuberosum (Potato)"),
-                                                          Zingiberaceae = c("Curcuma aromatica (Wild Turmeric)", "Curcuma longa (Turmeric)",
-                                                                            "Curcuma zedoaria (White Turmeric)", "Curcuma aeruginoa (Blue and Pink Ginger)",
-                                                                            "Kaempferia galanga (Aromatic Ginger)", "Zingiber cassumunar (Cassumunar Ginger)",
-                                                                            "Curcuma mangga (Mango Ginger)", "Zingiber mioga (Myoga Ginger)", "Zingiber officinale (Ginger)"),
-                                                          Other = c("Non VP Host", "Unknown Host")),
+                                           choices = list(Araceae = c("Anthurium sp. (Laceleaf) (124)", "Epipremnum aureum (Pothos) (57)"),
+                                                          Geraniacea = list("Geranium spp. (118)"),
+                                                          Musaceae = list("Banana/Plantain spp. (709)"),
+                                                          Rosaceae = list("Rosa sp. (Rose) (13)"),
+                                                          Solanaceae = list("Solanum tuberosum (Potato) (2977)"),
+                                                          Zingiberaceae = c("Curcuma aromatica (Wild Turmeric) (4)", "Curcuma longa (Turmeric) (17)",
+                                                                            "Curcuma zedoaria (White Turmeric) (2)",
+                                                                            "Kaempferia galanga (Aromatic Ginger) (13)", "Zingiber cassumunar (Cassumunar Ginger) (5)",
+                                                                            "Curcuma mangga (Mango Ginger) (1)", "Zingiber mioga (Myoga Ginger) (10)", "Zingiber officinale (Ginger) (220)"),
+                                                          Other = list("Non VP Host (5661)")),
                                            options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = c("Anthurium sp. (Laceleaf)","Epipremnum aureum (Pothos)","Geranium spp.","Banana/Plantain spp.",
-                                                        "Rosa sp. (Rose)","Solanum tuberosum (Potato)","Curcuma aromatica (Wild Turmeric)",
-                                                        "Curcuma longa (Turmeric)","Curcuma zedoaria (White Turmeric)","Curcuma aeruginoa (Blue and Pink Ginger)",
-                                                        "Kaempferia galanga (Aromatic Ginger)","Zingiber cassumunar (Cassumunar Ginger)",
-                                                        "Curcuma mangga (Mango Ginger)","Zingiber mioga (Myoga Ginger)","Zingiber officinale (Ginger)",
-                                                        "Non VP Host", "Unknown Host"),
+                                           selected = unique(RSSC1$VPH2),
                                            multiple = T),
                                pickerInput(inputId = "continent",
                                            label = "Continent",
-                                           choices = sort(unique(RSSC1$`Location (continent)`)),
+                                           choices = sort(unique(RSSC1$LocContinent)),
                                            options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = sort(unique(RSSC1$`Location (continent)`)),
+                                           selected = sort(unique(RSSC1$LocContinent)),
                                            multiple = T),
                                pickerInput(inputId = "country",
                                            label = "Country or Territory",
-                                           choices = sort(unique(RSSC1$`Location (Country or Territory)`)),
+                                           choices = sort(unique(RSSC1$LocCountry)),
                                            options = list(`live-search` = T,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = sort(unique(RSSC1$`Location (Country or Territory)`)),
+                                           selected = sort(unique(RSSC1$LocCountry)),
                                            multiple = T),
                                pickerInput(inputId = "genome",
                                            label = "Genome Available on NCBI?",
-                                           choices = c("Yes", "No"),
+                                           choices = sort(unique(RSSC1$Genome3)),
                                            options = list(`live-search` = F,`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
-                                           selected = c("Yes", "No"),
+                                           selected = unique(RSSC1$Genome3),
                                            multiple = T),
                                # buttons below filter options in sidebar
                                div(style="display:inline-block;width:25%;text-align:center;",
                                    actionButton(inputId = "search",label = "Filter",icon =icon("filter"))),
-                               div(style="display:inline-block;width:25%;text-align:center;",
+                               div(style="display:inline-block;margin-left:10px;width:25%;text-align:center;",
                                    actionButton(inputId = "reset",label = "Select All",icon =icon("retweet"))),
                                br(),
                                div(style="display:inline-block;width:25%;text-align:center;",
@@ -224,12 +244,12 @@ ui <- dashboardPage(
                                div(style="display:inline-block;width:25%;text-align:center;",
                                    downloadButton("downloadentire", "Download Entire RSSC Dataset")))
   ), #close of sidebar
-  dashboardBody(use_theme(mytheme),
+  dashboardBody(width="85vw",use_theme(mytheme),
                 tags$head(tags$link(rel = "stylesheet", type = "text/css", href="style.css")),
                 shinyjs::useShinyjs(),
                 div(id = "my app",
                     #row 
-                    box(htmltools::includeMarkdown("GoogleForm.Rmd"), width = 12),
+                    box(htmltools::includeMarkdown("GoogleForm.Rmd"), width = "80vw"),
                     #row  
                     fluidRow(
                       valueBoxOutput("n_Isolates", width = 3),
@@ -238,7 +258,7 @@ ui <- dashboardPage(
                       infoBoxOutput("n_Hosts", width = 3)),
                     #tab box with first tab content
                     tabBox(title = "",
-                           width = 12,
+                           width = "80vw",
                            height = "100%",
                            tabPanel(icon = icon("disease"),
                                     "RSSC Visualizations",
@@ -248,17 +268,27 @@ ui <- dashboardPage(
                                           solidHeader = T,
                                           width = 12,
                                           collapsible = T,
-                                          plotlyOutput("map_phylo", width="100%", height="400px"),
+                                          plotlyOutput("map_phylo", width="77vw", height = "100%"),
                                           br(),
                                           strong("How to Interpret this Map"),
-                                          p("This map shows the reported isolation locations of", em("Ralstonia"), "and 
-                                    each datapoint should be regarded with healthy skepticism. Isolation of ", 
-                                            em("Ralstonia"), "at a location does not mean it is currently established at that
-                                    location; eradication has been successful in certain cases (e.g. in Sweden) 
-                                    and some isolations might be from imported plants that were quarantined/destroyed. 
-                                    Additionally, our meta-analysis database likely contains a low incidence of 
-                                    errors from the primary literature, from our data entry, or from the geocoding 
-                                    algorithm that assigned latitude/longitude coordinates to written locations."))),
+                                          br(),
+                                          p("This map shows the reported isolation locations of", em("Ralstonia."), 
+                                            strong("These are from literature reports and should not be considered official, validated 
+                              confirmed detections by regulatory agencies"), "(e.g. the United States Department of 
+                              Agriculture, Animal and Plant Health Inspection Service). Isolation of ", 
+                                            em("Ralstonia"), "at a location does not mean it is currently established at that 
+                              location; eradication has been successful in certain cases (e.g. in Sweden) and some 
+                              isolations might be from imported plants that were quarantined/destroyed. 
+                              Additionally, our meta-analysis database likely contains a low incidence of errors 
+                              from the primary literature, from our data entry, or from the geocoding algorithm 
+                              that assigned latitude/longitude coordinates to written locations."),
+                                          p("The datapoints are layered onto the map in the following order: unknown, phylotype I, 
+                              phylotype II, phylotype III, phylotype IV. Despite semi-transparency 
+                              and off-setting, the map can give a misleading view in some cases. For example, 
+                              many phylotype II datapoints cover phylotype I datapoints within South America. 
+                              Users can remove phylotypes by using the filter functions in the sidebar to ensure 
+                              they get an accurate view of distributions.")
+                                      )),
                                     # row
                                     fluidRow(
                                       # box for host species chart
@@ -373,13 +403,13 @@ server <- function(input, output, session) {
   filtered_PublicationYear_type <- eventReactive(input$search,{
     req(input$publication_year)
     RSSC1 %>%
-      filter(`Year published` %in% input$publication_year)
+      filter(YearPub %in% input$publication_year)
   })
   
   filtered_IsolationYear_type <- eventReactive(input$search,{
     req(input$isolation_year)
     filtered_PublicationYear_type() %>%
-      filter(`Year isolated` %in% input$isolation_year)
+      filter(YearIso %in% input$isolation_year)
   })
   
   filtered_Phylotype_type <- eventReactive(input$search,{
@@ -391,49 +421,49 @@ server <- function(input, output, session) {
   filtered_Sequevar_type <- eventReactive(input$search,{
     req(input$sequevar)
     filtered_Phylotype_type() %>%
-      filter(Sequevar3 %in% input$sequevar)
+      filter(Sequevar4 %in% input$sequevar)
   })
   
   filtered_PandemicLineage_type <- eventReactive(input$search,{
     req(input$pandemic_lineage)
     filtered_Sequevar_type() %>%
-      filter(Sequevar2 %in% input$pandemic_lineage)
+      filter(PanLin %in% input$pandemic_lineage)
   })
   
   filtered_HostFamily_type <- eventReactive(input$search,{
     req(input$host_family)
     filtered_PandemicLineage_type() %>%
-      filter(`Host Family` %in% input$host_family)
+      filter(HostFam %in% input$host_family)
   })
   
   filtered_HostSpecies_type <- eventReactive(input$search,{
     req(input$host_species)
     filtered_HostFamily_type() %>%
-      filter(`Host Species (Common name)` %in% input$host_species)
+      filter(HostSp %in% input$host_species)
   })
   
   filtered_VegProp_type <- eventReactive(input$search,{
     req(input$vegprophost)
     filtered_HostSpecies_type() %>%
-      filter(VPH %in% input$vegprophost)
+      filter(VPH2 %in% input$vegprophost)
   })
   
   filtered_Continent_type <- eventReactive(input$search,{
     req(input$continent)
     filtered_VegProp_type() %>%
-      filter(`Location (continent)` %in% input$continent)
+      filter(LocContinent %in% input$continent)
   })
   
   filtered_Country_type <- eventReactive(input$search,{
     req(input$country)
     filtered_Continent_type() %>%
-      filter(`Location (Country or Territory)` %in% input$country)
+      filter(LocCountry %in% input$country)
   })
   
   filtered_Genome_type <- eventReactive(input$search,{
     req(input$genome)
     filtered_Country_type() %>%
-      filter(Genome2 %in% input$genome)
+      filter(Genome3 %in% input$genome)
   })
   
   # Output ggplot map
@@ -446,11 +476,21 @@ server <- function(input, output, session) {
     
     p <- ggplot(data = world)+
       geom_sf(fill = "white", color = "darkgrey", linewidth = 0.25) +
-      geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2), size = 0.25, alpha = 0.5) +
+      geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2,
+                                                                               text = paste0("</br> Strainname: ", Strainname,
+                                                                                             "</br> Phylotype: ", "Unknown",
+                                                                                             "</br> Sequevar: ", Sequevar,
+                                                                                             "</br> Host: ", `Host Species (Common name)`,
+                                                                                             "</br> Location: ", `Location Isolated`,
+                                                                                             "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 0.5) +
       geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
                                                                                text = paste0("</br> Strainname: ", Strainname,
                                                                                              "</br> Phylotype: ", Phylotype,
-                                                                                             "</br> Location: ", `Location Isolated`)), size = 0.25, alpha = 0.5) +
+                                                                                             "</br> Sub-Phylotype: ", `Sub-Phylotype`,
+                                                                                             "</br> Sequevar: ", Sequevar,
+                                                                                             "</br> Host: ", `Host Species (Common name)`,
+                                                                                             "</br> Location: ", `Location Isolated`,
+                                                                                             "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 0.5) +
       coord_sf(ylim = c(-70,90), expand = FALSE)+
       scale_y_continuous(breaks = c(-60, -40, -20, 0, 20, 40, 60, 80))+
       scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
@@ -1654,25 +1694,25 @@ server <- function(input, output, session) {
   },options = list(autoWidth = F,autoHeight = F, scrollX = TRUE))  
   
   # Output download filtered data button    
-  output$downloadfiltered <- downloadHandler(filename = function(){"RSSCdb_filtered_data.csv"}, 
+  output$downloadfiltered <- downloadHandler(filename = function(){"RalstoniaWiltDb_Filtered_Metadata.csv"}, 
                                              content = function(fname){
                                                if(input$search == 0){
                                                  data_leaflet = RSSC1
                                                }else{
                                                  data_leaflet = filtered_Genome_type()
                                                }
-                                               write.csv(data_leaflet, fname)
+                                               write.csv(data_leaflet[-c(32:44)], fname)
                                              })
   
   # Output download entire data button    
-  output$downloadentire <- downloadHandler(filename = function(){"RSSCdb_data.csv"},
+  output$downloadentire <- downloadHandler(filename = function(){"RalstoniaWiltDb_Full_Metadata.csv"},
                                            content = function(fname){
                                              if(input$search == 0){
                                                data_leaflet = RSSC1
                                              }else{
                                                data_leaflet = RSSC1
                                              }
-                                             write.csv(data_leaflet, fname)
+                                             write.csv(data_leaflet[-c(32:44)], fname)
                                            })
   
   # Output info boxes at top of page    

@@ -32,6 +32,7 @@ Funding for this database was provided in part by USDA APHIS, USDA NIFA, and the
 There are several related databases that users might find helpful:
 
 - **EPPO (European Plant Protection Organization) databases** for [*Ralstonia solanacearum*](https://gd.eppo.int/taxon/RALSSL), [*Ralstonia pseudosolanacearum*](https://gd.eppo.int/taxon/RALSPS), and  [*Ralstonia syzygii*](https://gd.eppo.int/taxon/RALSSY/distribution)
-- **CABI Compendium Entries** (currently outdated, but being revised. Check back soon!)
+- [**Ralstonia PhytobacExplorer**] (https://phytobacexplorer.warwick.ac.uk/species/index/ralstonia) A database for analyzing and visualizing genomic variation within plant-pathogenic bacteria.
 - [**RalstoT3E:**](https://iant.toulouse.inra.fr/bacteria/annotation/site/prj/T3Ev3/) A database dedicated to *Ralstonia* Type III effectors, which influence the cryptic patterns of host range in the RSSC.
-- [**The *Ralstonia* Phylogenomics KBase Narrative**](https://narrative.kbase.us/narrative/189849)(requires a free kbase.us account). A graphical user interface for phylogenomics and comparative genomes that is pre-populated with a curated and comprehensive list of public RSSC genomes. 
+- [**The *Ralstonia* Phylogenomics KBase Narrative**](https://narrative.kbase.us/narrative/189849)(requires a free kbase.us account). A graphical user interface for phylogenomics and comparative genomes that is pre-populated with a curated and comprehensive list of public RSSC genomes.
+- **CABI Compendium Entries** (currently outdated, but being revised. Check back soon!)
