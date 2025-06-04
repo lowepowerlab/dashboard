@@ -182,7 +182,7 @@ ui <- dashboardPage(
                          options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
                          selected = unique(RSSC1$Sequevar4),multiple = T),
             pickerInput(inputId = "pandemic_lineage",
-                        label = "Pandemic Lineages (IIB-1 & IIB-2)",
+                        label = "Pandemic Lineage IIB-1 & IIB-2",
                         choices = sort(unique(RSSC1$PanLin)),
                         options = list(`actions-box` = T,size = 10,`selected-text-format` = "count > 1"),
                         selected = unique(RSSC1$PanLin),
@@ -267,8 +267,12 @@ ui <- dashboardPage(
                         box(title = "Geographic Distribution of Reported RSSC Isolates",
                             solidHeader = T,
                             width = 12,
-                            collapsible = T,
-                            plotlyOutput("map_phylo", width="77vw", height = "100%"),
+                            collapsible = F,
+                            uiOutput("world_map"),
+                            br(),
+                            p("Jitter adds a small amount of variation to the location of each point to handle overplotting"),
+                            actionButton("map_jitter","Jitter On"),
+                            actionButton("map_nojitter","Jitter Off"),
                             br(),
                             strong("How to Interpret this Map"),
                             br(),
@@ -295,7 +299,7 @@ ui <- dashboardPage(
                         box(title = "Phylotype Abundance by Host Species",
                             solidHeader = T,
                             width = 6,
-                            collapsible = T,
+                            collapsible = F,
                             collapsed = F,
                             uiOutput("Host_chart_species"),
                             p("Plot by Count:"),
@@ -312,7 +316,7 @@ ui <- dashboardPage(
                         box(title = "Phylotype Abundance by Host Family",
                             solidHeader = T,
                             width = 6,
-                            collapsible = T,
+                            collapsible = F,
                             collapsed = F,
                             uiOutput("Host_chart"),
                             p("Plot by Count:"),
@@ -331,7 +335,7 @@ ui <- dashboardPage(
                       box(title = "Phylotype Abundance by Country",
                           solidHeader = T,
                           width = 6,
-                          collapsible = T,
+                          collapsible = F,
                           collapsed = F,
                           uiOutput("Country_chart"),
                           p("Plot by Count:"),
@@ -348,7 +352,7 @@ ui <- dashboardPage(
                       box(title = "Phylotype Abundance by Continent",
                           solidHeader = T,
                           width = 6,
-                          collapsible = T,
+                          collapsible = F,
                           collapsed = F,
                           uiOutput("Continent_chart"),
                           p("Plot by Count:"),
@@ -367,7 +371,7 @@ ui <- dashboardPage(
                         box(title = "Metadata Table",
                             solidHeader = T,
                             width = 12, 
-                            collapsible = T,
+                            collapsible = F,
                             collapsed = F,
                             DT::dataTableOutput("Metadata_table")))
                   ), #close of first tab panel
@@ -465,7 +469,22 @@ server <- function(input, output, session) {
     filtered_Country_type() %>%
     filter(Genome3 %in% input$genome)
   })
-  
+
+# Map default and buttons   
+  # Set a default view on page load
+  output$world_map <- renderUI({
+    plotlyOutput("map_phylo", width="77vw", height = "100%")  # Default plot when the page loads
+  })  
+  # Button Observations
+  observeEvent(input$map_jitter, { 
+    req(input$map_jitter)
+    output$world_map <- renderUI({ plotlyOutput("map_phylo", width="77vw", height = "100%") })
+  })
+  observeEvent(input$map_nojitter, { 
+    req(input$map_nojitter)
+    output$world_map <- renderUI({ plotlyOutput("map_phylo_nojitter", width="77vw", height = "100%") })
+  })  
+   
 # Output ggplot map
     output$map_phylo <- renderPlotly({
       data_leaflet <- if (input$search == 0) {
@@ -475,28 +494,28 @@ server <- function(input, output, session) {
       }
       
       p <- ggplot(data = world)+
-          geom_sf(fill = "white", color = "darkgrey", linewidth = 0.25) +
-          geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2,
+          geom_sf(fill = "snow", color = "snow4", linewidth = 0.13) +
+          geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), width = 1, height = 1, aes(x = Longitude2, y = Latitude2, color = Phylotype2,
                                                                                    text = paste0("</br> Strainname: ", Strainname,
                                                                                                  "</br> Phylotype: ", "Unknown",
                                                                                                  "</br> Sequevar: ", Sequevar,
                                                                                                  "</br> Host: ", `Host Species (Common name)`,
                                                                                                  "</br> Location: ", `Location Isolated`,
-                                                                                                 "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 0.5) +
-          geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
+                                                                                                 "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 5/10) +
+          geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), width = 1, height = 1, aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
                                                                                    text = paste0("</br> Strainname: ", Strainname,
                                                                                                  "</br> Phylotype: ", Phylotype,
                                                                                                  "</br> Sub-Phylotype: ", `Sub-Phylotype`,
                                                                                                  "</br> Sequevar: ", Sequevar,
                                                                                                  "</br> Host: ", `Host Species (Common name)`,
                                                                                                  "</br> Location: ", `Location Isolated`,
-                                                                                                 "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 0.5) +
+                                                                                                 "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 5/10) +
           coord_sf(ylim = c(-70,90), expand = FALSE)+
           scale_y_continuous(breaks = c(-60, -40, -20, 0, 20, 40, 60, 80))+
           scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
           labs(x = "Longitude", y = "Latitude", color = "Phylotype")+
-          theme(panel.grid.major = element_line(color = "grey", linewidth = 0.5),
-                panel.background = element_rect(fill = "lightgrey"),
+          theme(panel.grid.major = element_line(color = "azure2", linewidth = 0.35),
+                panel.background = element_rect(fill = "azure"),
                 panel.border = element_rect(fill = NA))+
           scale_color_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))
       ggplotly(p, tooltip = "text") %>%
@@ -505,6 +524,45 @@ server <- function(input, output, session) {
                   modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 'hoverCompareCartesian'))
     })
 
+# Output ggplot no jitter map
+    output$map_phylo_nojitter <- renderPlotly({
+      data_leaflet <- if (input$search == 0) {
+        data_leaflet <- RSSC1
+      } else {
+        data_leaflet <- filtered_Genome_type()
+      }
+      
+      p <- ggplot(data = world)+
+        geom_sf(fill = "snow", color = "snow4", linewidth = 0.13) +
+        geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2,
+                                                                                                        text = paste0("</br> Strainname: ", Strainname,
+                                                                                                                      "</br> Phylotype: ", "Unknown",
+                                                                                                                      "</br> Sequevar: ", Sequevar,
+                                                                                                                      "</br> Host: ", `Host Species (Common name)`,
+                                                                                                                      "</br> Location: ", `Location Isolated`,
+                                                                                                                      "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 5/10) +
+        geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
+                                                                                                        text = paste0("</br> Strainname: ", Strainname,
+                                                                                                                      "</br> Phylotype: ", Phylotype,
+                                                                                                                      "</br> Sub-Phylotype: ", `Sub-Phylotype`,
+                                                                                                                      "</br> Sequevar: ", Sequevar,
+                                                                                                                      "</br> Host: ", `Host Species (Common name)`,
+                                                                                                                      "</br> Location: ", `Location Isolated`,
+                                                                                                                      "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 5/10) +
+        coord_sf(ylim = c(-70,90), expand = FALSE)+
+        scale_y_continuous(breaks = c(-60, -40, -20, 0, 20, 40, 60, 80))+
+        scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
+        labs(x = "Longitude", y = "Latitude", color = "Phylotype")+
+        theme(panel.grid.major = element_line(color = "azure2", linewidth = 0.35),
+              panel.background = element_rect(fill = "azure"),
+              panel.border = element_rect(fill = NA))+
+        scale_color_manual(values = c("I" = "#ffaf37", "II" = "#007ba5", "III" = "#f24000", "IV" = "#00b67e", "Unknown" = "grey50"))
+      ggplotly(p, tooltip = "text") %>%
+        config(p, displaylogo = FALSE, 
+               toImageButtonOptions = list(format= 'svg', scale= 1),
+               modeBarButtonsToRemove = c('autoScale', 'lasso2d', 'select', 'hoverCompareCartesian'))
+    })
+    
 # Output Host Charts  
     
     # Set a default view on page load
@@ -1723,7 +1781,7 @@ server <- function(input, output, session) {
       data_leaflet = filtered_Genome_type()
     }
     n =nrow(data_leaflet)
-    if(n>1){sub = "Isolates"}else{sub = "Isolate"}
+    if(n>1){sub = "Reported Incidences"}else{sub = "Reported Incidence"}
     infoBox(title = "Collection",
             value = n,
             subtitle = sub,
@@ -1738,7 +1796,7 @@ server <- function(input, output, session) {
       data_leaflet = filtered_Genome_type()
     }
     n = length(unique(data_leaflet$Publication))
-    if(n>1){sub = "Articles"}else{sub = "Article"}
+    if(n>1){sub = "Citations"}else{sub = "Citation"}
     infoBox(title = "Literature",
             value = n,
             subtitle = sub,
@@ -1768,8 +1826,8 @@ server <- function(input, output, session) {
       data_leaflet = filtered_Genome_type()
     }
     n = length(unique(data_leaflet$`Host Species (Common name)`))
-    if(n>1){sub = "Hosts"}else{sub = "Host"}
-    infoBox(title = "Host Range",
+    if(n>1){sub = "Unique Hosts"}else{sub = "Unique Host"}
+    infoBox(title = "Host of Isolation",
             value = n,
             subtitle = sub,
             color= "light-blue",
