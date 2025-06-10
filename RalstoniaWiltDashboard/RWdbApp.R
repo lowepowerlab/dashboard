@@ -1,5 +1,8 @@
 # load packages needed for Shiny App
-library(tidyverse) 
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+library(forcats)
 library(janitor)
 library(readxl)
 library(writexl)
@@ -270,7 +273,7 @@ ui <- dashboardPage(
                             collapsible = F,
                             uiOutput("world_map"),
                             br(),
-                            p("Jitter adds a small amount of variation to the location of each point to handle overplotting"),
+                            p("Jitter adds a small amount of variation to the location of each point to handle overplotting."),
                             actionButton("map_jitter","Jitter On"),
                             actionButton("map_nojitter","Jitter Off"),
                             br(),
@@ -495,21 +498,29 @@ server <- function(input, output, session) {
       
       p <- ggplot(data = world)+
           geom_sf(fill = "snow", color = "snow4", linewidth = 0.13) +
-          geom_jitter(data = data_leaflet %>% filter(Phylotype2 == "Unknown"), width = 1, height = 1, aes(x = Longitude2, y = Latitude2, color = Phylotype2,
-                                                                                   text = paste0("</br> Strainname: ", Strainname,
-                                                                                                 "</br> Phylotype: ", "Unknown",
-                                                                                                 "</br> Sequevar: ", Sequevar,
-                                                                                                 "</br> Host: ", `Host Species (Common name)`,
-                                                                                                 "</br> Location: ", `Location Isolated`,
-                                                                                                 "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 5/10) +
-          geom_jitter(data = data_leaflet %>% filter(Phylotype2 != "Unknown"), width = 1, height = 1, aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
-                                                                                   text = paste0("</br> Strainname: ", Strainname,
-                                                                                                 "</br> Phylotype: ", Phylotype,
-                                                                                                 "</br> Sub-Phylotype: ", `Sub-Phylotype`,
-                                                                                                 "</br> Sequevar: ", Sequevar,
-                                                                                                 "</br> Host: ", `Host Species (Common name)`,
-                                                                                                 "</br> Location: ", `Location Isolated`,
-                                                                                                 "</br> Year Isolated: ", `Year isolated`)), size = 0.25, alpha = 5/10) +
+          geom_jitter(data = data_leaflet %>% 
+                        filter(Phylotype2 == "Unknown"), 
+                        width = 1, height = 1, 
+                        aes(x = Longitude2, y = Latitude2, color = Phylotype2,
+                            text = paste0("</br> Strainname: ", Strainname,
+                                          "</br> Phylotype: ", "Unknown",
+                                          "</br> Sequevar: ", Sequevar,
+                                          "</br> Host: ", `Host Species (Common name)`,
+                                          "</br> Location: ", `Location Isolated`,
+                                          "</br> Year Isolated: ", `Year isolated`)),
+                            size = 0.25, alpha = 5/10)  +
+          geom_jitter(data = data_leaflet %>% 
+                        filter(Phylotype2 != "Unknown"), 
+                        width = 1, height = 1, 
+                        aes(x = Longitude2, y = Latitude2, color = Phylotype2, 
+                            text = paste0("</br> Strainname: ", Strainname,
+                                          "</br> Phylotype: ", Phylotype,
+                                          "</br> Sub-Phylotype: ", `Sub-Phylotype`,
+                                          "</br> Sequevar: ", Sequevar,
+                                          "</br> Host: ", `Host Species (Common name)`,
+                                          "</br> Location: ", `Location Isolated`,
+                                          "</br> Year Isolated: ", `Year isolated`)),
+                            size = 0.25, alpha = 5/10)  +
           coord_sf(ylim = c(-70,90), expand = FALSE)+
           scale_y_continuous(breaks = c(-60, -40, -20, 0, 20, 40, 60, 80))+
           scale_x_continuous(breaks = c(-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150))+
