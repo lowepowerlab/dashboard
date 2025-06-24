@@ -17,7 +17,7 @@ jobs:
         uses: bluegenes/shinyapps-deploy-github-action@main
         with:
           # account and application name (https://<accountName>.shinyapps.io/<appName>)
-          appName: RalstoniaDashboard
+          appName: RalstoniaWiltDashboard
           appDir: RalstoniaWiltDashboard
           accountName: ralstoniadashboard
 
