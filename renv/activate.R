@@ -732,7 +732,7 @@ local({
   
     # if the user has requested an automatic prefix, generate it
     auto <- Sys.getenv("RENV_PATHS_PREFIX_AUTO", unset = NA)
-    if (is.na(auto) && getRversion() >= "4.4.0")
+    if (is.na(auto) && getRversion() >= "4.3.3")
       auto <- "TRUE"
   
     if (auto %in% c("TRUE", "True", "true", "1"))
