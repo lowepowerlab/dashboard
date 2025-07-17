@@ -20,6 +20,7 @@ library(fresh)
 library(plotly)
 library(gsheet)
 library(cowplot)
+library(markdown)
 
 
 # create color theme for dashboard
