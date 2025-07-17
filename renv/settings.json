@@ -1,7 +1,9 @@
 {
   "bioconductor.version": null,
   "external.libraries": [],
-  "ignored.packages": ["maps"],
+  "ignored.packages": [
+    "maps"
+  ],
   "package.dependency.fields": [
     "Imports",
     "Depends",
