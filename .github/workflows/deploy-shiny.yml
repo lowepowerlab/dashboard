@@ -13,11 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: deploy
+      - name: deploy to shinyapps.io
         uses: bluegenes/shinyapps-deploy-github-action@main
         with:
           # account and application name (https://<accountName>.shinyapps.io/<appName>)
-          appName: RalstoniaDashboard
+          appName: RalstoniaWiltDashboard
           appDir: RalstoniaWiltDashboard
           accountName: ralstoniadashboard
 
