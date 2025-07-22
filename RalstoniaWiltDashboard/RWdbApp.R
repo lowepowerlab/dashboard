@@ -20,7 +20,7 @@ library(fresh)
 library(plotly)
 library(gsheet)
 library(cowplot)
-
+library(markdown)
 
 # create color theme for dashboard
 mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
