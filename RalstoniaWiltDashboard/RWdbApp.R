@@ -1,4 +1,4 @@
-# load packages needed for Shiny App
+# load packages needed for Shiny App to run & deploy
 library(tidyverse)
 library(janitor)
 library(ggmap)
@@ -19,10 +19,11 @@ library(ggthemes)
 library(fresh)
 library(plotly)
 library(gsheet)
-library(cowplot)
-library(markdown)
-library(litedown)
+library(rmarkdown)
 library(rsconnect)
+library(dplyr)
+library(renv)
+
 
 # create color theme for dashboard
 mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
