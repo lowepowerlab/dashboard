@@ -27,7 +27,6 @@ library(class)
 library(cowplot)
 
 
-
 # create color theme for dashboard
 mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
                         adminlte_sidebar(width = "18vw",dark_color = "#444",
