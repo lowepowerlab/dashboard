@@ -19,10 +19,13 @@ library(ggthemes)
 library(fresh)
 library(plotly)
 library(gsheet)
-library(rmarkdown)
-library(rsconnect)
 library(dplyr)
-library(renv)
+library(rmarkdown)
+library(markdown)
+library(litedown)
+library(class)
+library(cowplot)
+
 
 
 # create color theme for dashboard
