@@ -27,7 +27,12 @@ jobs:
             git \
             libabsl-dev \
             pkg-config \
-            cmake
+            cmake \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libx11-dev \
+            pandoc
+
 
       - uses: r-lib/actions/setup-pandoc@v2
 
