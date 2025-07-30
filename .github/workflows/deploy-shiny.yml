@@ -61,6 +61,7 @@ jobs:
           rsconnect::deployApp(
             appDir = "${{ github.workspace }}/RalstoniaWiltDashboard",
             appName = "RalstoniaWiltDashboard",
+            appPrimaryDoc = "RWdbApp.R", # need to specify since is not `app.R` or `ui.R` + `server.R`
             account = "ralstoniadashboard",
             server = "shinyapps.io",
             forceUpdate = TRUE,
