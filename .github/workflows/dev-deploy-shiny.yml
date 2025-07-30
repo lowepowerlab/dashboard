@@ -65,6 +65,6 @@ jobs:
             appName = "${{ env.APPNAME }}",
             account = "${{ env.ACCOUNT }}",
             server = "${{ env.SERVER }}",
+            forceUpdate = TRUE,
           )
-#            forceUpdate = TRUE - not sure if we need this or not.
         shell: Rscript {0}
