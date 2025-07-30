@@ -42,7 +42,6 @@ jobs:
           use-public-rspm: true
           r-version: renv
 
-    # renv.lock is in repo root, so restore from root
       - uses: r-lib/actions/setup-renv@v2
 
       - name: Install rsconnect
@@ -50,21 +49,17 @@ jobs:
         shell: Rscript {0}
 
       - name: Authorize and deploy app
-        env:
-          APPNAME: RalstoniaWiltDashboard
-          ACCOUNT: ${{ secrets.DEV_SHINYAPPS_USER }}
-          SERVER: shinyapps.io
         run: |
           rsconnect::setAccountInfo(
-            name = "${{ secrets.DEV_SHINYAPPS_USER }}",
+            name = "bluegenes",
             token = "${{ secrets.DEV_SHINYAPPS_TOKEN}}",
             secret = "${{ secrets.DEV_SHINYAPPS_SECRET }}"
           )
           rsconnect::deployApp(
             appDir = "${{ github.workspace }}/RalstoniaWiltDashboard",
-            appName = "${{ env.APPNAME }}",
-            account = "${{ env.ACCOUNT }}",
-            server = "${{ env.SERVER }}",
+            appName = "RalstoniaWiltDashboard",
+            account = "bluegenes",
+            server = "shinyapps.io",
             forceUpdate = TRUE,
           )
         shell: Rscript {0}
