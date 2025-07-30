@@ -42,6 +42,7 @@ jobs:
           use-public-rspm: true
           r-version: renv
 
+      # setup renv from renv.lock
       - uses: r-lib/actions/setup-renv@v2
 
       - name: Install rsconnect

@@ -44,7 +44,7 @@ jobs:
           use-public-rspm: true
           r-version: renv
 
-    # renv.lock is in repo root, so restore from root
+    # setup renv from renv.lock
       - uses: r-lib/actions/setup-renv@v2
 
       - name: Install rsconnect
