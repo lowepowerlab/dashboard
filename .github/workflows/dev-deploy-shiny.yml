@@ -31,8 +31,9 @@ jobs:
             libfontconfig1-dev \
             libfreetype6-dev \
             libx11-dev \
-            pandoc
-
+            pandoc \
+            libharfbuzz-dev \
+            libfribidi-dev
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -65,5 +66,5 @@ jobs:
             account = "${{ env.ACCOUNT }}",
             server = "${{ env.SERVER }}",
           )
-#            forceUpdate = TRUE
+#            forceUpdate = TRUE - not sure if we need this or not.
         shell: Rscript {0}
