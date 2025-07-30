@@ -1,16 +1,14 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 
-name: Deploy Ralstonia Dashboard to shinyapps.io
+name: Deploy development version of Ralstonia Dashboard to shinyapps.io
 
 on:
-  push:
-     branches:
-       - main
+  pull_request:
 
 jobs:
-  deploy-shiny:
-    name: Deploy to shinyapps.io
+  dev-deploy-shiny:
+    name: Deploy development version to shinyapps.io
     runs-on: ubuntu-latest
         
     steps:
@@ -44,26 +42,25 @@ jobs:
           use-public-rspm: true
           r-version: renv
 
-    # setup renv from renv.lock
+      # setup renv from renv.lock
       - uses: r-lib/actions/setup-renv@v2
 
       - name: Install rsconnect
         run: install.packages("rsconnect")
         shell: Rscript {0}
 
-        # token and secret obtained from https://www.shinyapps.io/admin/#/tokens
       - name: Authorize and deploy app
         run: |
           rsconnect::setAccountInfo(
-            name = "ralstoniadashboard",
-            token = "${{ secrets.SHINYAPPS_TOKEN}}",
-            secret = "${{ secrets.SHINYAPPS_SECRET }}"
+            name = "bluegenes",
+            token = "${{ secrets.DEV_SHINYAPPS_TOKEN}}",
+            secret = "${{ secrets.DEV_SHINYAPPS_SECRET }}"
           )
           rsconnect::deployApp(
             appDir = "${{ github.workspace }}/RalstoniaWiltDashboard",
             appName = "RalstoniaWiltDashboard",
             appPrimaryDoc = "RWdbApp.R", # need to specify since is not `app.R` or `ui.R` + `server.R`
-            account = "ralstoniadashboard",
+            account = "bluegenes",
             server = "shinyapps.io",
             forceUpdate = TRUE,
           )
