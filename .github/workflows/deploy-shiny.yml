@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy-shiny:
-    name: Deploy development version to shinyapps.io
+    name: Deploy to shinyapps.io
     runs-on: ubuntu-latest
         
     steps:
@@ -51,6 +51,7 @@ jobs:
         run: install.packages("rsconnect")
         shell: Rscript {0}
 
+        # token and secret obtained from https://www.shinyapps.io/admin/#/tokens
       - name: Authorize and deploy app
         run: |
           rsconnect::setAccountInfo(
