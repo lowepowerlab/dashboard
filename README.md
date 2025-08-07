@@ -1,4 +1,4 @@
-# *Ralstonia solanacearum* species complex (RSSC) Global Diversity Database
+# *Ralstonia* Wilt Dashboard & *Ralstonia solanacearum* species complex (RSSC) Global Diversity Database
 
 ## Background
 Welcome to the *Ralstonia* Wilt Dashboard, a comprehensive tool designed to explore and analyze the genetic diversity of *Ralstonia solanacearum* species complex (RSSC). The *Ralstonia solanacearum* species complex (RSSC) are a diverse group of soil and waterborne pathogens that causes wilt and rot diseases of many economically important plant species. The species complex has been sub-divided into three distinct genomospecies: *R. solanacearum*, *R. pseudosolanacearum*, and *R. syzygii*. Different RSSC lineages emerged and diversified on distinct continents: *R. solanacearum* in the Americas, *R. syzygii* in the SE Asian archipelagoes (e.g. Indonesia), the phylotype I branch of *R. pseudosolanacearum* in continental Asia, and the phylotype III branch of *R. pseudosolanacearum* in Africa.
@@ -24,13 +24,13 @@ RSSC are broad-host range, generalist pathogens where individual strains have co
 - This dashboard is a collaboration between the [Lowe-Power Lab at UC Davis](https://lowepowerlab.ucdavis.edu) and the Data Intensive Biology lab at UC Davis. Version 1 of the *Ralstonia* Wilt Dashboard was developed by **Vienna Elmgreen**, with location geocoding assistance by **Benjamin Ramirez**, under guidance by **Dr. Tessa Pierce-Ward** and **Dr. Tiffany Lowe-Power**. 
 
 ## Acknowledgments
-- We gratefully acknowledge the researchers around the world who have shared their *Ralstonia* survey data through publications. We are grateful to [Dr. Emerson Del Ponte](https://emersondelponte.netlify.app/) for sharing R code for the [*Fusarium graminearum* species complex Db](https://fgsc.netlify.app/).
-- Funding for this database was provided in part by USDA APHIS, USDA NIFA, and the Department of Plant Pathology at UC Davis. 
+- We gratefully acknowledge the global plant pathology community for investigating and reporting *Ralstonia* incidence and isolation information. We are grateful to [Dr. Emerson Del Ponte](https://emersondelponte.netlify.app/) for sharing advice and code from the [*Fusarium graminearum* species complex Db](https://edelponte.shinyapps.io/FGSCdb/).
+- Support was provided by the U.S. Department of Agriculture Hatch Projects (#1023861) and Pests and Beneficial Species in Agricultural Production Systems (A1112) program, project award no. 2024-67013-42781, from the U.S. Department of Agriculture’s National Institute of Food and Agriculture. Additionally, this material was made possible, in part, by a PPA7721 Cooperative Agreement from the United States Department of Agriculture’s Animal and Plant Health Inspection Service (APHIS). It may not necessarily express APHIS’ views.
 
 ## Related Databases
 There are several related databases that users might find helpful:
-- **EPPO (European Plant Protection Organization) databases** for [*Ralstonia solanacearum*](https://gd.eppo.int/taxon/RALSSL), [*Ralstonia pseudosolanacearum*](https://gd.eppo.int/taxon/RALSPS), and  [*Ralstonia syzygii*](https://gd.eppo.int/taxon/RALSSY/distribution)
-- [**Ralstonia PhytobacExplorer**] (https://phytobacexplorer.warwick.ac.uk/species/index/ralstonia) A database for analyzing and visualizing genomic variation within plant-pathogenic bacteria.
+- **EPPO (European Plant Protection Organization) databases** for [*Ralstonia solanacearum*](https://gd.eppo.int/taxon/RALSSL), [*Ralstonia pseudosolanacearum*](https://gd.eppo.int/taxon/RALSPS), and  [*Ralstonia syzygii*](https://gd.eppo.int/taxon/RALSSY/distribution).
+- [**Ralstonia PhytobacExplorer**](https://phytobacexplorer.warwick.ac.uk/species/index/ralstonia) A database for analyzing and visualizing genomic variation within plant-pathogenic bacteria.
 - [**RalstoT3E:**](https://iant.toulouse.inra.fr/bacteria/annotation/site/prj/T3Ev3/) A database dedicated to *Ralstonia* Type III effectors, which influence the cryptic patterns of host range in the RSSC.
 - [**The *Ralstonia* Phylogenomics KBase Narrative**](https://narrative.kbase.us/narrative/189849)(requires a free kbase.us account). A graphical user interface for phylogenomics and comparative genomes that is pre-populated with a curated and comprehensive list of public RSSC genomes.
-- **CABI Compendium Entries** (currently outdated, but being revised. Check back soon!)
+- **CABI Compendium Entries** for [*Ralstonia solanacearum*](https://www.cabidigitallibrary.org/doi/full/10.1079/cabicompendium.45009) and [*Ralstonia pseudosolanacearum*](https://www.cabidigitallibrary.org/doi/abs/10.1079/cabicompendium.15285723).
