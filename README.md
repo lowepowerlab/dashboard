@@ -7,8 +7,7 @@ RSSC are broad-host range, generalist pathogens where individual strains have co
 ## Purpose
 - Communicate public data to stakeholders through a dashboard that visualizes geographic distribution patterns of *Ralstonia solanacearum* species complex (RSSC) lineages and patterns of *Ralstonia solanacearum* species complex (RSSC) host range 
 - To build a framework for understanding how and where exotic RSSC lineages can enter, establish, and spread in the U.S. 
-- To develop an interactive dashboard that provides user-friendly access to host, location, and other already collected pathogen metadata on nearly 9,000 RSSC strains
-- To use Branchwater to mine public metagenomes for sequences matching RSSC lineages, including the SA R3B2, and make this additional information also accessible through the RSSC Dashboard
+- To develop an interactive dashboard that provides user-friendly access to host, location, and other already collected pathogen metadata on thousands of RSSC strains
 
 ## Goals
 - This interactive dashboard summarizes RSSC data in accessible maps, charts, and tables for stakeholders to explore.
