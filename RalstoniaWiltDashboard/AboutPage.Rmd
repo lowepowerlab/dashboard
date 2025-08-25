@@ -6,8 +6,7 @@ The *Ralstonia* Wilt Dashboard integrates data from hundreds of sources. Please 
 ## Purpose
 
 - Communicate public data to stakeholders through a dashboard that visualizes geographic distribution patterns of *Ralstonia solanacearum* species complex (RSSC) lineages and patterns of *Ralstonia solanacearum* species complex (RSSC) host range 
-- To build a framework for understanding how and where exotic RSSC lineages can enter, establish, and spread in the U.S. 
-- To develop an interactive dashboard that provides user-friendly access to host, location, and other already collected pathogen metadata on thousands of RSSC strains
+- To provide a framework for understanding how and where exotic RSSC lineages can enter, establish, and spread between locations
 
 ## Reporting Errors or Bugs
 
