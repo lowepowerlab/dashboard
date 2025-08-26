@@ -40,4 +40,4 @@ There are several related databases that users might find helpful:
 - For the data, please read/cite our companion pre-print on BioRxiv: https://www.biorxiv.org/content/10.1101/2020.07.13.189936
 - To cite the web dashboard:
    
-   Vienna Elmgreen, Tessa Pierce Ward, Benjamin Ramirez, & Tiffany Lowe-Power. (2025). lowepowerlab/dashboard: v1.0 (v1.0). Zenodo. https://doi.org/10.5281/zenodo.16945323
+   Vienna Elmgreen, Benjamin Ramirez, Tiffany Lowe-Power & Tessa Pierce Ward. (2025). lowepowerlab/dashboard: v1.0 (v1.0). Zenodo. https://doi.org/10.5281/zenodo.16945323
