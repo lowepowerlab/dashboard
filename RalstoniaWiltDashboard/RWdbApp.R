@@ -39,12 +39,9 @@ mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
 # load map layer for main plot
 world <- ne_countries(scale = "medium", returnclass = "sf") 
 # load data from Google sheets direct link
-#RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=190796796#gid=190796796")
+RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=190796796#gid=190796796")
 # load data from excel sheet
-# RSSC <- read_xlsx("v5 plus RSSC-Database-2026-Undergraduate-Cohort-Data.xlsx")
-# RSSC <- read_xlsx("RSSC-Database-2026-Undergraduate-Cohort-Data.xlsx")
-# RSSC <- read_xlsx("v5-data.xlsx")
- RSSC <- read_xlsx("RSSC_2026.xlsx")
+# RSSC <- read_xlsx("RSSC_2026.xlsx")
 # define data groups
 Phylotype_selected = c("I", "II", "III", "IV")
 PandemicLineage_selected = c("1", "2", "Unknown", "IIB-1", "IIB-2")

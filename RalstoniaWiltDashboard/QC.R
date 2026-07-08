@@ -4,7 +4,6 @@ library(ggplot2)
 library(readr)
 library(tibble)
 
-
 #===========================================================
 # 0. Extract unique locations (faster QC)
 #===========================================================

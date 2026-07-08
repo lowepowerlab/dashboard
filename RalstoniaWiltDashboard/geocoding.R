@@ -7,7 +7,6 @@ library(stringr)
 library(readr)
 library(tibble)
 
-
 #check and change token regularly
 MAPBOX_TOKEN <- "TOKEN_GOES_HERE"
 
