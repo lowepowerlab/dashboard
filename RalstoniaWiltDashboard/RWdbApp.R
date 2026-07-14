@@ -26,8 +26,7 @@ library(markdown)
 library(litedown)
 library(class)
 library(cowplot)
-
-
+library(readxl)
 
 # create color theme for dashboard
 mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
@@ -40,7 +39,9 @@ mytheme <- create_theme(adminlte_color(light_blue = "#022851"),
 # load map layer for main plot
 world <- ne_countries(scale = "medium", returnclass = "sf") 
 # load data from Google sheets direct link
-RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=991305141#gid=991305141")
+RSSC <- gsheet2tbl("https://docs.google.com/spreadsheets/d/19Osv46GZUz0wYaHa6hf2HBqbm9ScafID_5tGVWJMlX8/edit?gid=190796796#gid=190796796")
+# load data from excel sheet
+# RSSC <- read_xlsx("RSSC_2026.xlsx")
 # define data groups
 Phylotype_selected = c("I", "II", "III", "IV")
 PandemicLineage_selected = c("1", "2", "Unknown", "IIB-1", "IIB-2")
@@ -55,6 +56,8 @@ VegetativelyPropagatedHosts_selected = c("Anthurium sp. (Laceleaf)", "Curcuma lo
                                          "Zingiber officinale (Ginger)")
 # data transformations
 RSSC1 = RSSC %>% 
+  mutate(`Lat (AI)` = as.numeric(`Lat (AI)`),
+         `Long (AI)` = as.numeric(`Long (AI)`))%>%
   mutate(Phylotype2 = Phylotype) %>%
   mutate(Phylotype2 = case_when(!is.na(Phylotype2) ~ Phylotype2,
                                 is.na(Phylotype2) ~ "Unknown")) %>% 
@@ -64,7 +67,7 @@ RSSC1 = RSSC %>%
                                is.na(Sequevar2) ~ "Unknown",
                                !Sequevar2 %in% PandemicLineage_selected ~ "Non pandemic lineage")) %>%
   mutate(Sequevar3 = Sequevar) %>%
-  mutate(Sequevar3 = case_when(!is.na(Sequevar3) ~ Sequevar3,
+  mutate(Sequevar3 = case_when(!is.na(Sequevar3) ~ as.character(Sequevar3),
                                is.na(Sequevar3) ~ "Unknown")) %>%
   mutate(Genome2 = `Genome Accession`) %>%
   mutate(Genome2 = case_when(!is.na(Genome2) ~ "Yes",

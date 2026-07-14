@@ -1,0 +1,1829 @@
+geocode_query,longitude,latitude,match_name,status_code,error_message
+"AEZ1, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ10, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ11, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ12, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ2, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ3, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ4, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ5, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ6, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ7, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ8, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"AEZ9, Madagascar",46.705984,-19.373534,Madagascar,200,NA
+"Akhalcikhe, Georgia, Georgia",43.517448,42.176311,Georgia,200,NA
+"Akhalqalaki, Georgia, Georgia",43.517448,42.176311,Georgia,200,NA
+"Atochi (PA Banki), Cameroon, Cameroon",12.213754,4.806512,Cameroon,200,NA
+"Belle Vue, Mauritius, Mauritius",57.502513,-20.163857,Mauritius,200,NA
+"Bellefontaine, Martinique Island, French West Indes, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Carbet, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Case Pilote, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Ceylon, Sri Lanka, Sri Lanka",80.704727,7.608085,Sri Lanka,200,NA
+"Chkorotsku, Georgia, Georgia",43.517448,42.176311,Georgia,200,NA
+"Chungnam, South Korea, South Korea",35.907757,127.766922,South Korea,200,NA
+"Coamo Farm, Malaysia, Malaysia",4.210484,101.975766,Malaysia,200,NA
+"Coconi, Mayotte Island, France, Mayotte Island",-12.8275,45.166244,Mayotte,200,NA
+"Combani, Mayotte Island, France, Mayotte Island",-12.8275,45.166244,Mayotte,200,NA
+"Cyprus, Republic of Cyprus",35.126413,33.429859,Cyprus,200,NA
+"Dembeni, Mayotte Island, France, Mayotte Island",-12.8275,45.166244,Mayotte,200,NA
+"Ducos, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Fond Saint Denis, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Forest Guinea, Guinea",9.945587,-9.696645,Guinea,200,NA
+"Fort de France, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Grau, Peru, Peru",-75.311132,-10.151093,Peru,200,NA
+"Guadeloupe Island, French West Indes, France, Guadeloupe",16.995971,-62.067641,Guadeloupe,200,NA
+"Guam, United States, Guam",13.444304,144.793731,Guam,200,NA
+"Huai River Basin, China, China",101.901875,35.486703,China,200,NA
+"Ithaca, Guyana, Guyana",4.860416,-58.93018,Guyana,200,NA
+"Java, Indonesia, Japan",-0.789275,113.921327,Indonesia,200,NA
+"Khelvachauri, Georgia, Georgia",43.517448,42.176311,Georgia,200,NA
+"Khulo, Georgia, Georgia",43.517448,42.176311,Georgia,200,NA
+"Korea, South Korea",126.88787,35.799805,South Korea,200,NA
+"La Trinite, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Lamentin, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Le Francois, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Le Marin, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Lezarde River, Gros-Morne, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Ligne Paradis 150m, Reunion Island, France, Reunion Island",55.538179,-21.121661,Reunion,200,NA
+"Los Llanos, Sanarate, Guatemala, Guatemala",15.783471,-90.230759,Guatemala,200,NA
+"Lower Guinea, Guinea",9.945587,-9.696645,Guinea,200,NA
+"Macouba, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Mangua, Peru, Peru",-75.311132,-10.151093,Peru,200,NA
+"Marigot, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Marin, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Market, Mauritius, Mauritius",14.641528,-61.024174,Martinique,200,NA
+"Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Matouba, Guadeloupe Island, French West Indes,, Guadeloupe",16.995971,-62.067641,Guadeloupe,200,NA
+Mayotte Island,-12.8275,45.166244,Mayotte,200,NA
+"Mayotte Island, France, Mayotte Island",-12.8275,45.166244,Mayotte,200,NA
+"Mekong Delta, Vietnam",14.058324,108.277199,Vietnam,200,NA
+"Miangani, Mayotte Island, France, Mayotte Island",-12.8275,45.166244,Mayotte,200,NA
+"Mitseni, Mayotte Island, France, Mayotte Island",-12.8275,45.166244,Mayotte,200,NA
+"Morne des Esses, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Morne Rouge, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Morne Vert, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"M'romouhou, Mayotte Island, France, Mayotte Island",-12.8275,45.166244,Mayotte,200,NA
+"New Caledonia, France, New Caledonia",-20.904305,165.618042,New Caledonia,200,NA
+"Notre Dame de la Paix 1500m, Reunion Island, France, Reunion Island",55.538179,-21.121661,Reunion,200,NA
+"Petoseed/Hygrotech BW field trial site, South Africa, South Africa",23.913711,-28.378272,South Africa,200,NA
+"Poona, India, China",101.901875,35.486703,China,200,NA
+"Puerto Algeria, Peru, Peru",-75.311132,-10.151093,Peru,200,NA
+"Réunion Island, Reunion",55.538179,-21.121661,Reunion,200,NA
+Republic of Angola,-11.202692,17.873887,Angola,200,NA
+"Reunion Island, France, Reunion Island",55.538179,-21.121661,Reunion,200,NA
+"Riviere-Pilote, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Saint Esprit, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Saint Francois, Guadeloupe Island, French West Indes, France, Guadeloupe",16.995971,-62.067641,Guadeloupe,200,NA
+"Saint Joseph, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Saint Pierre, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Sainte Anne, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Sainte Luce, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Sainte Marie, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"San Pedro, Trinidad, Republic of Trinidad and Tobago",10.691803,-61.222503,Trinidad and Tobago,200,NA
+"San Ramon, San Miguel, Peru, Peru",-75.311132,-10.151093,Peru,200,NA
+"Schoelcher, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Sot Ceco, Togo, Togo",1.042553,8.766221,Togo,200,NA
+"South Chile, Chile",-35.675147,-71.542969,Chile,200,NA
+"South China, China",101.901875,35.486703,China,200,NA
+"Southeast China, China",101.901875,35.486703,China,200,NA
+"Southwest China, China",101.901875,35.486703,China,200,NA
+"Taskia 502, Niger, Niger",17.607789,8.081666,Niger,200,NA
+"Tchouloum, Togo, Togo",1.042553,8.766221,Togo,200,NA
+"Turrialba, Costa Rica, Costa Rica",9.748917,-83.753428,Costa Rica,200,NA
+"United States (Puerto Rico), Puerto Rico",18.220833,-66.590149,Puerto Rico,200,NA
+"Upper Guinea, Guinea",9.945587,-9.696645,Guinea,200,NA
+"Vauclin, Martinique Island, French West Indes, France, Martinique",14.641528,-61.024174,Martinique,200,NA
+"Yigo, Guam, United States, Guam",13.444304,144.793731,Guam,200,NA
+Honduras,-86.921641,14.761664,Honduras,200,NA
+"Queensland, Australia, Australia",152.650999,-26.217047,"Australia Drive, Southside Queensland 4570, Australia",200,NA
+Suriname,-55.911826,3.692967,Suriname,200,NA
+Australia,134.489563,-25.734968,Australia,200,NA
+India,78.476681,22.199166,India,200,NA
+"Florida, United States, United States (Continental)",-82.03363,28.944465,"Florida, United States",200,NA
+Ethiopia,39.616032,8.62622,Ethiopia,200,NA
+"Kerala, India, India",76.59823,9.451061,India ، 686546 Changanassery، India,200,NA
+Japan,138.59223,36.386493,Japan,200,NA
+Libya,18.02328,27.043961,Libya,200,NA
+Madagascar,46.705984,-19.373534,Madagascar,200,NA
+Mauritius,57.502513,-20.163857,Mauritius,200,NA
+Samoa,-171.76375,-13.83933,Samoa,200,NA
+Somalia,47.325853,5.786396,Somalia,200,NA
+South Africa,23.913711,-28.378272,South Africa,200,NA
+"Georgia, United States, United States (Continental)",-83.257256,32.330571,"Georgia, United States",200,NA
+"Hawaii, United States, United States (Hawaii)",-157.855676,21.304547,"Hawaii, United States",200,NA
+"Northern Territory, Australia, Australia",133.366551,-19.415442,"Northern Territory, Australia",200,NA
+Malaysia,102.27572,4.496643,Malaysia,200,NA
+"Guangdong, China, China",114.058809,24.012789,"Guangdong, China",200,NA
+China,101.901875,35.486703,China,200,NA
+"Jiangxi, China, China",115.57235,27.501198,"Jiangxi, China",200,NA
+Fiji,178.4406,-18.1456,Fiji,200,NA
+"Bali, Indonesia, Indonesia",115.219118,-8.652497,"Bali, Indonesia",200,NA
+"Java, Indonesia, Indonesia",117.13911,-0.499056,"Jawa, 75122, Samarinda Ulu, Samarinda, East Kalimantan, Indonesia",200,NA
+"Lombok, Indonesia, Indonesia",112.54039,-7.509607,"Menanggal, 61382, Mojosari, Mojokerto, East Java, Indonesia",200,NA
+"South Sulawesi, Indonesia, Indonesia",119.412428,-5.134296,"South Sulawesi, Indonesia",200,NA
+"South Sumatera, Indonesia, Indonesia",104.756851,-2.988824,"South Sumatra, Indonesia",200,NA
+Indonesia,106.827216,-6.175554,Indonesia,200,NA
+"Lampung, Indonesia, Indonesia",105.264374,-5.446071,"Lampung, Indonesia",200,NA
+"Deli, Indonesia, Indonesia",111.92105,-7.968606,"Jeli, 66253, Karangrejo, Tulungagung, East Java, Indonesia",200,NA
+"Sumatra, Indonesia, Indonesia",112.54039,-7.509607,"Menanggal, 61382, Mojosari, Mojokerto, East Java, Indonesia",200,NA
+"Karo Highland, Indonesia, Indonesia",98.489136,3.101017,"Karo, North Sumatra, Indonesia",200,NA
+"West Sumatra, Indonesia, Indonesia",100.363256,-0.924759,"West Sumatra, Indonesia",200,NA
+"Bogor, Indonesia, Indonesia",106.80683,-6.608808,"Bogor, West Java, Indonesia",200,NA
+"Central Sulawesi, Indonesia, Indonesia",119.867997,-0.895779,"Central Sulawesi, Indonesia",200,NA
+"North Sulawesi, Indonesia, Indonesia",124.840767,1.490045,"North Sulawesi, Indonesia",200,NA
+"West Java, Indonesia, Indonesia",107.607083,-6.921846,"West Java, Indonesia",200,NA
+"Bengal, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Kumaon, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Nilgiri, India, India",86.71579,22.963137,"Nilgiri, Ranibandh, Bankura, West Bengal, India",200,NA
+Thailand,101.017438,15.127333,Thailand,200,NA
+Papua New Guinea,145.241749,-6.478378,Papua New Guinea,200,NA
+Vietnam,108.33953700000001,14.315424,Vietnam,200,NA
+"Luzon, Philippines, Philippines",126.09387,6.518973,"Luzon, Governor Generoso, Davao Oriental, Philippines",200,NA
+"Mindanao, Philippines, Philippines",123.34406,9.644251,"Mindanao, Malabuyoc, Cebu, Philippines",200,NA
+Philippines,120.981779,14.586788,Philippines,200,NA
+"Visayas, Philippines, Philippines",121.052208,14.508349,"Visayas Street Central Signal Village, Taguig, Philippines",200,NA
+"Handessa, Sri Lanka, Sri Lanka",80.582656,7.230638,"Handessa, Udunuwara, Kandy, Sri Lanka",200,NA
+"Kurunegala, Sri Lanka, Sri Lanka",80.365005,7.487068,"Kurunegala, Kurunegala, Sri Lanka",200,NA
+"Gampaha, Sri Lanka, Sri Lanka",79.994865,7.091594,"Gampaha, Gampaha, Sri Lanka",200,NA
+"Marassana, Sri Lanka, Sri Lanka",80.728918,7.222636,"Marassana, Pathahewaheta, Kandy, Sri Lanka",200,NA
+Sri Lanka,80.704727,7.608085,Sri Lanka,200,NA
+"Gannoruwa, Sri Lanka, Sri Lanka",80.59206,7.282026,"Gannoruwa, Yatinuwara, Kandy, Sri Lanka",200,NA
+"Bachok, Kelantan, Malaysia, Malaysia",102.40126,6.061079,"Bachok, Kelantan, Malaysia",200,NA
+"Morib, Selangor, Malaysia, Malaysia",101.443023,2.749797,"Morib, Banting, Selangor, Malaysia",200,NA
+"Raub, Pahang, Malaysia, Malaysia",101.85729,3.793374,"Raub, Pahang, Malaysia",200,NA
+"Hetauda, Nepal, Nepal",85.03106,27.42796,"Hetauda, Bagmati Province, Nepal",200,NA
+"Rampur, Nepal, Nepal",83.89566,27.86016,"Rampur, Lumbini Province, Nepal",200,NA
+"Gunjanagar, Nepal, Nepal",81.5566,28.855324,"Nepa, Karnali Province, Nepal",200,NA
+"Juneliagaon, Nepal, Nepal",81.5566,28.855324,"Nepa, Karnali Province, Nepal",200,NA
+"Chanauli, Nepal, Nepal",85.71084,27.26624,"Chanduli, Kapilakot, Sindhuli, Bagmati Province, Nepal",200,NA
+"Janakpur, Nepal, Nepal",85.92751,26.727854,"Janakpur, Madhesh Province, Nepal",200,NA
+"Raijung, Nepal, Nepal",81.5566,28.855324,"Nepa, Karnali Province, Nepal",200,NA
+"Hile, Nepal, Nepal",87.912787,27.046624,"Hile, Maipokhari, Ilam, Koshi Province, Nepal",200,NA
+"Lumle, Nepal, Nepal",83.80592,28.297865,"Lumle, Gandaki Province, Nepal",200,NA
+"Shandong, China, China",118.196748,35.989453,"Shandong, China",200,NA
+"Anhui, China, China",117.34972,31.07295,"Anhui, China",200,NA
+"Chiapas, Mexico, Mexico",-98.915561,19.336908,"Calle Chiapas, 56567 Ixtapaluca, Mexico, Mexico",200,NA
+"Tabasco, Mexico, Mexico",-98.868931,19.196943,"Tabasco, 56650 Temamatla, Mexico, Mexico",200,NA
+"Pasir Mas, Kelantan, Malaysia, Malaysia",102.14322,6.042343,"Pasir Mas, Kelantan, Malaysia",200,NA
+"Serdang, Selangor, Malaysia, Malaysia",101.70094,2.991318,"Serdang, Selangor, Malaysia",200,NA
+"Mioli, Taiwan, Taiwan",120.49146,22.821308,"瀰力村, 里港鄉, Pingtung County, Taiwan",200,NA
+"Nantou, Taiwan, Taiwan",120.977936,23.96789,"泰安, 埔里鎮, Nantou County, Taiwan",200,NA
+"Taichung, Taiwan, Taiwan",120.75179,24.32395,"泰安, 421, 后里區, 臺中市, Taichung, Taiwan",200,NA
+"Lupuna, Loreto, Peru, Peru",-73.302796,-3.791696,"Calle Lupuna, San Juan Bautista, Loreto, Peru",200,NA
+"Cajamarca, Cajamarca, Peru, Peru",-78.521204,-7.161061,"Avenida Perú, Cajamarca, Cajamarca, Peru",200,NA
+"Cajamba, Cajamarca, Peru, Peru",-78.817177,-5.711312,"Perú, Jaén, Cajamarca, Peru",200,NA
+"Chota, Cajamarca, Peru, Peru",-78.65162,-6.561566,"Chota, Cajamarca, Peru",200,NA
+"La Chinana, Junin, Peru, Peru",-75.99905,-11.161686,"Junin, Junin, Peru",200,NA
+"Morropon, Piura, Peru, Peru",-80.666891,-5.189354,"Calle Morropón, Veintiseis de Octubre, Piura, Peru",200,NA
+"Otuzco, La Libertad, Peru, Peru",-78.564964,-7.903745,"Otuzco, La Libertad, Peru",200,NA
+"Umari, Huanuco, Peru, Peru",-76.04452,-9.864655,"Umari, Huanuco, Peru",200,NA
+"Yeso, Amazonas, Peru, Peru",-77.871463,-6.229318,"Amazonas, Peru",200,NA
+"Yurimaguas, Loreto, Peru, Peru",-76.1079,-5.896007,"Yurimaguas, Loreto, Peru",200,NA
+"San Miguel, Junin, Peru, Peru",-78.85127,-7.000643,"San Miguel, Cajamarca, Peru",200,NA
+"Andaman and Nicobar Islands, India, India",92.739045,11.664535,"Andaman and Nicobar Islands, India",200,NA
+"Kangra, Himachal Pradesh, India, India",76.271286,32.102905,"Kangra, Himachal Pradesh, India",200,NA
+"Mandi, Himachal Pradesh, India, India",76.93139,31.708267,"Mandi, Himachal Pradesh, India",200,NA
+"Kullu Valley, Himachal Pradesh, India, India",77.10922,31.958448,"Kullu, Himachal Pradesh, India",200,NA
+Brazil,-51.619789,-9.588903,Brazil,200,NA
+Burundi,29.887146,-3.532454,Burundi,200,NA
+Chile,-69.761008,-26.783346,Chile,200,NA
+Colombia,-73.129056,3.065088,Colombia,200,NA
+Egypt,29.871903,26.494184,Egypt,200,NA
+Kenya,37.857882,0.529862,Kenya,200,NA
+Mexico,-102.532867,23.950464,Mexico,200,NA
+Netherlands,5.613491,51.972466,Netherlands,200,NA
+Nigeria,8.105306,9.59396,Nigeria,200,NA
+Peru,-75.311132,-10.151093,Peru,200,NA
+United Kingdom,-2.36967,54.237933,United Kingdom,200,NA
+Uganda,32.386218,1.279964,Uganda,200,NA
+Belize,-88.686007,17.216854,Belize,200,NA
+"Fujian, China, China",118.002348,26.10072,"Fujian, China",200,NA
+"Guangxi, China, China",108.712813,23.657149,"Guangxi, China",200,NA
+"Hubei, China, China",112.628581,31.357959,"Hubei, China",200,NA
+"Sichuan, China, China",102.519789,31.405377,"Sichuan, China",200,NA
+"Zhanjiang, Guangdong, China, China",110.35556,21.274923,"Zhanjiang Shi, Guangdong, China",200,NA
+"Guizhou, China, China",106.824357,27.217552,"Guizhou, China",200,NA
+"Hunan, China, China",111.128925,28.200995,"Hunan, China",200,NA
+"Hebei, China, China",115.440436,38.52543,"Hebei, China",200,NA
+"Yunnan, China, China",101.270076,24.291532,"Yunnan, China",200,NA
+Costa Rica,-84.200915,10.257794,Costa Rica,200,NA
+French Guiana,-53.174392,4.357921,French Guiana,200,NA
+Grenada,-61.679377,12.112926,Grenada,200,NA
+Venezuela,-65.801997,7.61957,Venezuela,200,NA
+"Burma Valley, Zimbabwe, Zimbabwe",29.938669,-19.189459,Zimbabwe,200,NA
+"Concession, Zimbabwe, Zimbabwe",30.952824,-17.372672,"Concession, Mashonaland Central, Zimbabwe",200,NA
+"Harare, Zimbabwe, Zimbabwe",31.045686,-17.831773,"Harare, Zimbabwe",200,NA
+Bolivia,-64.269605,-16.970662,Bolivia,200,NA
+"East Malaysia, Malaysia",102.27572,4.496643,Malaysia,200,NA
+"Peninsular Malaysia, Malaysia",102.27572,4.496643,Malaysia,200,NA
+"Emilia Romagna, Italy, Italy",11.342633,44.49382,"Emilia-Romagna, Italy",200,NA
+"Veneto, Italy, Italy",12.33459,45.437191,"Veneto, Italy",200,NA
+Cuba,-79.236672,21.946872,Cuba,200,NA
+"Havana, Cuba, Cuba",-82.127004,23.122446,"Cuba, La Habana del Este, Havana, Cuba",200,NA
+"Pinar del Rio, Cuba, Cuba",-83.69465,22.415295,"Pinar del Río, Pinar del Río, Cuba",200,NA
+"Isla de la Juventud, Cuba, Cuba",-82.80566,21.886843,"Isla de la Juventud, Isla de la Juventud, Cuba",200,NA
+"Kachwekano, Kabale, Uganda, Uganda",29.990538,-1.256064,"Kabale, Uganda",200,NA
+France,2.618787,47.824905,France,200,NA
+Morocco,-6.017073,32.350751,Morocco,200,NA
+Taiwan,120.930229,23.777978,Taiwan,200,NA
+"Hiroshima, Honshu, Japan, Japan",132.46326,34.39292,"広島市, Hiroshima, Japan",200,NA
+"Shimane, Japan, Japan",132.851914,35.215059,"Shimane, Japan",200,NA
+"Kochi, Japan, Japan",133.819325,33.738568,"Kōchi, Japan",200,NA
+"Amazonas, Brazil, Brazil",-49.480907,-18.9872,"Avenida Amazonas, Pirapitinga, Ituiutaba - Minas Gerais, 38307, Brazil",200,NA
+"Tainan, Taiwan, Taiwan",120.27658,23.29322,"太南, 730, 新營區, 臺南市, Tainan, Taiwan",200,NA
+"Sabet, Nepal, Nepal",83.74673,28.339149,"Sabet, Dangsing, Kaski, Gandaki Province, Nepal",200,NA
+"Ghandruk, Nepal, Nepal",83.80779,28.376865,"Ghandruk, Gandaki Province, Nepal",200,NA
+"Majuwa, Nepal, Nepal",85.91512,27.44606,"Majuwa, Bagmati Province, Nepal",200,NA
+"Humaita, Amazonas, Brazil, Brazil",-63.029472,-7.513365,"Humaitá, Amazonas, Brazil",200,NA
+"Benjamin Constant, Amazonas, Brazil, Brazil",-68.9479,-3.461675,"Benjamin Constant, São Paulo de Olivença, Amazonas, Brazil",200,NA
+"Boca do Acre, Amazonas, Brazil, Brazil",-67.39225,-8.755249,"Boca do Acre, Amazonas, Brazil",200,NA
+"Coari, Amazonas, Brazil, Brazil",-63.143097,-4.086352,"Coari, Amazonas, Brazil",200,NA
+"Manacapuru, Amazonas, Brazil, Brazil",-60.62264,-3.299789,"Manacapuru, Amazonas, Brazil",200,NA
+"Manaus, Amazonas, Brazil, Brazil",-59.93594,-3.123867,"Beco Brasil, Mauazinho, Manaus - Amazonas, 69075, Brazil",200,NA
+"Parintins, Amazonas, Brazil, Brazil",-56.736618,-2.628879,"Parintins, Amazonas, Brazil",200,NA
+"Rio Preto da Eva, Amazonas, Brazil, Brazil",-59.700047,-2.698474,"Rio Preto da Eva, Amazonas, Brazil",200,NA
+"Sao Gabriel da Cachoeira, Amazonas, Brazil, Brazil",-67.08773,-0.130859,"São Gabriel da Cachoeira, Amazonas, Brazil",200,NA
+"Tefe, Amazonas, Brazil, Brazil",-64.70958,-3.347259,"Tefé, Amazonas, Brazil",200,NA
+"Itacoatiara, Amazonas, Brazil, Brazil",-58.44632,-3.144335,"Itacoatiara, Amazonas, Brazil",200,NA
+"Tabatinga, Amazonas, Brazil, Brazil",-69.93669,-4.228949,"Tabatinga, Amazonas, Brazil",200,NA
+"Autazes, Amazonas, Brazil, Brazil",-59.13143,-3.579565,"Autazes, Amazonas, Brazil",200,NA
+"Carauri, Amazonas, Brazil, Brazil",-66.896935,-4.877307,"Carauari, Amazonas, Brazil",200,NA
+"Iranduba, Amazonas, Brazil, Brazil",-60.185024,-3.27888,"Iranduba, Amazonas, Brazil",200,NA
+"Manicore, Amazonas, Brazil, Brazil",-61.290848,-5.804239,"Manicoré, Amazonas, Brazil",200,NA
+"Sakhon Nakhon, Thailand, Thailand",104.150073,17.165122,"Sakon Nakhon, Thailand",200,NA
+"Nakhon Phanom, Thailand, Thailand",104.785289,17.403213,"Nakhon Phanom, Thailand",200,NA
+"Nong Khai, Thailand, Thailand",102.748228,17.882506,"Nong Khai, Thailand",200,NA
+"Calicut, Kerala, India, India",75.800211,11.230057,Calicut ، 673003 Kozhikode، India,200,NA
+"Pundibari, West Bengal, India, India",89.093956,26.527128,"Pundibari, Mathabhanga Ii, Cooch Behar, West Bengal, India",200,NA
+"Kahikuchi, Assam, India, India",94.44345,27.362045,"Kahikuchi, Dhemaji, Dhemaji, Assam, India",200,NA
+"Kothamangalam, Kerala, India, India",76.619665,10.064171,Kothamangalam Kerala 686666 India ، 686666 Kothamangalam، India,200,NA
+"Pulpally, Kerala, India, India",76.16484,11.792577,"Pulpalli, Sulthan Bathery, Wayanad, Kerala, India",200,NA
+"Thamarassery, Kerala, India, India",75.93632,11.414619,"Thamarassery, Kerala, India",200,NA
+"Vythiri, Kerala, India, India",76.03896,11.556166,"Vythiri, Kerala, India",200,NA
+Spain,-4.055685,41.294856,Spain,200,NA
+"United States, United States (Continental)",-93.278889,43.566689,"US Route 65, Glenville, Minnesota 56036, United States",200,NA
+Belgium,4.6335750000000004,50.438696,Belgium,200,NA
+"Segunung, Indonesia, Indonesia",112.54039,-7.509607,"Menanggal, 61382, Mojosari, Mojokerto, East Java, Indonesia",200,NA
+"Bandung, Indonesia, Indonesia",107.61036,-6.913611,"Bandung, West Java, Indonesia",200,NA
+"Garut, Indonesia, Indonesia",107.90209,-7.215746,"Garut, West Java, Indonesia",200,NA
+Israel,34.841999,31.847261,Israel,200,NA
+"Nagasaki, Kyushu, Japan, Japan",129.87819,32.744102,"長崎市, Nagasaki, Japan",200,NA
+"Okinawa, Japan, Japan",128.200727,27.941786,"Okinawa, Japan",200,NA
+"Shizuoka, Japan, Japan",138.243612,35.192894,"Shizuoka, Japan",200,NA
+Sweden,17.675409,64.964875,Sweden,200,NA
+"Khon Kaen, Thailand, Thailand",102.83559,16.430392,"Khon Kaen, Thailand",200,NA
+Burkina Faso,-1.573062,12.27793,Burkina Faso,200,NA
+"Vieux Habitants, Guadeloupe Island, French West Indes,, Guadeloupe",-61.762894,16.059887,"Vieux-Habitants, Guadeloupe",200,NA
+Panama,-80.268175,8.704735,Panama,200,NA
+Zambia,27.430675,-14.004908,Zambia,200,NA
+"Bahia, Brazil, Brazil",-48.264832,-18.8914,"Rua Bahia, Brasil, Uberlândia - Minas Gerais, 38400, Brazil",200,NA
+"Espirito Santo, Brazil, Brazil",-48.271823,-18.887749,"Rua Espírito Santo, Marta Helena, Uberlândia - Minas Gerais, 38402, Brazil",200,NA
+"Maranhao, Brazil, Brazil",-48.268968,-18.895513,"Avenida Maranhão, Brasil, Uberlândia - Minas Gerais, 38400, Brazil",200,NA
+"Minas Gerais, Brazil, Brazil",-48.258877,-18.895412,"Brasil, 38400, Uberlândia, Minas Gerais, Brazil",200,NA
+"Para, Brazil, Brazil",-48.429554,-1.367449,"Rua Do Benjamin, Coqueiro, Belém - Pará, 66650, Brazil",200,NA
+"Distrito Federal, Brazil, Brazil",-47.95337,-16.148271,"Rua Brasil, Luziânia - Goiás, 72850-270, Brazil",200,NA
+"Goias, Brazil, Brazil",-46.526942,-18.610831,"Rua Goiás, Vila Rosa, Patos de Minas - Minas Gerais, 38700, Brazil",200,NA
+"Civuiti, Democratic Republic of Congo, Democratic Republic of the Congo",27.520095,-11.638865,"Congo, Lubumbashi, Haut-Katanga, Democratic Republic of the Congo",200,NA
+"Kissoko, Democratic Republic of Congo, Democratic Republic of the Congo",27.520095,-11.638865,"Congo, Lubumbashi, Haut-Katanga, Democratic Republic of the Congo",200,NA
+"Dendron, Kwa-Zulu Natal, South Africa, South Africa",30.378889,-29.6,"KwaZulu-Natal, South Africa",200,NA
+"Hlabisha, Kwa-Zulu Natal, South Africa, South Africa",31.876165,-28.145731,"Hlabisa, KwaZulu-Natal, South Africa",200,NA
+"Rooiwal, Kwa-Zulu Natal, South Africa, South Africa",30.378889,-29.6,"KwaZulu-Natal, South Africa",200,NA
+"Lushoto District, Tanga Region, Tanzania, Tanzania",38.290899,-4.798365,"Lushoto, Tanga, Tanzania",200,NA
+"Zanzibar, Tanzinia, Tanzania",39.207743,-6.166059,"Zanzibar, Mjini Magharibi, Tanzania",200,NA
+"Parana, Brazil, Brazil",-40.858085,-14.868498,"Rua De Acesso Ao Aeroporto, Patagônia, Vitória da Conquista - Bahia, 45053, Brazil",200,NA
+"Democratic Republic of Congo, Democratic Republic of the Congo",27.520095,-11.638865,"Congo, Lubumbashi, Haut-Katanga, Democratic Republic of the Congo",200,NA
+"Brasilia, Brazil, Brazil",-46.521383,-18.574889,"Rua Brasília, Nossa Senhora Das Graças, Patos de Minas - Minas Gerais, 38701, Brazil",200,NA
+"Rio de Janeiro, Brazil, Brazil",-43.275993,-22.862542,"Rua Brasil, Complexo Do Alemão, Rio de Janeiro - Rio de Janeiro, 21061, Brazil",200,NA
+"Santa Catarina, Brazil, Brazil",-48.791369,-26.420966,"Rua Brasil, Itinga, Araquari - Santa Catarina, 89245-000, Brazil",200,NA
+"Ibaraki, Honshu, Japan, Japan",140.520255,36.043772,"Ibaraki, Japan",200,NA
+"Tochigi, Japan, Japan",139.570556,36.606909,"Tochigi, Japan",200,NA
+"Okayama, Japan, Japan",134.0882,34.94011,"Okayama, Japan",200,NA
+"Kagawa, Japan, Japan",134.023778,34.17888,"Kagawa, Japan",200,NA
+"Fukushima, Japan, Japan",139.687961,37.369883,"Fukushima, Japan",200,NA
+"Kagoshima, Japan, Japan",130.557195,31.596793,"Kagoshima, Japan",200,NA
+"Niigata, Japan, Japan",139.50878,37.777418,"Niigata, Japan",200,NA
+"Yamagata, Japan, Japan",140.027837,38.646536,"Yamagata, Japan",200,NA
+"Fukui, Japan, Japan",136.455545,35.874463,"Fukui, Japan",200,NA
+"Gifu, Japan, Japan",136.737839,35.662757,"Gifu, Japan",200,NA
+"Oita, Japan, Japan",131.589447,32.872569,"Oita, Japan",200,NA
+"Kanagawa, Japan, Japan",139.275382,35.517816,"Kanagawa, Japan",200,NA
+"Saitama, Japan, Japan",138.989866,35.942212,"Saitama, Japan",200,NA
+Nepal,83.938548,28.253007,Nepal,200,NA
+"Chilgok, Gyeongsangbuk-do, South Korea, South Korea",128.41344,36.07839,"Chilgok-gun, Gyeongsangbuk-do, South Korea",200,NA
+"Changnyeong, Gyeongsangnam-do, South Korea, South Korea",128.49707,35.54093,"Changnyeong-gun, Gyeongsangnam-do, South Korea",200,NA
+"Cheongdo, Gyeongsangbuk-do, South Korea, South Korea",128.76021,35.628994,"Cheongdo-gun, Gyeongsangbuk-do, South Korea",200,NA
+"Chuncheon, Gangwon-do, South Korea, South Korea",127.72761,37.879623,"Chuncheon-si, Gangwon-do, South Korea",200,NA
+"Gochang, Jeollabuk-do, South Korea, South Korea",126.69711,35.435215,"Gochang-gun, Jeollabuk-do, South Korea",200,NA
+"Hampyeong, Jeollanam-do, South Korea, South Korea",126.52007,35.063720000000004,"Hampyeong-gun, Jeollanam-do, South Korea",200,NA
+"Hwasun, Jeollanam-do, South Korea, South Korea",126.99128,35.06044,"Hwasun-gun, Jeollanam-do, South Korea",200,NA
+"Jeongeup, Jeollabuk-do, South Korea, South Korea",126.85511,35.565514,"Jeongeup-si, Jeollabuk-do, South Korea",200,NA
+"Tongyeong, Gyeongsangnam-do, South Korea, South Korea",128.4237,34.842575,"Tongyeong-si, Gyeongsangnam-do, South Korea",200,NA
+"Yanggu, Gangwon-do, South Korea, South Korea",127.987076,38.106575,"Yanggu-gun, Gangwon-do, South Korea",200,NA
+"Yeonggwang, Jeollanam-do, South Korea, South Korea",126.50391,35.275936,"Yeonggwang-gun, Jeollanam-do, South Korea",200,NA
+"Pyeongtaek, Gyeonggi-do, South Korea, South Korea",127.11431,36.99238,"Pyeongtaek-si, Gyeonggi-do, South Korea",200,NA
+"Cheongwon, Chungcheongbuk-do, South Korea, South Korea",127.489174,36.642117,"Chungcheongbuk-do, South Korea",200,NA
+"Pohang, Gyeongsangbuk-do, South Korea, South Korea",129.36293,36.02752,"Pohang-si, Gyeongsangbuk-do, South Korea",200,NA
+"Suwon, Gyeonggi-do, South Korea, South Korea",127.028366,37.26491,"Suwon-si, Gyeonggi-do, South Korea",200,NA
+"Boryeong, Chungcheongnam-do, South Korea, South Korea",126.61398,36.332954,"Boryeong-si, Chungcheongnam-do, South Korea",200,NA
+"Yonchon, Gyeonggi-do, South Korea, South Korea",127.666486,37.292477,"Yeonchon Bridge, Yeoju-si, Gyeonggi-do, South Korea",200,NA
+"Boseong, Jeollanam-do, South Korea, South Korea",127.07949,34.767365,"Boseong-gun, Jeollanam-do, South Korea",200,NA
+"Cheorwon, Gangwon-do, South Korea, South Korea",127.19153,38.27219,"Cheorwon-gun, Gangwon-do, South Korea",200,NA
+"Chungju, Chungcheongbuk-do, South Korea, South Korea",127.92695,36.990597,"Chungju-si, Chungcheongbuk-do, South Korea",200,NA
+"Damyang, Jeollanam-do, South Korea, South Korea",126.98252,35.319946,"Damyang-gun, Jeollanam-do, South Korea",200,NA
+"Gimcheon, Gyeongsangbuk-do, South Korea, South Korea",128.11464,36.13946,"Gimcheon-si, Gyeongsangbuk-do, South Korea",200,NA
+"Gimhae, Gyeongsangnam-do, South Korea, South Korea",128.8967,35.235085,"Gimhae-si, Gyeongsangnam-do, South Korea",200,NA
+"Gimje, Jeollabuk-do, South Korea, South Korea",126.88787,35.799805,"Gimje-si, Jeollabuk-do, South Korea",200,NA
+"Goseong, Gyeongsangnam-do, South Korea, South Korea",128.3232,34.9743,"Goseong-gun, Gyeongsangnam-do, South Korea",200,NA
+"Gumi, Gyeongsangbuk-do, South Korea, South Korea",128.34367,36.120537,"Gumi-si, Gyeongsangbuk-do, South Korea",200,NA
+"Gwangju, Gyeonggi-do, South Korea, South Korea",127.25397,37.42956,"Gwangju-si, Gyeonggi-do, South Korea",200,NA
+"Hadong, Gyeongsangnam-do, South Korea, South Korea",127.748055,35.07072,"Hadong-gun, Gyeongsangnam-do, South Korea",200,NA
+"Haman, Gyeongsangnam-do, South Korea, South Korea",128.42406,35.23473,"Haman-gun, Gyeongsangnam-do, South Korea",200,NA
+"Jincheon, Chungcheongbuk-do, South Korea, South Korea",127.44429,36.85476,"Jincheon-gun, Chungcheongbuk-do, South Korea",200,NA
+"Namjeju, Jeju-do, South Korea, South Korea",126.53139,33.499829,"Jeju-do, South Korea",200,NA
+"Nonsan, Chungcheongnam-do, South Korea, South Korea",127.09848,36.186134,"Nonsan-si, Chungcheongnam-do, South Korea",200,NA
+"Paju, Gyeonggi-do, South Korea, South Korea",126.77422,37.758,"Paju-si, Gyeonggi-do, South Korea",200,NA
+"Yeongcheon, Gyeongsangbuk-do, South Korea, South Korea",128.9407,35.974792,"Yeongcheon-si, Gyeongsangbuk-do, South Korea",200,NA
+"Geoje, Gyeongsangnam-do, South Korea, South Korea",128.62256,34.889503,"Geoje-si, Gyeongsangnam-do, South Korea",200,NA
+"Hongcheon, Gangwon-do, South Korea, South Korea",127.88558,37.691463,"Hongcheon-gun, Gangwon-do, South Korea",200,NA
+"Bukjeju, Jeju-do, South Korea, South Korea",126.53139,33.499829,"Jeju-do, South Korea",200,NA
+"Haenam, Jeollanam-do, South Korea, South Korea",126.59877,34.57185,"Haenam-gun, Jeollanam-do, South Korea",200,NA
+"Miryang, Gyeongsangnam-do, South Korea, South Korea",128.74718,35.49662,"Miryang-si, Gyeongsangnam-do, South Korea",200,NA
+"Muan, Jeollanam-do, South Korea, South Korea",126.47502,34.989544,"Muan-gun, Jeollanam-do, South Korea",200,NA
+"Namhae, Gyeongsangnam-do, South Korea, South Korea",127.89408,34.838158,"Namhae-gun, Gyeongsangnam-do, South Korea",200,NA
+"Wando, Jeollanam-do, South Korea, South Korea",126.74695,34.318836,"Wando-gun, Jeollanam-do, South Korea",200,NA
+"Yeongam, Jeollanam-do, South Korea, South Korea",126.71374,34.79392,"Yeongam-gun, Jeollanam-do, South Korea",200,NA
+"South Florida, United States, United States (Continental)",-80.1918,25.7617,"South Florida, Florida, United States",200,NA
+"North Florida, United States, United States (Continental)",-81.6557,30.3322,"North Florida, Florida, United States",200,NA
+"Quincy, Florida, United States, United States (Continental)",-84.575781,30.58818,"Quincy, Florida, United States",200,NA
+Cameroon,12.213754,4.806512,Cameroon,200,NA
+"Mutulu, Guder, Ethiopia, Ethiopia",38.33333,9.18333,"Guder, Oromia, Ethiopia",200,NA
+"Adam Tulu, Ethiopia, Ethiopia",38.708521,7.864201,"Adami Tulu, Oromia, Ethiopia",200,NA
+"Arata Chaffa, Ziway, Ethiopia, Ethiopia",38.724109,7.932797,"Ziway, Oromia, Ethiopia",200,NA
+"Karafildicha, Shashemene, Ethiopia, Ethiopia",38.592139,7.203768,"Shashemene, Oromia, Ethiopia",200,NA
+"Tsedey, Holeta, Ethiopia, Ethiopia",38.493676,9.065247,"ሆለታ / Holeta, Oromia, Ethiopia",200,NA
+"Ziway, Ethiopia, Ethiopia",38.724109,7.932797,"Ziway, Oromia, Ethiopia",200,NA
+"Agaro, Jimma, Ethiopia, Ethiopia",36.589582,7.856633,"Agaro, Oromia, Ethiopia",200,NA
+"Ambo, Ethiopia, Ethiopia",37.855441,8.982104,"አምቦ / Ambo, Oromia, Ethiopia",200,NA
+"Arjo, Ethiopia, Ethiopia",36.46667,8.81667,"Arjo, Oromia, Ethiopia",200,NA
+"Awassa, Ethiopia, Ethiopia",38.476398,7.065289,"Awasa, Sidama, Ethiopia",200,NA
+"Bako, Ethiopia, Ethiopia",37.065626,9.121731,"Bako, Oromia, Ethiopia",200,NA
+"Dedo, Jimma, Ethiopia, Ethiopia",36.831167,7.675224,"Jima, Oromia, Ethiopia",200,NA
+"Ginchi, Ethiopia, Ethiopia",39.05,8.66667,"GichI, Oromia, Ethiopia",200,NA
+"Goromt, east Hararge, Ethiopia, Ethiopia",42.12333,12.11417,"Hararte, Afar, Ethiopia",200,NA
+"Jato, Gedo, Ethiopia, Ethiopia",37.450763,9.011917,"Gedo, Oromia, Ethiopia",200,NA
+"Jeldu, Ethiopia, Ethiopia",37.66667,9.01667,"Jeldu, Oromia, Ethiopia",200,NA
+"Jimma, Ethiopia, Ethiopia",36.831167,7.675224,"Jima, Oromia, Ethiopia",200,NA
+"Kejo, Ethiopia, Ethiopia",38.954495,6.375133,"Mejo, Sidama, Ethiopia",200,NA
+"Kombolcha, east Hararge, Ethiopia, Ethiopia",39.744941,11.069213,"Kembolcha, Amhara, Ethiopia",200,NA
+"Qarsa, east Hararge, Ethiopia, Ethiopia",39.7286,8.384298,"Qarsa, Oromia, Ethiopia",200,NA
+"Goromt, Ambo, Ethiopia, Ethiopia",37.855441,8.982104,"አምቦ / Ambo, Oromia, Ethiopia",200,NA
+"Batangas, Philippines, Philippines",121.058476,13.755872,"Batangas, Philippines",200,NA
+"Laguna, Philippines, Philippines",121.414889,14.281817,"Laguna, Philippines",200,NA
+"Neuva Ecija, Philippines, Philippines",121.084299,15.540867,"Nueva Ecija, Philippines",200,NA
+"Pangasinan, Philippines, Philippines",120.230709,16.020636,"Pangasinan, Philippines",200,NA
+"Quezon, Philippines, Philippines",122.18413,14.005032,"Quezon, Quezon, Philippines",200,NA
+"Changyeong, South Korea, South Korea",128.49707,35.54093,"Changnyeong-gun, Gyeongsangnam-do, South Korea",200,NA
+"Eumseong, South Korea, South Korea",127.69193,36.93688,"Eumseong-gun, Chungcheongbuk-do, South Korea",200,NA
+"Hwaseong, South Korea, South Korea",126.83067,37.199448,"Hwaseong-si, Gyeonggi-do, South Korea",200,NA
+"Naju, South Korea, South Korea",126.711655,35.01594,"Naju-si, Jeollanam-do, South Korea",200,NA
+"Seosan, South Korea, South Korea",126.455696,36.780994,"Seosan-si, Chungcheongnam-do, South Korea",200,NA
+"Pyeongtaek, South Korea, South Korea",127.11431,36.99238,"Pyeongtaek-si, Gyeonggi-do, South Korea",200,NA
+"Uiwang, South Korea, South Korea",126.970436,37.345135,"Uiwang-si, Gyeonggi-do, South Korea",200,NA
+"Basse-Pointe, Martinique Island, French West Indes, Martinique",-61.11447,14.86896,"Basse-Pointe, Martinique",200,NA
+"Gros Morne, Martinique Island, French West Indes, France, Martinique",-61.003185,14.710634,"Gros-Morne, Martinique",200,NA
+"Le Vauclin, Martinique Island, French West Indes, France, Martinique",-60.83982,14.545516,"Le Vauclin, Martinique",200,NA
+"Le Lamentin, Martinique Island, French West Indes, France, Martinique",-61.000248,14.615964,"Le Lamentin, Martinique",200,NA
+"Le Lorrain, Martinique Island, French West Indes, France, Martinique",-61.054543,14.832407,"Le Lorrain, Martinique",200,NA
+"Ajoupa-Bouillon, Martinique Island, French West Indes, Martinique",-61.114235,14.825143,"L'Ajoupa-Bouillon, Martinique",200,NA
+"Le Precheur, Martinique Island, French West Indes, France, Martinique",-61.224827,14.802278,"Le Prêcheur, Martinique",200,NA
+"KwaZulu/Natal province, South Africa, South Africa",30.378889,-29.6,"KwaZulu-Natal, South Africa",200,NA
+"Ntcheu, Malawi, Malawi",34.638433,-14.817874,"Ntcheu, Malawi",200,NA
+"Dedza, Malawi, Malawi",34.328238,-14.380727,"Dedza, Malawi",200,NA
+"Johor, Malaysia, Malaysia",103.764906,1.458199,"Johor, Malaysia",200,NA
+"Kedah, Malaysia, Malaysia",100.368396,6.123191,"Kedah, Malaysia",200,NA
+"Kelantan, Malaysia, Malaysia",102.237807,6.124791,"Kelantan, Malaysia",200,NA
+"Perak, Malaysia, Malaysia",101.090024,4.598682,"Perak, Malaysia",200,NA
+"Selangor, Malaysia, Malaysia",101.518528,3.073943,"Selangor, Malaysia",200,NA
+"Terengganu, Malaysia, Malaysia",103.138327,5.329646,"Terengganu, Malaysia",200,NA
+"Valle del Cauca, Colombia, Colombia",-76.532526,3.451999,"Valle del Cauca, Colombia",200,NA
+"Uraba, Colombia, Colombia",-74.80322,3.37615,"Colombia, Huila, Colombia",200,NA
+"Quindio, Colombia, Colombia",-75.672375,4.536307,"Quindío, Colombia",200,NA
+"Alamo, Tecun Uman, Guatemala, Guatemala",-90.531457,14.652295,"Tecun Umán, Guatemala, Guatemala, Guatemala",200,NA
+"Mojarras, Coatepeque, Guatemala, Guatemala",-90.5314,14.6228,"Guatemala, Guatemala, Guatemala",200,NA
+"Morales, Izabal, Guatemala, Guatemala",-88.84173,15.472046,"Morales, Izabal, Guatemala",200,NA
+"Tiquisate, Escuintla, Guatemala, Guatemala",-90.78451,14.304339,"Escuintla, Escuintla, Guatemala",200,NA
+"Jalapa, Guatamala, Guatemala, Guatemala",-90.5314,14.6228,"Guatemala, Guatemala, Guatemala",200,NA
+"Sanarate, El Progreso, Guatemala, Guatemala",-90.19866,14.787433,"Sanarate, El Progreso, Guatemala",200,NA
+"Agua Blanca, Jutiapa, Guatemala, Guatemala",-89.64822,14.4974,"Agua Blanca, Jutiapa, Guatemala",200,NA
+"Amatillo, Chiquimula, Guatemala, Guatemala",-89.596907,14.529789,"Amatillo, Ipala, Chiquimula, Guatemala",200,NA
+"Camotan, Chiquimula, Guatemala, Guatemala",-89.54427,14.801636,"Chiquimula, Chiquimula, Guatemala",200,NA
+"El Asintal, Retalhuleu, Guatemala, Guatemala",-91.72652,14.597199,"El Asintal, Retalhuleu, Guatemala",200,NA
+"Ipala, Chiquimula, Guatemala, Guatemala",-90.485282,14.68502,"Avenida Chiquimula, Chinautla, Guatemala, Guatemala",200,NA
+"Monjas, Jalapa, Guatemala, Guatemala",-89.86757,14.505719,"Monjas, Jalapa, Guatemala",200,NA
+"San Juan Sacatepequez, Guatemala, Guatemala, Guatemala",-90.617095,14.670123,"Carretera A San Juan Sacatepéquez, San Pedro Sacatepéquez, Guatemala, Guatemala",200,NA
+"Tres Ceibas, Jutiapa, Guatemala, Guatemala",-90.513284,14.641614,"Guatemala, Guatemala",200,NA
+"Estanzuela, Zacapa, Guatemala, Guatemala",-90.48668,14.68715,"Calle Zacapa, Chinautla, Guatemala, Guatemala",200,NA
+"Concepcion Chiquirichapa, Quetzaltenango, Guatemala, Guatemala",-91.62336,14.855132,"Concepción Chiquirichapa, Quetzaltenango, Guatemala",200,NA
+"Miramundo, Jalapa, Guatemala, Guatemala",-90.513284,14.641614,"Guatemala, Guatemala",200,NA
+"Palencia, Guatemala., Guatemala, Guatemala",-90.5314,14.6228,"Guatemala, Guatemala, Guatemala",200,NA
+"Patzicia, Chimaltenango, Guatemala, Guatemala",-90.92538,14.632556,"Patzicía, Chimaltenango, Guatemala",200,NA
+"Purulha, Baja Verapaz, Guatemala, Guatemala",-90.23702,15.236056,"Purulhá, Baja Verapaz, Guatemala",200,NA
+"San Juan Alzatate, Jalapa, Guatemala, Guatemala",-89.356798,14.568398,"Colonia San Juan, Esquipulas, Chiquimula, Guatemala",200,NA
+"San Martin Sacatepequez, Quetzaltenango, Guatemala, Guatemala",-91.642845,14.824035,"San Martín Sacatepéquez, Quetzaltenango, Guatemala",200,NA
+"Solola, Solola, Guatemala, Guatemala",-91.18264,14.770715,"Sololá, Sololá, Guatemala",200,NA
+Turkey,35.179593,39.060481,Türkiye,200,NA
+"Igrega Nova, Alagoas, Brazil, Brazil",-36.657417,-10.127599,"Igreja Nova, Alagoas, Brazil",200,NA
+"Palmeira dos Indios, Brazil, Brazil",-36.63044,-9.406037,"Palmeira dos Índios, Alagoas, Brazil",200,NA
+"Penedo, Brazil, Brazil",-36.546837,-10.27183,"Avenida Brasil, Santa Izabel, Penedo - Alagoas, 57200-000, Brazil",200,NA
+"Apartado, Uraba, Colombia, Colombia",-76.63424,7.883667,"Apartadó, Antioquia, Colombia",200,NA
+"Carepa, Colombia, Colombia",-74.80322,3.37615,"Colombia, Huila, Colombia",200,NA
+"Chigorodo, Uraba, Colombia, Colombia",-76.68051,7.669816,"Chigorodó, Antioquia, Colombia",200,NA
+"Cienaga, Colombia, Colombia",-74.2515,11.010804,"Ciénaga, Magdalena, Colombia",200,NA
+"Ibague, Tolima, Colombia, Colombia",-75.21015,4.439148,"Ibagué, Tolima, Colombia",200,NA
+"Santa Marta, Colombia, Colombia",-74.195045,11.232136,"Santa Marta, Magdalena, Colombia",200,NA
+"Turbo, Colombia, Colombia",-76.727104,8.094004,"Turbo, Antioquia, Colombia",200,NA
+"Saint George County, Trinidad and Tobago, Republic of Trinidad and Tobago",-60.735024,11.185289,"Tobago, Trinidad and Tobago",200,NA
+Uruguay,-56.012396,-32.799646,Uruguay,200,NA
+"Tokyo, Japan, Japan",139.692526,35.68882,"Tokyo Prefecture, Japan",200,NA
+"Hyogo, Japan, Japan",134.651754,35.288306,"Hyōgo, Japan",200,NA
+"Mie, Japan, Japan",136.308889,34.496311,"Mie, Japan",200,NA
+"Ehime, Shikoku, Japan, Japan",132.83314,33.505763,"Ehime, Japan",200,NA
+"Gunma, Honshu, Japan, Japan",139.161478,36.898674,"Gunma, Japan",200,NA
+"Hokkaido, Japan, Japan",142.54973,43.27064,"Hokkaido, Japan",200,NA
+"Kumamoto, Japan, Japan",130.73354,32.7836,"熊本市, Kumamoto, Japan",200,NA
+"Nagano, Japan, Japan",138.124434,36.232408,"Nagano, Japan",200,NA
+"Nara, Japan, Japan",135.82472,34.6808,"奈良市, Nara, Japan",200,NA
+"Shiga, Japan, Japan",135.919333,35.353309,"Shiga, Japan",200,NA
+"Tottori, Japan, Japan",134.033759,35.407346,"Tottori, Japan",200,NA
+"Wakayama, Japan, Japan",135.190746,33.998027,"Wakayama, Japan",200,NA
+"Chiba, Honshu, Japan, Japan",140.106265,35.607063,"Chiba, Japan",200,NA
+"Yamanashi, Japan, Japan",138.673048,35.824594,"Yamanashi, Japan",200,NA
+Portugal,-8.562731,39.600995,Portugal,200,NA
+"England, United Kingdom, United Kingdom",-0.676182,52.38146,"England, United Kingdom",200,NA
+"Apopka, Florida, United States, United States (Continental)",-81.509457,28.673111,"Apopka, Florida, United States",200,NA
+"Hastings, Florida, United States, United States (Continental)",-81.508258,29.717067,"Hastings, Florida, United States",200,NA
+"Ardebil, Iran, Iran",48.065085,38.09724,"Shiran, Neer, Ardabil, Iran",200,NA
+"Hamadan, Iran, Iran",48.515246,34.799289,"Hamadan, Iran",200,NA
+"Isfahan, Iran, Iran",51.153085,32.70392,"Tiran, Tiran & Karvan, Isfahan, Iran",200,NA
+"Khuzestan, Iran, Iran",48.67932,31.323064,"Khuzestan, Iran",200,NA
+"Semnan, Iran, Iran",53.388462,35.583797,"Semnan, Semnan, Iran",200,NA
+"Yaounde (V) area II, Cameroon, Cameroon",11.520526,3.864768,"Yaounde, Centre, Cameroon",200,NA
+"Yaounde, Cameroon, Cameroon",11.520526,3.864768,"Yaounde, Centre, Cameroon",200,NA
+"Bafia, Cameroon, Cameroon",11.220593,4.739933,"Bafia, Centre, Cameroon",200,NA
+"Foumbot, Cameroon, Cameroon",10.638147,5.510861,"Foumbot, West, Cameroon",200,NA
+"Akonolinga, Cameroon, Cameroon",12.244917,3.77339,"Akonolinga, Centre, Cameroon",200,NA
+"Bafang, Cameroon, Cameroon",10.179748,5.158664,"Bafang, West, Cameroon",200,NA
+"Baham, Cameroon, Cameroon",10.368438,5.334612,"Baham, West, Cameroon",200,NA
+"Buea, Cameroon, Cameroon",9.243115,4.151854,"Buea, Southwest, Cameroon",200,NA
+"Mbouda, Cameroon, Cameroon",10.254744,5.627374,"Mbouda, West, Cameroon",200,NA
+"Obala (ZAE5), Cameroon, Cameroon",11.534664,4.165713,"Obala, Centre, Cameroon",200,NA
+"Yaounde (V) area I, Cameroon, Cameroon",11.520526,3.864768,"Yaounde, Centre, Cameroon",200,NA
+"Yaounde (V) area IV, Cameroon, Cameroon",11.520526,3.864768,"Yaounde, Centre, Cameroon",200,NA
+"Yaounde (V) area V, Cameroon, Cameroon",11.520526,3.864768,"Yaounde, Centre, Cameroon",200,NA
+"Yaounde (ZAE5), Cameroon, Cameroon",11.520526,3.864768,"Yaounde, Centre, Cameroon",200,NA
+"Dschang (ZAE3), Cameroon, Cameroon",10.052308,5.452149,"Dschang, West, Cameroon",200,NA
+"Hong'an, Hubei, China, China",114.61326,31.289326,"Hongan Xian, Huanggang Shi, Hubei, China",200,NA
+"Longxi, Fujiang, China, China",118.78,27.531858,"Songxi Xian, Nanping Shi, Fujian, China",200,NA
+"Nanning, Guangxi, China, China",108.3631,22.818563,"Nanning Shi, Guangxi, China",200,NA
+"Tiantai, Zhejiang, China, China",121.00607,29.146236,"Tiantai Xian, Taizhou Shi, Zhejiang, China",200,NA
+"Pingnan, Fujian, China, China",118.98203,26.912052,"Pingnan Xian, Ningde Shi, Fujian, China",200,NA
+"Sanmenjiang, Guangxi, China, China",108.712813,23.657149,"Guangxi, China",200,NA
+"Yongtai, Fujian, China, China",118.92663,25.871195,"Yongtai Xian, Fuzhou Shi, Fujian, China",200,NA
+"Putian, Fujian, China, China",119.00408,25.454481,"Putian Shi, Fujian, China",200,NA
+"Fuqing, Fujian, China, China",119.37865,25.72393,"Fuqing Shi, Fuzhou Shi, Fujian, China",200,NA
+"Shipai, Guangdong, China, China",114.058809,24.012789,"Guangdong, China",200,NA
+"Shunde, Guangdong, China, China",113.29195,22.808157,"Shunde Qu, Fuoshan Shi, Guangdong, China",200,NA
+"Fuchuan, Guangxi, China, China",111.32378,24.89718,"Fuchuan Yaozu Zizhixian, Hezhou Shi, Guangxi, China",200,NA
+"Fuquan, Guizhou, China, China",107.50898,26.705421,"Fuquan Shi, Qiannan Buyizu Miaozu Zizhizhou, Guizhou, China",200,NA
+"Lipu, Guangxi, China, China",110.3915,24.490475,"Lipu Shi, Guilin Shi, Guangxi, China",200,NA
+"Luzhai, Guangxi, China, China",109.74701,24.476986,"Luzhai Xian, Liuzhou Shi, Guangxi, China",200,NA
+"Shaowu, Fujian, China, China",117.49039,27.347145,"Shaowu Shi, Nanping Shi, Fujian, China",200,NA
+"Shaxian, Fujian, China, China",117.78815,26.3996,"Shaxian Qu, Sanming Shi, Fujian, China",200,NA
+"Xiangzhou, Guangxi, China, China",109.693596,23.969788,"Xiangzhou Xian, Laibin Shi, Guangxi, China",200,NA
+"Xinhui, Guangdong, China, China",113.02874,22.462723,"Xinhui Qu, Jiangmen Shi, Guangdong, China",200,NA
+"Wuhan, Hubei, China, China",114.28899,30.580944,"Wuhan Shi, Hubei, China",200,NA
+"Beifeng, Fujian, China, China",118.002348,26.10072,"Fujian, China",200,NA
+"Damian, Sichuan, China, China",102.519789,31.405377,"Sichuan, China",200,NA
+"Jinjiang, Fujian, China, China",118.54884,24.78589,"Jinjiang Shi, Quanzhou Shi, Fujian, China",200,NA
+"Xiamen, Fujian, China, China",118.08627,24.47891,"Xiamen Shi, Fujian, China",200,NA
+"Chengdu, Sichuan, China, China",104.07872,30.659126,"Chengdu Shi, Sichuan, China",200,NA
+"Huaihua, Hunan, China, China",109.98324,27.549168,"Huaihua Shi, Hunan, China",200,NA
+"Beijing, China, China",116.391297,39.905714,"Beijing, China",200,NA
+"Enshi, Hubei, China, China",109.475266,30.297075,"Enshi Shi, Enshi Tujiazu Miaozu Zizhizhou, Hubei, China",200,NA
+"Fuzhou, Fujian, China, China",119.30031,26.087498,"Fuzhou Shi, Fujian, China",200,NA
+"Guangzhou, Guangdong, China, China",113.27006,23.125345,"Guangzhou Shi, Guangdong, China",200,NA
+"Liangshan, Sichuan, China, China",102.26343,27.89,"Liangshan Yizu Zizhizhou, Sichuan, China",200,NA
+"Nanhai, Guangdong, China, China",113.13708,23.030457,"Nanhai Qu, Fuoshan Shi, Guangdong, China",200,NA
+"Peng county, Sichuan, China, China",116.58857,34.696243,"Feng Xian, Xuzhou Shi, Jiangsu, China",200,NA
+"Shimen, Hunan, China, China",111.373955,29.588758,"Shimen Xian, Changde Shi, Hunan, China",200,NA
+"Tai'an, Shangdong, China, China",117.08227,36.199562,"Tai'an Shi, Shandong, China",200,NA
+"Xinhuang, Hunan, China, China",109.16897,27.35633,"Xinhuang Dongzu Zizhixian, Huaihua Shi, Hunan, China",200,NA
+"Zhichang, Guizhou, China, China",106.824357,27.217552,"Guizhou, China",200,NA
+"Chaling, Hunan, China, China",111.128925,28.200995,"Hunan, China",200,NA
+"Henan, China, China",113.461723,33.537251,"Henan, China",200,NA
+"Lushan, Henan, China, China",112.90624,33.74099,"Lushan Xian, Pingdingshan Shi, Henan, China",200,NA
+Bangladesh,90.077974,24.347608,Bangladesh,200,NA
+"Mol-Raw, Belgium, Belgium",5.115527,51.184042,"Mol, Antwerp, Belgium",200,NA
+"Santa Juliana, Brazil, Brazil",-47.52817,-19.31222,"Santa Juliana, Minas Gerais, Brazil",200,NA
+Finland,26.199539,62.777754,Finland,200,NA
+"Aquitaine, France, France",0.860577,47.502233,"L'aquitaine, 37380 Reugny, France",200,NA
+"Boigneville, France, France",2.372519,48.335197,"Boigneville, Essonne, France",200,NA
+"Bordeaux, France, France",-0.570681,44.840115,"Bordeaux, Gironde, France",200,NA
+"Marmande, France, France",0.166287,44.498253,"Marmande, Lot-et-Garonne, France",200,NA
+"Saumur, France, France",-0.076935,47.26004,"Saumur, Maine-et-Loire, France",200,NA
+"Kourou, French Guiana, French Guiana",-52.643288,5.157353,"Kourou, French Guiana",200,NA
+Guinea,-11.029862,10.785546,Guinea,200,NA
+Haiti,-72.434515,19.182436,Haiti,200,NA
+Iran,54.301374,32.565838,Iran,200,NA
+"Saint Helena (Piarco), Trinidad and Tobago, Republic of Trinidad and Tobago",-60.735024,11.185289,"Tobago, Trinidad and Tobago",200,NA
+Slovenia,14.694076,46.169458,Slovenia,200,NA
+"Canarias, Spain, Spain",-16.254088,28.469648,"Canary Islands, Spain",200,NA
+"Castilla-Leon, Spain, Spain",-5.545323,42.624133,"Calle Castilla, 24195 Villaquilambre, León, Spain",200,NA
+"Galicia, Spain, Spain",-8.545861,42.880422,"Galicia, Spain",200,NA
+"La Palma, Spain, Spain",-4.432922,36.74002,"La Palma, Málaga, Málaga, Spain",200,NA
+"Soria, Spain, Spain",-2.469399,41.764282,"Soria, Soria, Spain",200,NA
+"Salamanca, Tormes River, Castilla-Leon, Spain, Spain",-5.13874,41.55005,"Castile and León, Spain",200,NA
+"North Carolina, United States, United States (Continental)",-79.389684,35.556885,"North Carolina, United States",200,NA
+Zimbabwe,29.938669,-19.189459,Zimbabwe,200,NA
+"Aino, Unzen, Nagasaki, Kyushu, Japan, Japan",130.18745,32.83471,"雲仙市, Nagasaki, Japan",200,NA
+"Amagi, Oshima, Kagoshima, Japan, Japan",128.90742,27.818323,"天城町, 大島郡, Kagoshima, Japan",200,NA
+"Ariake, Shimabara, Nagasaki, Kyushu, Japan, Japan",130.36896,32.78754,"島原市, Nagasaki, Japan",200,NA
+"Azuma, Unzen, Nagasaki, Kyushu, Japan, Japan",130.18745,32.83471,"雲仙市, Nagasaki, Japan",200,NA
+"Chinzei, Karatsu, Saga, Kyushu, Japan, Japan",129.97116,33.448925,"唐津市, Saga, Japan",200,NA
+"Ginoza, Kunigami, Okinawa, Ryukyu Islands, Japan, Japan",127.975685,26.492405,"宜野座村, 国頭郡, Okinawa, Japan",200,NA
+"Hamamatsu, Shizuoka, Japan, Japan",137.73166,34.705784,"浜松市, Shizuoka, Japan",200,NA
+"Isen, Oshima, Kagoshima, Japan, Japan",128.95003,27.668804,"伊仙町, 大島郡, Kagoshima, Japan",200,NA
+"Kadena, Nakagami, Okinawa, Ryukyu Islands, Japan, Japan",127.770164,26.360996,"嘉手納町, 中頭郡, Okinawa, Japan",200,NA
+"Kadusa, Minamishimabara, Nagasaki, Kyushu, Japan, Japan",130.29427,32.65848,"南島原市, Nagasaki, Japan",200,NA
+"Kamiagata, Tsushima, Nagasaki, Kyushu, Japan, Japan",129.29099,34.202896,"対馬市, Nagasaki, Japan",200,NA
+"Kigatsu, Hirado, Nagasaki, Kyushu, Japan, Japan",129.55263,33.366016,"平戸市, Nagasaki, Japan",200,NA
+"Kishiku, Goto, Nagasaki, Kyushu, Japan, Japan",128.84308,32.695274,"五島市, Nagasaki, Japan",200,NA
+"Kitaarima, Minamishimabara, Nagasaki, Kyushu, Japan, Japan",130.29427,32.65848,"南島原市, Nagasaki, Japan",200,NA
+"Kunigami, Kunigami, Okinawa, Ryukyu Islands, Japan, Japan",128.2571,26.760979,"国頭村, 国頭郡, Okinawa, Japan",200,NA
+"Kunimi, Unzen, Nagasaki, Kyushu, Japan, Japan",130.18745,32.83471,"雲仙市, Nagasaki, Japan",200,NA
+"Kyogoku, Abuta, Hokkaido, Japan, Japan",140.88406,42.859097,"京極町, 虻田郡, Hokkaido, Japan",200,NA
+"Minamiarima, Minamishimabara, Nagasaki, Kyushu, Japan, Japan",130.29427,32.65848,"南島原市, Nagasaki, Japan",200,NA
+"Mine, Tsushima, Nagasaki, Kyushu, Japan, Japan",129.29099,34.202896,"対馬市, Nagasaki, Japan",200,NA
+"Mitsushima, Tsushima, Nagasaki, Kyushu, Japan, Japan",129.29099,34.202896,"対馬市, Nagasaki, Japan",200,NA
+"Miyako, Okinawa, Ryukyu Islands, Japan, Japan",124.702065,24.669714,"宮古郡, Okinawa, Japan",200,NA
+"Mizuho, Unzen, Nagasaki, Kyushu, Japan, Japan",130.18745,32.83471,"雲仙市, Nagasaki, Japan",200,NA
+"Nago, Nago, Okinawa, Ryukyu Islands, Japan, Japan",128.200727,27.941786,"Okinawa, Japan",200,NA
+"Nonokire, Goto, Nagasaki, Kyushu, Japan, Japan",128.84308,32.695274,"五島市, Nagasaki, Japan",200,NA
+"Obama, Unzen, Nagasaki, Kyushu, Japan, Japan",130.18745,32.83471,"雲仙市, Nagasaki, Japan",200,NA
+"Ogawara, Hirado, Nagasaki, Kyushu, Japan, Japan",129.55263,33.366016,"平戸市, Nagasaki, Japan",200,NA
+"Okinawa, Ryukyu Islands, Japan, Japan",128.200727,27.941786,"Okinawa, Japan",200,NA
+"Seihi, Saikai, Nagasaski, Japan, Japan",129.6421,32.932835,"西海市, Nagasaki, Japan",200,NA
+"Shimosakiyama, Goto, Nagasaki, Kyushu, Japan, Japan",128.84308,32.695274,"五島市, Nagasaki, Japan",200,NA
+"Tabira, Hirado, Nagasaki, Kyushu, Japan, Japan",129.55263,33.366016,"平戸市, Nagasaki, Japan",200,NA
+"Toyotama, Tsushima, Nagasaki, Kyushu, Japan, Japan",129.29099,34.202896,"対馬市, Nagasaki, Japan",200,NA
+"Tsutsumi, Goto, Nagasaki, Kyushu, Japan, Japan",128.84308,32.695274,"五島市, Nagasaki, Japan",200,NA
+"Britannia, Mauritius, Mauritius",57.502513,-20.163857,Mauritius,200,NA
+"Labourdonnais, Mauritius, Mauritius",57.502513,-20.163857,Mauritius,200,NA
+"Riche Terre, Mauritius, Mauritius",57.652272,-20.020207,"Roche Terre, Rivière du Rempart, Mauritius",200,NA
+"Medine, Mauritius, Mauritius",57.395842,-20.260286,"Médine, Tamarin, Rivière Noire, Mauritius",200,NA
+"Pamplemousses, Mauritius, Mauritius",57.537307,-20.121465,"Pamplemousses, Pamplemousses, Mauritius",200,NA
+"Zhejiang, China, China",120.071318,28.725902,"Zhejiang, China",200,NA
+"Jiangsu, China, China",119.599204,33.779965,"Jiangsu, China",200,NA
+"Armuelles, Panama, Panama",-79.52339,8.982861,"Panamá, Panamá, Panama",200,NA
+"Jharkhand, India, India",85.45822,23.827177,"Indra, Churchu, Hazaribagh, Jharkhand, India",200,NA
+"Jammu, India, India",74.8564,32.725845,"Jammu, Jammu and Kashmir, India",200,NA
+"Kashmir, India, India",86.16887,24.862453,"Kashmir, Khaira, Jamui, Bihar, India",200,NA
+"Ultarakhand, India, India",79.271675,29.730448,"Inda, Bhikiasain, Almora, Uttarakhand, India",200,NA
+"West Bengal, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Kommerzijlsterriet, Netherlands, Netherlands",5.613491,51.972466,Netherlands,200,NA
+"Reitdiep, Netherlands, Netherlands",6.521839,53.23532,"Reitdiep, Groningen, Groningen, Netherlands",200,NA
+Mali,-1.252145,17.350335,Mali,200,NA
+"Katsina, Nigeria, Nigeria",7.599394,12.989058,"Katsina, Katsina, Nigeria",200,NA
+"Agew Awi, Ethiopia, Ethiopia",39.60545,12.923237,"Agew, Tigray, Ethiopia",200,NA
+"North Gonder, Ethiopia, Ethiopia",37.465476,12.617401,"Gonder, Amhara, Ethiopia",200,NA
+"South Gonder, Ethiopia, Ethiopia",37.465476,12.617401,"Gonder, Amhara, Ethiopia",200,NA
+"West Gojam, Ethiopia, Ethiopia",39.9,11.18333,"Gojam, Amhara, Ethiopia",200,NA
+"Bangalore, India, India",77.556021,13.012252,India ، 560055 Bengaluru، India,200,NA
+"Doddaballapur, India, India",77.580144,13.110481,Doddaballapur Road ، 560064 Bengaluru، India,200,NA
+"Gouribidanur, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Kolar, India, India",78.12915,13.136205,"Kolar, Karnataka, India",200,NA
+"Rajankunte, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Punjab, Pakistan, Pakistan",74.314183,31.565682,"Punjab, Pakistan",200,NA
+"Balaju, Kathmandu, Nepal, Nepal",85.31094,27.714186,"Kathmandu, Bagmati Province, Nepal",200,NA
+"Kharidhunga, Dolakha, Nepal, Nepal",86.0481,27.663223,"Dolakha, Bagmati Province, Nepal",200,NA
+"Mude, Sindhupalcok, Nepal, Nepal",81.5566,28.855324,"Nepa, Karnali Province, Nepal",200,NA
+"Nala, Kavrepalchok, Nepal, Nepal",85.51841,27.640036,"Nala, Bagmati Province, Nepal",200,NA
+"Nigale, Sindhupalcok, Nepal, Nepal",85.970872,27.285941,"Nigale, Ratanchura, Sindhuli, Bagmati Province, Nepal",200,NA
+"Nucleus Seed Potato Center, Sindhupalcok, Nepal, Nepal",85.89901,27.786764,"Sindhupalchok, Bagmati Province, Nepal",200,NA
+"Sankhu, Kathmandu, Nepal, Nepal",85.461383,27.729023,"Shankhu, Pukhulachhi, Kathmandu, Bagmati Province, Nepal",200,NA
+"Doi Poo Muan, Fang, Chiang Mai, Thailand, Thailand",99.755602,19.569189,"Ban Doi, Phan, Chiang Rai, Thailand",200,NA
+"Hort. Res. Station, Kaoko, Petchabun, Thailand, Thailand",101.155683,16.418027,"Phetchabun, Thailand",200,NA
+"Hueysithon, Fang, Chiang Mai, Thailand, Thailand",99.21301,19.91923,"Fang, Chiang Mai, Thailand",200,NA
+"Kasetsart market, Bangkok, Thailand, Thailand",100.493509,13.752494,"Bangkok, Thailand",200,NA
+"Kok, Mae Sot Tak, Thailand, Thailand",98.57094,16.71605,"Mae Sot, Tak, Thailand",200,NA
+"Noungmaloa, Lumpun, Thailand, Thailand",102.970639,14.931598,"ลุมปุ๊ก, Mueang Buri Ram, Buri Ram, Thailand",200,NA
+Canada,-105.750596,55.585901,Canada,200,NA
+Guatemala,-90.390002,15.605589,Guatemala,200,NA
+"Pona, India, India",73.857133,18.503861,Indira ، 411002 Pune، India,200,NA
+"Vallee de Kou, Burkina Faso, Burkina Faso",-1.916667,11.733333,"Kou, Ziro, Burkina Faso",200,NA
+"Nadia, West Bengal, India, India",88.52819,23.07653,"Nadia, West Bengal, India",200,NA
+"North 24 Parganas, West Bengal, India, India",88.43236,22.571995,"North 24 Parganas, West Bengal, India",200,NA
+"South 24 Parganas, West Bengal, India, India",88.38737,22.454386,"South 24 Parganas, West Bengal, India",200,NA
+"Darjeeling, West Bengal, India, India",88.26513,27.041847,"Darjeeling Pulbazar, West Bengal, India",200,NA
+"Jalpaiguri, West Bengal, India, India",88.72397,26.524776,"Jalpaiguri, West Bengal, India",200,NA
+"Birbhum, West Bengal, India, India",87.79816,24.112797,"Birbhum, West Bengal, India",200,NA
+"Murshidabad, West Bengal, India, India",88.280464,24.176012,"Murshidabad Jiaganj, West Bengal, India",200,NA
+"Hooghly, West Bengal, India, India",88.3993,22.88809,"Hooghly, West Bengal, India",200,NA
+"Paschim Medinipur, West Bengal, India, India",87.320045,22.42586,"Paschim Medinipur, West Bengal, India",200,NA
+"Purba Medinipur, West Bengal, India, India",87.320045,22.42586,"Medinipur, West Bengal, India",200,NA
+"Coochebehar, West Bengal, India, India",89.450111,26.307358,Near Coochbehar ، 736101 Cooch Behar، India,200,NA
+"Maldah, West Bengal, India, India",88.1445,24.99984,"Maldah, West Bengal, India",200,NA
+"Boca do Acre, Brazil, Brazil",-67.332909,-8.772447,"Rua Brasil, Platô Do Piquiá, Boca do Acre - Amazonas, 69850-000, Brazil",200,NA
+"Camocim de Sao Felix, Pernambuco, Brazil, Brazil",-35.76328,-8.36176,"Camocim de São Félix, Pernambuco, Brazil",200,NA
+"Abreu e Lima, Brazil, Brazil",-34.90223,-7.904903,"Abreu E Lima, Pernambuco, Brazil",200,NA
+"Caninde de Sao Francisco, Brazil, Brazil",-37.790714,-9.66028,"Canindé de São Francisco, Sergipe, Brazil",200,NA
+"Cotinguiba Pindoba, Brazil, Brazil",-36.287437,-9.475311,"Pindoba, Alagoas, Brazil",200,NA
+"Itacoara, Brazil, Brazil",-42.966737,-22.821971,"Rua Itaocara, Pacheco II, São Gonçalo - Rio de Janeiro, 24736, Brazil",200,NA
+"Japoata, Sergipe, Brazil, Brazil",-36.797985,-10.344592,"Japoatã, Sergipe, Brazil",200,NA
+"Tabatinga, Brazil, Brazil",-69.934999,-4.244779,"Rua Brasil, Tabatinga - Amazonas, 69640, Brazil",200,NA
+"Domingos Martins, Brazil, Brazil",-40.65937,-20.362175,"Domingos Martins, Espírito Santo, Brazil",200,NA
+"Guarai, Tocantins, Brazil, Brazil",-48.511856,-8.835549,"Guaraí, Tocantins, Brazil",200,NA
+"Nova Friburgo, Brazil, Brazil",-42.477428,-22.326417,"Nova Friburgo/Rj - Brasil, Nova Friburgo - Rio de Janeiro, 28615, Brazil",200,NA
+"Gurupi, Tocantins, Brazil, Brazil",-49.068867,-11.729973,"Gurupi, Tocantins, Brazil",200,NA
+"Pouso Alegre, Brazil, Brazil",-45.9356,-22.231413,"Pouso Alegre, Minas Gerais, Brazil",200,NA
+"Indiana, United States, United States (Continental)",-86.284608,39.918408,"Indiana, United States",200,NA
+"Michigan, United States, United States (Continental)",-84.52524,44.933746,"Michigan, United States",200,NA
+"Minnesota, United States, United States (Continental)",-94.199117,46.343406,"Minnesota, United States",200,NA
+"Ohio, United States, United States (Continental)",-82.711449,40.41742,"Ohio, United States",200,NA
+"Rocha, Uruguay, Uruguay",-54.121669,-34.579412,"Uruguay, 27400 La Paloma, Rocha, Uruguay",200,NA
+"San Jose, Uruguay, Uruguay",-56.404854,-34.757423,"Uruguay, 80500 Ciudad del Plata, San José, Uruguay",200,NA
+"Tacuarembo, Uruguay, Uruguay",-55.825147,-32.60866,"Uruguay, 45200 San Gregorio de Polanco, Tacuarembó, Uruguay",200,NA
+Pakistan,67.695237,28.186385,Pakistan,200,NA
+"Nantes, France, France",-1.551244,47.218183,"Nantes, Loire-Atlantique, France",200,NA
+Greece,23.828554,38.589021,Greece,200,NA
+"GKVK, Bangalore, India, India",77.604857,13.075631,Jakkur Main Road ، 560064 Bengaluru، India,200,NA
+"Arabhavi, India, India",74.820496,16.222689,"Arabhavi, Mudalgi, Belagavi, Karnataka, India",200,NA
+"Tirupati, Andhra Pradesh, India, India",79.41914,13.62885,"Tirupati, Andhra Pradesh, India",200,NA
+"Anantapur, Andhra Pradesh, India, India",77.60193,14.680434,"Ananthapuramu, Andhra Pradesh, India",200,NA
+"Anekal, Bangalore, India, India",77.591301,12.979101,"Bengaluru, Karnataka, India",200,NA
+"Arkalgud, Hassan, India, India",76.06148,12.762962,"Arkalgud, Karnataka, India",200,NA
+"Bhuvaneshwar, Orissa, India, India",85.83854,20.260355,"Bhubaneswar, Odisha, India",200,NA
+"Chintamani, Kolar, India, India",78.05365,13.399873,"Chintamani, Karnataka, India",200,NA
+"Chitradurga, India, India",76.39934,14.22498,"Chitradurga, Karnataka, India",200,NA
+"Davangere, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Dharwad, India, India",75.042825,15.355239,India ، 580114 Hubballi، India,200,NA
+"Hassan, India, India",76.10026,13.003348,"Hassan, Karnataka, India",200,NA
+"Hebbal, Bangalore, India, India",77.5917,13.037229,"Hebbal, Bengaluru, Bengaluru Urban, Karnataka, India",200,NA
+"Hoskote, Bangalore, India, India",77.771449,12.983886,Hoskote Road ، 560067 Bengaluru، India,200,NA
+"Hossur, Tamil Nadu, India, India",77.699564,12.805855,Hosur Road ، 560099 Anekal، India,200,NA
+"Kaivara, Kolar, India, India",77.98617,13.346942,"Kaiwara, Chintamani, Chikkaballapura, Karnataka, India",200,NA
+"Kanakapura, India, India",77.42205,12.544761,"Kanakapura, Karnataka, India",200,NA
+"Kandli, Hassan, India, India",76.10026,13.003348,"Hassan, Karnataka, India",200,NA
+"Madenur, Hassan, India, India",76.24707,12.984348,"Madenur, Hassan, Hassan, Karnataka, India",200,NA
+"Malur, Kolar, India, India",77.93843,13.004277,"Malur, Karnataka, India",200,NA
+"Mysore, India, India",76.652824,12.309475,"Mysuru, Karnataka, India",200,NA
+"Nasik, Maharashtra, India, India",73.789474,20.006659,"Nashik, Maharashtra, India",200,NA
+"Sirsi, India, India",75.753371,26.921348,Sirsi Road ، 302021 Jaipur، India,200,NA
+"Sreenivaspura, Kolar, India, India",78.12915,13.136205,"Kolar, Karnataka, India",200,NA
+"Tumkur, India, India",77.549974,13.023129,Tumkur Road ، 560022 Bengaluru، India,200,NA
+"Bijapur, India, India",75.896395,17.632077,Bijapur Rd Near Indira ، 413004 Solapur، India,200,NA
+"Bagepalli, Kolar, India, India",77.795845,13.783068,"Bagepalli, Karnataka, India",200,NA
+"Chikkaballapur, Karnataka, India, India",77.73154,13.435524,"Chikkaballapura, Karnataka, India",200,NA
+"Chikmagalur, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Simla (134), India, India",88.376419,22.585402,Simla Rd 134، 700006 Kolkata، India,200,NA
+"Simla (GSC-26), India, India",72.464053,23.034177,Opp. Gsc Bank ، 380058 Ahmedabad، India,200,NA
+"Simla (JGS 3/118), India, India",77.172676,31.10511,"Shimla, Himachal Pradesh, India",200,NA
+"Sulebele, Kolar, India, India",77.799736,13.185383,"Sulibele, Hosakote, Bengaluru Rural, Karnataka, India",200,NA
+"Thrissur, Kerala, India, India",76.215034,10.522504,"Thrissur, Kerala, India",200,NA
+"Bonoufla, Ivory Coast, Cote d'Ivoire",-6.474065,7.129113,"Bonoufla, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Datta P2, Ivory Coast, Cote d'Ivoire",-5.326729,5.934235,"DATA, Gôh-Djiboua, Côte d'Ivoire",200,NA
+"Sinfra P1, Ivory Coast, Cote d'Ivoire",-5.90895,6.616749,"Sinfra, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Sinfra P2, Ivory Coast, Cote d'Ivoire",-5.90895,6.616749,"Sinfra, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Songon, Ivory Coast, Cote d'Ivoire",-3.208425,6.109293,"Songan, Comoé, Côte d'Ivoire",200,NA
+"Souandala P1, Ivory Coast, Cote d'Ivoire",-6.244942,8.833208,"Koté, Woroba, Côte d'Ivoire",200,NA
+"Anguededou, Cote d'Ivoire, Cote d'Ivoire",-6.244942,8.833208,"Koté, Woroba, Côte d'Ivoire",200,NA
+"Daloa, Ivory Coast, Cote d'Ivoire",-6.45161,6.87669,"Daloa, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Man, Ivory Coast, Cote d'Ivoire",-7.55017,7.409081,"Man, Montagnes, Côte d'Ivoire",200,NA
+"South Carolina, United States, United States (Continental)",-80.900773,33.918412,"South Carolina, United States",200,NA
+"Kutaisi, Georgia, Georgia",42.70546,42.271537,"Kutaisi, Imereti, Georgia",200,NA
+Republic of Trinidad and Tobago,-61.253176,10.468643,Trinidad and Tobago,200,NA
+"Atibaia, Sao Paulo, Brazil, Brazil",-46.55456,-23.117037,"Atibaia, São Paulo, Brazil",200,NA
+"Holambra, Sao Paulo, Brazil, Brazil",-47.05314,-22.633001,"Holambra, São Paulo, Brazil",200,NA
+"Registro, Brazil, Brazil",-47.841728,-24.498955,"Rua Brasil, Registro - São Paulo, 11900, Brazil",200,NA
+"Planaltina, Brazil, Brazil",-47.567716,-15.234546,"Avenida Brasil, Planaltina - Goiás, 73758, Brazil",200,NA
+"Vale do Itajai, Brazil, Brazil",-48.657383,-26.906605,"Itajaí, Santa Catarina, Brazil",200,NA
+"Elias Fausto, Brazil, Brazil",-47.372467,-23.041903,"Elias Fausto, São Paulo, Brazil",200,NA
+"Montenegro, Quindio, Colombia, Colombia",-75.74969,4.567703,"Montenegro, Quindío, Colombia",200,NA
+"La Tebaida, Quindio, Colombia, Colombia",-75.78794,4.452932,"La Tebaida, Quindío, Colombia",200,NA
+"Valle del Cauca/Palmira, Colombia, Colombia",-76.298805,3.527968,"Palmira, Valle del Cauca, Colombia",200,NA
+"Valle del Cauca/Caicedonia, Colombia, Colombia",-75.82863,4.331482,"Caicedonia, Valle del Cauca, Colombia",200,NA
+"Valle del Cauca/Sevilla, Colombia, Colombia",-75.93471,4.265692,"Sevilla, Valle del Cauca, Colombia",200,NA
+"Armenia, Quindio, Colombia, Colombia",-75.67241,4.535886,"Armenia, Quindío, Colombia",200,NA
+"Valle del Cauca/Candelaria, Colombia, Colombia",-76.34627,3.408381,"Candelaria, Valle del Cauca, Colombia",200,NA
+"Villamaria, Colombia, Colombia",-75.51481,5.046089,"Villamaría, Caldas, Colombia",200,NA
+"UAS Bangalore, India, India",77.556021,13.012252,India ، 560055 Bengaluru، India,200,NA
+"UAS Dharwad, India, India",75.042825,15.355239,India ، 580114 Hubballi، India,200,NA
+"Pretoria, South Africa, South Africa",28.119076,-26.104285,"South Africa Boulevard, Alexandra, Johannesburg, Gauteng 2090, South Africa",200,NA
+"Jamalpur, Bangladesh, Bangladesh",89.94808,24.927023,"Jamalpur, Mymensingh, Bangladesh",200,NA
+"Munshigonj, Bangladesh, Bangladesh",90.53523,23.55095,"Munshiganj, Dhaka, Bangladesh",200,NA
+"Nilphamari, Bangladesh, Bangladesh",88.853516,25.932339,"Nilphamari, Rangpur, Bangladesh",200,NA
+"Bezerros, Pernambuco, Brazil, Brazil",-35.752316,-8.234993,"Bezerros, Pernambuco, Brazil",200,NA
+"Caruaru, Pernambuco, Brazil, Brazil",-35.97143,-8.28258,"Caruaru, Pernambuco, Brazil",200,NA
+"Cha Grande, Pernambuco, Brazil, Brazil",-35.46351,-8.238894,"Chã Grande, Pernambuco, Brazil",200,NA
+"Garanhuns, Pernambuco, Brazil, Brazil",-36.49399,-8.89043,"Garanhuns, Pernambuco, Brazil",200,NA
+"Saire, Pernambuco, Brazil, Brazil",-35.709297,-8.327757,"Sairé, Pernambuco, Brazil",200,NA
+"Parintins, AM, Brazil, Brazil",-56.736618,-2.628879,"Parintins, Amazonas, Brazil",200,NA
+"Shushtar, Khoozestan, Iran, Iran",48.855026,32.046703,"Shushtar, Khuzestan, Iran",200,NA
+"Andimeshk, Khoozestan, Iran, Iran",48.353165,32.458267,"Andimeshk, Khuzestan, Iran",200,NA
+"Bahar, Hamedan, Iran, Iran",48.43926,34.907967,"Bahar, Hamadan, Iran",200,NA
+"Bandarabas, Hormozgan, Iran, Iran",56.289253,27.184202,"Hormozgan, Iran",200,NA
+"Dehbid, Fars, Iran, Iran",52.800562,29.916542,"Dehbid, Marvdasht, Fars, Iran",200,NA
+"Dezful, Khoozestan, Iran, Iran",48.403812,32.378143,"Dezful, Khuzestan, Iran",200,NA
+"Dorche, Esfahan, Iran, Iran",51.66541,32.66991,"Esfahan, Isfahan, Iran",200,NA
+"Eghlid, Fars, Iran, Iran",52.537804,29.606022,"Fars, Iran",200,NA
+"Fasarod, Fars, Iran, Iran",52.537804,29.606022,"Fars, Iran",200,NA
+"Fereidan, Esfahan, Iran, Iran",50.415146,32.98532,"Faridan, Isfahan, Iran",200,NA
+"Gorgan, Golestan, Iran, Iran",54.435223,36.839176,"Gorgan, Golestan, Iran",200,NA
+"Jiroft, Kerman, Iran, Iran",57.73616,28.669613,"Jiroft, Kerman, Iran",200,NA
+"Maharlo, Fars, Iran, Iran",52.537804,29.606022,"Fars, Iran",200,NA
+"Norabad, Fars, Iran, Iran",52.609836,27.723499,"Nowabad, Mohr, Fars, Iran",200,NA
+"Shiraz, Fars, Iran, Iran",52.537064,29.605162,"Shiraz, Fars, Iran",200,NA
+"Tezpur, Assam, India, India",92.7967,26.622608,"Tezpur, Assam, India",200,NA
+Serbia,20.7953,44.226737,Serbia,200,NA
+"Melville island, Northern territory, Australia, Australia",130.933333,-11.5,"Melville Island, Northern Territory, Australia",200,NA
+"Nambour, Queensland, Australia, Australia",152.95903,-26.626907,"Nambour, Queensland, Australia",200,NA
+"CNPH-DF, Brazil, Brazil",-47.790561,-15.684568,"Federal District, Brazil",200,NA
+"Farako Ba, Burkina Faso, Burkina Faso",-4.340861,11.082766,"Farakoba, Houet, Burkina Faso",200,NA
+"Baham (ZAE3), Cameroon, Cameroon",10.368438,5.334612,"Baham, West, Cameroon",200,NA
+"Bafang (ZAE3), Cameroon, Cameroon",10.179748,5.158664,"Bafang, West, Cameroon",200,NA
+"Bafia (ZAE5), Cameroon, Cameroon",11.220593,4.739933,"Bafia, Centre, Cameroon",200,NA
+"Bassam, Ivory Coast, Cote d'Ivoire",-6.244942,8.833208,"Koté, Woroba, Côte d'Ivoire",200,NA
+"Yamoussoukro-Yamoussoukro, Zatta, Ivory Coast, Cote d'Ivoire",-5.277603,6.820007,"Yamoussoukro, Côte d'Ivoire",200,NA
+"Attobro, Appromponou, Ivory Coast, Cote d'Ivoire",-3.381414,7.040047,"Attobro, Comoé, Côte d'Ivoire",200,NA
+"Datta P1, Ivory Coast, Cote d'Ivoire",-5.326729,5.934235,"DATA, Gôh-Djiboua, Côte d'Ivoire",200,NA
+"Datta, Ivory Coast, Cote d'Ivoire",-5.326729,5.934235,"DATA, Gôh-Djiboua, Côte d'Ivoire",200,NA
+"Djebonoua-Kondoukro, Ivory Coast, Cote d'Ivoire",-5.066609,7.460867,"Kondoukro, Vallée du Bandama, Côte d'Ivoire",200,NA
+"Pakobo, Tiassale, Ivory Coast, Cote d'Ivoire",-4.825058,5.895646,"Tiassalé, Lagunes, Côte d'Ivoire",200,NA
+"Sinfra, Ivory Coast, Cote d'Ivoire",-5.90895,6.616749,"Sinfra, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Sinfra-Bas-fond, Ivory Coast, Cote d'Ivoire",-5.90895,6.616749,"Sinfra, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Sinfra-Yaokro , Ivory Coast, Cote d'Ivoire",-5.90895,6.616749,"Sinfra, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Songon P7, Ivory Coast, Cote d'Ivoire",-3.208425,6.109293,"Songan, Comoé, Côte d'Ivoire",200,NA
+"Songon P8, Ivory Coast, Cote d'Ivoire",-3.208425,6.109293,"Songan, Comoé, Côte d'Ivoire",200,NA
+"Songon P9, Ivory Coast, Cote d'Ivoire",-3.208425,6.109293,"Songan, Comoé, Côte d'Ivoire",200,NA
+"Souandala P2, Ivory Coast, Cote d'Ivoire",-6.244942,8.833208,"Koté, Woroba, Côte d'Ivoire",200,NA
+"Yamoussoukro, Nanan, Ivory Coast, Cote d'Ivoire",-5.277603,6.820007,"Yamoussoukro, Côte d'Ivoire",200,NA
+"Yamoussoukro, Zatta , Ivory Coast, Cote d'Ivoire",-5.277603,6.820007,"Yamoussoukro, Côte d'Ivoire",200,NA
+"Biankouma-Souandala , Ivory Coast, Cote d'Ivoire",-7.612799,7.738348,"Biankouma, Montagnes, Côte d'Ivoire",200,NA
+"Macouria, French Guiana, French Guiana",-52.47339,5.013751,"Macouria, French Guiana",200,NA
+"Dioungol, Guinea, Guinea",-11.310997,10.911184,"Dioungol, Dabola, Guinea",200,NA
+"Lafou, Guinea, Guinea",-12.465256,11.586697,"Lafou, Lélouma, Guinea",200,NA
+"Sonke Togueta, Guinea, Guinea",-13.160208,10.991787,"Sonhè, Télimélé, Guinea",200,NA
+"Malang, East Java, Indonesia, Indonesia",112.62813,-7.976468,"Malang, East Java, Indonesia",200,NA
+"Gendu, Jatimulyo, Yogyakarta, Indonesia",110.481,-7.897314,"Jatimulyo, 55783, Dlingo, Bantul, Yogyakarta, Indonesia",200,NA
+"Solok, West Sumatra, Indonesia, Indonesia",100.65531,-0.79036,"Solok, West Sumatra, Indonesia",200,NA
+"Sukamantri, Tamansari, Bogor, West Java, Indonesia, Indonesia",106.77432,-6.638692,"Sukamantri, 16611, Tamansari, Bogor, West Java, Indonesia",200,NA
+"Mombassa, Kenya, Kenya",39.667169,-4.05052,"Mombasa, Kenya",200,NA
+"Naivasha, Kenya, Kenya",36.433064,-0.719343,"Naivasha, Nakuru, Kenya",200,NA
+"Nairobi, Kenya, Kenya",36.817281,-1.289001,"Nairobi, Kenya",200,NA
+"Ambatolampy, Madagascar, Madagascar",47.426723,-19.384727,"Ambatolampy, Vakinankaratra, Madagascar",200,NA
+"Alkama, Niger, Niger",2.9612,13.8215,"Alkama, Tillabéri, Niger",200,NA
+"Ballayara, Niger, Niger",2.951507,13.784102,"Balleyara, Tillabéri, Niger",200,NA
+"Bogol Hima, Niger, Niger",2.844206,13.285917,"Boggol Hima, Dosso, Niger",200,NA
+"Bonkoukou, Niger, Niger",3.212257,14.011339,"Bonkoukou, Tillabéri, Niger",200,NA
+"Kollo, Niger, Niger",2.316525,13.342077,"Kollo, Tillabéri, Niger",200,NA
+"Toulloua, Niger, Niger",4.437438,14.264967,"Toullou, Tahoua, Niger",200,NA
+"Nauta, Peru, Peru",-73.57465,-4.50638,"Nauta, Loreto, Peru",200,NA
+"Davao, Philippines, Philippines",124.982235,11.237375,"Davao Barangay 91, Tacloban, Philippines",200,NA
+"Arima, St George County, Trinidad and Tobago, Republic of Trinidad and Tobago",-60.735024,11.185289,"Tobago, Trinidad and Tobago",200,NA
+"Gasparillo, Trinidad and Tobago, Republic of Trinidad and Tobago",-60.735024,11.185289,"Tobago, Trinidad and Tobago",200,NA
+"Poole, Trinidad and Tobago, Republic of Trinidad and Tobago",-60.735024,11.185289,"Tobago, Trinidad and Tobago",200,NA
+Rwanda,29.917652,-1.865506,Rwanda,200,NA
+"Natal, South Africa, South Africa",28.119076,-26.104285,"South Africa Boulevard, Alexandra, Johannesburg, Gauteng 2090, South Africa",200,NA
+"Transvaal Lowveld, South Africa, South Africa",28.119076,-26.104285,"South Africa Boulevard, Alexandra, Johannesburg, Gauteng 2090, South Africa",200,NA
+"Hankey, South Africa, South Africa",28.119076,-26.104285,"South Africa Boulevard, Alexandra, Johannesburg, Gauteng 2090, South Africa",200,NA
+"Pietersberg, South Africa, South Africa",28.119076,-26.104285,"South Africa Boulevard, Alexandra, Johannesburg, Gauteng 2090, South Africa",200,NA
+"Winterton, South Africa, South Africa",28.119076,-26.104285,"South Africa Boulevard, Alexandra, Johannesburg, Gauteng 2090, South Africa",200,NA
+"Hsinchu, Northwest, Taiwan, Taiwan",120.968683,24.806633,"Hsinchu City, Taiwan",200,NA
+"Taipei, North, Taiwan, Taiwan",120.273705,23.294792,"太北, 730, 新營區, 臺南市, Tainan, Taiwan",200,NA
+"Taitung, South East, Taiwan, Taiwan",121.145654,22.756045,"Taitung County, Taiwan",200,NA
+"Yunlin, West, Taiwan, Taiwan",120.537252,23.705053,"Yunlin County, Taiwan",200,NA
+"Alabama, United States, United States (Continental)",-86.789292,32.828866,"Alabama, United States",200,NA
+"Raleigh, North Carolina, United States, United States (Continental)",-78.638148,35.779557,"Raleigh, North Carolina, United States",200,NA
+"Canelones, Uruguay, Uruguay",-56.273631,-34.521317,"Uruguay, 90000 Canelones, Canelones, Uruguay",200,NA
+"Jiangle, Fujian, China, China",117.46676,26.731642,"Jiangle Xian, Sanming Shi, Fujian, China",200,NA
+"Liangfeng, Guangxi, China, China",108.712813,23.657149,"Guangxi, China",200,NA
+"Huazhong, Hubei, China, China",112.628581,31.357959,"Hubei, China",200,NA
+"Scotland, United Kingdom, United Kingdom",-4.095892,56.734282,"Scotland, United Kingdom",200,NA
+"Taichung, Central, Taiwan, Taiwan",120.75179,24.32395,"泰安, 421, 后里區, 臺中市, Taichung, Taiwan",200,NA
+"Yunlin, Central, Taiwan, Taiwan",120.537252,23.705053,"Yunlin County, Taiwan",200,NA
+"Chiayi, Central, Taiwan, Taiwan",120.453541,23.481109,"Chiayi City, Taiwan",200,NA
+"Taoyuan, North, Taiwan, Taiwan",120.522036,23.287105,"高原, 大埔鄉, Tainan, Taiwan",200,NA
+"Ilan, East, Taiwan, Taiwan",120.20541,22.99282,"臺南市, Tainan, Taiwan",200,NA
+"Nantou, Central, Taiwan, Taiwan",120.41861,23.328056,"崁頭, 732, 白河區, 臺南市, Tainan, Taiwan",200,NA
+"Pingtung, South, Taiwan, Taiwan",120.169334,22.994925,"平通, 708, 安平區, 臺南市, Tainan, Taiwan",200,NA
+"Kaohsiung, South, Taiwan, Taiwan",120.54128,22.90163,"泰安, 843, 美濃區, 高雄市, Kaohsiung, Taiwan",200,NA
+"Cacao, French Guiana, French Guiana",-52.470259,4.572055,"Cacao, Roura, French Guiana",200,NA
+"Javouhey, French Guiana, French Guiana",-53.817838,5.604817,"Javouhey, Mana, French Guiana",200,NA
+"Mana, French Guiana, French Guiana",-53.778168,5.668525,"Mana, French Guiana",200,NA
+"Montsinery, French Guiana, French Guiana",-52.492821,4.891991,"Montsinéry, Montsinéry-Tonnegrande, French Guiana",200,NA
+"Sinnamary, French Guiana, French Guiana",-52.958755,5.376925,"Sinnamary, French Guiana",200,NA
+"Matoury, French Guiana, French Guiana",-52.329773,4.84986,"Matoury, French Guiana",200,NA
+"Regina, French Guiana, French Guiana",-52.13061,4.314199,"Régina, French Guiana",200,NA
+"Saint Laurent du Maroni, French Guiana, French Guiana",-54.0308,5.499873,"Saint-Laurent-du-Maroni, French Guiana",200,NA
+"Wayabo, French Guiana, French Guiana",-53.174392,4.357921,French Guiana,200,NA
+"Amapa, Brazil, Brazil",-40.855878,-14.84204,"Travessa Amapá, Ibirapuera, Vitória da Conquista - Bahia, 45075, Brazil",200,NA
+"Honshu, Shikoku, Kyushu, Japan, Japan",139.58041,35.593426,"神木, 216-0032, 宮前区, 川崎市, Kanagawa, Japan",200,NA
+"Hokkaido, Honshu, Shikoku, Kyushu, Okinawa, Ryukyu Islands, Japan, Japan",128.200727,27.941786,"Okinawa, Japan",200,NA
+"Kyushu, Japan, Japan",140.62885,35.963276,"宮中, 314-0031, 鹿嶋市, Ibaraki, Japan",200,NA
+"Shikoku, Kyoshu, Japan, Japan",139.58041,35.593426,"神木, 216-0032, 宮前区, 川崎市, Kanagawa, Japan",200,NA
+"Chuquisaca, Bolivia, Bolivia",-65.259431,-19.047725,"Chuquisaca, Bolivia",200,NA
+"Santa Cruz, Bolivia, Bolivia",-63.100312,-17.828898,"Calle Bolivia, Santa Cruz de la Sierra, Santa Cruz, Bolivia",200,NA
+"Dschang, Cameroon, Cameroon",10.052308,5.452149,"Dschang, West, Cameroon",200,NA
+"Akhaltsikhe, Georgia, Georgia",42.990014,41.640398,"Akhalts'ikhe, Samtskhe–Javakheti, Georgia",200,NA
+"Goa, India, India",74.054111,15.325556,"Goa, India",200,NA
+"Karnataka, India, India",77.556021,13.012252,India ، 560055 Bengaluru، India,200,NA
+"Bihar, India, India",86.599092,25.877597,India ، 852201 Saharsa، India,200,NA
+"Maharashtra, India, India",79.0586,21.145043,India ، 440010 Nagpur، India,200,NA
+"Central Java, Indonesia, Indonesia",110.42291,-6.990399,"Central Java, Indonesia",200,NA
+"Yogyakarta daerah istimewa, Java, Indonesia, Indonesia",110.36541,-7.796369,"Yogyakarta, Yogyakarta, Indonesia",200,NA
+"Bardwan, West Bengal, India, India",87.867256,23.238909,"Burdwan, West Bengal, India",200,NA
+"Devas, Madhya Pradesh, India, India",76.056786,22.967346,"Dewas Nagar, Madhya Pradesh, India",200,NA
+"Ghajipur, Uttar Pradesh, India, India",83.905075,25.608519,"Indua, Mohammadabad, Ghazipur, Uttar Pradesh, India",200,NA
+"Indore, Madhya Pradesh, India, India",75.85921,22.718885,"Indore, Madhya Pradesh, India",200,NA
+"Shillong, Meghalaya, India, India",91.88283,25.575846,"Shillong, Meghalaya, India",200,NA
+"Shimla, Himachal Pradesh, India, India",77.172676,31.10511,"Shimla, Himachal Pradesh, India",200,NA
+"Ujjain, Madhya Pradesh, India, India",75.77153,23.18871,"Ujjain Nagar, Madhya Pradesh, India",200,NA
+"Kathmandu Valley, Nepal, Nepal",85.31094,27.714186,"Kathmandu, Bagmati Province, Nepal",200,NA
+Ghana,-1.167594,6.880854,Ghana,200,NA
+"Ivory Coast, Cote d'Ivoire",-6.244942,8.833208,"Koté, Woroba, Côte d'Ivoire",200,NA
+"Thallande, Ethiopia, Ethiopia",39.616032,8.62622,Ethiopia,200,NA
+"Camanducaia, Minas Gerais State, Brazil, Brazil",-46.144676,-22.755474,"Camanducaia, Minas Gerais, Brazil",200,NA
+"Kyoto, Japan, Japan",135.76918,35.006172,"京都市, Kyoto, Japan",200,NA
+"Kanuma, Tochigi, Japan, Japan",139.74721,36.567135,"鹿沼市, Tochigi, Japan",200,NA
+"Mooka, Tochigi, Japan, Japan",140.00876,36.441605,"真岡市, Tochigi, Japan",200,NA
+"Ootawara, Tochigi, Japan, Japan",140.02505,36.86547,"大田原市, Tochigi, Japan",200,NA
+"Shioya, Tochigi, Japan, Japan",139.85455,36.779175,"塩谷町, 塩谷郡, Tochigi, Japan",200,NA
+"Utsonomiya, Tochigi, Japan, Japan",139.88303,36.561623,"宇都宮市, Tochigi, Japan",200,NA
+"Fukuoka, Kyushu, Japan, Japan",130.40514,33.589733,"福岡市, Fukuoka, Japan",200,NA
+"Iwafune, Tochigi, Japan, Japan",139.570556,36.606909,"Tochigi, Japan",200,NA
+"Miyazaki, Japan, Japan",131.268119,32.327079,"Miyazaki, Japan",200,NA
+"Nikko, Tochigi, Japan, Japan",139.69307,36.722267,"日光市, Tochigi, Japan",200,NA
+"Ooita, Japan, Japan",131.60724,33.23902,"大分市, Oita, Japan",200,NA
+"Osaka, Japan, Japan",135.50078,34.683594,"大阪市, Osaka, Japan",200,NA
+"Sakura, Tochigi, Japan, Japan",139.96405,36.681656,"さくら市, Tochigi, Japan",200,NA
+"Mindana Island, Philippines, Philippines",121.031046,14.504165,"Inland Merville, Parañaque, Philippines",200,NA
+"Trois Bassins 950m, Reunion Island, France, Reunion Island",55.29505,-21.105213,"Les Trois-Bassins, Reunion",200,NA
+"Kohchi, Japan, Japan",133.819325,33.738568,"Kōchi, Japan",200,NA
+"Yamaguchi, Japan, Japan",131.556741,34.440728,"Yamaguchi, Japan",200,NA
+"Bangkok, Thailand, Thailand",100.493509,13.752494,"Bangkok, Thailand",200,NA
+"Chiang Mai, Thailand, Thailand",98.98588,18.788278,"Chiang Mai, Thailand",200,NA
+"Chiang Rai, Thailand, Thailand",99.833274,19.906887,"Chiang Rai, Thailand",200,NA
+"Lamphun, Thailand, Thailand",99.006903,18.577638,"Lamphun, Thailand",200,NA
+"Nakhon Sawan, Thailand, Thailand",100.133005,15.705783,"Nakhon Sawan, Thailand",200,NA
+"Songkhla, Thailand, Thailand",100.593205,7.197343,"Songkhla, Thailand",200,NA
+"Ubon Ratchathani, Thailand, Thailand",104.858946,15.227424,"Ubon Ratchathani, Thailand",200,NA
+"Lampang, Thailand, Thailand",99.495853,18.289949,"Lampang, Thailand",200,NA
+"Nakhon Pathom, Thailand, Thailand",100.063992,13.819007,"Nakhon Pathom, Thailand",200,NA
+"Sakon Nakhon, Thailand, Thailand",104.150073,17.165122,"Sakon Nakhon, Thailand",200,NA
+"Udon Ratchathani, Thailand, Thailand",104.858946,15.227424,"Ubon Ratchathani, Thailand",200,NA
+"Saint Vincent, Grenada, Saint Vincent and the Grenadines",-61.235267,13.011307,"Grenadines, Saint Vincent and the Grenadines",200,NA
+"East Khasi Hills, Meghalaya, India, India",91.88283,25.575846,"East Khasi Hills, Meghalaya, India",200,NA
+"West Khasi Hills, Meghalaya, India, India",91.267365,25.519487,"West Khasi Hills, Meghalaya, India",200,NA
+"Dalwangan, Philippines, Philippines",125.04298,8.199153,"Dalwangan, Malaybalay, Bukidnon, Philippines",200,NA
+"Intavas, Philippines, Philippines",123.972092,10.290434,"Philippines Basak, Lapu-Lapu, Philippines",200,NA
+"Santa Isabel, Para, Brazil, Brazil",-47.488754,-1.61051,"Rua Santa Isabel, São Miguel do Guamá - Pará, 68660-000, Brazil",200,NA
+"Eunapolis, Bahia, Brazil, Brazil",-39.5867,-16.376377,"Eunápolis, Bahia, Brazil",200,NA
+"Matinha, Tocantins, Brazil, Brazil",-48.883499,-12.76138,"Fazenda Matinha, Talismã - Tocantins, 77483-970, Brazil",200,NA
+"Tabocao, Tocantins, Brazil, Brazil",-48.518806,-9.057498,"Fortaleza do Tabocão, Tocantins, Brazil",200,NA
+"Sinop, Mato Grosso, Brazil, Brazil",-55.50655,-11.855398,"Sinop, Mato Grosso, Brazil",200,NA
+"Contenda, Parana, Brazil, Brazil",-49.535988,-25.678204,"Contenda, Paraná, Brazil",200,NA
+"Ekiti, Nigeria, Nigeria",5.22274,7.623248,"Ekiti, Nigeria",200,NA
+"Imo, Nigeria, Nigeria",7.034197,5.489736,"Imo, Nigeria",200,NA
+"Kano, Nigeria, Nigeria",8.521974,11.993998,"Kano, Nigeria",200,NA
+"Lagos, Nigeria, Nigeria",3.38975,6.453928,"Lagos, Lagos, Nigeria",200,NA
+"Ogun, Nigeria, Nigeria",3.348,7.161,"Ogun, Nigeria",200,NA
+"Oyo, Nigeria, Nigeria",3.896993,7.3786060000000004,"Oyo, Nigeria",200,NA
+"Plateau, Nigeria, Nigeria",8.89794,9.917513,"Plateau, Nigeria",200,NA
+"Faizabad, India, India",82.14459,26.780468,"Faizabad, Uttar Pradesh, India",200,NA
+"Balochistan, Pakistan, Pakistan",67.017245,30.195768,"Balochistan, Pakistan",200,NA
+"Hafizabad, Pakistan, Pakistan",73.68709,32.070473,"Hafizabad, Punjab, Pakistan",200,NA
+"Islamabad, Pakistan, Pakistan",73.06307,33.696762,"Islamabad, Islamabad Capital Territory, Pakistan",200,NA
+"Kunri, Pakistan, Pakistan",69.569275,25.178885,"Kunri, Sindh, Pakistan",200,NA
+"Mirpur Khas, Pakistan, Pakistan",69.015076,25.527048,"میرپور خاص, Sindh, Pakistan",200,NA
+"Okara, Pakistan, Pakistan",73.45099,30.809069,"اوکارہ, Punjab, Pakistan",200,NA
+"Sindh, Pakistan, Pakistan",67.020706,24.854684,"Sindh, Pakistan",200,NA
+"Kohat, Pakistan, Pakistan",71.44295,33.588875,"کوہاٹ, Khyber Pakhtunkhwa, Pakistan",200,NA
+"Rawalpindi, Pakistan, Pakistan",73.051906,33.591337,"Rawalpindi, Punjab, Pakistan",200,NA
+"Abomey-Calavi area (Atlantic District), Benin, Benin",2.354245,6.453864,"Abomey-Calavi, Atlantique, Benin",200,NA
+"Athieme, Benin, Benin",1.667645,6.581237,"Athiémé, Mono, Benin",200,NA
+"Dogbo, Benin, Benin",1.781521,6.801846,"Dogbo-Tota, Kouffo, Benin",200,NA
+"Lokossa, Benin, Benin",1.7171400000000001,6.645853,"Lokossa, Mono, Benin",200,NA
+"Bamougoum, Cameroon, Cameroon",10.349979,5.510266,"Bamougoum, West, Cameroon",200,NA
+"Bako, Ivory Coast, Cote d'Ivoire",-7.610936,9.139589,"Bako, Denguélé, Côte d'Ivoire",200,NA
+"Gudar, Ethiopia, Ethiopia",37.08333,11.13333,"Gudar, Amhara, Ethiopia",200,NA
+"Holeta, Ethiopia, Ethiopia",38.493676,9.065247,"ሆለታ / Holeta, Oromia, Ethiopia",200,NA
+"Nacha, Ethiopia, Ethiopia",37.55,8.3,"Nacha, Southern Nations Nationalities and Peoples' Region, Ethiopia",200,NA
+"Tikurwuha, Ethiopia, Ethiopia",39.616032,8.62622,Ethiopia,200,NA
+"Dedo, Ethiopia, Ethiopia",37.450763,9.011917,"Gedo, Oromia, Ethiopia",200,NA
+"Shashemene, Ethiopia, Ethiopia",38.592139,7.203768,"Shashemene, Oromia, Ethiopia",200,NA
+"Mutulu, Kenya, Kenya",39.5,-3.55,"Mutuli, Bamba, Kilifi, Kenya",200,NA
+"Gedo, Somalia, Somalia",42.219898,3.328019,"Gedo, Somalia",200,NA
+"Hessaraghatta, Bangalore, India, India",77.47837,13.137888,"Hesaraghatta, Bengaluru, Bengaluru Urban, Karnataka, India",200,NA
+"Huanggang, Hubei, China, China",114.87859,30.45165,"Huanggang Shi, Hubei, China",200,NA
+"Badong, Hubei, China, China",110.33552,31.045942,"Badong Xian, Enshi Tujiazu Miaozu Zizhizhou, Hubei, China",200,NA
+"Baise, Guangxi, China, China",106.61707,23.89742,"Baise Shi, Guangxi, China",200,NA
+"Bijie, Guizhou, China, China",105.28652,27.28564,"Bijie Shi, Guizhou, China",200,NA
+"Chizhou, Anhui, China, China",117.4871,30.655006,"Chizhou Shi, Anhui, China",200,NA
+"Fangxian, Hubei, China, China",112.628581,31.357959,"Hubei, China",200,NA
+"Fenghuang, Hunan, China, China",109.5936,27.951567,"Fenghuang Xian, Xiangxi Tujiazu Miaozu Zizhizhou, Hunan, China",200,NA
+"Ganzhou, Jiangxi , China, China",114.929596,25.832218,"Ganzhou Shi, Jiangxi, China",200,NA
+"Hechi, Guangxi, China, China",107.84203,24.696865,"Hechi Shi, Guangxi, China",200,NA
+"Jianshi, Hubei, China, China",109.71665,30.605778,"Jianshi Xian, Enshi Tujiazu Miaozu Zizhizhou, Hubei, China",200,NA
+"Laifeng, Hubei, China, China",109.402794,29.494547,"Laifeng Xian, Enshi Tujiazu Miaozu Zizhizhou, Hubei, China",200,NA
+"Lichuan, Hubei, China, China",108.93191,30.292906,"Lichuan Shi, Enshi Tujiazu Miaozu Zizhizhou, Hubei, China",200,NA
+"Linyi, Shandong , China, China",118.34931,35.102493,"Linyi Shi, Shandong, China",200,NA
+"Longyan, Fujian, China, China",117.014885,25.079777,"Longyan Shi, Fujian, China",200,NA
+"Nanping, Fujian, China, China",118.17282,26.64481,"Nanping Shi, Fujian, China",200,NA
+"Nanxiong, Guangdong, China, China",114.3069,25.12039,"Nanxiong Shi, Shaoguan Shi, Guangdong, China",200,NA
+"Panzhihua, Sichuan, China, China",101.717865,26.585873,"Panzhihua Shi, Sichuan, China",200,NA
+"Qianjiang, Chongqing, China, China",108.76734,29.535717000000002,"Qianjiang Qu, Chongqing, China",200,NA
+"Sanming, Fujian, China, China",117.636185,26.269423,"Sanming Shi, Fujian, China",200,NA
+"Shaoxing, Zhejiang, China, China",120.58318,30.002562,"Shaoxing Shi, Zhejiang, China",200,NA
+"Tongren, Guizhou, China, China",109.18883,27.718754,"Tongren Shi, Guizhou, China",200,NA
+"Wenshan, Yunnan, China, China",104.230965,23.382399,"Wenshan Shi, Wenshan Zhuangzu Miaozu Zizhizhou, Yunnan, China",200,NA
+"Wuling, Chongqing, China, China",106.547919,29.565673,"Chongqing, China",200,NA
+"Wuzhou, Guangxi, China, China",111.27738,23.48014,"Wuzhou Shi, Guangxi, China",200,NA
+"Xuanen, Hubei, China, China",109.48393,29.991257,"Xuan'en Xian, Enshi Tujiazu Miaozu Zizhizhou, Hubei, China",200,NA
+"Youyang, Chongqing , China, China",108.76375,28.844984,"Youyang Tujiazu Miaozu Zizhixian, Chongqing, China",200,NA
+"Zhumadian, Henan, China, China",114.019714,33.01334,"Zhumadian Shi, Henan, China",200,NA
+"Zunyi, Guizhou, China, China",107.02995,27.72712,"Zunyi Shi, Guizhou, China",200,NA
+"Pengzhou, Sichuan, China, China",103.94005,30.980654,"Pengzhou Shi, Chengdu Shi, Sichuan, China",200,NA
+"Obala, Cameroon, Cameroon",11.534664,4.165713,"Obala, Centre, Cameroon",200,NA
+"Melong, Cameroon, Cameroon",9.949155,5.121582,"Melong, Littoral, Cameroon",200,NA
+"Tan Rouge 700m, Reunion Island, France, Reunion Island",55.29764,-21.063756,"Tan Rouge, Saint-Paul, Reunion",200,NA
+"Chidiya Tapu, Andaman and Nicobar Islands, India, India",92.739045,11.664535,"Andaman and Nicobar Islands, India",200,NA
+"Garacharma, Andaman and Nicobar Islands, India, India",92.70366,11.613929,"Garacharma, Port Blair, South Andaman, Andaman and Nicobar Islands, India",200,NA
+"Guptapara, Andaman and Nicobar Islands, India, India",92.657265,11.557769,"Guptapara, Ferrargunj, South Andaman, Andaman and Nicobar Islands, India",200,NA
+"Wandoor, Andaman and Nicobar Islands, India, India",92.739045,11.664535,"Andaman and Nicobar Islands, India",200,NA
+"Diglipur, Andaman and Nicobar Islands, India, India",92.97564,13.245836,"Diglipur, Andaman and Nicobar Islands, India",200,NA
+"Havelock, Andaman and Nicobar Islands, India, India",92.739045,11.664535,"Andaman and Nicobar Islands, India",200,NA
+"Humphreygunj, Andaman and Nicobar Islands, India, India",92.739045,11.664535,"Andaman and Nicobar Islands, India",200,NA
+"Tobasco, Mexico, Mexico",-98.868931,19.196943,"Tabasco, 56650 Temamatla, Mexico, Mexico",200,NA
+"Northeast Brazil, Brazil",-48.258877,-18.895412,"Brasil, 38400, Uberlândia, Minas Gerais, Brazil",200,NA
+"San Ramon, Junin, Peru, Peru",-75.353905,-11.122116,"San Ramón, Junin, Peru",200,NA
+"Alfiaco, Cutervo, Cajamarca, Peru, Peru",-78.817444,-6.378946,"Cutervo, Cajamarca, Peru",200,NA
+"Canete, Lima, Peru, Peru",-77.03542,-12.06973,"Lima, Lima Province, Peru",200,NA
+"Cauday, Cajamarca, Peru, Peru",-78.817177,-5.711312,"Perú, Jaén, Cajamarca, Peru",200,NA
+"Chachapoyas, Amazonas, Peru, Peru",-77.87197,-6.228126,"Chachapoyas, Amazonas, Peru",200,NA
+"Cutervo, Cajamarca, Peru, Peru",-78.5164,-7.158754,"Cajamarca, Cajamarca, Peru",200,NA
+"Huambos, Cajamarca, Peru, Peru",-78.96058,-6.452556,"Huambos, Cajamarca, Peru",200,NA
+"Huayao, Huancayo, Junin, Peru, Peru",-75.21025,-12.068651,"Huancayo, Junin, Peru",200,NA
+"La Molina, Lima, Peru, Peru",-76.91701,-12.077292,"La Molina, Lima, Lima Province, Peru",200,NA
+"Namora, Cajamarca, Peru, Peru",-78.32503,-7.20243,"Namora, Cajamarca, Peru",200,NA
+"Sihuas, Huaraz, Aneash, Peru, Peru",-77.528275,-9.529246,"Huaraz, Ancash, Peru",200,NA
+"Viru, La Libertad, Peru, Peru",-78.75225,-8.414844,"Viru, La Libertad, Peru",200,NA
+Myanmar,96.506921,21.154319,Myanmar,200,NA
+"Yangzi River Basin, China, China",101.901875,35.486703,China,200,NA
+"Southeast Brazil, Brazil",-46.63209,-23.549387,"Sé, São Paulo, São Paulo, Brazil",200,NA
+"North Brazil, Brazil",-55.721615,-22.487692,"N, Ponta Porã, Mato Grosso do Sul, Brazil",200,NA
+"South Brazil, Brazil",-48.258877,-18.895412,"Brasil, 38400, Uberlândia, Minas Gerais, Brazil",200,NA
+"Central Brazil, Brazil",-49.476262,-18.990713,"Rua Central, Mirim, Ituiutaba - Minas Gerais, 38307, Brazil",200,NA
+Benin,2.426674,10.338383,Benin,200,NA
+Comoros,43.254168,-11.70199,Comoros,200,NA
+"Rodrigues, Mauritius, Mauritius",63.422113,-19.680837,"Rodrigues, Mauritius",200,NA
+Seychelles,55.453065,-4.623093,Seychelles,200,NA
+"Nakuru County, Kenya, Kenya",36.071205,-0.280272,"Nakuru, Kenya",200,NA
+"Goesan, Chungcheongbuk-do, South Korea, South Korea",127.79463,36.809162,"Goesan-gun, Chungcheongbuk-do, South Korea",200,NA
+"Goryeong, Gyeongsangbuk-do, South Korea, South Korea",128.2672,35.728935,"Goryeong-gun, Gyeongsangbuk-do, South Korea",200,NA
+"Aklera, Jhalawar, India, India",76.56631,24.415022,"Aklera, Rajasthan, India",200,NA
+"Atru, Baran, India, India",76.66712,24.880154,"Atru, Rajasthan, India",200,NA
+"Baran, India, India",84.757982,25.861108,Opp India ، 841414 Nagra، India,200,NA
+"Bari sadri, Chittorgarh, India, India",74.47155,24.413473,"Bari Sadri, Rajasthan, India",200,NA
+"Bundi, India, India",75.63998,25.442263,"Bundi, Rajasthan, India",200,NA
+"Chittoregarh, India, India",74.13408,24.805509,Near Indian ، 312205 Bhopalsagar، India,200,NA
+"Digod, Kota, India, India",76.07744,25.222065,"Digod, Rajasthan, India",200,NA
+"Etava, Kota, India, India",75.85744,25.173758,"Kota, Rajasthan, India",200,NA
+"Hindoli, Bundi, India, India",75.50249,25.577782,"Hindoli, Rajasthan, India",200,NA
+"Kapasan, Chittoregarh, India, India",74.312294,24.885191,"Kapasan, Rajasthan, India",200,NA
+"Khanpur, Jhalawar, India, India",76.39647,24.733713,"Khanpur, Rajasthan, India",200,NA
+"Kishanganj, Baran, India, India",76.63699,25.10696,"Kishanganj, Rajasthan, India",200,NA
+"Kunda, Pratapgarh, India, India",81.510445,25.721245,"Kunda, Uttar Pradesh, India",200,NA
+"Lalganj, Pratapgarh, India, India",81.70437,25.931839,"Lalganj, Uttar Pradesh, India",200,NA
+"Mangrol, Baran, India, India",76.51204,25.330711,"Mangrol, Rajasthan, India",200,NA
+"Manohar thana, Jhalawar, India, India",76.81026,24.234505,"Manohar Thana, Rajasthan, India",200,NA
+"Nainwa, Bundi, India, India",75.86157,25.771963,"Nainwa, Rajasthan, India",200,NA
+"Pratapgarh, India, India",83.187332,26.065891,India ، 276001 Azamgarh، India,200,NA
+"Ramganj mandi, Kota, India, India",75.85744,25.173758,"Kota, Rajasthan, India",200,NA
+"Rawatbhata, Chittoregarh, India, India",75.5894,24.935637,"Rawatbhata, Rajasthan, India",200,NA
+"Sangod, Kota, India, India",76.28844,24.92498,"Sangod, Rajasthan, India",200,NA
+"Poyang County, Shangrao, China, China",116.694435,29.008486,"Boyang Xian, Shangrao Shi, Jiangxi, China",200,NA
+"Los Banos, Philippines, Philippines",121.22161,14.177321,"Los Baños, Laguna, Philippines",200,NA
+"Aablakot, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Angatkola, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Baghjala, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Bajonioya, Haldu, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Bandarisimal, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Banjaniya Haldu, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Beda, Pokhara, Nainital, Uttarakhand, India, India",79.497856,29.170378,"Bera Pokhara, Haldwani, Nainital, Uttarakhand, India",200,NA
+"Delkot, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Devlatalla, Kuarpur, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Dewla, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Gujariya, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Haripurkaliyajala, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Jagatpur, Nainital, Uttarakhand, India, India",79.57057,29.172915,"Jagatpur, Haldwani, Nainital, Uttarakhand, India",200,NA
+"KaptanGanj, Nainital, Uttarakhand, India, India",79.31501,29.383287,"Kaptanganj, Kaladhungi, Nainital, Uttarakhand, India",200,NA
+"Karali, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Khaida, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Khorpur, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Khudlaiya, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Kishnpur, Nainital, Uttarakhand, India, India",79.505035,28.920134,"Kishanpur, Kichha, Udham Singh Nagar, Uttarakhand, India",200,NA
+"Korali, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Kuarpur, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Luxmipur, Nainital, Uttarakhand, India, India",79.54096,28.93141,"Laxmipur, Kichha, Udham Singh Nagar, Uttarakhand, India",200,NA
+"Manpur, Nainital, Uttarakhand, India, India",78.96971,29.239725,"Manpur, Kashipur, Udham Singh Nagar, Uttarakhand, India",200,NA
+"Matela, Nainital, Uttarakhand, India, India",79.78735,29.282372,"Matela, Okhalkanda, Nainital, Uttarakhand, India",200,NA
+"Musa bangar, Nainital, Uttarakhand, India, India",79.0221,29.890625,"Bangar, Bironkhal, Pauri Garhwal, Uttarakhand, India",200,NA
+"Nandpur, Nainital, Uttarakhand, India, India",79.478966,29.23428,"Nandpur, Haldwani, Nainital, Uttarakhand, India",200,NA
+"Nathunagar, Nainital, Uttarakhand, India, India",79.321396,29.37906,"Nathunager, Kaladhungi, Nainital, Uttarakhand, India",200,NA
+"Ohinipur, Cuttack, Odissa, India, India",85.88274,20.462515,"Cuttack, Odisha, India",200,NA
+"Pajaya, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Patalya, Nanital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Pighlakana, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Pijaya, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Purbikhera, Nanital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Rahar, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Ramgarh, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Ramni, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Ramodevi, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Ratnapur, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Roodki, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Sitapur, Nainital, Uttarakhand, India, India",79.59067,29.139978,"Sitapur, Haldwani, Nainital, Uttarakhand, India",200,NA
+"Takpatiya, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Trichhaghat, Nainital, Uttarakhand, India, India",79.454414,29.39191,"Nainital, Uttarakhand, India",200,NA
+"Bankala, Sambalpur, Odissa, India, India",85.05983,20.744726,"Bantala, Odisha, India",200,NA
+"Bhast, Udhampur, Jammu & Kashmir, India, India",75.13626,32.923115,"Udhampur, Jammu and Kashmir, India",200,NA
+"Chakta, Mohanpur, Nadia, West Bengal, India, India",88.21996,23.657866,"Mohanpur, Kaliganj, Nadia, West Bengal, India",200,NA
+"Churu, Ranchi, Jharkhand, India, India",85.36732,23.28515,"Churu, Ranchi, Ranchi, Jharkhand, India",200,NA
+"Gajenda, Dumka, Jharkhand, India, India",87.17794,24.369371,"Gajanda, Jama, Dumka, Jharkhand, India",200,NA
+"Haringata, Nadia, West Bengal, India, India",88.56649,22.960346,"Haringhata, West Bengal, India",200,NA
+"Harjaatpur, Jamtara, Jharkhand, India, India",86.799194,23.962349,"Jamtara, Jharkhand, India",200,NA
+"Jagatpur, Jagatpur, Odissa, India, India",85.93881,20.491055,"Jagatpur, Odisha, India",200,NA
+"Jhugipalli, Sambalpur, Odissa, India, India",83.97841,21.465988,"Sambalpur, Odisha, India",200,NA
+"Kohari, Solan, Himachal Pradesh, India, India",77.09992,30.908451,"Solan, Himachal Pradesh, India",200,NA
+"Kotwali, Pundibari, West Bengal, India, India",89.093956,26.527128,"Pundibari, Mathabhanga Ii, Cooch Behar, West Bengal, India",200,NA
+"Krishi Vigyan Kendra, Kathua, Jammu and Kashmir, India, India",75.52309,32.37428,"Kathua, Jammu and Kashmir, India",200,NA
+"Kuchbali, Pundibari, West Bengal, India, India",89.093956,26.527128,"Pundibari, Mathabhanga Ii, Cooch Behar, West Bengal, India",200,NA
+"Lalgarh, Sriniketan, West Bengal, India, India",87.666101,23.667921,Bolpur - Sriniketan Road ، 731204 Bolpur Sriniketan، India,200,NA
+"Luxmipur, Mohanpur, West Bengal, India, India",87.42298,21.843878,"Mohanpur, West Bengal, India",200,NA
+"Madnadih, Jamtara, Jharkhand, India, India",86.30029,23.964554,"Madnadih, Pirtanr, Giridih, Jharkhand, India",200,NA
+"Manjhaldih, Jamtara, Jharkhand, India, India",85.90617,24.539385,"Manjhladih, Tisri, Giridih, Jharkhand, India",200,NA
+"Mardendagara, Nadia, West Bengal, India, India",88.52819,23.07653,"Nadia, West Bengal, India",200,NA
+"Mirzapur, Sriniketan, West Bengal, India, India",88.84946,22.670021,"Mirzapur, Basirhat, North 24 Parganas, West Bengal, India",200,NA
+"Nagaon, Solan, Himachal Pradesh, India, India",77.09992,30.908451,"Solan, Himachal Pradesh, India",200,NA
+"Nimtara, Mohanpur, West Bengal, India, India",87.42298,21.843878,"Mohanpur, West Bengal, India",200,NA
+"Pakapoda, Cuttack, Odissa, India, India",85.88274,20.462515,"Cuttack, Odisha, India",200,NA
+"Pithoria, Ranchi, Jharkhand, India, India",85.325134,23.370127,"Ranchi, Jharkhand, India",200,NA
+"Plandu, Ranchi, Jharkhand, India, India",85.40306,23.29798,"Palandu, Ranchi, Ranchi, Jharkhand, India",200,NA
+"Sadhupul, Solan, Himachal Pradesh, India, India",77.09992,30.908451,"Solan, Himachal Pradesh, India",200,NA
+"Satupalli, Sambalpur, Odissa, India, India",83.8838,21.37366,"Satupali, Burla, Sambalpur, Odisha, India",200,NA
+"V.B.K.B, Pundibari, West Bengal, India, India",89.093956,26.527128,"Pundibari, Mathabhanga Ii, Cooch Behar, West Bengal, India",200,NA
+Laos,102.593737,19.922589,Laos,200,NA
+"Gicumbi, Rwanda, Rwanda",30.068211,-1.579673,"Gicumbi, Northern, Rwanda",200,NA
+"Huye, Rwanda, Rwanda",29.74092,-2.605298,"Huye, Southern, Rwanda",200,NA
+"Kayonza, Rwanda, Rwanda",30.507351,-1.901566,"Kayonza, Eastern, Rwanda",200,NA
+"Musanze, Rwanda, Rwanda",29.571755,-1.530675,"Musanze, Northern, Rwanda",200,NA
+"Nyabihu, Rwanda, Rwanda",29.512794,-1.659071,"Nyabihu, Western, Rwanda",200,NA
+"Nyamagabe, Rwanda, Rwanda",29.581436,-2.472204,"Nyamagabe, Southern, Rwanda",200,NA
+"Rulindo, Rwanda, Rwanda",29.886772,-1.662904,"Rulindo, Northern, Rwanda",200,NA
+"Rwamagana, Rwanda, Rwanda",30.43666,-1.953692,"Rwamagana, Eastern, Rwanda",200,NA
+"Escuintla, Guatemala, Guatemala",-90.48668,14.68715,"Avenida Escuintla, Chinautla, Guatemala, Guatemala",200,NA
+"Haenam, South Korea, South Korea",126.59877,34.57185,"Haenam-gun, Jeollanam-do, South Korea",200,NA
+"Livingston, Louisiana, United States, United States (Continental)",-90.749733,30.499844,"Livingston, Louisiana, United States",200,NA
+"Saint Helena, Louisiana, United States, United States (Continental)",-93.824635,32.418638,"Saint Helen's Drive, Shreveport, Louisiana 71108, United States",200,NA
+"Alexandria, Egypt, Egypt",29.89866,31.198877,"Alexandria, Alexandria, Egypt",200,NA
+"Behera, Egypt, Egypt",31.890727,26.333368,"Egypt, 82, جرجا, Gerga, Sohag, Egypt",200,NA
+"Cairo, Egypt, Egypt",31.241106,30.047558,"Cairo, Cairo, Egypt",200,NA
+"Ismailia, Egypt, Egypt",32.269047,30.582802,"Ismailia, Ismailia, Egypt",200,NA
+"Menofia, Egypt, Egypt",31.890727,26.333368,"Egypt, 82, جرجا, Gerga, Sohag, Egypt",200,NA
+"Kinigi, Rwanda, Rwanda",29.589124,-1.448666,"Kinigi, Musanze, Northern, Rwanda",200,NA
+"Valle, Colombia, Colombia",-74.994308,6.043409,"Calle 21, 054430 San Luis, Antioquia, Colombia",200,NA
+"Antioquia, Colombia, Colombia",-75.377137,7.219985,"Colombia, Valdivia, Antioquia, Colombia",200,NA
+"Meta, Colombia, Colombia",-73.620152,4.134764,"Meta, Colombia",200,NA
+"Magdalena, Colombia, Colombia",-74.217277,10.563181,"La Colombia, El Retén, Magdalena, Colombia",200,NA
+"UrabÃ¡, Valle del Cauca y QuindÃ­o, Colombia, Colombia",-76.532526,3.451999,"Valle del Cauca, Colombia",200,NA
+"Andes region, Colombia, Colombia",-75.87774,5.655967,"Andes, Antioquia, Colombia",200,NA
+"Eastern plains region, Colombia, Colombia",-73.129056,3.065088,Colombia,200,NA
+"Quevedo Canton, Ecuador, Ecuador",-79.46647,-1.027099,"Quevedo, Los Ríos, Ecuador",200,NA
+"Atlantique, Benin, Benin",2.08536,6.366615,"Atlantique, Benin",200,NA
+"Sikasso, Mali, Mali",-5.677753,11.316553,"Sikasso, Mali",200,NA
+"Bamako, Mali, Mali",-8.000337,12.649319,"Bamako, Mali",200,NA
+"Kayes, Mali, Mali",-11.437914,14.443406,"Nioros, Mali",200,NA
+"Koulikoro, Mali, Mali",-7.556129,12.864632,"Koulikoro, Mali",200,NA
+"Segou, Mali, Mali",-6.268147,13.441518,"Ségou, Mali",200,NA
+"Sergipe, Northeast Brazil, Brazil",-46.558848,-22.947083,"Rua Sergipe, Jardins, Bragança Paulista - São Paulo, 12903, Brazil",200,NA
+"Alagoas, Brazil, Brazil",-40.857876,-14.856261,"Avenida Alagoas, Brasil, Vitória da Conquista - Bahia, 45051, Brazil",200,NA
+"Mato Grosso do Sul, Brazil, Brazil",-51.678426,-20.807969,"Rua Brasil, Quinta Da Lagoa, Três Lagoas - Mato Grosso do Sul, 79611-308, Brazil",200,NA
+"Sao Paulo, Brazil, Brazil",-46.54809,-22.936255,"Brasil, 12908, Bragança Paulista, São Paulo, Brazil",200,NA
+"Beihai, Guangxi, China, China",109.115685,21.483295,"Beihai Shi, Guangxi, China",200,NA
+"Qinzhou, Guangxi, China, China",108.624954,21.96699,"Qinzhou Shi, Guangxi, China",200,NA
+"Ceco-Agro, Togo, Togo",0.070788,11.051214,"Garo, Savanes, Togo",200,NA
+"Ituporanga, Brazil, Brazil",-46.515509,-18.58255,"Rua Itaporanga, Centro, Patos de Minas - Minas Gerais, 38700, Brazil",200,NA
+"Jutiapa, Guatemala, Guatemala",-90.48496,14.685406,"Avenida Jutiapa, Chinautla, Guatemala, Guatemala",200,NA
+"Kerman-Jiroft, Iran, Iran",57.73616,28.669613,"Jiroft, Kerman, Iran",200,NA
+"Kerman-Laleh Zaar, Iran, Iran",57.06502,30.29192,"Kerman, Kerman, Iran",200,NA
+Italy,12.646361,42.504154,Italy,200,NA
+"Cheongsong, South Korea, South Korea",129.092,36.41994,"Cheongsong-gun, Gyeongsangbuk-do, South Korea",200,NA
+"Cheongyang, South Korea, South Korea",126.80294,36.450924,"Cheongyang-gun, Chungcheongnam-do, South Korea",200,NA
+"Gongju, South Korea, South Korea",127.08752,36.47287,"Gongju-si, Chungcheongnam-do, South Korea",200,NA
+"Imsil, South Korea, South Korea",127.28394,35.614666,"Imsil-gun, Jeollabuk-do, South Korea",200,NA
+"Jeongeup, South Korea, South Korea",126.85511,35.565514,"Jeongeup-si, Jeollabuk-do, South Korea",200,NA
+"Taean, South Korea, South Korea",126.30224,36.751423,"Taean-gun, Chungcheongnam-do, South Korea",200,NA
+"Bonghwa, South Korea, South Korea",128.74046,36.890373,"Bonghwa-gun, Gyeongsangbuk-do, South Korea",200,NA
+"Hoengseong, South Korea, South Korea",127.98651,37.491013,"Hoengseong-gun, Gangwon-do, South Korea",200,NA
+"Hwacheon, South Korea, South Korea",127.70456,38.10521,"Hwacheon-gun, Gangwon-do, South Korea",200,NA
+"Pyeongchang, South Korea, South Korea",128.39484,37.366093,"Pyeongchang-gun, Gangwon-do, South Korea",200,NA
+"Analamanga, Madagascar, Madagascar",47.525581,-18.910012,"Analamanga, Madagascar",200,NA
+"Itasy, Madagascar, Madagascar",46.906709,-18.956006,"Itasy, Madagascar",200,NA
+"Southwestern Iran, Iran",46.309772,33.82832,"Ivan, Ilam, Iran",200,NA
+"Keda, Georgia, Georgia",41.939846,41.597934,"ქედა, Adjara, Georgia",200,NA
+Georgia,43.517448,42.176311,Georgia,200,NA
+"Chaharmahal-Bakhtiari, Iran, Iran",50.849737,32.325737,"Chaharmahal and Bakhtiari, Iran",200,NA
+"Fars, Iran, Iran",52.537804,29.606022,"Fars, Iran",200,NA
+"Kurdistan, Iran, Iran",46.6643,36.1111,"Irab, Saqqez, Kurdistan, Iran",200,NA
+"Burera, Rwanda, Rwanda",29.973037,-1.500696,"Burera, Northern, Rwanda",200,NA
+"Gakenke, Rwanda, Rwanda",29.78822,-1.646499,"Gakenke, Northern, Rwanda",200,NA
+"Karongi, Rwanda, Rwanda",29.347043,-2.059829,"Karongi, Western, Rwanda",200,NA
+"Ngoma, Rwanda, Rwanda",30.540053,-2.166349,"Ngoma, Eastern, Rwanda",200,NA
+"Rubavu, Rwanda, Rwanda",29.26323,-1.695879,"Rubavu, Western, Rwanda",200,NA
+"Rutsiro, Rwanda, Rwanda",29.319229,-1.778446,"Rutsiro, Western, Rwanda",200,NA
+"Belem de Sao Francisco, Pernambuco, Brazil, Brazil",-34.830759,-7.95395,"Rua Belém De São Francisco, Janga, Paulista - Pernambuco, 53439-090, Brazil",200,NA
+"Gravata, Pernambuco, Brazil, Brazil",-35.568165,-8.203421,"Gravatá, Pernambuco, Brazil",200,NA
+"Petrolina, Pernambuco, Brazil, Brazil",-40.49743,-9.381671,"Petrolina, Pernambuco, Brazil",200,NA
+"Guilin, Guangxi, China, China",110.172386,25.237257,"Guilin Shi, Guangxi, China",200,NA
+"Lushoto, Tanga, Tanzania, Tanzania",38.290899,-4.798365,"Lushoto, Tanga, Tanzania",200,NA
+"Mshewe, Mbeya, Tanzania, Tanzania",33.258203,-8.842337,"Mshewe, Mbeya, Tanzania",200,NA
+"SUA GH, Morogoro, Tanzania, Tanzania",37.665258,-6.827415,"Morogoro, Morogoro, Tanzania",200,NA
+"Image, Iringa, Tanzania, Tanzania",36.110054,-7.597014,"Image, Iringa, Tanzania",200,NA
+"Inyala, Mbeya, Tanzania, Tanzania",33.637804,-8.858916,"Inyala, Mbeya, Tanzania",200,NA
+"Kiwira, Mbeya, Tanzania, Tanzania",33.542795,-9.167302,"Kiwira, Mbeya, Tanzania",200,NA
+"Misufini, Morogoro, Tanzania, Tanzania",37.665258,-6.827415,"Morogoro, Morogoro, Tanzania",200,NA
+"Mlali, Morogoro, Tanzania, Tanzania",37.539801,-6.959248,"Mlali, Morogoro, Tanzania",200,NA
+"Ntokela, Mbeya, Tanzania, Tanzania",33.468103,-8.906445,"Mbeya, Mbeya, Tanzania",200,NA
+"Anama, Amazonas, Brazil, Brazil",-61.405247,-3.580279,"Anamã, Amazonas, Brazil",200,NA
+"Fonte Boa, Amazonas, Brazil, Brazil",-66.09528,-2.51796,"Fonte Boa, Amazonas, Brazil",200,NA
+"Riau, Sumatra, Indonesia, Indonesia",101.451573,0.526246,"Riau, Indonesia",200,NA
+"Yogyakarta, Java, Indonesia, Indonesia",110.36541,-7.796369,"Yogyakarta, Yogyakarta, Indonesia",200,NA
+"East Kalimantan, Borneo, Indonesia, Indonesia",117.139309,-0.50178,"East Kalimantan, Indonesia",200,NA
+"Jambi, Sumatra, Indonesia, Indonesia",103.60766,-1.63063,"Jambi, Jambi, Indonesia",200,NA
+"South Sumatra, Indonesia, Indonesia",104.756851,-2.988824,"South Sumatra, Indonesia",200,NA
+"East Java, Indonesia, Indonesia",112.54039,-7.509607,"Menanggal, 61382, Mojosari, Mojokerto, East Java, Indonesia",200,NA
+"Ndiawdoune, Senegal, Senegal",-16.389968,16.068242,"Ndiawdoun, Saint-Louis, Senegal",200,NA
+"Assiut, Dairout, Egypt, Egypt",31.185806,27.18451,"Assiut, Asyut, Egypt",200,NA
+"Assiut, Manfalout, Egypt, Egypt",30.968266,27.310017,"Manfalout, Asyut, Egypt",200,NA
+"El-Minia, El-Minia, Egypt, Egypt",30.756323,28.102425,"Minya, Minya, Egypt",200,NA
+"El-Minia, Samalut, Egypt, Egypt",31.890727,26.333368,"Egypt, 82, جرجا, Gerga, Sohag, Egypt",200,NA
+"Gharbia, Basyoun, Egypt, Egypt",30.81476,30.944084,"بسيون, Basioun, Gharbia, Egypt",200,NA
+"Gharbia, KafarAlziyat, Egypt, Egypt",30.998254,30.783367,"Gharbia, Egypt",200,NA
+"Gharbia, Tanta, Egypt, Egypt",30.998955,30.791874,"Tanta, Gharbia, Egypt",200,NA
+"Gharbia, Zefta, Egypt, Egypt",31.241484,30.713543,"Zefta, Gharbia, Egypt",200,NA
+"Sohag, Akhmem, Egypt, Egypt",31.890727,26.333368,"Egypt, 82, جرجا, Gerga, Sohag, Egypt",200,NA
+"Sohag, El-Osayrat, Egypt, Egypt",31.890727,26.333368,"Egypt, 82, جرجا, Gerga, Sohag, Egypt",200,NA
+Dominican Republic,-70.106722,18.606258,Dominican Republic,200,NA
+Algeria,2.632388,28.16324,Algeria,200,NA
+"Nord Queensland, Australia, Australia",144.55039,-22.572791,"Queensland, Australia",200,NA
+"Itacoitiara, Amazonas, Brazil, Brazil",-58.44632,-3.144335,"Itacoatiara, Amazonas, Brazil",200,NA
+"Santander, Colombia, Colombia",-73.11913,7.127459,"Santander, Colombia",200,NA
+"Coto, Costa Rica, Costa Rica",-84.16226,9.798954,"Acosta, San José, Costa Rica",200,NA
+"Quepos, Costa Rica, Costa Rica",-84.162735,9.431603,"Quepos, Quepos, Puntarenas, Costa Rica",200,NA
+"Angers, France, France",-0.554217,47.470176,"Angers, Maine-et-Loire, France",200,NA
+"Maine-et-Loire, France, France",-0.551559,47.473988,"Maine-et-Loire, France",200,NA
+"Petit Bourg, Guadeloupe Island, French West Indes,, Guadeloupe",-61.59054,16.19291,"Petit-Bourg, Guadeloupe",200,NA
+"Essonne, France, France",2.428967,48.624167,"Essonne, France",200,NA
+"Loire Atlantique, France, France",-1.554136,47.218637,"Loire-Atlantique, France",200,NA
+"Saint Andrew, Grenada, Grenada",-61.622515,12.122831,"Saint Andrew, Grenada",200,NA
+"Magelang, Indonesia, Indonesia",110.216576,-7.481828,"Magelang, Central Java, Indonesia",200,NA
+"Casablanca, Morocco, Morocco",-7.621656,33.594074,"Casablanca, Casablanca-Settat, Morocco",200,NA
+"Lupuana, Peru, Peru",-71.520126,-16.44703,"Perú, Socabaya, Arequipa, Peru",200,NA
+"San Ramson, Peru, Peru",-75.360029,-11.1248,"Calle Perú, San Ramón, Junin, Peru",200,NA
+"Davao Mindanao, Philippines, Philippines",123.34406,9.644251,"Mindanao, Malabuyoc, Cebu, Philippines",200,NA
+"Piton Mont Vert 500m, Reunion Island, France, Reunion Island",55.509463,-21.350525,"500m Chemin Lauret Calvaire, 97410, Saint-Pierre, Reunion",200,NA
+"Plaine des Cafres 1600m, Reunion Island, France, Reunion Island",55.55521,-21.225298,"La Plaine des Cafres, Le Tampon, Reunion",200,NA
+"Tahiti, French Polynesia, France, Tahiti",-149.4556,-17.6368,"Tahiti, Windward Islands, French Polynesia",200,NA
+Hungary,19.499349,47.060267,Hungary,200,NA
+Ireland,-7.737649,53.305494,Ireland,200,NA
+"La Garita, Costa Rica, Costa Rica",-85.552505,11.087373,"La Garita, La Cruz, Guanacaste, Costa Rica",200,NA
+"Madeira, Portugal, Portugal",-16.908678,32.64965,"Madeira, Portugal",200,NA
+Poland,19.300636,52.12461,Poland,200,NA
+"Gambia, The Gambia",-15.912854,13.444526,The Gambia,200,NA
+"Ingham, Australia, Australia",146.15572,-18.65072,"Ingham, Queensland, Australia",200,NA
+"Liuzhou, China, China",109.423134,24.327732,"Liuzhou Shi, Guangxi, China",200,NA
+"Toowoomba, Australia, Australia",151.95338,-27.561062,"Toowoomba, Queensland, Australia",200,NA
+"Sherpur, Bangladesh, Bangladesh",90.016785,25.015879,"Sherpur, Mymensingh, Bangladesh",200,NA
+"Jashore, Bangladesh, Bangladesh",89.20951,23.166573,"Jessore, Khulna, Bangladesh",200,NA
+"Maaseik, Belgium, Belgium",5.791733,51.094718,"Maaseik, Limburg, Belgium",200,NA
+"Oud-Turnhout, Belgium, Belgium",4.981709,51.317832,"Oud-Turnhout, Antwerp, Belgium",200,NA
+"Souvret Belgium, Belgium",4.349534,50.45069,"Souvret, Courcelles, Hainaut, Belgium",200,NA
+"Verrebroek, Belgium, Belgium",4.188836,51.25559,"Verrebroek, Beveren, East Flanders, Belgium",200,NA
+"Chongqing, China, China",106.547919,29.565673,"Chongqing, China",200,NA
+"Labe, Guinea, Guinea",-12.282253,11.323003,"Labé, Guinea",200,NA
+"Kambila, Kati, Mali, Mali",-8.069716,12.734574,"Kati, Koulikoro, Mali",200,NA
+"Groningen, Netherlands, Netherlands",6.569525,53.218414,"Groningen, Groningen, Netherlands",200,NA
+Jamaica,-77.319222,18.151295,Jamaica,200,NA
+Tanzania,34.823454,-6.270353,Tanzania,200,NA
+"E. N. Tenggara, Indonesia, Indonesia",109.170364,-6.979994,"Tonggara, 52472, Kedung Banteng, Tegal, Central Java, Indonesia",200,NA
+"Yogyakarta, Indonesia, Indonesia",110.36541,-7.796369,"Yogyakarta, Yogyakarta, Indonesia",200,NA
+"Central Kalimantan, Indonesia, Indonesia",113.916437,-2.207292,"Central Kalimantan, Indonesia",200,NA
+"East Kalimantan, Indonesia, Indonesia",117.139309,-0.50178,"East Kalimantan, Indonesia",200,NA
+"North Sumatra, Indonesia, Indonesia",98.674162,3.589462,"North Sumatra, Indonesia",200,NA
+"South Kalimantan, Indonesia, Indonesia",114.830848,-3.44305,"South Kalimantan, Indonesia",200,NA
+"W. N. Tenggara, Indonesia, Indonesia",109.170364,-6.979994,"Tonggara, 52472, Kedung Banteng, Tegal, Central Java, Indonesia",200,NA
+"West Papua, Indonesia, Indonesia",134.076732,-0.861446,"West Papua, Indonesia",200,NA
+"Kuala Selangor, Malaysia, Malaysia",101.251396,3.33033,"Kuala Selangor, Selangor, Malaysia",200,NA
+"Nyaruguru, Rwanda, Rwanda",29.540673,-2.713159,"Nyaruguru, Southern, Rwanda",200,NA
+"Baringo, Kenya, Kenya",35.743139,0.496524,"Baringo, Kenya",200,NA
+"Bomet, Kenya, Kenya",35.343488,-0.781446,"Bomet, Kenya",200,NA
+"Bungoma, Kenya, Kenya",34.560753,0.566784,"Bungoma, Bungoma, Kenya",200,NA
+"Elgeyo Marakwet, Kenya, Kenya",35.510263,0.67307,"Elgeyo-Marakwet, Kenya",200,NA
+"Meru, Kenya, Kenya",37.653004,0.045639,"Meru, Meru, Kenya",200,NA
+"Nakuru, Kenya, Kenya",36.0713,-0.283307,"Nakuru, Nakuru, Kenya",200,NA
+"Nandi, Kenya, Kenya",35.10115,0.200498,"Nandi, Kenya",200,NA
+"Narok, Kenya, Kenya",35.872536,-1.090492,"Narok, Narok, Kenya",200,NA
+"Nyandarua, Kenya, Kenya",36.378065,-0.267297,"Nyandarua, Kenya",200,NA
+"Nyeri, Kenya, Kenya",36.948532,-0.420616,"Nyeri, Nyeri, Kenya",200,NA
+"Trans Nzoia, Kenya, Kenya",35.000236,1.018076,"Trans-Nzoia, Kenya",200,NA
+"Uasin Gishu, Kenya, Kenya",35.271548,0.519833,"Uasin Gishu, Kenya",200,NA
+"Hainan, China, China",109.650098,19.179524,"Hainan, China",200,NA
+"Quanzhou, China, China",118.67277,24.875395,"Quanzhou Shi, Fujian, China",200,NA
+"Ningde, China, China",119.54281,26.668545,"Ningde Shi, Fujian, China",200,NA
+"Putian, China, China",119.00408,25.454481,"Putian Shi, Fujian, China",200,NA
+"Fuzhou, China, China",119.30031,26.087498,"Fuzhou Shi, Fujian, China",200,NA
+"Palamar, Costa Rica, Costa Rica",-83.45618,8.963359,"Palmar, Osa, Puntarenas, Costa Rica",200,NA
+"Ramon Castilla, Peru, Peru",-70.516624,-3.907184,"Ramón Castilla, Loreto, Peru",200,NA
+"Amazonas, Peru, Peru",-77.868218,-6.221343,"Perú, Chachapoyas, Amazonas, Peru",200,NA
+"San Antonio, Peru, Peru",-76.65003,-12.642559,"San Antonio, Lima, Peru",200,NA
+"Khyber Pakhtoonkhwa, Pakistan, Pakistan",71.37921,34.00239,"خیبر, Khyber Pakhtunkhwa, Pakistan",200,NA
+"Antsirabe, Madagascar, Madagascar",48.143883,-13.880381,"Antsirabe, Diana, Madagascar",200,NA
+"An Giang, Vietnam, Vietnam",105.434439,10.390354,"An Giang, Vietnam",200,NA
+"Sofia, Madagascar, Madagascar",47.98715,-14.877527,"Sofia, Madagascar",200,NA
+"Alaotra Mangoro, Madagascar, Madagascar",48.426719,-17.823708,"Alaotra-Mangoro, Madagascar",200,NA
+"Ananlanjirofo, Madagascar, Madagascar",49.409973,-17.382029,"Analanjirofo, Madagascar",200,NA
+"Atsinanana, Madagascar, Madagascar",49.409835,-18.155398,"Atsinanana, Madagascar",200,NA
+"Boeny, Madagascar, Madagascar",46.317258,-15.718149,"Boeny, Madagascar",200,NA
+"Betsiboka, Madagascar, Madagascar",46.828337,-16.949704,"Betsiboka, Madagascar",200,NA
+"Bongolava, Madagascar, Madagascar",46.049523,-18.769841,"Bongolava, Madagascar",200,NA
+"Baguio, Philippines, Philippines",120.593372,16.411991,"Baguio, Philippines",200,NA
+"Bogota, Colombia, Colombia",-74.083633,4.653382,"Bogotá, Colombia",200,NA
+"Carrizal, Costa Rica, Costa Rica",-84.167114,10.087396,"Carrizal, Alajuela, Alajuela, Costa Rica",200,NA
+"Chicoa, Costa Rica, Costa Rica",-84.16226,9.798954,"Acosta, San José, Costa Rica",200,NA
+"Embu, Kenya, Kenya",37.452114,-0.536982,"Embu, Embu, Kenya",200,NA
+"Hula Valley, Israel, Israel",34.881523,31.833971,"Hulda, Central District, Israel",200,NA
+"Iquitos, Peru, Peru",-73.245834,-3.748577,"Iquitos, Loreto, Peru",200,NA
+"Isla Padre, Peru, Peru",-72.09713,-17.000965,"Islay, Arequipa, Peru",200,NA
+"Las Palmas, Colombia, Colombia",-75.708168,8.871696,"Las Palmas, Ciénaga de Oro, Córdoba, Colombia",200,NA
+"Loreto, Peru, Peru",-74.537335,-8.390738,"Perú, Pucallpa, Ucayali, Peru",200,NA
+"Maha Elviya, Ceylon, Sri Lanka, Sri Lanka",80.27352,7.823934,"Maho, Kurunegala, Sri Lanka",200,NA
+"Pacayas, Costa Rica, Costa Rica",-83.81045,9.916264,"Pacayas, Alvarado, Cartago, Costa Rica",200,NA
+"Panguana, Peru, Peru",-71.520126,-16.44703,"Perú, Socabaya, Arequipa, Peru",200,NA
+"Pays de Loire, France, France",-1.554136,47.218637,"Pays de la Loire, France",200,NA
+"Santiago, Chile, Chile",-70.666814,-33.414138,"Pasaje Chile, Independencia, Santiago Metropolitan Region 8380000, Chile",200,NA
+"SW Onatrio, Cananda, Canada",-122.81594,53.85819,"Southwest, Prince George, British Columbia, Canada",200,NA
+"Tibaitata, Colombia, Colombia",-74.80322,3.37615,"Colombia, Huila, Colombia",200,NA
+"Tingo, Peru, Peru",-77.91007,-6.373661,"Tingo, Amazonas, Peru",200,NA
+"Wageningen, Netherlands, Netherlands",5.663793,51.964273,"Wageningen, Gelderland, Netherlands",200,NA
+"Wake County, North Carolina, United States, United States (Continental)",-78.638145,35.779556,"Wake County, North Carolina, United States",200,NA
+"Agbodranfo, Benin, Benin",1.776223,6.522261,"Agbédranfo, Mono, Benin",200,NA
+"Divinolandia, Brazil, Brazil",-46.738865,-21.66175,"Divinolândia, São Paulo, Brazil",200,NA
+"Grandes Rios, Parana, Brazil, Brazil",-51.505413,-24.14596,"Grandes Rios, Paraná, Brazil",200,NA
+"Itajai, Brazil, Brazil",-42.958304,-22.802189,"Rua Itajaí, Vista Alegre, São Gonçalo - Rio de Janeiro, 24724, Brazil",200,NA
+"Itatiba, Brazil, Brazil",-46.849274,-23.004371,"Rua Brasil, Itatiba - São Paulo, 13256, Brazil",200,NA
+"Kingaroy, Australia, Australia",151.83925,-26.541035,"Kingaroy, Queensland, Australia",200,NA
+"La Chincana, San Ramon, Peru, Peru",-75.353905,-11.122116,"San Ramón, Junin, Peru",200,NA
+"Morungaba, Brazil, Brazil",-46.793915,-22.879572,"Morungaba, São Paulo, Brazil",200,NA
+"NSW, Australia, Australia",151.732939,-32.918853,"Australia Road, Broadmeadow New South Wales 2292, Australia",200,NA
+"Palhoca, Brazil, Brazil",-48.666313,-27.645874,"Palhoça, Santa Catarina, Brazil",200,NA
+"Paulista, Brazil, Brazil",-34.877101,-8.024112,"Rua Brasil, Campo Grande, Recife - Pernambuco, 52040, Brazil",200,NA
+"Sta. Maria, Peru, Peru",-77.573999,-11.094301,"Avenida Libertad, Santa María, Lima, Peru",200,NA
+"Saga, Japan, Japan",130.118701,33.429041,"Saga, Japan",200,NA
+"Birendranagar, Chitwan, Nepal, Nepal",84.61031,27.60668,"Birendranagar, Bagmati Province, Nepal",200,NA
+"Chitwan, Nepal, Nepal",84.43019,27.681574,"Chitwan, Bagmati Province, Nepal",200,NA
+"Syangja, Nepal, Nepal",83.871864,28.099459,"Syangja, Gandaki Province, Nepal",200,NA
+"Bogra, Bangladesh, Bangladesh",89.37292,24.847963,"Bogra, Rajshahi, Bangladesh",200,NA
+"Brahmanbaria, Bangladesh, Bangladesh",91.110725,23.97481,"Brahmanbaria, Chattogram, Bangladesh",200,NA
+"Comilla, Bangladesh, Bangladesh",91.18088,23.460545,"Comilla, Comilla Adarsha, কুমিল্লা, Chattogram, Bangladesh",200,NA
+"Jessor, Bangladesh, Bangladesh",89.20951,23.166573,"Jessore, Khulna, Bangladesh",200,NA
+"Gazipur, Bangladesh, Bangladesh",90.41649,23.998598,"Gazipur, Dhaka, Bangladesh",200,NA
+"Narsingdi, Bangladesh, Bangladesh",90.72114,23.92729,"Narsingdi, Dhaka, Bangladesh",200,NA
+"Tangail, Bangladesh, Bangladesh",89.914215,24.250307,"Tangail, Dhaka, Bangladesh",200,NA
+"Desoto County, Florida, United States, United States (Continental)",-81.85972,27.216406,"DeSoto County, Florida, United States",200,NA
+"Gainsville, Florida, United States, United States (Continental)",-82.32501,29.651949,"Gainesville, Florida, United States",200,NA
+"Hardee County, Florida, United States, United States (Continental)",-81.81514,27.546936,"Hardee County, Florida, United States",200,NA
+"Hendry County, Florida, United States, United States (Continental)",-81.43739,26.761866,"Hendry County, Florida, United States",200,NA
+"Hillsborough County, Florida, United States, United States (Continental)",-82.4571,27.947973,"Hillsborough County, Florida, United States",200,NA
+"Manatee County, Florida, United States, United States (Continental)",-82.57346,27.495436,"Manatee County, Florida, United States",200,NA
+"Pasco County, Florida, United States, United States (Continental)",-82.189095,28.364588,"Pasco County, Florida, United States",200,NA
+"Polk County, Florida, United States, United States (Continental)",-81.84329,27.896421,"Polk County, Florida, United States",200,NA
+"Dom Pedro, Maranhao, Brazil, Brazil",-44.438236,-5.039367,"Dom Pedro, Maranhão, Brazil",200,NA
+"Guangzhou, China, China",113.27006,23.125345,"Guangzhou Shi, Guangdong, China",200,NA
+"Wyanad Meppadi, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Tsu City, Mie Prefecture, Japan, Japan",136.51044,34.732044,"津市, Mie, Japan",200,NA
+"Seosan, Chungcheongnam-do, South Korea, South Korea",126.455696,36.780994,"Seosan-si, Chungcheongnam-do, South Korea",200,NA
+Togo,1.042553,8.766221,Togo,200,NA
+"Borrazopolis, Parana, Brazil, Brazil",-51.585037,-23.938656,"Borrazópolis, Paraná, Brazil",200,NA
+"Yueqing, Zhejiang, China, China",120.98021,28.118515,"Yueqing Shi, Wenzhou Shi, Zhejiang, China",200,NA
+"Guiyang and Nanxiong, China, China",106.62036,26.648916,"Guiyang Shi, Guizhou, China",200,NA
+"Shangrao, Poyang, Guangxi, China, China",116.694435,29.008486,"Boyang Xian, Shangrao Shi, Jiangxi, China",200,NA
+"Nanjing, Jiangsu, China, China",118.78567,32.037132,"Nanjing Shi, Jiangsu, China",200,NA
+Ecuador,-78.432915,-1.160171,Ecuador,200,NA
+"Foot hills of Haldwani, Nainital, India, India",79.52807,29.214275,"Haldwani, Uttarakhand, India",200,NA
+"Lemele, Overijssel, Netherlands, Netherlands",6.41519,52.452263,"Lemele, Overijssel, Netherlands",200,NA
+"Jeju, South Korea, South Korea",126.52755,33.50286,"Jeju-si, Jeju-do, South Korea",200,NA
+"Virginia, United States, United States (Continental)",-78.619053,37.677592,"Virginia, United States",200,NA
+"New Jersey, United States, United States (Continental)",-74.389317,40.150248,"New Jersey, United States",200,NA
+"Kuala Kangsar, Perak, Malaysia, Malaysia",100.9412,4.77261,"Kuala Kangsar, Perak, Malaysia",200,NA
+"Gordonvale, Australia",145.78638,-17.091442,"Gordonvale, Queensland, Australia",200,NA
+"Walkamin, Australia",145.42628,-17.13031,"Walkamin, Queensland, Australia",200,NA
+"Silkwood, Australia",146.01974,-17.745697,"Silkwood, Queensland, Australia",200,NA
+"Darwin, Australia",130.8417,-12.464953,"Darwin, Northern Territory, Australia",200,NA
+"Tanawha, Australia",153.03433,-26.712936,"Tanawha, Queensland, Australia",200,NA
+"Innisfail, Australia",146.03207,-17.523403,"Innisfail, Queensland, Australia",200,NA
+"Perwillowen, Australia",152.92607,-26.637468,"Perwillowen, Queensland, Australia",200,NA
+"Crawford, Australia",151.82443,-26.497595,"Crawford, Queensland, Australia",200,NA
+"Jingili, Australia",130.87405,-12.389134,"Jingili, Northern Territory, Australia",200,NA
+"Coes Creek, Australia",152.944,-26.649355,"Coes Creek, Queensland, Australia",200,NA
+"Nambour, Australia",152.95903,-26.626907,"Nambour, Queensland, Australia",200,NA
+"Nightcliff, Australia",130.8496,-12.382674,"Nightcliff, Northern Territory, Australia",200,NA
+"Moreton, Australia",150.3511,-35.398335,"Morton, New South Wales, Australia",200,NA
+"Driver, Australia",130.97345,-12.485275,"Driver, Northern Territory, Australia",200,NA
+"Muchilba, Australia",145.21042,-17.138906,"Mutchilba, Queensland, Australia",200,NA
+"Palmwoods, Australia",152.95929,-26.685713,"Palmwoods, Queensland, Australia",200,NA
+"Mareeba, Australia",145.42249,-16.993217,"Mareeba, Queensland, Australia",200,NA
+"Clifton Beach, Australia",145.66872,-16.765846,"Clifton Beach, Queensland, Australia",200,NA
+"Redlands, Australia",146.3179,-35.9318,"Redlands, New South Wales, Australia",200,NA
+"Ayr, Australia",147.40508,-19.576036,"Ayr, Queensland, Australia",200,NA
+"Mossman, Australia",145.37363,-16.459112,"Mossman, Queensland, Australia",200,NA
+"Cairns, Australia",145.77678,-16.92133,"Cairns, Queensland, Australia",200,NA
+"Crystal Cascades, Australia",148.068017,-37.814826,"Crystal, Toorloo Arm Victoria 3909, Australia",200,NA
+"Redlynch, Australia",145.696,-16.890242,"Redlynch, Queensland, Australia",200,NA
+"Park Ridge, Australia",153.04811,-27.698786,"Park Ridge, Queensland, Australia",200,NA
+"Morayfield, Australia",152.94896,-27.109413,"Morayfield, Queensland, Australia",200,NA
+"South Johnstone, Australia",145.99492,-17.59877,"South Johnstone, Queensland, Australia",200,NA
+"Denman, Australia",150.68875,-32.389744,"Denman, New South Wales, Australia",200,NA
+"South Maroota, Australia",150.9275,-33.508984,"South Maroota, New South Wales, Australia",200,NA
+"Maroota, Australia",150.98293,-33.457794,"Maroota, New South Wales, Australia",200,NA
+"Brisbane, Australia",153.0277,-27.469099,"Brisbane, Queensland, Australia",200,NA
+"Clohesy River, Australia",145.579693,-16.913824,"Clohesy River Road, Koah Queensland 4881, Australia",200,NA
+"Herberton, Australia",145.38673,-17.384888,"Herberton, Queensland, Australia",200,NA
+"Emerald Ck, Australia",153.355729,-28.009606,"Emerald Court, Carrara Queensland 4211, Australia",200,NA
+"Evelyn, Australia",145.4915,-17.507198,"Evelyn, Queensland, Australia",200,NA
+"Buderim, Australia",153.05055,-26.68575,"Buderim, Queensland, Australia",200,NA
+"Dimbulah, Australia",145.11052,-17.149305,"Dimbulah, Queensland, Australia",200,NA
+"Tolga, Australia",145.47882,-17.223013,"Tolga, Queensland, Australia",200,NA
+"Currumbin, Australia",153.479,-28.136978,"Currumbin, Queensland, Australia",200,NA
+"Glenorie, Australia",151.00798,-33.601543,"Glenorie, New South Wales, Australia",200,NA
+"Bundaberg, Australia",152.3511,-24.865377,"Bundaberg, Queensland, Australia",200,NA
+"Ravenshoe, Australia",145.48242,-17.606443,"Ravenshoe, Queensland, Australia",200,NA
+"Lockhart River, Australia",143.342,-12.786853,"Lockhart River, Queensland, Australia",200,NA
+"Paddy's Green, Australia",145.26306,-16.910833,"Paddys Green, Queensland, Australia",200,NA
+"Mackay, Australia",149.18709,-21.141373,"Mackay, Queensland, Australia",200,NA
+"Ingham, Australia",146.15572,-18.65072,"Ingham, Queensland, Australia",200,NA
+"Atherton, Australia",145.47516,-17.267052,"Atherton, Queensland, Australia",200,NA
+"Manjimup, Australia",116.146454,-34.241257,"Manjimup, Western Australia, Australia",200,NA
+"Somersby, Australia",151.28444,-33.365,"Somersby, New South Wales, Australia",200,NA
+"Woolgoolga, Australia",153.20078,-30.11052,"Woolgoolga, New South Wales, Australia",200,NA
+"Melville Island, Australia",130.933333,-11.5,"Melville Island, Northern Territory, Australia",200,NA
+"Nakara, Australia",130.87662,-12.368576,"Nakara, Northern Territory, Australia",200,NA
+"Berrimah, Australia",130.9234,-12.433391,"Berrimah, Northern Territory, Australia",200,NA
+"Aloomba, Australia",145.83214,-17.11001,"Aloomba, Queensland, Australia",200,NA
+"Southedge, Australia",145.27527,-16.75639,"Southedge, Queensland, Australia",200,NA
+"Mount Abbott, Australia",153.083999,-27.499164,"Abbott Street, Camp Hill Queensland 4152, Australia",200,NA
+"Middle Point, Australia",131.32149,-12.569815,"Middle Point, Northern Territory, Australia",200,NA
+"Elcho Island, Australia",153.274095,-27.532123,"Island Street, Cleveland Queensland 4163, Australia",200,NA
+"Tiwi, Australia",130.88022,-12.359295,"Tiwi, Northern Territory, Australia",200,NA
+"Alawa, Australia",130.87393,-12.379217,"Alawa, Northern Territory, Australia",200,NA
+"Mulgowie, Australia",152.36414,-27.729176,"Mulgowie, Queensland, Australia",200,NA
+"Macquarie Fields, Australia",150.88382,-33.990814,"Macquarie Fields, New South Wales, Australia",200,NA
+"Concord, Australia",151.10782,-33.85519,"Concord, New South Wales, Australia",200,NA
+"Corrimal East, Australia",150.896,-34.36996,"Corrimal, New South Wales, Australia",200,NA
+"Narrandera, Australia",146.55312,-34.746956,"Narrandera, New South Wales, Australia",200,NA
+"Coleambally, Australia",145.88094,-34.805298,"Coleambally, New South Wales, Australia",200,NA
+"Yanco, Australia",146.40984,-34.603336,"Yanco, New South Wales, Australia",200,NA
+"Morpeth, Australia",151.62668,-32.724903,"Morpeth, New South Wales, Australia",200,NA
+"Kingaroy, Australia",151.83925,-26.541035,"Kingaroy, Queensland, Australia",200,NA
+"Glenore Grove, Australia",152.4097,-27.5303,"Glenore Grove, Queensland, Australia",200,NA
+"Angle Vale, Australia",138.64423,-34.64736,"Angle Vale, South Australia, Australia",200,NA
+"Hindmarsh Island, Australia",138.79869,-35.513218,"Hindmarsh Island, South Australia, Australia",200,NA
+"Victoria Vic., Australia",145.288812,-37.132337,"Victoria, Australia",200,NA
+"Murray Downs NSW, Australia",143.65111,-35.298332,"Murray Downs, New South Wales, Australia",200,NA
+"Angle Vale SA, Australia",138.64423,-34.64736,"Angle Vale, South Australia, Australia",200,NA
+"Euroley Bridge NSW, Australia",146.36783,-34.641308,"Euroley, New South Wales, Australia",200,NA
+"Loxton SA, Australia",140.57039,-34.452465,"Loxton, South Australia, Australia",200,NA
+"Parilla SA, Australia",140.66594,-35.29664,"Parilla, South Australia, Australia",200,NA
+"Freemans Reach NSW, Australia",150.7949,-33.545437,"Freemans Reach, New South Wales, Australia",200,NA
+"Woolgoolga, NSW, Australia",153.20078,-30.11052,"Woolgoolga, New South Wales, Australia",200,NA
+"Darwin NT, Australia",130.8417,-12.464953,"Darwin, Northern Territory, Australia",200,NA
+"Atherton QLD, Australia",145.47516,-17.267052,"Atherton, Queensland, Australia",200,NA
+"Taiwan, Australia",151.100543,-34.016009,"Taiwan Place, Sylvania New South Wales 2224, Australia",200,NA
+"China, South Africa",29.512697,-31.420877,"China, Eastern Cape, South Africa",200,NA
+"New Guinea, Bolivia",-66.127299,-17.445125,"Calle Guinea, Cochabamba, Cochabamba, Bolivia",200,NA
+"Atherton, Australia, Australia",145.47516,-17.267052,"Atherton, Queensland, Australia",200,NA
+"Khan Kaen, Thailand",102.83559,16.430392,"Khon Kaen, Thailand",200,NA
+"N. Sulawisi, Indonesia, Indonesia",112.54039,-7.509607,"Menanggal, 61382, Mojosari, Mojokerto, East Java, Indonesia",200,NA
+"Huizhou City, China",114.40926,23.113785,"HuiZhou Shi, Guangdong, China",200,NA
+"Bangalore, India",77.591301,12.979101,"Bengaluru, Karnataka, India",200,NA
+"Oita, Japan",131.589447,32.872569,"Oita, Japan",200,NA
+"Kochi, Japan",133.819325,33.738568,"Kōchi, Japan",200,NA
+"Kyoto, Japan",135.76918,35.006172,"京都市, Kyoto, Japan",200,NA
+"Hyogo, Japan",134.651754,35.288306,"Hyōgo, Japan",200,NA
+"Shizuoka, Japan",138.243612,35.192894,"Shizuoka, Japan",200,NA
+"Mie, Japan",136.308889,34.496311,"Mie, Japan",200,NA
+"Ibaraki, Japan",140.520255,36.043772,"Ibaraki, Japan",200,NA
+"Kagoshima, Japan",130.557195,31.596793,"Kagoshima, Japan",200,NA
+"Osaka, Japan",135.50078,34.683594,"大阪市, Osaka, Japan",200,NA
+"Shimane, Japan",132.851914,35.215059,"Shimane, Japan",200,NA
+"Gunma, Japan",139.161478,36.898674,"Gunma, Japan",200,NA
+"Nagano, Japan",138.124434,36.232408,"Nagano, Japan",200,NA
+"Yamaguchi, Japan",131.556741,34.440728,"Yamaguchi, Japan",200,NA
+"Kanagawa, Japan",139.275382,35.517816,"Kanagawa, Japan",200,NA
+"Ehime, Japan",132.83314,33.505763,"Ehime, Japan",200,NA
+"Kumamoto, Japan",130.73354,32.7836,"熊本市, Kumamoto, Japan",200,NA
+"Aichi, Japan",137.383994,35.086325,"Aichi, Japan",200,NA
+"Fukui, Japan",136.455545,35.874463,"Fukui, Japan",200,NA
+"Hiroshima, Japan",132.46326,34.39292,"広島市, Hiroshima, Japan",200,NA
+"Tottori, Japan",134.033759,35.407346,"Tottori, Japan",200,NA
+"Nara, Japan",135.82472,34.6808,"奈良市, Nara, Japan",200,NA
+"Shiga, Japan",135.919333,35.353309,"Shiga, Japan",200,NA
+"Saitama, Japan",138.989866,35.942212,"Saitama, Japan",200,NA
+"Okayama, Japan",134.0882,34.94011,"Okayama, Japan",200,NA
+"Fukuoka, Japan",130.40514,33.589733,"福岡市, Fukuoka, Japan",200,NA
+"Saga, Japan",130.118701,33.429041,"Saga, Japan",200,NA
+"Wakayama, Japan",135.190746,33.998027,"Wakayama, Japan",200,NA
+"Tokyo, Japan",139.692526,35.68882,"Tokyo Prefecture, Japan",200,NA
+"Yamanashi, Japan",138.673048,35.824594,"Yamanashi, Japan",200,NA
+"Nagasaki, Japan",129.87819,32.744102,"長崎市, Nagasaki, Japan",200,NA
+"Eastern North Carolina, United States (Continental)",-76.636267,34.731846,"Eastern Avenue, Beaufort, North Carolina 28516, United States",200,NA
+"Victoria, Australia",145.288812,-37.132337,"Victoria, Australia",200,NA
+"Euroley Bridge, Australia",146.36783,-34.641308,"Euroley, New South Wales, Australia",200,NA
+"Murray downs, Australia",143.65111,-35.298332,"Murray Downs, New South Wales, Australia",200,NA
+"Loxton, Australia",140.57039,-34.452465,"Loxton, South Australia, Australia",200,NA
+"Parilla, Australia",140.66594,-35.29664,"Parilla, South Australia, Australia",200,NA
+"Freemans Reach, Australia",150.7949,-33.545437,"Freemans Reach, New South Wales, Australia",200,NA
+"Kuala Kangsar, Malaysia",100.9412,4.77261,"Kuala Kangsar, Perak, Malaysia",200,NA
+"Ouidah, Benin",2.08869,6.333127,"Ouidah, Atlantique, Benin",200,NA
+"Musanze, Rwanda",29.571755,-1.530675,"Musanze, Northern, Rwanda",200,NA
+"Nouvelle Découverte, Rodrigues Island, Mauritius",57.589358,-20.187873,"Nouvelle Découverte, Moka, Mauritius",200,NA
+"Terre Rouge, Rodrigues Island, Mauritius",63.422113,-19.680837,"Rodrigues, Mauritius",200,NA
+"Changhua County, Taiwan, Taiwan",120.607956,23.913475,"泰安村, 彰化縣, Changhua County, Taiwan",200,NA
+"Clinch County, Georgia, USA, United States (Continental)",-82.74724,31.036703,"Clinch County, Georgia, United States",200,NA
+"Bahia State, Brazil, Brazil",-40.853207,-14.850404,"Brasil, 45075, Vitória da Conquista, Bahia, Brazil",200,NA
+"Junín region, Peru, Peru",-75.250713,-12.049144,"Peru, Pilcomayo, Junin, Peru",200,NA
+"Luoao village, Fuquan, Guizhou, China, China",107.50898,26.705421,"Fuquan Shi, Qiannan Buyizu Miaozu Zizhizhou, Guizhou, China",200,NA
+"Luoping village, Fuquan,Guizhou, China, China",107.50898,26.705421,"Fuquan Shi, Qiannan Buyizu Miaozu Zizhizhou, Guizhou, China",200,NA
+"Mashuru, Kajiado, Kenya, Kenya",37.128361,-2.101496,"Mashuru, Imaroro, Kajiado, Kenya",200,NA
+"Dongguan, Guangdong, China, China",113.7481,23.017063,"Dongwan Shi, Guangdong, China",200,NA
+"Culiacan, Sinaloa, Mexico, Mexico",-107.39441,24.807411,"Culiacán, Sinaloa, Mexico",200,NA
+"Bladen County, North Carolina, United States, United States (Continental)",-78.605774,34.628906,"Bladen County, North Carolina, United States",200,NA
+"Regional Unit of Islands, Greece, Greece",23.828554,38.589021,Greece,200,NA
+"Dantiwada, Palanpur, Gujarat, India, India",72.382772,24.44517,Dantivada Palanpur ، 385505 Dantiwada، India,200,NA
+"Deesa, Banaskantha, Gujarat, India, India",72.18197,24.256908,"Deesa, Gujarat, India",200,NA
+"Palanpur, Gujarat, India, India",72.429054,24.172459,"Palanpur, Gujarat, India",200,NA
+"Amirgadh taluka, Banaskantha, Gujarat, India, India",72.642006,24.405714,"Amirgadh, Gujarat, India",200,NA
+"Tianzhu, Guizhou, China, China",109.20427,26.912205,"Tianzhu Xian, Qiandongnan Miaozu Dongzu Zizhizhou, Guizhou, China",200,NA
+"Foumbot, West Region, Cameroon, Cameroon",10.638147,5.510861,"Foumbot, West, Cameroon",200,NA
+"Bandjoung, West Region, Cameroon, Cameroon",10.412155,5.374857,"Bandjoun, West, Cameroon",200,NA
+"Yaoundé, Centre Region, Cameroon, Cameroon",11.520526,3.864768,"Yaounde, Centre, Cameroon",200,NA
+"Baham, West Region, Cameroon, Cameroon",10.368438,5.334612,"Baham, West, Cameroon",200,NA
+"Mbouda, West Region, Cameroon, Cameroon",10.254744,5.627374,"Mbouda, West, Cameroon",200,NA
+"Dschang, West Region, Cameroon, Cameroon",10.052308,5.452149,"Dschang, West, Cameroon",200,NA
+"Bafou, West Region, Cameroon, Cameroon",10.111811,5.475954,"Bafou Chefferie, West, Cameroon",200,NA
+"Wassé, East Region, Cameroon, Cameroon",14.932193,4.25952,"Wassé, East, Cameroon",200,NA
+"Bafia, Centre Region, Cameroon, Cameroon",11.220593,4.739933,"Bafia, Centre, Cameroon",200,NA
+"Ombessa, Centre Region, Cameroon, Cameroon",11.256546,4.603044,"Ombessa, Centre, Cameroon",200,NA
+"Obala, Centre Region, Cameroon, Cameroon",11.534664,4.165713,"Obala, Centre, Cameroon",200,NA
+"Nkometou, Centre Region, Cameroon, Cameroon",11.521334,3.868987,"Centre, Cameroon",200,NA
+"Metet, Centre Region, Cameroon, Cameroon",12.832899,5.109968,"Métèp, Centre, Cameroon",200,NA
+"Nkongsamba, Southwest Region, Cameroon, Cameroon",9.231592,4.15679,"Southwest, Cameroon",200,NA
+"Ndjombe, Littoral Region, Cameroon, Cameroon",9.652932,4.586724,"Njombé, Littoral, Cameroon",200,NA
+"Kobuleti, Georgia, Georgia",41.782191,41.833213,"K'obulet'i, Adjara, Georgia",200,NA
+"Ozurgeti, Georgia, Georgia",42.008175,41.921566,"Ozurget'i, Guria, Georgia",200,NA
+"Da Nang, Vietnam, Vietnam",108.212,16.068,"Da Nang, Vietnam",200,NA
+"Getasan, Semarang Regency, Indonesia, Indonesia",110.440956,-7.376384,"Getasan, Semarang, Central Java, Indonesia",200,NA
+"Banyubiru, Semarang Regency, Indonesia, Indonesia",110.40348,-7.293887,"Banyubiru, Semarang, Central Java, Indonesia",200,NA
+"Sumowono, Semarang Regency, Indonesia, Indonesia",110.32191,-7.223085,"Sumowono, Semarang, Central Java, Indonesia",200,NA
+"Tengaran, Semarang Regency, Indonesia, Indonesia",110.52187,-7.420341,"Tengaran, Semarang, Central Java, Indonesia",200,NA
+"Deqing, Guangdong, China, China",111.77853,23.148272,"Deqing Xian, Zhaoqing Shi, Guangdong, China",200,NA
+"Shanwei, Guangdong, China, China",115.37098,22.788448,"Shanwei Shi, Guangdong, China",200,NA
+"Maoming, Guangdong, China, China",110.920975,21.666164,"Maoming Shi, Guangdong, China",200,NA
+"Yangjiang, Guangdong, China, China",111.96778,21.86505,"Yangjiang Shi, Guangdong, China",200,NA
+"Chiang Mai, Thailand",98.98588,18.788278,"Chiang Mai, Thailand",200,NA
+"Chiang Rai, Thailand",99.833274,19.906887,"Chiang Rai, Thailand",200,NA
+"Karamadai, Coimbatore, Tamil Nadu, India",76.96004,11.240743,"Karamadai, Mettupalayam, Coimbatore, Tamil Nadu, India",200,NA
+"Nachipalayam, Coimbatore, Tamil Nadu, India",76.96292,10.859175,"Nachippalayam, Coimbatore, Coimbatore, Tamil Nadu, India",200,NA
+"Kothakottai, Pudukkottai, Tamil Nadu, India",78.929375,10.357728,"Kothakottai, Alangudi, Pudukkottai, Tamil Nadu, India",200,NA
+"Ponnamaravathi, Pudukkottai, Tamil Nadu, India",78.54134,10.277491,"Ponnamaravathi, Tamil Nadu, India",200,NA
+"Thiruvarangulam, Pudukkottai, Tamil Nadu, India",78.87582,10.356949,"Thiruvarangulam, Alangudi, Pudukkottai, Tamil Nadu, India",200,NA
+"Thatchinapuram, Pudukkottai, Tamil Nadu, India",78.82002,10.379913,"Pudukkottai, Tamil Nadu, India",200,NA
+"Orathanadu, Thanjavur, Tamil Nadu, India",79.2527,10.626581,"Orathanadu, Tamil Nadu, India",200,NA
+"Ocheri, Thiruvarur, Tamil Nadu, India",78.159459,11.675043,Cheri Rd ، 636007 Salem، India,200,NA
+"Velliankadu, Coimbatore, Tamil Nadu, India",76.956955,11.242458,Velliangadu Rd ، 641104 Mettupalayam، India,200,NA
+"Chunghua, Taiwan",120.5423,24.080767,"Changhua County, Taiwan",200,NA
+"Taichung, Taiwan",120.647828,24.163162,"Taichung, Taiwan",200,NA
+"Yunlin, Taiwan",120.537252,23.705053,"Yunlin County, Taiwan",200,NA
+"Chiayi, Taiwan",120.449844,23.479843,"嘉義市, Chiayi City, Taiwan",200,NA
+"Purba Medinipur, Nandigram-I, Kalicharanpur, India",87.9921,21.94436,"Kalicharanpur, Nandigram, Purba Medinipur, West Bengal, India",200,NA
+"Burdwan, Ausgram-II, Ramnagar, India",87.860634,23.880444,"Ramnagar, Burwan, Murshidabad, West Bengal, India",200,NA
+"Burdwan, Kanksa, Panagarh, India",87.45117,23.46037,"Panagar, Kanksa, Paschim Bardhaman, West Bengal, India",200,NA
+"Hooghly, Arambagh, Malaypur, India",87.89725,22.91083,"Malaypur, Arambag, Hooghly, West Bengal, India",200,NA
+"North 24 Parganas, Habra-II, Guma, India",88.60248,22.807714,"Guma, Habra, North 24 Parganas, West Bengal, India",200,NA
+"South 24 Parganas, Mandirbazar, Krishnapur, India",88.32136,22.160097,"Mandirbazar, West Bengal, India",200,NA
+"Purulia, Hura, Chatumadar, India",86.80413,23.197046,"Purulia, Indpur, Bankura, West Bengal, India",200,NA
+"Paschim Medinipur, Garbeta-I, Phulberia, India",87.4103,22.896395,"Phulberia, Garbeta, Paschim Medinipur, West Bengal, India",200,NA
+"North 24 Parganas, Bongaon, Helencha, India",88.855518,23.188337,Helenha ، 743270 Bagda، India,200,NA
+"Howrah, Bagnan-I, Kulgachia, India",87.97078,22.4683,"Bagnan, West Bengal, India",200,NA
+"Howrah, Bagnan-II, Jatadharpur, India",87.97078,22.4683,"Bagnan, West Bengal, India",200,NA
+"Nadia, Chadamari, Muratipur, India",88.45754,22.997538,"Muratipur, Kalyani, Nadia, West Bengal, India",200,NA
+"Murshidabad, Beldanga-I, Mokrampur, India",88.247,23.93549,"Beldanga, West Bengal, India",200,NA
+"Murshidabad, Beldanga-II, Rezinagar, India",88.256676,23.84595,"Rejinagar, Beldanga, Murshidabad, West Bengal, India",200,NA
+"Purba Medinipur, Nandigram-II, Kiyageria, India",87.97682,22.010227,"Nandigram, West Bengal, India",200,NA
+"Purba Medinipur, Khejuri-I, Kamardah, India",87.882645,21.941801,"Kamarda, Khejuri, Purba Medinipur, West Bengal, India",200,NA
+"Nadia, Chakdaha, Simurali, India",88.5142,23.038963,"Simurali, Chakdah, Nadia, West Bengal, India",200,NA
+"Nadia, Ranaghat 1, Aistala, India",88.561336,23.181318,Ranaghat - Krishnanagar Bypass 1، 741402 Ranaghat، India,200,NA
+"Nadia, Chakdah, Madanpur, India",88.48899,23.008335,"Madanpur, Kalyani, Nadia, West Bengal, India",200,NA
+"Nadia, Santipur, Phulia, India",88.49354,23.234138,"Phulia, Santipur, Nadia, West Bengal, India",200,NA
+"Nadia, Krishnanagar, Mayakol, India",88.49306,23.40825,"Krishnagar, West Bengal, India",200,NA
+"Murshidabad, Murshidabad Jiaganj, Bahadurpur, India",87.84708,24.745474,"Bahadurpur, Farakka, Murshidabad, West Bengal, India",200,NA
+"Murshidabad, Berhampore, Sasidharpur, India",88.29653,24.199635,"Sashidharpur, Murshidabad Jiaganj, Murshidabad, West Bengal, India",200,NA
+"Murshidabad, Sagardihi, Baburgram, India",88.307268,24.330416,Murshidabad ، 742135 Bhagawangola، India,200,NA
+"Murshidabad, Khargram, Uttar Gopinathpur, India",87.91884,24.108768,"Uttar Gopinathpur, Khargram, Murshidabad, West Bengal, India",200,NA
+"Purba Medinipur, Egra-I, Paniparul, India",87.536224,21.749454,"Paniparul, Egra, Purba Medinipur, West Bengal, India",200,NA
+"Purba Medinipur, Sutahata, Srikrishnapur, India",88.136519,22.120127,Sutahata ، 721635 Sutahata، India,200,NA
+"Hooghly, Tarakeswar, Talpur, India",87.97522,22.87237,"Talpur, Tarakeswar, Hooghly, West Bengal, India",200,NA
+"Hooghly, Chanditala-II, Bagbati, India",88.251451,22.698392,Chanditala ، 712702 Dankuni، India,200,NA
+"North 24 Parganas, Basirhat-I, Itinda, India",88.884301,22.652892,Basirhat ، 743412 Basirhat، India,200,NA
+"North 24 Parganas, Deganga, Berachampa, India",88.654564,22.687218,"Deganga, West Bengal, India",200,NA
+"North 24 Parganas, Habra-I, Ashoknagar, India",88.638414,22.834798,Ashoknagor ، 743223 Habra، India,200,NA
+"South 24 Parganas, Bhangar-I, Chandipur, India",88.60844,22.518015,"Bhangar, West Bengal, India",200,NA
+"South 24 Parganas, Baruipur, Rameswarpur, India",88.435948,22.350926,South 24 Parganas ، 700144 Baruipur، India,200,NA
+"South 24 Parganas, Canning-I, Deuli, India",88.704281,22.417725,Deuli ، 743329 Canning، India,200,NA
+"Paschim Medinipur, Kharagpur-I, Gopali, India",87.29919,22.281815,"Gopali, Kharagpur, Paschim Medinipur, West Bengal, India",200,NA
+"Jackson County, North Carolina, United States (Continental)",-83.225914,35.373722,"Jackson County, North Carolina, United States",200,NA
+"Rockingham County, North Carolina, United States (Continental)",-79.77456,36.40001,"Rockingham County, North Carolina, United States",200,NA
+"Henderson County, North Carolina, United States (Continental)",-82.4615,35.316612,"Henderson County, North Carolina, United States",200,NA
+"AM, Brazil",-64.71858,-4.184378,"Amazonas, Brazil",200,NA
+"SP, Brazil",-49.070391,-22.109489,"São Paulo, Brazil",200,NA
+"Réunion Island, Reunion Island",55.538179,-21.121661,Reunion,200,NA
+United States (Continental),-84.265962,41.097284,"Continental, Ohio, United States",200,NA
+"PE, Brazil",-38.160166,-8.426177,"Pernambuco, Brazil",200,NA
+"BA, Brazil",-42.089382,-11.746189,"Bahia, Brazil",200,NA
+"DF, Brazil",-47.790561,-15.684568,"Federal District, Brazil",200,NA
+"PA, Brazil",-53.138286,-4.046128,"Pará, Brazil",200,NA
+"MG, Brazil",-44.287671,-18.26705,"Minas Gerais, Brazil",200,NA
+"SC, Brazil",-50.56904,-27.076287,"Santa Catarina, Brazil",200,NA
+"SE, Brazil",-37.318552,-10.469384,"Sergipe, Brazil",200,NA
+"Shimla, Himachal Pradesh, India",77.172676,31.10511,"Shimla, Himachal Pradesh, India",200,NA
+"Hoogly, West Bengal, India",88.3993,22.88809,"Hooghly, West Bengal, India",200,NA
+"Indore, Madhya Pradesh, India",75.85921,22.718885,"Indore, Madhya Pradesh, India",200,NA
+"Ujjain, Madhya Pradesh, India",75.77153,23.18871,"Ujjain Nagar, Madhya Pradesh, India",200,NA
+"Devas, Madhya Pradesh, India",76.056786,22.967346,"Dewas Nagar, Madhya Pradesh, India",200,NA
+"Ghajipur (cold store), Uttar Pradesh, India",83.57752,25.586584,"Ghazipur, Uttar Pradesh, India",200,NA
+"Bardwan, West Bengal, India",87.867256,23.238909,"Burdwan, West Bengal, India",200,NA
+"Shillong, Meghalaya, India",91.88283,25.575846,"Shillong, Meghalaya, India",200,NA
+"Adda, Solan, India",77.09992,30.908451,"Solan, Himachal Pradesh, India",200,NA
+"Chandyal, Mandi, India",76.98503,31.63756,"Chandial, Mandi, Mandi, Himachal Pradesh, India",200,NA
+"Dhaban, Mandi, India",76.9626,31.582338,"Dhaban, Balh, Mandi, Himachal Pradesh, India",200,NA
+"Bhiryawan, Mandi, India",76.93139,31.708267,"Mandi, Himachal Pradesh, India",200,NA
+"Nagwain, Mandi, India",77.17646,31.811317,"Nagwain, Aut, Mandi, Himachal Pradesh, India",200,NA
+"Dhalain, Solan, India",77.09992,30.908451,"Solan, Himachal Pradesh, India",200,NA
+"Palampur, Kangra, India",76.53618,32.110844,"Palampur, Himachal Pradesh, India",200,NA
+"Banuri, Kangra, India",76.54178,32.092476,"Banuri, Palampur, Kangra, Himachal Pradesh, India",200,NA
+"Badehar, Kangra, India",76.86054,31.862469,"Badehar, Padhar, Mandi, Himachal Pradesh, India",200,NA
+"Paneper, Kangra, India",76.271286,32.102905,"Kangra, Himachal Pradesh, India",200,NA
+"Mohal, Kullu, India",77.11635,31.908388,"Mohal, Bhuntar, Kullu, Himachal Pradesh, India",200,NA
+"Shamshi, Kullu, India",77.12919,31.8969,"Shamshi, Bhuntar, Kullu, Himachal Pradesh, India",200,NA
+"Kais, Kullu, India",77.14679,32.024628,"Kais, Kullu, Kullu, Himachal Pradesh, India",200,NA
+"Raison, Kullu, India",77.10922,31.958448,"Kullu, Himachal Pradesh, India",200,NA
+"Shirar, Kullu, India",77.12349,32.053516,"Shirar, Kullu, Kullu, Himachal Pradesh, India",200,NA
+"Lohara, Mandi, India",76.96733,31.595528,"Lohara, Balh, Mandi, Himachal Pradesh, India",200,NA
+"Basal, Solan, India",77.09992,30.908451,"Solan, Himachal Pradesh, India",200,NA
+"Paprola, Kangra, India",76.49866,31.855375,"Paprola, Alampur, Kangra, Himachal Pradesh, India",200,NA
+"Holta, Kangra, India",76.54921,32.104893,"Holta, Palampur, Kangra, Himachal Pradesh, India",200,NA
+"Kural, Kangra, India",76.456375,32.020958,"Kural, Palampur, Kangra, Himachal Pradesh, India",200,NA
+"Nagrota Bagwan, Kangra, India",76.381325,32.108727,"Nagrota Bagwan, Himachal Pradesh, India",200,NA
+"Salogra, Solan, India",77.09992,30.908451,"Solan, Himachal Pradesh, India",200,NA
+"Dharot, Solan, India",76.57052,31.270224,"Dharot, Naina Devi, Bilaspur, Himachal Pradesh, India",200,NA
+"Bheura, Mandi, India",76.978516,31.595375,"Bhiura, Balh, Mandi, Himachal Pradesh, India",200,NA
+"Brasília, Brazil",-47.888252,-15.796119,"Brasília, Federal District, Brazil",200,NA
+"Vargem Bonita, Brazil",-46.367622,-20.328396,"Vargem Bonita, Minas Gerais, Brazil",200,NA
+"Brazlândia, Brazil",-40.225122,-17.380279,"Rua Brasilândia, Medeiros Neto - Bahia, 45960, Brazil",200,NA
+"Itapetininga, Brazil",-48.052204,-23.590742,"Itapetininga, São Paulo, Brazil",200,NA
+"Bahia, Brazil",-42.089382,-11.746189,"Bahia, Brazil",200,NA
+"Castro, Brazil",-50.007206,-24.789648,"Castro, Paraná, Brazil",200,NA
+"Umuarama, Brazil",-53.311356,-23.761568,"Umuarama, Paraná, Brazil",200,NA
+"Ibicoara, Brazil",-41.28234,-13.414904,"Ibicoara, Bahia, Brazil",200,NA
+"Piraí do Sul, Brazil",-49.937458,-24.533726,"Piraí do Sul, Paraná, Brazil",200,NA
+"Mariental, Brazil",-49.64578,-25.717836,"Mariental, Lapa, Paraná, Brazil",200,NA
+"Lapa, Brazil",-49.71937,-25.769108,"Lapa, Paraná, Brazil",200,NA
+"Araucária, Brazil",-49.403397,-25.590984,"Araucária, Paraná, Brazil",200,NA
+"Contenda, Brazil",-49.535988,-25.678204,"Contenda, Paraná, Brazil",200,NA
+"Cristalina, Brazil",-47.610012,-16.76642,"Cristalina, Goiás, Brazil",200,NA
+"Morro Redondo, Brazil",-52.625633,-31.592045,"Morro Redondo, Rio Grande do Sul, Brazil",200,NA
+"Buritis, Brazil",-43.964703,-19.96901,"Buritis, 30455, Belo Horizonte, Minas Gerais, Brazil",200,NA
+"Tatui, Brazil",-47.848797,-23.348194,"Tatuí, São Paulo, Brazil",200,NA
+"Saturno, Brazil",-49.45827,-28.750141,"Saturno, Forquilhinha, Santa Catarina, Brazil",200,NA
+"Ocidental, Brazil",-47.348132,-2.9922,"Rua Ocidental, Paragominas - Pará, 68625-970, Brazil",200,NA
+"Uberaba, Brazil",-47.93526,-19.748611,"Uberaba, Minas Gerais, Brazil",200,NA
+"Yaoundé (V), Cameroon",11.520526,3.864768,"Yaounde, Centre, Cameroon",200,NA
+"Obala (V), Cameroon",11.534664,4.165713,"Obala, Centre, Cameroon",200,NA
+"Bafia (V), Cameroon",11.220593,4.739933,"Bafia, Centre, Cameroon",200,NA
+"Foumbot (Ill), Cameroon",10.638147,5.510861,"Foumbot, West, Cameroon",200,NA
+"Dschang (III), Cameroon",10.052308,5.452149,"Dschang, West, Cameroon",200,NA
+"Baham (III), Cameroon",10.701344,5.011997,"Maham III, West, Cameroon",200,NA
+"Baham (Il), Cameroon",10.528128,5.39259,"Baham II, West, Cameroon",200,NA
+"Bamougoum (IlI), Cameroon",10.349979,5.510266,"Bamougoum, West, Cameroon",200,NA
+"Melong (IV), Cameroon",9.963396,5.058453,"Melong II, Littoral, Cameroon",200,NA
+"Baham (II), Cameroon",10.528128,5.39259,"Baham II, West, Cameroon",200,NA
+"Baham (Ill), Cameroon",10.368438,5.334612,"Baham, West, Cameroon",200,NA
+"Mbouda (III), Cameroon",10.254744,5.627374,"Mbouda, West, Cameroon",200,NA
+"Foumbot (III), Cameroon",10.638147,5.510861,"Foumbot, West, Cameroon",200,NA
+"Dschang (I), Cameroon",10.052308,5.452149,"Dschang, West, Cameroon",200,NA
+"Bafang (III), Cameroon",10.179748,5.158664,"Bafang, West, Cameroon",200,NA
+"Comoe, Burkina Faso",-4.752639,10.642703,"Comoé, Burkina Faso",200,NA
+"Houet, Burkina Faso",-4.296144,11.17658,"Houet, Burkina Faso",200,NA
+"Oubritenga, Burkina Faso",-1.296553,12.583618,"Oubritenga, Burkina Faso",200,NA
+"Houet, Burkina Faso, Burkina Faso",-4.296144,11.17658,"Houet, Burkina Faso",200,NA
+"Sanmatenga, Burkina Faso",-1.083959,13.085603,"Sanmatenga, Burkina Faso",200,NA
+"Passore, Burkina Faso",-2.263432,12.961291,"Passoré, Burkina Faso",200,NA
+"Namentenga, Burkina Faso",-0.573091,12.662657,"Namentenga, Burkina Faso",200,NA
+"Kadiogo, Burkina Faso",-1.527094,12.368187,"Kadiogo, Burkina Faso",200,NA
+"Kenedougou, Burkina Faso",-4.914896,10.982101,"Kénédougou, Burkina Faso",200,NA
+"Yatenga, Burkina Faso",-2.417699,13.580982,"Yatenga, Burkina Faso",200,NA
+"Chã Grande, Pernambuco State, Brazil, Brazil",-35.46351,-8.238894,"Chã Grande, Pernambuco, Brazil",200,NA
+"Bezerros, Pernambuco State, Brazil, Brazil",-35.752316,-8.234993,"Bezerros, Pernambuco, Brazil",200,NA
+"Garanhuns, Pernambuco State, Brazil, Brazil",-36.49399,-8.89043,"Garanhuns, Pernambuco, Brazil",200,NA
+"Caruaru, Pernambuco State, Brazil, Brazil",-35.97143,-8.28258,"Caruaru, Pernambuco, Brazil",200,NA
+"Sairé, Pernambuco State, Brazil, Brazil",-35.709297,-8.327757,"Sairé, Pernambuco, Brazil",200,NA
+"Camocim de São Félix, Pernambuco State, Brazil, Brazil",-35.76328,-8.36176,"Camocim de São Félix, Pernambuco, Brazil",200,NA
+"Gravatá, Pernambuco State, Brazil, Brazil",-35.568165,-8.203421,"Gravatá, Pernambuco, Brazil",200,NA
+"Belém de São Francisco, Pernambuco State, Brazil, Brazil",-34.830759,-7.95395,"Rua Belém De São Francisco, Janga, Paulista - Pernambuco, 53439-090, Brazil",200,NA
+"Floresta, Pernambuco State, Brazil, Brazil",-38.571114,-8.600064,"Floresta, Pernambuco, Brazil",200,NA
+"Mirandiba, Pernambuco State, Brazil, Brazil",-38.727898,-8.11929,"Mirandiba, Pernambuco, Brazil",200,NA
+"Petrolina, Pernambuco State, Brazil, Brazil",-40.49743,-9.381671,"Petrolina, Pernambuco, Brazil",200,NA
+"Karnataka, India",75.789139,14.956703,"Karnataka, India",200,NA
+"Assam Linzay, East Sikkim, India",88.66108,27.284018,"Assam, Gangtok, Gangtok, Sikkim, India",200,NA
+"Burdwan, West Bengal, India, India",87.867256,23.238909,"Burdwan, West Bengal, India",200,NA
+"Howrah, West Bengal, India, India",88.325424,22.573898,"Howrah, West Bengal, India",200,NA
+"Malda, West Bengal, India, India",88.1445,24.99984,"Malda, West Bengal, India",200,NA
+"Dakshin Dinajpur, West Bengal, India, India",88.77852,25.22672,"Dakshin Dinajpur, West Bengal, India",200,NA
+"North-24-Parganas, West Bengal, India, India",88.43236,22.571995,"North 24 Parganas, West Bengal, India",200,NA
+"Bankura, West Bengal, India, India",87.063644,23.234524,"Bankura, West Bengal, India",200,NA
+"Purulia, West Bengal, India, India",86.36456,23.332062,"Purulia, West Bengal, India",200,NA
+"Jhargram, West Bengal, India, India",86.996704,22.450518,"Jhargram, West Bengal, India",200,NA
+"Coochbehar, West Bengal, India, India",89.450111,26.307358,Near Coochbehar ، 736101 Cooch Behar، India,200,NA
+"South-24 Parganas, West Bengal, India, India",88.38737,22.454386,"South 24 Parganas, West Bengal, India",200,NA
+"UttarDinajpur, West Bengal, India, India",88.463455,22.966872,India ، 741235 Kalyani، India,200,NA
+"Mora, Portugal",-8.165279,38.944817,"Mora, Évora, Portugal",200,NA
+"Nazaré, Portugal",-9.071826,39.60146,"Nazaré, Leiria, Portugal",200,NA
+"Coruche, Portugal",-8.523816,38.958046,"Coruche, Santarém, Portugal",200,NA
+"Benavente, Portugal",-8.807809,38.981766,"Benavente, Santarém, Portugal",200,NA
+"Montijo, Portugal",-8.975403,38.70542,"Montijo, Setúbal, Portugal",200,NA
+"Canha, Portugal",-8.626332,38.767883,"Canha, Setúbal, Portugal",200,NA
+"Leiria, Portugal",-8.808616,39.74443,"Leiria, Leiria, Portugal",200,NA
+"Pombal, Portugal",-8.627998,39.915287,"Pombal, Leiria, Portugal",200,NA
+"Chaves, Portugal",-7.471167,41.739887,"Chaves, Vila Real, Portugal",200,NA
+"Alcobaça, Portugal",-8.97914,39.55066,"Alcobaça, Leiria, Portugal",200,NA
+"V. Novas, Portugal",-8.461061,41.447236,"Rotunda Da Bouça Nova, 4770-581 Vale, Braga, Portugal",200,NA
+"Cantanhede, Portugal",-8.591097,40.346992,"Cantanhede, Coimbra, Portugal",200,NA
+"P. Varzim, Portugal",-8.190178,41.007013,"Rua Várzia, 4690-396 Nespereira, Viseu, Portugal",200,NA
+"C. Beira, Portugal",-7.369493,39.449238,"Beirã, Portalegre, Portugal",200,NA
+"S. Magos, Portugal",-8.683494,40.560268,"Estrada Da Nossa Senhora De Vagos, 3840-406 Vagos, Aveiro, Portugal",200,NA
+"Montalegre, Portugal",-7.790276,41.823742,"Montalegre, Vila Real, Portugal",200,NA
+"Bragança, Portugal",-6.756282,41.80548,"Bragança, Bragança, Portugal",200,NA
+"Boticas, Portugal",-7.667277,41.687847,"Boticas, Vila Real, Portugal",200,NA
+"Azores Islands, Portugal",-25.66895,37.73934,"Azores, Portugal",200,NA
+"Coimbra, Portugal",-8.429931,40.21042,"Coimbra, Coimbra, Portugal",200,NA
+"Capela, Brazil, Brazil",-48.300859,-18.901389,"Rua Capela, Jardim Brasília, Uberlândia - Minas Gerais, 38401, Brazil",200,NA
+"Teotônio Vilela, Brazil, Brazil",-52.842307,-28.736772,"Rua Teotônio Vilela, Norte América, Espumoso - Rio Grande do Sul, 99400-000, Brazil",200,NA
+"Maceió, Brazil, Brazil",-40.852494,-14.857696,"Avenida Maceió, Brasil, Vitória da Conquista - Bahia, 45051, Brazil",200,NA
+"Murici, Brazil, Brazil",-35.945473,-9.3119,"Murici, Alagoas, Brazil",200,NA
+"Igreja Nova, Brazil, Brazil",-36.657417,-10.127599,"Igreja Nova, Alagoas, Brazil",200,NA
+"Taquarana, Brazil, Brazil",-36.494907,-9.646719,"Taquarana, Alagoas, Brazil",200,NA
+"Huizhou city, Guangdong Province, China, China",114.40926,23.113785,"HuiZhou Shi, Guangdong, China",200,NA
+"Dom Eliseu, Pará (−4.0461, −47.711), Brazil",-47.555103,-4.294385,"Dom Eliseu, Pará, Brazil",200,NA
+"Dom Eliseu, Pará (−4.0544, −47.693), Brazil",-47.555103,-4.294385,"Dom Eliseu, Pará, Brazil",200,NA
+"Dom Eliseu, Pará (−4.0515, −47.694), Brazil",-47.555103,-4.294385,"Dom Eliseu, Pará, Brazil",200,NA
+"Dom Eliseu, Pará (−4.2911, −47.609), Brazil",-47.555103,-4.294385,"Dom Eliseu, Pará, Brazil",200,NA
+"Klaten, Java, Indonesia, Indonesia",110.600426,-7.705468,"Klaten, Central Java, Indonesia",200,NA
+"Kediri, Java, Indonesia, Indonesia",112.01611,-7.816588,"Kediri, East Java, Indonesia",200,NA
+"Boyolali, Java, Indonesia, Indonesia",110.59471,-7.522834,"Boyolali, Central Java, Indonesia",200,NA
+"Purwakarta, Java, Indonesia, Indonesia",107.44383,-6.553833,"Purwakarta, West Java, Indonesia",200,NA
+"West Bandung, Java, Indonesia, Indonesia",117.13911,-0.499056,"Jawa, 75122, Samarinda Ulu, Samarinda, East Kalimantan, Indonesia",200,NA
+"Blitar, Java, Indonesia, Indonesia",112.16312,-8.098922,"Blitar, East Java, Indonesia",200,NA
+"Magelang, Java, Indonesia, Indonesia",110.216576,-7.481828,"Magelang, Central Java, Indonesia",200,NA
+"Subang, Java, Indonesia, Indonesia",105.69074,-4.664973,"Subang Jaya, 34159, Bandar Surabaya, Lampung Tengah, Lampung, Indonesia",200,NA
+"Brebes, Java, Indonesia, Indonesia",109.04026,-6.873575,"Brebes, Central Java, Indonesia",200,NA
+"Garut, Java, Indonesia, Indonesia",107.90209,-7.215746,"Garut, West Java, Indonesia",200,NA
+"Fars/Eghlid, Iran",52.537804,29.606022,"Fars, Iran",200,NA
+"Fars/Norabad, Iran",52.609836,27.723499,"Nowabad, Mohr, Fars, Iran",200,NA
+"Fars/Darab, Iran",54.549057,28.753405,"Darab, Fars, Iran",200,NA
+"Fars/Dehbid, Iran",52.800562,29.916542,"Dehbid, Marvdasht, Fars, Iran",200,NA
+"Fars/Maharlo, Iran",52.537804,29.606022,"Fars, Iran",200,NA
+"Hamedan/Bahar, Iran",48.43926,34.907967,"Bahar, Hamadan, Iran",200,NA
+"Kerman/Jiroft, Iran",57.73616,28.669613,"Jiroft, Kerman, Iran",200,NA
+"Khoozestan/Jiroft, Iran",57.73616,28.669613,"Jiroft, Kerman, Iran",200,NA
+"Khoozestan/Dezful, Iran",48.403812,32.378143,"Dezful, Khuzestan, Iran",200,NA
+"Fars/Fasarod, Iran",52.537804,29.606022,"Fars, Iran",200,NA
+"Esfahan/Dorche, Iran",51.66541,32.66991,"Esfahan, Isfahan, Iran",200,NA
+"Esfahan/Fereidan, Iran",50.415146,32.98532,"Faridan, Isfahan, Iran",200,NA
+"Fars/Shiraz, Iran",52.537064,29.605162,"Shiraz, Fars, Iran",200,NA
+"Hormozgan/Bandarabas, Iran",56.289253,27.184202,"Hormozgan, Iran",200,NA
+"Yunan, China, China",101.270076,24.291532,"Yunnan, China",200,NA
+"Mlali, Morogoro, Tanzania",37.539801,-6.959248,"Mlali, Morogoro, Tanzania",200,NA
+"Mvomero, Morogoro, Tanzania",37.447905,-6.304773,"Mvomero, Morogoro, Tanzania",200,NA
+"Misufini, Morogoro, Tanzania",37.665258,-6.827415,"Morogoro, Morogoro, Tanzania",200,NA
+"Rungwe,Mbeya, Tanzania",33.468103,-8.906445,"Mbeya, Mbeya, Tanzania",200,NA
+"Kilolo, Iringa, Tanzania",35.697707,-7.779462,"Iringa, Iringa, Tanzania",200,NA
+"Iringa rural, Iringa, Tanzania",35.697707,-7.779462,"Iringa, Iringa, Tanzania",200,NA
+"Arumeru, Arusha, Tanzania",36.694575,-3.372422,"Arusha, Arusha, Tanzania",200,NA
+"Mbeya rural, Mbeya, Tanzania",33.468103,-8.906445,"Mbeya, Mbeya, Tanzania",200,NA
+"Lushoto, Tanga, Tanzania",38.290899,-4.798365,"Lushoto, Tanga, Tanzania",200,NA
+"Taean, South Korea",126.30224,36.751423,"Taean-gun, Chungcheongnam-do, South Korea",200,NA
+"Goyang, South Korea",126.83094,37.657158,"Goyang-si, Gyeonggi-do, South Korea",200,NA
+"Paju, South Korea",126.77422,37.758,"Paju-si, Gyeonggi-do, South Korea",200,NA
+"Ambalavayal, Kerala, India",76.211174,11.618406,"Ambalavayal, Sulthan Bathery, Wayanad, Kerala, India",200,NA
+"Peruvannamuzhi, Kerala, India",76.574032,10.200603,"Kerala, India",200,NA
+"Meppadi, Kerala, India",76.574032,10.200603,"Kerala, India",200,NA
+"Mohanpur, West Bengal, India, India",87.42298,21.843878,"Mohanpur, West Bengal, India",200,NA
+"Thamaraserry, Kerala, India",75.861729,11.496103,Thamaraserry ، 673527 Koyilandy، India,200,NA
+"Pulpally, Kerala, India",76.16484,11.792577,"Pulpalli, Sulthan Bathery, Wayanad, Kerala, India",200,NA
+"Vythiri, Kerala, India",76.03896,11.556166,"Vythiri, Kerala, India",200,NA
+"Gangtok, Sikkim, India",88.61322,27.330612,"Gangtok, Sikkim, India",200,NA
+"Aamala, Kerala, India",76.537343,9.688697,Anamala Road ، 686562 Kottayam، India,200,NA
+"Kothamangalam, Kerala, India",76.626,10.064645,"Kothamangalam, Kerala, India",200,NA
+"Hattur, Karnataka, India",75.04586,15.410163,"Sattur, Dharwad, Dharwad, Karnataka, India",200,NA
+"Palakkad, Kerala, India",76.658424,10.761898,"Palakkad, Kerala, India",200,NA
+"Palavayal, Kerala, India",75.41126,12.314376,"Palavayal, Vellarikkundu, Kasaragod, Kerala, India",200,NA
+"Chemmanoda, Kerala, India",75.819664,11.632231,"Chempanoda, Koyilandy, Kozhikode, Kerala, India",200,NA
+"Kakikuchi, Assam, India",94.44345,27.362045,"Kahikuchi, Dhemaji, Dhemaji, Assam, India",200,NA
+"Jorhat, Assam, India",94.21105,26.757898,"Jorhat, Assam, India",200,NA
+"Naypyidaw, Myanmar",96.1339,19.753683,"Naypydaw, Naypyidaw Union Territory, Myanmar",200,NA
+"Nyaung-U, Myanmar",94.90816,21.20085,"Nyaung-U, Mandalay, Myanmar",200,NA
+"PyinOoLwin, Myanmar",96.4643,22.027294,"Pyinoolwin, Mandalay, Myanmar",200,NA
+"Monywa, Myanmar",95.13166,22.117216,"Monywa, Sagaing, Myanmar",200,NA
+"Kalaw, Myanmar",96.56641,20.636068,"Kalaw, Shan, Myanmar",200,NA
+"Heho, Myanmar",96.826922,20.718771,"Heho, Kalaw, Shan, Myanmar",200,NA
+"Tatkon, Myanmar",96.20219,20.128838,"Tatkon, Naypydaw, Naypyidaw Union Territory, Myanmar",200,NA
+South Korea,128.168944,36.536236,South Korea,200,NA
+"Muan, South Korea",126.47502,34.989544,"Muan-gun, Jeollanam-do, South Korea",200,NA
+"Anday, South Manokwari District, West Papua, Indonesia, Indonesia",134.02844,-0.929817,"Anday, 98313, Manokwari Selatan, Manokwari, West Papua, Indonesia",200,NA
+"Songon, Cote d'Ivoire",-3.208425,6.109293,"Songan, Comoé, Côte d'Ivoire",200,NA
+"Bonoufla, Cote d'Ivoire",-6.474065,7.129113,"Bonoufla, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Sinfra, Cote d'Ivoire",-5.90895,6.616749,"Sinfra, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Souandala, Cote d'Ivoire",-5.379007,7.806563,Côte d'Ivoire,200,NA
+"Daloa, Cote d'Ivoire",-6.45161,6.87669,"Daloa, Sassandra-Marahoué, Côte d'Ivoire",200,NA
+"Man, Cote d'Ivoire",-7.55017,7.409081,"Man, Montagnes, Côte d'Ivoire",200,NA
+"Datta, Cote d'Ivoire",-5.326729,5.934235,"DATA, Gôh-Djiboua, Côte d'Ivoire",200,NA
+"Tabasco, Mexico",-92.646272,18.281257,"Tabasco, Mexico",200,NA
+"Chiapas, Mexico",-92.494801,16.560197,"Chiapas, Mexico",200,NA
+"Sarab, Iran",47.535934,37.93691,"Sarab, East Azerbaijan, Iran",200,NA
+"Tahmasbgholi, Iran",54.301374,32.565838,Iran,200,NA
+"Krondan, Iran",54.301374,32.565838,Iran,200,NA
+"Ghorveh, Iran",54.301374,32.565838,Iran,200,NA
+"Bgeura, Mandi, India",76.93139,31.708267,"Mandi, Himachal Pradesh, India",200,NA
+"Bharjwanu, Mandi, India",76.93139,31.708267,"Mandi, Himachal Pradesh, India",200,NA
+"Yala Province, Thailand",101.290252,6.556725,"Yala, Thailand",200,NA
+"Doufiguisso, Houet, Burkina Faso",-4.296144,11.17658,"Houet, Burkina Faso",200,NA
+"Loumbila, Oubritenga, Burkina Faso",-1.373913,12.517238,"Loumbila, Oubritenga, Burkina Faso",200,NA
+"Banfora, Comoé, Burkina Faso",-4.752147,10.626402,"Banfora, Comoé, Burkina Faso",200,NA
+"Badara, Kenedougou, Burkina Faso",-4.366417,11.371755,"Badara, Houet, Burkina Faso",200,NA
+"Kiri, Houet, Burkina Faso",-4.296144,11.17658,"Houet, Burkina Faso",200,NA
+"Louda, Sanmantenga, Burkina Faso",-1.086745,13.002969,"Louda, Sanmatenga, Burkina Faso",200,NA
+"Niongnongo, Passore, Burkina Faso",-2.109435,12.983992,"Niongnongo, Passoré, Burkina Faso",200,NA
+"Ouahigouya, Yatenga, Burkina Faso",-2.417699,13.580982,"Ouahigouya, Yatenga, Burkina Faso",200,NA
+"Tengrela, Comoe, Burkina Faso",-4.826266,10.656342,"Tengréla, Comoé, Burkina Faso",200,NA
+"Tougouri, Namentenga, Burkina Faso",-0.525932,13.312806,"Tougouri, Namentenga, Burkina Faso",200,NA
+"Toussiana, Houet, Burkina Faso",-4.619731,10.838278,"Toussiana, Houet, Burkina Faso",200,NA
+"Yegueresso, Houet, Burkina Faso",-4.157984,11.159941,"Yéguérésso, Houet, Burkina Faso",200,NA
+"Koubri, Kadiogo, Burkina Faso",-1.399657,12.187166,"Koubri, Kadiogo, Burkina Faso",200,NA
+"Niamandougou, Houet, Burkina Faso",-4.158296,11.171762,"Niamadougou, Houet, Burkina Faso",200,NA
+"Gouchamadara, Kenedougou, Burkina Faso",-4.914896,10.982101,"Kénédougou, Burkina Faso",200,NA
+"Pointe aux Piments, Mauritius, Mauritius",57.522846,-20.059123,"Pointe aux Piments, Pamplemousses, Mauritius",200,NA
+"Cluny, Mauritius, Mauritius",57.606922,-20.370527,"Cluny, Grand Port, Mauritius",200,NA
+"Plaisance, Mauritius, Mauritius",57.674128,-20.434455,"Plaisance, Grand Port, Mauritius",200,NA
+"Morcellement Saint André, Mauritius, Mauritius",57.567512,-20.07089,"Morcellement Saint-André, Pamplemousses, Mauritius",200,NA
+"Curepipe – St Wooton, Mauritius, Mauritius",57.512706,-20.319784,"Curepipe, Plaines Wilhems, Mauritius",200,NA
+"Bassin Plat – Saint Pierre, Reunion, Reunion Island",55.538179,-21.121661,Reunion,200,NA
+"Villèle – Saint Paul, Reunion, Reunion Island",55.259161,-21.060055,"Villèle, Saint-Paul, Reunion",200,NA
+"Etang Salé les Hauts, Reunion, Reunion Island",55.36667,-21.265442,"L'Étang-Salé, Reunion",200,NA
+"Ravine Blanche – Saint Pierre, Reunion, Reunion Island",55.459695,-21.336433,"La Ravine Blanche, Saint-Pierre, Reunion",200,NA
+"Liancheng, Longyan, Fuijan Province, China, China",116.74967,25.71177,"Liancheng Xian, Longyan Shi, Fujian, China",200,NA
+"Jianou, Nanping, Fuijan Province, China, China",118.29887,27.025284,"Jian'ou Shi, Nanping Shi, Fujian, China",200,NA
+"Jianyang, Nanping, Fuijan Province, China, China",118.11432,27.334763,"Jianyang Qu, Nanping Shi, Fujian, China",200,NA
+"Pucheng, Nanping, Fuijan Province, China, China",118.53646,27.920439,"Pucheng Xian, Nanping Shi, Fujian, China",200,NA
+"Wuyishan, Nanping, Fuijan Province, China, China",118.02988,27.760128,"Wuyishan Shi, Nanping Shi, Fujian, China",200,NA
+"Yongan, Sanming, Fuijan Province, China, China",117.361435,25.943943,"Yong'an Shi, Sanming Shi, Fujian, China",200,NA
+"Francisco Beltrão, Paraná, Brazil, Brazil",-53.051563,-26.07698,"Francisco Beltrão, Paraná, Brazil",200,NA
+"Itapejara d'Oeste, Paraná, Brazil, Brazil",-52.81528,-25.961376,"Itapejara d'Oeste, Paraná, Brazil",200,NA
+"Mariópolis, Paraná, Brazil, Brazil",-52.554787,-26.3558,"Mariópolis, Paraná, Brazil",200,NA
+"Palmas, Paraná, Brazil, Brazil",-51.989887,-26.485216,"Palmas, Paraná, Brazil",200,NA
+"Pato Branco, Paraná, Brazil, Brazil",-52.67149,-26.222717,"Pato Branco, Paraná, Brazil",200,NA
+"Renascença, Paraná, Brazil, Brazil",-52.969772,-26.158607,"Renascença, Paraná, Brazil",200,NA
+"Verê, Paraná, Brazil, Brazil",-52.906727,-25.879616,"Verê, Paraná, Brazil",200,NA
+"Bella Vista, Corrientes, Argentina, Argentina",-58.781053,-27.442864,"Bella Vista, Corrientes, Corrientes, W3404, Argentina",200,NA
+"Lavalle, Corrientes, Argentina, Argentina",-58.817482,-27.478834,"Lavalle, Corrientes, Corrientes, W3408, Argentina",200,NA
+"Concepción, Corrientes, Argentina, Argentina",-57.88759,-28.3926,"Concepción, Corrientes, Argentina",200,NA
+"Misiones, Argentina, Argentina",-54.051218,-25.672213,"Argentina, Almirante Brown, Misiones, N3385, Argentina",200,NA
+"Goya, Corrientes, Argentina, Argentina",-58.820493,-27.48998,"Goya, Corrientes, Corrientes, W3408, Argentina",200,NA
